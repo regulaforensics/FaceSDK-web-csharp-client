@@ -56,3 +56,4 @@ packages/
 bin/
 obj/
 .vs
+.idea/

@@ -1,0 +1,9 @@
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/bin/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.deps.json
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/bin/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.dll
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/bin/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.pdb
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.csprojAssemblyReference.cache
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.AssemblyInfoInputs.cache
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.AssemblyInfo.cs
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.csproj.CoreCompileInputs.cache
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.dll
+/home/gost/Projects/FaceRecognition-web-csharp-client/Regula.FaceRecognition.WebClient/obj/Debug/netstandard2.1/Regula.FaceRecognition.WebClient.pdb

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Regula.FaceRecognition.NetCoreExample/1.0.0": {
+        "runtime": {
+          "Regula.FaceRecognition.NetCoreExample.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Regula.FaceRecognition.NetCoreExample/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

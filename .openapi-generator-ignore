@@ -6,18 +6,18 @@ build.sh
 git_push.sh
 mono_nunit_test.sh
 README.md
-Regula.DocumentReader.WebClient.sln
-src/Regula.DocumentReader.WebClient.Test/**
-src/Regula.DocumentReader.WebClient/Regula.DocumentReader.WebClient.csproj
-src/Regula.DocumentReader.WebClient/Regula.DocumentReader.WebClient.nuspec
-src/Regula.DocumentReader.WebClient/packages.config
-src/Regula.DocumentReader.WebClient/Properties/**
+Regula.FaceRecognition.WebClient.sln
+src/Regula.FaceRecognition.WebClient.Test/**
+src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.csproj
+src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.nuspec
+src/Regula.FaceRecognition.WebClient/packages.config
+src/Regula.FaceRecognition.WebClient/Properties/**
 
 # generator bugs, require manual change
-src/Regula.DocumentReader.WebClient/Model/ContainerList.cs
-src/Regula.DocumentReader.WebClient/Model/AuthenticityCheckResult.cs
+src/Regula.FaceRecognition.WebClient/Model/ContainerList.cs
+src/Regula.FaceRecognition.WebClient/Model/AuthenticityCheckResult.cs
 **/*AllOf.cs
 
 # classes, modified after generation
-src/Regula.DocumentReader.WebClient/Model/ResultItem.cs
-src/Regula.DocumentReader.WebClient/Model/AuthenticityCheckResultItem.cs
+src/Regula.FaceRecognition.WebClient/Model/ResultItem.cs
+src/Regula.FaceRecognition.WebClient/Model/AuthenticityCheckResultItem.cs

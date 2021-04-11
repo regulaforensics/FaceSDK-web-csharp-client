@@ -1,6 +1,3 @@
-Regula.FaceRecognition.WebClient.sln
-src/Regula.FaceRecognition.WebClient.Test/Regula.FaceRecognition.WebClient.Test.csproj
-src/Regula.FaceRecognition.WebClient.Test/packages.config
 src/Regula.FaceRecognition.WebClient/Api/MatchingApi.cs
 src/Regula.FaceRecognition.WebClient/Client/ApiClient.cs
 src/Regula.FaceRecognition.WebClient/Client/ApiException.cs
@@ -23,7 +20,3 @@ src/Regula.FaceRecognition.WebClient/Model/Detection.cs
 src/Regula.FaceRecognition.WebClient/Model/DetectionFace.cs
 src/Regula.FaceRecognition.WebClient/Model/FaceRecognitionResult.cs
 src/Regula.FaceRecognition.WebClient/Model/OperationLog.cs
-src/Regula.FaceRecognition.WebClient/Properties/AssemblyInfo.cs
-src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.csproj
-src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.nuspec
-src/Regula.FaceRecognition.WebClient/packages.config

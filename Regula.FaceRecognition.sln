@@ -1,5 +1,9 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regula.FaceRecognition.NetCoreExample", "Regula.FaceRecognition.NetCoreExample\Regula.FaceRecognition.NetCoreExample.csproj", "{3C376A3D-696B-468A-A7A7-E83F05534F28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regula.FaceRecognition.NetCoreExample", "src/Regula.FaceRecognition.NetCoreExample\Regula.FaceRecognition.NetCoreExample.csproj", "{3C376A3D-696B-468A-A7A7-E83F05534F28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{910FC9E0-FB7B-4AA3-AA29-4FC78C388E1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Regula.FaceRecognition.WebClient", "src/Regula.FaceRecognition.WebClient\Regula.FaceRecognition.WebClient.csproj", "{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,5 +15,13 @@ Global
 		{3C376A3D-696B-468A-A7A7-E83F05534F28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C376A3D-696B-468A-A7A7-E83F05534F28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C376A3D-696B-468A-A7A7-E83F05534F28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3C376A3D-696B-468A-A7A7-E83F05534F28} = {910FC9E0-FB7B-4AA3-AA29-4FC78C388E1B}
+		{C755EDE7-46DA-47AA-B5E5-07E0CD8F1698} = {910FC9E0-FB7B-4AA3-AA29-4FC78C388E1B}
 	EndGlobalSection
 EndGlobal

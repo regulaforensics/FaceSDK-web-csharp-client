@@ -1,3 +1,4 @@
+using System;
 using Regula.FaceRecognition.WebClient.Client;
 using Regula.FaceRecognition.WebClient.Api;
 
@@ -6,19 +7,25 @@ namespace Regula.FaceRecognition.WebClient.WebClient
 {
     public class FaceSdk
     {
-        public ApiClient apiClient { get; }
+        public ApiClient ApiClient { get; }
 
-        public readonly MatchingApi MatchingApi;
+        public MatchingApi MatchingApi { get; }
 
-        public FaceSdk(string basePath = "", bool debugging = false, bool verifyingSsl = false) : this(new ApiClient())
+        public FaceSdk(string basePath) 
+            : this(Configuration.Default.ApiClient)
         {
+            basePath = string.IsNullOrEmpty(basePath) ? Configuration.Default.BasePath : basePath;
+
+            Configuration config = new Configuration() {BasePath = basePath};
+            ApiClient = new ApiClient(){Configuration = config};
         }
 
         public FaceSdk(ApiClient apiClient)
         {
-            Configuration config = new Configuration(apiClient);   
-            this.apiClient = apiClient;
-            this.MatchingApi = new MatchingApi(this.apiClient);
+            Configuration config = new Configuration() {BasePath = apiClient.Configuration.BasePath};
+            
+            this.ApiClient = apiClient;
+            this.MatchingApi = new MatchingApi(config);
         }
     }
 }

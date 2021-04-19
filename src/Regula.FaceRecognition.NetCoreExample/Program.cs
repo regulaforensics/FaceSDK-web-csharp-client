@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Regula.FaceRecognition.WebClient;
 using Regula.FaceRecognition.WebClient.Model;
 using Regula.FaceRecognition.WebClient.WebClient;
 
@@ -10,25 +9,20 @@ namespace Regula.FaceRecognition.NetCoreExample
 {
     class Program
     {
-        static readonly string API_BASE_PATH = "API_BASE_PATH";
-        
+        private const string API_BASE_PATH = "API_BASE_PATH";
+
         static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH);
-
-            if (apiBasePath == null)
-            {
-                apiBasePath = "http://localhost:41101";
-            }
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://localhost:41101";
 
             byte[] face1 = File.ReadAllBytes("face_1.jpg");
             byte[] face2 = File.ReadAllBytes("face_2.jpg");
             
             var sdk = new FaceSdk(apiBasePath);
 
-            var compareImage1 = new CompareImage(index: 0, data: face1, type: ImageSource.LIVE);
-            var compareImage2 = new CompareImage(index: 1, data: face1, type: ImageSource.DOCUMENT_RFID);
-            var compareImage3 = new CompareImage(index: 3, data: face2, type: ImageSource.LIVE);
+            var compareImage1 = new CompareImage(data: face1, type: ImageSource.LIVE);
+            var compareImage2 = new CompareImage(data: face1, type: ImageSource.DOCUMENT_RFID);
+            var compareImage3 = new CompareImage(data: face2, type: ImageSource.LIVE);
 
             var compareRequest = new CompareRequest
                 (thumbnails:false, images: new List<CompareImage> {compareImage1, compareImage2, compareImage3});

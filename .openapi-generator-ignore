@@ -6,18 +6,12 @@ build.sh
 git_push.sh
 mono_nunit_test.sh
 README.md
-Regula.FaceRecognition.WebClient.sln
-src/Regula.FaceRecognition.WebClient.Test/**
-src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.csproj
-src/Regula.FaceRecognition.WebClient/Regula.FaceRecognition.WebClient.nuspec
-src/Regula.FaceRecognition.WebClient/packages.config
-src/Regula.FaceRecognition.WebClient/Properties/**
+Regula.FaceSDK.WebClient.sln
+src/Regula.FaceSDK.WebClient.Test/**
+src/Regula.FaceSDK.WebClient/Regula.FaceSDK.WebClient.csproj
+src/Regula.FaceSDK.WebClient/Regula.FaceSDK.WebClient.nuspec
+src/Regula.FaceSDK.WebClient/packages.config
+src/Regula.FaceSDK.WebClient/Properties/**
 
 # generator bugs, require manual change
-src/Regula.FaceRecognition.WebClient/Model/ContainerList.cs
-src/Regula.FaceRecognition.WebClient/Model/AuthenticityCheckResult.cs
 **/*AllOf.cs
-
-# classes, modified after generation
-src/Regula.FaceRecognition.WebClient/Model/ResultItem.cs
-src/Regula.FaceRecognition.WebClient/Model/AuthenticityCheckResultItem.cs

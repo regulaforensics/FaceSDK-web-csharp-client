@@ -1,0 +1,17 @@
+docs/**
+.gitignore
+.travis.yml
+build.bat
+build.sh
+git_push.sh
+mono_nunit_test.sh
+README.md
+Regula.FaceSDK.WebClient.sln
+src/Regula.FaceSDK.WebClient.Test/**
+src/Regula.FaceSDK.WebClient/Regula.FaceSDK.WebClient.csproj
+src/Regula.FaceSDK.WebClient/Regula.FaceSDK.WebClient.nuspec
+src/Regula.FaceSDK.WebClient/packages.config
+src/Regula.FaceSDK.WebClient/Properties/**
+
+# generator bugs, require manual change
+**/*AllOf.cs

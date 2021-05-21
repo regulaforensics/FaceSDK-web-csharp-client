@@ -1,4 +1,4 @@
-# Regula.FaceSDK.WebClient - the C# library for the Regula FaceSDK Web API
+# Regula.FaceSDK.WebClient - the C# library for the Regula FaceSDK Web API 3.0+
 
 [![NuGet version (Regula.FaceSDK.WebClient)](https://img.shields.io/nuget/v/Regula.FaceSDK.WebClient.svg?style=flat-square)](https://www.nuget.org/packages/Regula.FaceSDK.WebClient/)
 [![OpenAPI](https://img.shields.io/badge/OpenAPI-defs-0a8c42?style=flat-square)](https://github.com/regulaforensics/FaceSDK-web-openapi)

@@ -16,8 +16,14 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
+      - run: sudo apt install docker-ce
+      - run: sudo apt install -y git
+      - env:
+        GITHUB_TOKEN: ${{ secrets.REGULA_GITHUB_TOKEN }}
+      run: ./github/workflows/update.sh
       - run: dotnet build src/Regula.FaceSDK.NetCoreExample -c Release
       - working-directory: src/Regula.FaceSDK.NetCoreExample/bin/Release/netcoreapp3.1/
         run: ./Regula.FaceSDK.NetCoreExample
         env:
           API_BASE_PATH: "https://test-faceapi.regulaforensics.com/"
+          

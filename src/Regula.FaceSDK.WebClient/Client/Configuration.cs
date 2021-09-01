@@ -214,7 +214,7 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <summary>
         /// Gets an instance of an ApiClient for this configuration
         /// </summary>
-        public virtual ApiClient  ApiClient
+        public virtual ApiClient ApiClient
         {
             get
             {

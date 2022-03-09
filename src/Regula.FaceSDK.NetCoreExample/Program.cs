@@ -13,7 +13,7 @@ namespace Regula.FaceSDK.NetCoreExample
 
         private static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "https://test-faceapi.regulaforensics.com";
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "https://faceapi.regulaforensics.com";
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");
@@ -24,8 +24,8 @@ namespace Regula.FaceSDK.NetCoreExample
             var matchImage2 = new MatchImage(data: face1, type: ImageSource.DOCUMENT_RFID);
             var matchImage3 = new MatchImage(data: face2, type: ImageSource.LIVE);
 
-            var matchingRequest = new MatchRequest(
-                false, new List<MatchImage> {matchImage1, matchImage2, matchImage3}
+            var matchingRequest = new MatchRequest(tag: "1",
+                thumbnails:false, images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}
             );
 
             var matchingResponse = sdk.MatchingApi.Match(matchingRequest);
@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.NetCoreExample
                 Console.WriteLine("pair({0}, {1}) similarity: {2}",
                     comparison.FirstIndex, comparison.SecondIndex, comparison.Similarity);
 
-            var detectRequest = new DetectRequest(face2);
+            var detectRequest = new DetectRequest(tag: "1", image:face2);
             var detectResponse = sdk.MatchingApi.Detect(detectRequest);
             var detectResults = detectResponse.Results;
 

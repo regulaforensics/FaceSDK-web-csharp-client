@@ -20,4 +20,4 @@ jobs:
       - working-directory: src/Regula.FaceSDK.NetCoreExample/bin/Release/netcoreapp3.1/
         run: ./Regula.FaceSDK.NetCoreExample
         env:
-          API_BASE_PATH: "https://test-faceapi.regulaforensics.com/"
+          API_BASE_PATH: "https://faceapi.regulaforensics.com/"

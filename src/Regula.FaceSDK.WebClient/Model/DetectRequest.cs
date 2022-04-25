@@ -34,13 +34,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="DetectRequest" /> class.
         /// </summary>
         /// <param name="tag">tag.</param>
+        /// <param name="quality">quality.</param>
         /// <param name="image">Base64 encoded image.</param>
         /// <param name="thumbnails">Enable formatted detections&#39; thumbnails in the response (default to false).</param>
         /// <param name="attributes">Enable face attributions detection, such as age or emotion and etc. (default to false).</param>
         /// <param name="onlyCentralFace">True - main face; false - all faces. (default to false).</param>
-        public DetectRequest(string tag = default(string), byte[] image = default(byte[]), bool thumbnails = false, bool attributes = false, bool onlyCentralFace = false)
+        public DetectRequest(string tag = default(string), QualityRequest quality = default(QualityRequest), byte[] image = default(byte[]), bool thumbnails = false, bool attributes = false, bool onlyCentralFace = false)
         {
             this.Tag = tag;
+            this.Quality = quality;
             this.Image = image;
             // use default value if no "thumbnails" provided
             if (thumbnails == null)
@@ -76,6 +78,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         [DataMember(Name="tag", EmitDefaultValue=false)]
         public string Tag { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quality
+        /// </summary>
+        [DataMember(Name="quality", EmitDefaultValue=false)]
+        public QualityRequest Quality { get; set; }
 
         /// <summary>
         /// Base64 encoded image
@@ -114,6 +122,7 @@ namespace Regula.FaceSDK.WebClient.Model
             var sb = new StringBuilder();
             sb.Append("class DetectRequest {\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
+            sb.Append("  Quality: ").Append(Quality).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
@@ -158,6 +167,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Tag.Equals(input.Tag))
                 ) && 
                 (
+                    this.Quality == input.Quality ||
+                    (this.Quality != null &&
+                    this.Quality.Equals(input.Quality))
+                ) && 
+                (
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
@@ -190,6 +204,8 @@ namespace Regula.FaceSDK.WebClient.Model
                 int hashCode = 41;
                 if (this.Tag != null)
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
+                if (this.Quality != null)
+                    hashCode = hashCode * 59 + this.Quality.GetHashCode();
                 if (this.Image != null)
                     hashCode = hashCode * 59 + this.Image.GetHashCode();
                 if (this.Thumbnails != null)

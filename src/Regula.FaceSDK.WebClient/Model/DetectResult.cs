@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class DetectResult :  IEquatable<DetectResult>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Scenario
+        /// </summary>
+        [DataMember(Name="scenario", EmitDefaultValue=false)]
+        public FaceQualityScenarios? Scenario { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="DetectResult" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,7 +46,9 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="detections">detections (required).</param>
         /// <param name="detectorType">Internal..</param>
         /// <param name="landmarksType">Internal..</param>
-        public DetectResult(List<Detection> detections = default(List<Detection>), int detectorType = default(int), int landmarksType = default(int))
+        /// <param name="scenario">scenario.</param>
+        /// <param name="timer">timer.</param>
+        public DetectResult(List<Detection> detections = default(List<Detection>), int detectorType = default(int), int landmarksType = default(int), FaceQualityScenarios? scenario = default(FaceQualityScenarios?), float timer = default(float))
         {
             // to ensure "detections" is required (not null)
             if (detections == null)
@@ -55,6 +62,8 @@ namespace Regula.FaceSDK.WebClient.Model
             
             this.DetectorType = detectorType;
             this.LandmarksType = landmarksType;
+            this.Scenario = scenario;
+            this.Timer = timer;
         }
         
         /// <summary>
@@ -77,6 +86,13 @@ namespace Regula.FaceSDK.WebClient.Model
         [DataMember(Name="landmarksType", EmitDefaultValue=false)]
         public int LandmarksType { get; set; }
 
+
+        /// <summary>
+        /// Gets or Sets Timer
+        /// </summary>
+        [DataMember(Name="timer", EmitDefaultValue=false)]
+        public float Timer { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -88,6 +104,8 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Detections: ").Append(Detections).Append("\n");
             sb.Append("  DetectorType: ").Append(DetectorType).Append("\n");
             sb.Append("  LandmarksType: ").Append(LandmarksType).Append("\n");
+            sb.Append("  Scenario: ").Append(Scenario).Append("\n");
+            sb.Append("  Timer: ").Append(Timer).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +155,16 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.LandmarksType == input.LandmarksType ||
                     (this.LandmarksType != null &&
                     this.LandmarksType.Equals(input.LandmarksType))
+                ) && 
+                (
+                    this.Scenario == input.Scenario ||
+                    (this.Scenario != null &&
+                    this.Scenario.Equals(input.Scenario))
+                ) && 
+                (
+                    this.Timer == input.Timer ||
+                    (this.Timer != null &&
+                    this.Timer.Equals(input.Timer))
                 );
         }
 
@@ -155,6 +183,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.DetectorType.GetHashCode();
                 if (this.LandmarksType != null)
                     hashCode = hashCode * 59 + this.LandmarksType.GetHashCode();
+                if (this.Scenario != null)
+                    hashCode = hashCode * 59 + this.Scenario.GetHashCode();
+                if (this.Timer != null)
+                    hashCode = hashCode * 59 + this.Timer.GetHashCode();
                 return hashCode;
             }
         }

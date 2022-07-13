@@ -38,11 +38,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Detection" /> class.
         /// </summary>
+        /// <param name="crop">Base64 encoded image.</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="landmarks">Main coordinates of the detected face (eyes, nose, lips, ears and etc.). (required).</param>
+        /// <param name="quality">quality.</param>
         /// <param name="roi">Rectangular area of the detected face. First element - X-axis coordinate. Second element - Y-axis coordinate. (X, Y) - left top point. Third element - rectangular width. Fourth element - rectangular height. (required).</param>
         /// <param name="thumbnail">Formatted base64 face detection image..</param>
-        public Detection(Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        public Detection(byte[] crop = default(byte[]), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<List<decimal>> landmarks = default(List<List<decimal>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             // to ensure "landmarks" is required (not null)
             if (landmarks == null)
@@ -64,10 +66,19 @@ namespace Regula.FaceSDK.WebClient.Model
                 this.Roi = roi;
             }
             
+            this.Crop = crop;
             this.Attributes = attributes;
+            this.Quality = quality;
             this.Thumbnail = thumbnail;
         }
         
+        /// <summary>
+        /// Base64 encoded image
+        /// </summary>
+        /// <value>Base64 encoded image</value>
+        [DataMember(Name="crop", EmitDefaultValue=false)]
+        public byte[] Crop { get; set; }
+
         /// <summary>
         /// Gets or Sets Attributes
         /// </summary>
@@ -80,6 +91,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <value>Main coordinates of the detected face (eyes, nose, lips, ears and etc.).</value>
         [DataMember(Name="landmarks", EmitDefaultValue=true)]
         public List<List<decimal>> Landmarks { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Quality
+        /// </summary>
+        [DataMember(Name="quality", EmitDefaultValue=false)]
+        public DetectionQuality Quality { get; set; }
 
         /// <summary>
         /// Rectangular area of the detected face. First element - X-axis coordinate. Second element - Y-axis coordinate. (X, Y) - left top point. Third element - rectangular width. Fourth element - rectangular height.
@@ -103,8 +120,10 @@ namespace Regula.FaceSDK.WebClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Detection {\n");
+            sb.Append("  Crop: ").Append(Crop).Append("\n");
             sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("  Landmarks: ").Append(Landmarks).Append("\n");
+            sb.Append("  Quality: ").Append(Quality).Append("\n");
             sb.Append("  Roi: ").Append(Roi).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
             sb.Append("}\n");
@@ -142,6 +161,11 @@ namespace Regula.FaceSDK.WebClient.Model
 
             return 
                 (
+                    this.Crop == input.Crop ||
+                    (this.Crop != null &&
+                    this.Crop.Equals(input.Crop))
+                ) && 
+                (
                     this.Attributes == input.Attributes ||
                     this.Attributes != null &&
                     input.Attributes != null &&
@@ -152,6 +176,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Landmarks != null &&
                     input.Landmarks != null &&
                     this.Landmarks.SequenceEqual(input.Landmarks)
+                ) && 
+                (
+                    this.Quality == input.Quality ||
+                    (this.Quality != null &&
+                    this.Quality.Equals(input.Quality))
                 ) && 
                 (
                     this.Roi == input.Roi ||
@@ -175,10 +204,14 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Crop != null)
+                    hashCode = hashCode * 59 + this.Crop.GetHashCode();
                 if (this.Attributes != null)
                     hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 if (this.Landmarks != null)
                     hashCode = hashCode * 59 + this.Landmarks.GetHashCode();
+                if (this.Quality != null)
+                    hashCode = hashCode * 59 + this.Quality.GetHashCode();
                 if (this.Roi != null)
                     hashCode = hashCode * 59 + this.Roi.GetHashCode();
                 if (this.Thumbnail != null)

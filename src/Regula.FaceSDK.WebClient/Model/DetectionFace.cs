@@ -37,7 +37,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="landmarks">Main coordinates of the detected face (eyes, nose, lips, ears and etc.)..</param>
         /// <param name="roi">Rectangular area of the detected face. First element - X-axis coordinate. Second element - Y-axis coordinate. (X, Y) - left top point. Third element - rectangular width. Fourth element - rectangular height..</param>
         /// <param name="thumbnail">Formatted base64 face detection image..</param>
-        public DetectionFace(int faceIndex = default(int), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
@@ -50,7 +50,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="faceIndex", EmitDefaultValue=false)]
-        public int FaceIndex { get; set; }
+        public decimal FaceIndex { get; set; }
 
         /// <summary>
         /// Main coordinates of the detected face (eyes, nose, lips, ears and etc.).

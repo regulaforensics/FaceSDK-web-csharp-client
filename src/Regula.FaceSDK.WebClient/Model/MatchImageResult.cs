@@ -46,7 +46,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="similarity">similarity.</param>
         /// <param name="errorCode">errorCode.</param>
         /// <param name="errorMsg">errorMsg.</param>
-        public MatchImageResult(int firstIndex = default(int), int firstFaceIndex = default(int), int secondIndex = default(int), int secondFaceIndex = default(int), decimal score = default(decimal), decimal similarity = default(decimal), int errorCode = default(int), string errorMsg = default(string))
+        public MatchImageResult(int firstIndex = default(int), decimal firstFaceIndex = default(decimal), int secondIndex = default(int), decimal secondFaceIndex = default(decimal), decimal score = default(decimal), decimal similarity = default(decimal), int errorCode = default(int), string errorMsg = default(string))
         {
             // to ensure "firstIndex" is required (not null)
             if (firstIndex == null)
@@ -88,7 +88,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="firstFaceIndex", EmitDefaultValue=false)]
-        public int FirstFaceIndex { get; set; }
+        public decimal FirstFaceIndex { get; set; }
 
         /// <summary>
         /// Image index used to identify input photos between themselves. If not specified, than input list index is used
@@ -102,7 +102,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="secondFaceIndex", EmitDefaultValue=false)]
-        public int SecondFaceIndex { get; set; }
+        public decimal SecondFaceIndex { get; set; }
 
         /// <summary>
         /// Gets or Sets Score

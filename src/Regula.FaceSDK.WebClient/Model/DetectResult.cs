@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -52,11 +52,11 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Detections = detections;
             }
-            
+
             this.DetectorType = detectorType;
             this.LandmarksType = landmarksType;
         }
-        
+
         /// <summary>
         /// Gets or Sets Detections
         /// </summary>
@@ -91,14 +91,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -24,102 +24,168 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 
 namespace Regula.FaceSDK.WebClient.Model
 {
+    /// <summary>
     /// Result codes from core lib.
-public class FaceSDKResultCode
-{
+    /// </summary>
+    /// <value>Result codes from core lib.</value>
     
-        
-        public const int FACER_OK = 0;
-    
-        
-        public const int FACER_NO_LICENSE = 200;
-    
-        
-        public const int FACER_IS_NOT_INITIALIZED = 201;
-    
-        
-        public const int FACER_COMMAND_IS_NOT_SUPPORTED = 202;
-    
-        
-        public const int FACER_COMMAND_PARAMS_READ_ERROR = 203;
-    
-        
-        public const int FACER_SEARCHER_INDEX_FILE_NOT_EXIST = 204;
-    
-        
-        public const int FACER_SEARCHER_INDEX_FILE_READ_ERROR = 205;
-    
-        
-        public const int FACER_SEARCHER_INDEX_FILE_DECRYPTION_ERROR = 206;
-    
-        
-        public const int FACER_SEARCHER_INDEX_LOAD_ERROR = 207;
-    
-        
-        public const int FACER_SEARCHER_WRONG_DESCRIPTOR_VERSION = 208;
-    
-        
-        public const int FACER_SEARCHER_INDEX_FILE_ENCRYPTION_ERROR = 209;
-    
-        
-        public const int FACER_SEARCHER_INDEX_FILE_SAVE_ERROR = 210;
-    
-        
-        public const int FACER_SEARCHER_IMAGE_DECODE_ERROR = 211;
-    
-        
-        public const int FACER_SEARCHER_ID_EXISTS_IN_INDEX = 212;
-    
-        
-        public const int FACER_SEARCHER_ID_NOT_IN_INDEX = 213;
-    
-        
-        public const int FACER_SEARCHER_NO_FACES = 214;
-    
-        
-        public const int FACER_SEARCHER_DESCRIPTOR_EXTRACTOR_ERROR = 215;
-    
-        
-        public const int FACER_SEARCHER_METADATA_READ_ERROR = 216;
-    
-        
-        public const int FACER_SEARCHER_NO_SEARCH_LICENSE = 217;
-    
-        
-        public const int FACER_SEARCHER_DESCRIPTOR_DECODE_ERROR = 218;
-    
-        
-        public const int FACER_SEARCHER_DESCRIPTOR_WRONG_SIZE = 219;
-    
-        
-        public const int FACER_SEARCHER_ZIP_IMAGE_READ_ERROR = 220;
-    
-        
-        public const int FACER_SEARCHER_ZIP_META_READ_ERROR = 221;
-    
-        
-        public const int FACER_SEARCHER_SIMILAR_PHOTOS_EXIST = 222;
-    
-        
-        public const int FACER_SEARCHER_PERSON_ZIP_READ_ERROR = 223;
-    
-        
-        public const int FACER_LESS_THAN_TWO_IMAGES_IN_REQUEST = 224;
-    
-        
-        public const int FACER_SEARCHER_WRONG_ID = 225;
-    
-        
-        public const int FACER_SEARCHER_ID_EXISTS_IN_DELETED = 226;
-    
-        
-        public const int FACER_VIDEO_DECODE_ERROR = 227;
-    
-        
-        public const int FACER_NOT_ENOUGH_FRAMES = 228;
-    
-        
-        public const int FACER_OUTPUT_IS_NOT_DEFINED = 229;
-    
-}
+    public enum FaceSDKResultCode
+    {
+        /// <summary>
+        /// Enum FACER_OK for value: 0
+        /// </summary>
+        FACER_OK = 0,
+
+        /// <summary>
+        /// Enum FACER_NO_LICENSE for value: 200
+        /// </summary>
+        FACER_NO_LICENSE = 200,
+
+        /// <summary>
+        /// Enum FACER_IS_NOT_INITIALIZED for value: 201
+        /// </summary>
+        FACER_IS_NOT_INITIALIZED = 201,
+
+        /// <summary>
+        /// Enum FACER_COMMAND_IS_NOT_SUPPORTED for value: 202
+        /// </summary>
+        FACER_COMMAND_IS_NOT_SUPPORTED = 202,
+
+        /// <summary>
+        /// Enum FACER_COMMAND_PARAMS_READ_ERROR for value: 203
+        /// </summary>
+        FACER_COMMAND_PARAMS_READ_ERROR = 203,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_FILE_NOT_EXIST for value: 204
+        /// </summary>
+        FACER_SEARCHER_INDEX_FILE_NOT_EXIST = 204,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_FILE_READ_ERROR for value: 205
+        /// </summary>
+        FACER_SEARCHER_INDEX_FILE_READ_ERROR = 205,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_FILE_DECRYPTION_ERROR for value: 206
+        /// </summary>
+        FACER_SEARCHER_INDEX_FILE_DECRYPTION_ERROR = 206,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_LOAD_ERROR for value: 207
+        /// </summary>
+        FACER_SEARCHER_INDEX_LOAD_ERROR = 207,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_WRONG_DESCRIPTOR_VERSION for value: 208
+        /// </summary>
+        FACER_SEARCHER_WRONG_DESCRIPTOR_VERSION = 208,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_FILE_ENCRYPTION_ERROR for value: 209
+        /// </summary>
+        FACER_SEARCHER_INDEX_FILE_ENCRYPTION_ERROR = 209,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_INDEX_FILE_SAVE_ERROR for value: 210
+        /// </summary>
+        FACER_SEARCHER_INDEX_FILE_SAVE_ERROR = 210,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_IMAGE_DECODE_ERROR for value: 211
+        /// </summary>
+        FACER_SEARCHER_IMAGE_DECODE_ERROR = 211,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_ID_EXISTS_IN_INDEX for value: 212
+        /// </summary>
+        FACER_SEARCHER_ID_EXISTS_IN_INDEX = 212,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_ID_NOT_IN_INDEX for value: 213
+        /// </summary>
+        FACER_SEARCHER_ID_NOT_IN_INDEX = 213,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_NO_FACES for value: 214
+        /// </summary>
+        FACER_SEARCHER_NO_FACES = 214,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_DESCRIPTOR_EXTRACTOR_ERROR for value: 215
+        /// </summary>
+        FACER_SEARCHER_DESCRIPTOR_EXTRACTOR_ERROR = 215,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_METADATA_READ_ERROR for value: 216
+        /// </summary>
+        FACER_SEARCHER_METADATA_READ_ERROR = 216,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_NO_SEARCH_LICENSE for value: 217
+        /// </summary>
+        FACER_SEARCHER_NO_SEARCH_LICENSE = 217,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_DESCRIPTOR_DECODE_ERROR for value: 218
+        /// </summary>
+        FACER_SEARCHER_DESCRIPTOR_DECODE_ERROR = 218,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_DESCRIPTOR_WRONG_SIZE for value: 219
+        /// </summary>
+        FACER_SEARCHER_DESCRIPTOR_WRONG_SIZE = 219,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_ZIP_IMAGE_READ_ERROR for value: 220
+        /// </summary>
+        FACER_SEARCHER_ZIP_IMAGE_READ_ERROR = 220,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_ZIP_META_READ_ERROR for value: 221
+        /// </summary>
+        FACER_SEARCHER_ZIP_META_READ_ERROR = 221,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_SIMILAR_PHOTOS_EXIST for value: 222
+        /// </summary>
+        FACER_SEARCHER_SIMILAR_PHOTOS_EXIST = 222,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_PERSON_ZIP_READ_ERROR for value: 223
+        /// </summary>
+        FACER_SEARCHER_PERSON_ZIP_READ_ERROR = 223,
+
+        /// <summary>
+        /// Enum FACER_LESS_THAN_TWO_IMAGES_IN_REQUEST for value: 224
+        /// </summary>
+        FACER_LESS_THAN_TWO_IMAGES_IN_REQUEST = 224,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_WRONG_ID for value: 225
+        /// </summary>
+        FACER_SEARCHER_WRONG_ID = 225,
+
+        /// <summary>
+        /// Enum FACER_SEARCHER_ID_EXISTS_IN_DELETED for value: 226
+        /// </summary>
+        FACER_SEARCHER_ID_EXISTS_IN_DELETED = 226,
+
+        /// <summary>
+        /// Enum FACER_VIDEO_DECODE_ERROR for value: 227
+        /// </summary>
+        FACER_VIDEO_DECODE_ERROR = 227,
+
+        /// <summary>
+        /// Enum FACER_NOT_ENOUGH_FRAMES for value: 228
+        /// </summary>
+        FACER_NOT_ENOUGH_FRAMES = 228,
+
+        /// <summary>
+        /// Enum FACER_OUTPUT_IS_NOT_DEFINED for value: 229
+        /// </summary>
+        FACER_OUTPUT_IS_NOT_DEFINED = 229
+
+    }
+
 }

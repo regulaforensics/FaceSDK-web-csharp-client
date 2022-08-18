@@ -25,39 +25,41 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// PersonsPage
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class PersonsPage :  IEquatable<PersonsPage>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="PersonsPage" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="items">items.</param>
+        /// <param name="page">page.</param>
+        /// <param name="totalPages">totalPages.</param>
+        public PersonsPage(List<Person> items = default(List<Person>), decimal page = default(decimal), decimal totalPages = default(decimal))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this.Items = items;
+            this.Page = page;
+            this.TotalPages = totalPages;
         }
 
+        /// <summary>
+        /// Gets or Sets Items
+        /// </summary>
+        [DataMember(Name="items", EmitDefaultValue=false)]
+        public List<Person> Items { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Page
+        /// </summary>
+        [DataMember(Name="page", EmitDefaultValue=false)]
+        public decimal Page { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalPages
+        /// </summary>
+        [DataMember(Name="total_pages", EmitDefaultValue=false)]
+        public decimal TotalPages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +68,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class PersonsPage {\n");
+            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("  Page: ").Append(Page).Append("\n");
+            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +92,35 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as PersonsPage);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if PersonsPage instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of PersonsPage to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(PersonsPage input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Items == input.Items ||
+                    this.Items != null &&
+                    input.Items != null &&
+                    this.Items.SequenceEqual(input.Items)
+                ) && 
+                (
+                    this.Page == input.Page ||
+                    (this.Page != null &&
+                    this.Page.Equals(input.Page))
+                ) && 
+                (
+                    this.TotalPages == input.TotalPages ||
+                    (this.TotalPages != null &&
+                    this.TotalPages.Equals(input.TotalPages))
                 );
         }
 
@@ -118,8 +133,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Items != null)
+                    hashCode = hashCode * 59 + this.Items.GetHashCode();
+                if (this.Page != null)
+                    hashCode = hashCode * 59 + this.Page.GetHashCode();
+                if (this.TotalPages != null)
+                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
                 return hashCode;
             }
         }

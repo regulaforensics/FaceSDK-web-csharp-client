@@ -25,39 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// ImageFields
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class ImageFields :  IEquatable<ImageFields>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="ImageFields" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="contentType">contentType.</param>
+        /// <param name="content">content.</param>
+        public ImageFields(string contentType = default(string), System.IO.Stream content = default(System.IO.Stream))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this.ContentType = contentType;
+            this.Content = content;
         }
 
+        /// <summary>
+        /// Gets or Sets ContentType
+        /// </summary>
+        [DataMember(Name="content_type", EmitDefaultValue=false)]
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Content
+        /// </summary>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public System.IO.Stream Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class ImageFields {\n");
+            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +83,29 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as ImageFields);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if ImageFields instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of ImageFields to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(ImageFields input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.ContentType == input.ContentType ||
+                    (this.ContentType != null &&
+                    this.ContentType.Equals(input.ContentType))
+                ) && 
+                (
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
                 );
         }
 
@@ -118,8 +118,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.ContentType != null)
+                    hashCode = hashCode * 59 + this.ContentType.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 return hashCode;
             }
         }

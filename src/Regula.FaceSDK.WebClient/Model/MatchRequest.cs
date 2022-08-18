@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -52,7 +52,7 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Images = images;
             }
-            
+
             this.Tag = tag;
             // use default value if no "thumbnails" provided
             if (thumbnails == null)
@@ -64,7 +64,7 @@ namespace Regula.FaceSDK.WebClient.Model
                 this.Thumbnails = thumbnails;
             }
         }
-        
+
         /// <summary>
         /// Gets or Sets Tag
         /// </summary>
@@ -97,14 +97,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

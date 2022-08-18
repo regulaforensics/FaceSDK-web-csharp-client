@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -24,24 +24,38 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 
 namespace Regula.FaceSDK.WebClient.Model
 {
+    /// <summary>
     /// Face photo image source
-public class ImageSource
-{
+    /// </summary>
+    /// <value>Face photo image source</value>
     
-        
-        public const int DOCUMENT_PRINTED = 1;
-    
-        
-        public const int DOCUMENT_RFID = 2;
-    
-        
-        public const int LIVE = 3;
-    
-        
-        public const int DOCUMENT_WITH_LIVE = 4;
-    
-        
-        public const int EXTERNAL = 5;
-    
-}
+    public enum ImageSource
+    {
+        /// <summary>
+        /// Enum DOCUMENT_PRINTED for value: 1
+        /// </summary>
+        DOCUMENT_PRINTED = 1,
+
+        /// <summary>
+        /// Enum DOCUMENT_RFID for value: 2
+        /// </summary>
+        DOCUMENT_RFID = 2,
+
+        /// <summary>
+        /// Enum LIVE for value: 3
+        /// </summary>
+        LIVE = 3,
+
+        /// <summary>
+        /// Enum DOCUMENT_WITH_LIVE for value: 4
+        /// </summary>
+        DOCUMENT_WITH_LIVE = 4,
+
+        /// <summary>
+        /// Enum EXTERNAL for value: 5
+        /// </summary>
+        EXTERNAL = 5
+
+    }
+
 }

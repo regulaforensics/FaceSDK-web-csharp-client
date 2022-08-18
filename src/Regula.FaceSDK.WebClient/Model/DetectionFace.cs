@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -37,20 +37,20 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="landmarks">Main coordinates of the detected face (eyes, nose, lips, ears and etc.)..</param>
         /// <param name="roi">Rectangular area of the detected face. First element - X-axis coordinate. Second element - Y-axis coordinate. (X, Y) - left top point. Third element - rectangular width. Fourth element - rectangular height..</param>
         /// <param name="thumbnail">Formatted base64 face detection image..</param>
-        public DetectionFace(int faceIndex = default(int), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
             this.Roi = roi;
             this.Thumbnail = thumbnail;
         }
-        
+
         /// <summary>
         /// Faces index used to identify faces in scope of one photo.
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="faceIndex", EmitDefaultValue=false)]
-        public int FaceIndex { get; set; }
+        public decimal FaceIndex { get; set; }
 
         /// <summary>
         /// Main coordinates of the detected face (eyes, nose, lips, ears and etc.).
@@ -88,14 +88,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class MatchImageDetection :  IEquatable<MatchImageDetection>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name="status", EmitDefaultValue=true)]
+        public FaceSDKResultCode Status { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="MatchImageDetection" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,7 +46,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="faces">faces.</param>
         /// <param name="imageIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
         /// <param name="status">status (required).</param>
-        public MatchImageDetection(List<DetectionFace> faces = default(List<DetectionFace>), int imageIndex = default(int), int status = default(int))
+        public MatchImageDetection(List<DetectionFace> faces = default(List<DetectionFace>), int imageIndex = default(int), FaceSDKResultCode status = default(FaceSDKResultCode))
         {
             // to ensure "imageIndex" is required (not null)
             if (imageIndex == null)
@@ -52,7 +57,7 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.ImageIndex = imageIndex;
             }
-            
+
             // to ensure "status" is required (not null)
             if (status == null)
             {
@@ -62,10 +67,10 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Status = status;
             }
-            
+
             this.Faces = faces;
         }
-        
+
         /// <summary>
         /// Gets or Sets Faces
         /// </summary>
@@ -79,11 +84,6 @@ namespace Regula.FaceSDK.WebClient.Model
         [DataMember(Name="imageIndex", EmitDefaultValue=true)]
         public int ImageIndex { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=true)]
-        public int Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,14 +99,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

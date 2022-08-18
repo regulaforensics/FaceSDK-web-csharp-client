@@ -25,39 +25,41 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// OperationLog
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class OperationLog :  IEquatable<OperationLog>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="OperationLog" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="statusCode">statusCode.</param>
+        /// <param name="type">type.</param>
+        /// <param name="msg">msg.</param>
+        public OperationLog(decimal statusCode = default(decimal), string type = default(string), string msg = default(string))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this.StatusCode = statusCode;
+            this.Type = type;
+            this.Msg = msg;
         }
 
+        /// <summary>
+        /// Gets or Sets StatusCode
+        /// </summary>
+        [DataMember(Name="status_code", EmitDefaultValue=false)]
+        public decimal StatusCode { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Msg
+        /// </summary>
+        [DataMember(Name="msg", EmitDefaultValue=false)]
+        public string Msg { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +68,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class OperationLog {\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Msg: ").Append(Msg).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +92,34 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as OperationLog);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if OperationLog instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of OperationLog to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(OperationLog input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.StatusCode == input.StatusCode ||
+                    (this.StatusCode != null &&
+                    this.StatusCode.Equals(input.StatusCode))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
+                ) && 
+                (
+                    this.Msg == input.Msg ||
+                    (this.Msg != null &&
+                    this.Msg.Equals(input.Msg))
                 );
         }
 
@@ -118,8 +132,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.StatusCode != null)
+                    hashCode = hashCode * 59 + this.StatusCode.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Msg != null)
+                    hashCode = hashCode * 59 + this.Msg.GetHashCode();
                 return hashCode;
             }
         }

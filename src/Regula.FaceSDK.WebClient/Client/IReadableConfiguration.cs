@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -45,7 +45,7 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <summary>
         /// Gets the date time format.
         /// </summary>
-        /// <value>Date time foramt.</value>
+        /// <value>Date time format.</value>
         string DateTimeFormat { get; }
 
         /// <summary>

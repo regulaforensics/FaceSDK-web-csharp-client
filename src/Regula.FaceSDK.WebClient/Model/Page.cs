@@ -25,39 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// Page
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class Page :  IEquatable<Page>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="Page" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="page">page.</param>
+        /// <param name="totalPages">totalPages.</param>
+        public Page(decimal page = default(decimal), decimal totalPages = default(decimal))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this._Page = page;
+            this.TotalPages = totalPages;
         }
 
+        /// <summary>
+        /// Gets or Sets _Page
+        /// </summary>
+        [DataMember(Name="page", EmitDefaultValue=false)]
+        public decimal _Page { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TotalPages
+        /// </summary>
+        [DataMember(Name="total_pages", EmitDefaultValue=false)]
+        public decimal TotalPages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class Page {\n");
+            sb.Append("  _Page: ").Append(_Page).Append("\n");
+            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +83,29 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as Page);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if Page instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of Page to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(Page input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this._Page == input._Page ||
+                    (this._Page != null &&
+                    this._Page.Equals(input._Page))
+                ) && 
+                (
+                    this.TotalPages == input.TotalPages ||
+                    (this.TotalPages != null &&
+                    this.TotalPages.Equals(input.TotalPages))
                 );
         }
 
@@ -118,8 +118,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this._Page != null)
+                    hashCode = hashCode * 59 + this._Page.GetHashCode();
+                if (this.TotalPages != null)
+                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -33,7 +33,7 @@ namespace Regula.FaceSDK.WebClient.Client
         /// </summary>
         /// <value>The base path</value>
         String GetBasePath();
-        
+
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>

@@ -25,39 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// GroupToCreate
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class GroupToCreate :  IEquatable<GroupToCreate>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="GroupToCreate" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="name">name.</param>
+        /// <param name="metadata">metadata.</param>
+        public GroupToCreate(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this.Name = name;
+            this.Metadata = metadata;
         }
 
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metadata
+        /// </summary>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class GroupToCreate {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +83,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as GroupToCreate);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if GroupToCreate instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of GroupToCreate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(GroupToCreate input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -118,8 +119,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

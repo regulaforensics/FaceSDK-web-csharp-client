@@ -25,39 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// FaceSDKResult
+    /// UpdateGroup
     /// </summary>
     [DataContract]
-    public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
+    public partial class UpdateGroup :  IEquatable<UpdateGroup>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="UpdateGroup" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected FaceSDKResult() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="addItems">addItems.</param>
+        /// <param name="removeItems">removeItems.</param>
+        public UpdateGroup(List<decimal> addItems = default(List<decimal>), List<decimal> removeItems = default(List<decimal>))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for FaceSDKResult and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
+            this.AddItems = addItems;
+            this.RemoveItems = removeItems;
         }
 
+        /// <summary>
+        /// Gets or Sets AddItems
+        /// </summary>
+        [DataMember(Name="addItems", EmitDefaultValue=false)]
+        public List<decimal> AddItems { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RemoveItems
+        /// </summary>
+        [DataMember(Name="removeItems", EmitDefaultValue=false)]
+        public List<decimal> RemoveItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FaceSDKResult {\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("class UpdateGroup {\n");
+            sb.Append("  AddItems: ").Append(AddItems).Append("\n");
+            sb.Append("  RemoveItems: ").Append(RemoveItems).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,24 +83,31 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FaceSDKResult);
+            return this.Equals(input as UpdateGroup);
         }
 
         /// <summary>
-        /// Returns true if FaceSDKResult instances are equal
+        /// Returns true if UpdateGroup instances are equal
         /// </summary>
-        /// <param name="input">Instance of FaceSDKResult to be compared</param>
+        /// <param name="input">Instance of UpdateGroup to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FaceSDKResult input)
+        public bool Equals(UpdateGroup input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Code == input.Code ||
-                    (this.Code != null &&
-                    this.Code.Equals(input.Code))
+                    this.AddItems == input.AddItems ||
+                    this.AddItems != null &&
+                    input.AddItems != null &&
+                    this.AddItems.SequenceEqual(input.AddItems)
+                ) && 
+                (
+                    this.RemoveItems == input.RemoveItems ||
+                    this.RemoveItems != null &&
+                    input.RemoveItems != null &&
+                    this.RemoveItems.SequenceEqual(input.RemoveItems)
                 );
         }
 
@@ -118,8 +120,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Code != null)
-                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.AddItems != null)
+                    hashCode = hashCode * 59 + this.AddItems.GetHashCode();
+                if (this.RemoveItems != null)
+                    hashCode = hashCode * 59 + this.RemoveItems.GetHashCode();
                 return hashCode;
             }
         }

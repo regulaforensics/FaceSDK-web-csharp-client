@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="id">id.</param>
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
-        public Person(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), decimal id = default(decimal), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
+        public Person(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime))
         {
             this.Name = name;
             this.Metadata = metadata;
@@ -63,7 +63,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public decimal Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt

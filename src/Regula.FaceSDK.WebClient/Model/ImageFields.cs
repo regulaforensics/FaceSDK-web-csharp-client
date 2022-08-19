@@ -33,25 +33,17 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageFields" /> class.
         /// </summary>
-        /// <param name="contentType">contentType.</param>
-        /// <param name="content">content.</param>
-        public ImageFields(string contentType = default(string), byte[] content = default(byte[]))
+        /// <param name="image">image.</param>
+        public ImageFields(ImageFieldsImage image = default(ImageFieldsImage))
         {
-            this.ContentType = contentType;
-            this.Content = content;
+            this.Image = image;
         }
 
         /// <summary>
-        /// Gets or Sets ContentType
+        /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name="content_type", EmitDefaultValue=false)]
-        public string ContentType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Content
-        /// </summary>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
+        [DataMember(Name="image", EmitDefaultValue=false)]
+        public ImageFieldsImage Image { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,8 +53,7 @@ namespace Regula.FaceSDK.WebClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ImageFields {\n");
-            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,14 +89,9 @@ namespace Regula.FaceSDK.WebClient.Model
 
             return 
                 (
-                    this.ContentType == input.ContentType ||
-                    (this.ContentType != null &&
-                    this.ContentType.Equals(input.ContentType))
-                ) && 
-                (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Image == input.Image ||
+                    (this.Image != null &&
+                    this.Image.Equals(input.Image))
                 );
         }
 
@@ -118,10 +104,8 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ContentType != null)
-                    hashCode = hashCode * 59 + this.ContentType.GetHashCode();
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
+                if (this.Image != null)
+                    hashCode = hashCode * 59 + this.Image.GetHashCode();
                 return hashCode;
             }
         }

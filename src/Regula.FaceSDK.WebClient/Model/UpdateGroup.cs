@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="addItems">addItems.</param>
         /// <param name="removeItems">removeItems.</param>
-        public UpdateGroup(List<decimal> addItems = default(List<decimal>), List<decimal> removeItems = default(List<decimal>))
+        public UpdateGroup(List<int> addItems = default(List<int>), List<int> removeItems = default(List<int>))
         {
             this.AddItems = addItems;
             this.RemoveItems = removeItems;
@@ -45,13 +45,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets AddItems
         /// </summary>
         [DataMember(Name="addItems", EmitDefaultValue=false)]
-        public List<decimal> AddItems { get; set; }
+        public List<int> AddItems { get; set; }
 
         /// <summary>
         /// Gets or Sets RemoveItems
         /// </summary>
         [DataMember(Name="removeItems", EmitDefaultValue=false)]
-        public List<decimal> RemoveItems { get; set; }
+        public List<int> RemoveItems { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

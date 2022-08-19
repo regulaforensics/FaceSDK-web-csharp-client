@@ -9,7 +9,7 @@ namespace Regula.FaceSDK.IdentificationExample
         
         public static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "https://faceapi.regulaforensics.com";
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://revenger.local:41101";
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");
@@ -21,22 +21,22 @@ namespace Regula.FaceSDK.IdentificationExample
             var person2Id = sdk.PersonApi.CreatePerson(
                 new PersonFields("person1", new Dictionary<string, object>())).Id;
 
-            sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(content: face1));
-            sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(content: face2));
+            sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(new ImageFieldsImage(content: face1)));
+            sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(new ImageFieldsImage(content: face2)));
 
             var person1 = sdk.PersonApi.GetPerson(person1Id);
             var person2 = sdk.PersonApi.GetPerson(person2Id);
 
-            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1"));
+            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1", metadata: new Dictionary<string, object>()));
 
             sdk.GroupApi.UpdatePersonsInGroup(
                 group.Id,
-                new UpdateGroup(addItems: new List<decimal>() {person1Id, person2Id})
+                new UpdateGroup(addItems: new List<int>() {person1Id, person2Id})
             );
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
-                    groupIds: new List<decimal>() {group.Id},
-                    image: new ImageFields(content: face1)
+                    groupIds: new List<int>() {group.Id},
+                    image: new ImageFieldsImage(content: face1)
                     )
             );
             

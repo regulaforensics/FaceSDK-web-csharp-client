@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="page">page.</param>
         /// <param name="totalPages">totalPages.</param>
-        public Page(decimal page = default(decimal), decimal totalPages = default(decimal))
+        public Page(int page = default(int), int totalPages = default(int))
         {
             this._Page = page;
             this.TotalPages = totalPages;
@@ -45,13 +45,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets _Page
         /// </summary>
         [DataMember(Name="page", EmitDefaultValue=false)]
-        public decimal _Page { get; set; }
+        public int _Page { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalPages
         /// </summary>
         [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public decimal TotalPages { get; set; }
+        public int TotalPages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

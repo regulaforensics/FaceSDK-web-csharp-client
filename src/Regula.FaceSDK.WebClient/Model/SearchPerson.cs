@@ -39,7 +39,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="createdAt">createdAt.</param>
         /// <param name="updatedAt">updatedAt.</param>
         /// <param name="images">images.</param>
-        public SearchPerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), decimal id = default(decimal), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), List<RecognizeImage> images = default(List<RecognizeImage>))
+        public SearchPerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), List<RecognizeImage> images = default(List<RecognizeImage>))
         {
             this.Name = name;
             this.Metadata = metadata;
@@ -65,7 +65,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public decimal Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets CreatedAt

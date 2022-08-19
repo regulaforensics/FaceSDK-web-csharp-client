@@ -36,7 +36,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="statusCode">statusCode.</param>
         /// <param name="type">type.</param>
         /// <param name="msg">msg.</param>
-        public OperationLog(decimal statusCode = default(decimal), string type = default(string), string msg = default(string))
+        public OperationLog(int statusCode = default(int), string type = default(string), string msg = default(string))
         {
             this.StatusCode = statusCode;
             this.Type = type;
@@ -47,7 +47,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets StatusCode
         /// </summary>
         [DataMember(Name="status_code", EmitDefaultValue=false)]
-        public decimal StatusCode { get; set; }
+        public int StatusCode { get; set; }
 
         /// <summary>
         /// Gets or Sets Type

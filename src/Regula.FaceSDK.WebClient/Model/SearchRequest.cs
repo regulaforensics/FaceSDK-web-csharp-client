@@ -33,16 +33,16 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchRequest" /> class.
         /// </summary>
-        /// <param name="limit">limit (default to 100M).</param>
+        /// <param name="limit">limit (default to 100).</param>
         /// <param name="threshold">threshold.</param>
         /// <param name="groupIds">groupIds.</param>
         /// <param name="image">image.</param>
-        public SearchRequest(decimal limit = 100M, float threshold = default(float), List<decimal> groupIds = default(List<decimal>), ImageFields image = default(ImageFields))
+        public SearchRequest(int limit = 100, float threshold = default(float), List<int> groupIds = default(List<int>), ImageFieldsImage image = default(ImageFieldsImage))
         {
             // use default value if no "limit" provided
             if (limit == null)
             {
-                this.Limit = 100M;
+                this.Limit = 100;
             }
             else
             {
@@ -57,7 +57,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Limit
         /// </summary>
         [DataMember(Name="limit", EmitDefaultValue=false)]
-        public decimal Limit { get; set; }
+        public int Limit { get; set; }
 
         /// <summary>
         /// Gets or Sets Threshold
@@ -69,13 +69,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets GroupIds
         /// </summary>
         [DataMember(Name="group_ids", EmitDefaultValue=false)]
-        public List<decimal> GroupIds { get; set; }
+        public List<int> GroupIds { get; set; }
 
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name="image", EmitDefaultValue=false)]
-        public ImageFields Image { get; set; }
+        public ImageFieldsImage Image { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

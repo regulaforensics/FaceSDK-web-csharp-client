@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="createdAt">createdAt.</param>
         /// <param name="path">path.</param>
         /// <param name="url">url.</param>
-        public Image(decimal id = default(decimal), string contentType = default(string), DateTime createdAt = default(DateTime), string path = default(string), string url = default(string))
+        public Image(int id = default(int), string contentType = default(string), DateTime createdAt = default(DateTime), string path = default(string), string url = default(string))
         {
             this.Id = id;
             this.ContentType = contentType;
@@ -51,7 +51,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public decimal Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentType

@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="imageFields">Image to add</param>
         /// <returns>Image</returns>
-        Image AddImageToPerson (decimal personId, ImageFields imageFields);
+        Image AddImageToPerson (int personId, ImageFields imageFields);
 
         /// <summary>
         /// Add person image
@@ -47,7 +47,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="imageFields">Image to add</param>
         /// <returns>ApiResponse of Image</returns>
-        ApiResponse<Image> AddImageToPersonWithHttpInfo (decimal personId, ImageFields imageFields);
+        ApiResponse<Image> AddImageToPersonWithHttpInfo (int personId, ImageFields imageFields);
         /// <summary>
         /// Create person
         /// </summary>
@@ -79,7 +79,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns></returns>
-        void DeleteImageOfPerson (decimal imageId, decimal personId);
+        void DeleteImageOfPerson (int imageId, int personId);
 
         /// <summary>
         /// Delete image of person
@@ -91,7 +91,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteImageOfPersonWithHttpInfo (decimal imageId, decimal personId);
+        ApiResponse<Object> DeleteImageOfPersonWithHttpInfo (int imageId, int personId);
         /// <summary>
         /// Delete person
         /// </summary>
@@ -101,7 +101,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns></returns>
-        void DeletePerson (decimal personId);
+        void DeletePerson (int personId);
 
         /// <summary>
         /// Delete person
@@ -112,7 +112,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeletePersonWithHttpInfo (decimal personId);
+        ApiResponse<Object> DeletePersonWithHttpInfo (int personId);
         /// <summary>
         /// Get person groups
         /// </summary>
@@ -124,7 +124,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>GroupPage</returns>
-        GroupPage GetAllGroupsByPersonId (decimal page, decimal size, decimal personId);
+        GroupPage GetAllGroupsByPersonId (int page, int size, int personId);
 
         /// <summary>
         /// Get person groups
@@ -137,7 +137,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of GroupPage</returns>
-        ApiResponse<GroupPage> GetAllGroupsByPersonIdWithHttpInfo (decimal page, decimal size, decimal personId);
+        ApiResponse<GroupPage> GetAllGroupsByPersonIdWithHttpInfo (int page, int size, int personId);
         /// <summary>
         /// Get person images
         /// </summary>
@@ -149,7 +149,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ImagePage</returns>
-        ImagePage GetAllImagesByPersonId (decimal page, decimal size, decimal personId);
+        ImagePage GetAllImagesByPersonId (int page, int size, int personId);
 
         /// <summary>
         /// Get person images
@@ -162,7 +162,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of ImagePage</returns>
-        ApiResponse<ImagePage> GetAllImagesByPersonIdWithHttpInfo (decimal page, decimal size, decimal personId);
+        ApiResponse<ImagePage> GetAllImagesByPersonIdWithHttpInfo (int page, int size, int personId);
         /// <summary>
         /// Get persons
         /// </summary>
@@ -174,7 +174,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="name">Person name keywords (optional)</param>
         /// <returns>PersonsPage</returns>
-        PersonsPage GetAllPersons (decimal page, decimal size, string name = default(string));
+        PersonsPage GetAllPersons (int page, int size, string name = default(string));
 
         /// <summary>
         /// Get persons
@@ -187,7 +187,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="name">Person name keywords (optional)</param>
         /// <returns>ApiResponse of PersonsPage</returns>
-        ApiResponse<PersonsPage> GetAllPersonsWithHttpInfo (decimal page, decimal size, string name = default(string));
+        ApiResponse<PersonsPage> GetAllPersonsWithHttpInfo (int page, int size, string name = default(string));
         /// <summary>
         /// Get person image by id
         /// </summary>
@@ -198,7 +198,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>System.IO.Stream</returns>
-        System.IO.Stream GetImageOfPerson (decimal imageId, decimal personId);
+        System.IO.Stream GetImageOfPerson (int imageId, int personId);
 
         /// <summary>
         /// Get person image by id
@@ -210,7 +210,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        ApiResponse<System.IO.Stream> GetImageOfPersonWithHttpInfo (decimal imageId, decimal personId);
+        ApiResponse<System.IO.Stream> GetImageOfPersonWithHttpInfo (int imageId, int personId);
         /// <summary>
         /// Get person
         /// </summary>
@@ -220,7 +220,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>Person</returns>
-        Person GetPerson (decimal personId);
+        Person GetPerson (int personId);
 
         /// <summary>
         /// Get person
@@ -231,7 +231,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Person</returns>
-        ApiResponse<Person> GetPersonWithHttpInfo (decimal personId);
+        ApiResponse<Person> GetPersonWithHttpInfo (int personId);
         /// <summary>
         /// Update person
         /// </summary>
@@ -242,7 +242,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="personFields">Metadata</param>
         /// <returns></returns>
-        void UpdatePerson (decimal personId, PersonFields personFields);
+        void UpdatePerson (int personId, PersonFields personFields);
 
         /// <summary>
         /// Update person
@@ -254,7 +254,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="personFields">Metadata</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdatePersonWithHttpInfo (decimal personId, PersonFields personFields);
+        ApiResponse<Object> UpdatePersonWithHttpInfo (int personId, PersonFields personFields);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -268,7 +268,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageFields">Image to add</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Image</returns>
-        System.Threading.Tasks.Task<Image> AddImageToPersonAsync (decimal personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<Image> AddImageToPersonAsync (int personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Add person image
@@ -281,7 +281,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageFields">Image to add</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Image)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Image>> AddImageToPersonWithHttpInfoAsync (decimal personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Image>> AddImageToPersonWithHttpInfoAsync (int personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create person
         /// </summary>
@@ -316,7 +316,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteImageOfPersonAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task DeleteImageOfPersonAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete image of person
@@ -329,7 +329,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteImageOfPersonWithHttpInfoAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteImageOfPersonWithHttpInfoAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete person
         /// </summary>
@@ -340,7 +340,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeletePersonAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task DeletePersonAsync (int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete person
@@ -352,7 +352,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeletePersonWithHttpInfoAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeletePersonWithHttpInfoAsync (int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get person groups
         /// </summary>
@@ -365,7 +365,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GroupPage</returns>
-        System.Threading.Tasks.Task<GroupPage> GetAllGroupsByPersonIdAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<GroupPage> GetAllGroupsByPersonIdAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get person groups
@@ -379,7 +379,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GroupPage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsByPersonIdWithHttpInfoAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsByPersonIdWithHttpInfoAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get person images
         /// </summary>
@@ -392,7 +392,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ImagePage</returns>
-        System.Threading.Tasks.Task<ImagePage> GetAllImagesByPersonIdAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ImagePage> GetAllImagesByPersonIdAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get person images
@@ -406,7 +406,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ImagePage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImagePage>> GetAllImagesByPersonIdWithHttpInfoAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<ImagePage>> GetAllImagesByPersonIdWithHttpInfoAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get persons
         /// </summary>
@@ -419,7 +419,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="name">Person name keywords (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PersonsPage</returns>
-        System.Threading.Tasks.Task<PersonsPage> GetAllPersonsAsync (decimal page, decimal size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<PersonsPage> GetAllPersonsAsync (int page, int size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get persons
@@ -433,7 +433,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="name">Person name keywords (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PersonsPage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsWithHttpInfoAsync (decimal page, decimal size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsWithHttpInfoAsync (int page, int size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get person image by id
         /// </summary>
@@ -445,7 +445,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of System.IO.Stream</returns>
-        System.Threading.Tasks.Task<System.IO.Stream> GetImageOfPersonAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<System.IO.Stream> GetImageOfPersonAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get person image by id
@@ -458,7 +458,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetImageOfPersonWithHttpInfoAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetImageOfPersonWithHttpInfoAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get person
         /// </summary>
@@ -469,7 +469,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Person</returns>
-        System.Threading.Tasks.Task<Person> GetPersonAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<Person> GetPersonAsync (int personId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get person
@@ -481,7 +481,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Person)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Person>> GetPersonWithHttpInfoAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Person>> GetPersonWithHttpInfoAsync (int personId, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update person
         /// </summary>
@@ -493,7 +493,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personFields">Metadata</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdatePersonAsync (decimal personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task UpdatePersonAsync (int personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Update person
@@ -506,7 +506,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personFields">Metadata</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonWithHttpInfoAsync (decimal personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonWithHttpInfoAsync (int personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -625,7 +625,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="imageFields">Image to add</param>
         /// <returns>Image</returns>
-        public Image AddImageToPerson (decimal personId, ImageFields imageFields)
+        public Image AddImageToPerson (int personId, ImageFields imageFields)
         {
              ApiResponse<Image> localVarResponse = AddImageToPersonWithHttpInfo(personId, imageFields);
              return localVarResponse.Data;
@@ -638,7 +638,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="imageFields">Image to add</param>
         /// <returns>ApiResponse of Image</returns>
-        public ApiResponse<Image> AddImageToPersonWithHttpInfo (decimal personId, ImageFields imageFields)
+        public ApiResponse<Image> AddImageToPersonWithHttpInfo (int personId, ImageFields imageFields)
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -706,7 +706,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageFields">Image to add</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Image</returns>
-        public async System.Threading.Tasks.Task<Image> AddImageToPersonAsync (decimal personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<Image> AddImageToPersonAsync (int personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<Image> localVarResponse = await AddImageToPersonWithHttpInfoAsync(personId, imageFields, cancellationToken);
              return localVarResponse.Data;
@@ -721,7 +721,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageFields">Image to add</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Image)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Image>> AddImageToPersonWithHttpInfoAsync (decimal personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Image>> AddImageToPersonWithHttpInfoAsync (int personId, ImageFields imageFields, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -939,7 +939,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns></returns>
-        public void DeleteImageOfPerson (decimal imageId, decimal personId)
+        public void DeleteImageOfPerson (int imageId, int personId)
         {
              DeleteImageOfPersonWithHttpInfo(imageId, personId);
         }
@@ -951,7 +951,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteImageOfPersonWithHttpInfo (decimal imageId, decimal personId)
+        public ApiResponse<Object> DeleteImageOfPersonWithHttpInfo (int imageId, int personId)
         {
             // verify the required parameter 'imageId' is set
             if (imageId == null)
@@ -1011,7 +1011,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteImageOfPersonAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task DeleteImageOfPersonAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              await DeleteImageOfPersonWithHttpInfoAsync(imageId, personId, cancellationToken);
 
@@ -1025,7 +1025,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteImageOfPersonWithHttpInfoAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteImageOfPersonWithHttpInfoAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'imageId' is set
             if (imageId == null)
@@ -1083,7 +1083,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns></returns>
-        public void DeletePerson (decimal personId)
+        public void DeletePerson (int personId)
         {
              DeletePersonWithHttpInfo(personId);
         }
@@ -1094,7 +1094,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeletePersonWithHttpInfo (decimal personId)
+        public ApiResponse<Object> DeletePersonWithHttpInfo (int personId)
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -1149,7 +1149,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeletePersonAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task DeletePersonAsync (int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              await DeletePersonWithHttpInfoAsync(personId, cancellationToken);
 
@@ -1162,7 +1162,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeletePersonWithHttpInfoAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeletePersonWithHttpInfoAsync (int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -1218,7 +1218,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>GroupPage</returns>
-        public GroupPage GetAllGroupsByPersonId (decimal page, decimal size, decimal personId)
+        public GroupPage GetAllGroupsByPersonId (int page, int size, int personId)
         {
              ApiResponse<GroupPage> localVarResponse = GetAllGroupsByPersonIdWithHttpInfo(page, size, personId);
              return localVarResponse.Data;
@@ -1232,7 +1232,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of GroupPage</returns>
-        public ApiResponse<GroupPage> GetAllGroupsByPersonIdWithHttpInfo (decimal page, decimal size, decimal personId)
+        public ApiResponse<GroupPage> GetAllGroupsByPersonIdWithHttpInfo (int page, int size, int personId)
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1297,7 +1297,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GroupPage</returns>
-        public async System.Threading.Tasks.Task<GroupPage> GetAllGroupsByPersonIdAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<GroupPage> GetAllGroupsByPersonIdAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<GroupPage> localVarResponse = await GetAllGroupsByPersonIdWithHttpInfoAsync(page, size, personId, cancellationToken);
              return localVarResponse.Data;
@@ -1313,7 +1313,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GroupPage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsByPersonIdWithHttpInfoAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsByPersonIdWithHttpInfoAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1377,7 +1377,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ImagePage</returns>
-        public ImagePage GetAllImagesByPersonId (decimal page, decimal size, decimal personId)
+        public ImagePage GetAllImagesByPersonId (int page, int size, int personId)
         {
              ApiResponse<ImagePage> localVarResponse = GetAllImagesByPersonIdWithHttpInfo(page, size, personId);
              return localVarResponse.Data;
@@ -1391,7 +1391,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of ImagePage</returns>
-        public ApiResponse<ImagePage> GetAllImagesByPersonIdWithHttpInfo (decimal page, decimal size, decimal personId)
+        public ApiResponse<ImagePage> GetAllImagesByPersonIdWithHttpInfo (int page, int size, int personId)
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1456,7 +1456,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ImagePage</returns>
-        public async System.Threading.Tasks.Task<ImagePage> GetAllImagesByPersonIdAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ImagePage> GetAllImagesByPersonIdAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<ImagePage> localVarResponse = await GetAllImagesByPersonIdWithHttpInfoAsync(page, size, personId, cancellationToken);
              return localVarResponse.Data;
@@ -1472,7 +1472,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (ImagePage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImagePage>> GetAllImagesByPersonIdWithHttpInfoAsync (decimal page, decimal size, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<ImagePage>> GetAllImagesByPersonIdWithHttpInfoAsync (int page, int size, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1536,7 +1536,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="name">Person name keywords (optional)</param>
         /// <returns>PersonsPage</returns>
-        public PersonsPage GetAllPersons (decimal page, decimal size, string name = default(string))
+        public PersonsPage GetAllPersons (int page, int size, string name = default(string))
         {
              ApiResponse<PersonsPage> localVarResponse = GetAllPersonsWithHttpInfo(page, size, name);
              return localVarResponse.Data;
@@ -1550,7 +1550,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="size">Page size</param>
         /// <param name="name">Person name keywords (optional)</param>
         /// <returns>ApiResponse of PersonsPage</returns>
-        public ApiResponse<PersonsPage> GetAllPersonsWithHttpInfo (decimal page, decimal size, string name = default(string))
+        public ApiResponse<PersonsPage> GetAllPersonsWithHttpInfo (int page, int size, string name = default(string))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1612,7 +1612,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="name">Person name keywords (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PersonsPage</returns>
-        public async System.Threading.Tasks.Task<PersonsPage> GetAllPersonsAsync (decimal page, decimal size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<PersonsPage> GetAllPersonsAsync (int page, int size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<PersonsPage> localVarResponse = await GetAllPersonsWithHttpInfoAsync(page, size, name, cancellationToken);
              return localVarResponse.Data;
@@ -1628,7 +1628,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="name">Person name keywords (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PersonsPage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsWithHttpInfoAsync (decimal page, decimal size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsWithHttpInfoAsync (int page, int size, string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1688,7 +1688,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>System.IO.Stream</returns>
-        public System.IO.Stream GetImageOfPerson (decimal imageId, decimal personId)
+        public System.IO.Stream GetImageOfPerson (int imageId, int personId)
         {
              ApiResponse<System.IO.Stream> localVarResponse = GetImageOfPersonWithHttpInfo(imageId, personId);
              return localVarResponse.Data;
@@ -1701,7 +1701,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="imageId">Image id</param>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        public ApiResponse<System.IO.Stream> GetImageOfPersonWithHttpInfo (decimal imageId, decimal personId)
+        public ApiResponse<System.IO.Stream> GetImageOfPersonWithHttpInfo (int imageId, int personId)
         {
             // verify the required parameter 'imageId' is set
             if (imageId == null)
@@ -1762,7 +1762,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of System.IO.Stream</returns>
-        public async System.Threading.Tasks.Task<System.IO.Stream> GetImageOfPersonAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<System.IO.Stream> GetImageOfPersonAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<System.IO.Stream> localVarResponse = await GetImageOfPersonWithHttpInfoAsync(imageId, personId, cancellationToken);
              return localVarResponse.Data;
@@ -1777,7 +1777,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (System.IO.Stream)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetImageOfPersonWithHttpInfoAsync (decimal imageId, decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<System.IO.Stream>> GetImageOfPersonWithHttpInfoAsync (int imageId, int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'imageId' is set
             if (imageId == null)
@@ -1836,7 +1836,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>Person</returns>
-        public Person GetPerson (decimal personId)
+        public Person GetPerson (int personId)
         {
              ApiResponse<Person> localVarResponse = GetPersonWithHttpInfo(personId);
              return localVarResponse.Data;
@@ -1848,7 +1848,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="personId">Person id</param>
         /// <returns>ApiResponse of Person</returns>
-        public ApiResponse<Person> GetPersonWithHttpInfo (decimal personId)
+        public ApiResponse<Person> GetPersonWithHttpInfo (int personId)
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -1903,7 +1903,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Person</returns>
-        public async System.Threading.Tasks.Task<Person> GetPersonAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<Person> GetPersonAsync (int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<Person> localVarResponse = await GetPersonWithHttpInfoAsync(personId, cancellationToken);
              return localVarResponse.Data;
@@ -1917,7 +1917,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Person)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Person>> GetPersonWithHttpInfoAsync (decimal personId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Person>> GetPersonWithHttpInfoAsync (int personId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -1972,7 +1972,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="personFields">Metadata</param>
         /// <returns></returns>
-        public void UpdatePerson (decimal personId, PersonFields personFields)
+        public void UpdatePerson (int personId, PersonFields personFields)
         {
              UpdatePersonWithHttpInfo(personId, personFields);
         }
@@ -1984,7 +1984,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personId">Person id</param>
         /// <param name="personFields">Metadata</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdatePersonWithHttpInfo (decimal personId, PersonFields personFields)
+        public ApiResponse<Object> UpdatePersonWithHttpInfo (int personId, PersonFields personFields)
         {
             // verify the required parameter 'personId' is set
             if (personId == null)
@@ -2052,7 +2052,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personFields">Metadata</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdatePersonAsync (decimal personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task UpdatePersonAsync (int personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken))
         {
              await UpdatePersonWithHttpInfoAsync(personId, personFields, cancellationToken);
 
@@ -2066,7 +2066,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personFields">Metadata</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonWithHttpInfoAsync (decimal personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonWithHttpInfoAsync (int personId, PersonFields personFields, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'personId' is set
             if (personId == null)

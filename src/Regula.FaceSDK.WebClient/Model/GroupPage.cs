@@ -36,7 +36,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="items">items.</param>
         /// <param name="page">page.</param>
         /// <param name="totalPages">totalPages.</param>
-        public GroupPage(List<Group> items = default(List<Group>), decimal page = default(decimal), decimal totalPages = default(decimal))
+        public GroupPage(List<Group> items = default(List<Group>), int page = default(int), int totalPages = default(int))
         {
             this.Items = items;
             this.Page = page;
@@ -53,13 +53,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Page
         /// </summary>
         [DataMember(Name="page", EmitDefaultValue=false)]
-        public decimal Page { get; set; }
+        public int Page { get; set; }
 
         /// <summary>
         /// Gets or Sets TotalPages
         /// </summary>
         [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public decimal TotalPages { get; set; }
+        public int TotalPages { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -23,6 +23,7 @@ src/Regula.FaceSDK.WebClient/Model/GroupPage.cs
 src/Regula.FaceSDK.WebClient/Model/GroupToCreate.cs
 src/Regula.FaceSDK.WebClient/Model/Image.cs
 src/Regula.FaceSDK.WebClient/Model/ImageFields.cs
+src/Regula.FaceSDK.WebClient/Model/ImageFieldsImage.cs
 src/Regula.FaceSDK.WebClient/Model/ImagePage.cs
 src/Regula.FaceSDK.WebClient/Model/ImageSource.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImage.cs

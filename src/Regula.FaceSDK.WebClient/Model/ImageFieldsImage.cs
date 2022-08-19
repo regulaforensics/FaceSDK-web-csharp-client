@@ -25,41 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// ImagePage
+    /// ImageFieldsImage
     /// </summary>
     [DataContract]
-    public partial class ImagePage :  IEquatable<ImagePage>, IValidatableObject
+    public partial class ImageFieldsImage :  IEquatable<ImageFieldsImage>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImagePage" /> class.
+        /// Initializes a new instance of the <see cref="ImageFieldsImage" /> class.
         /// </summary>
-        /// <param name="page">page.</param>
-        /// <param name="totalPages">totalPages.</param>
-        /// <param name="items">items.</param>
-        public ImagePage(int page = default(int), int totalPages = default(int), List<Image> items = default(List<Image>))
+        /// <param name="contentType">contentType.</param>
+        /// <param name="content">content.</param>
+        public ImageFieldsImage(string contentType = default(string), byte[] content = default(byte[]))
         {
-            this.Page = page;
-            this.TotalPages = totalPages;
-            this.Items = items;
+            this.ContentType = contentType;
+            this.Content = content;
         }
 
         /// <summary>
-        /// Gets or Sets Page
+        /// Gets or Sets ContentType
         /// </summary>
-        [DataMember(Name="page", EmitDefaultValue=false)]
-        public int Page { get; set; }
+        [DataMember(Name="content_type", EmitDefaultValue=false)]
+        public string ContentType { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// Gets or Sets Content
         /// </summary>
-        [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public int TotalPages { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Items
-        /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=false)]
-        public List<Image> Items { get; set; }
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public byte[] Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -68,10 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ImagePage {\n");
-            sb.Append("  Page: ").Append(Page).Append("\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("class ImageFieldsImage {\n");
+            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,35 +83,29 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ImagePage);
+            return this.Equals(input as ImageFieldsImage);
         }
 
         /// <summary>
-        /// Returns true if ImagePage instances are equal
+        /// Returns true if ImageFieldsImage instances are equal
         /// </summary>
-        /// <param name="input">Instance of ImagePage to be compared</param>
+        /// <param name="input">Instance of ImageFieldsImage to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ImagePage input)
+        public bool Equals(ImageFieldsImage input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Page == input.Page ||
-                    (this.Page != null &&
-                    this.Page.Equals(input.Page))
+                    this.ContentType == input.ContentType ||
+                    (this.ContentType != null &&
+                    this.ContentType.Equals(input.ContentType))
                 ) && 
                 (
-                    this.TotalPages == input.TotalPages ||
-                    (this.TotalPages != null &&
-                    this.TotalPages.Equals(input.TotalPages))
-                ) && 
-                (
-                    this.Items == input.Items ||
-                    this.Items != null &&
-                    input.Items != null &&
-                    this.Items.SequenceEqual(input.Items)
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
                 );
         }
 
@@ -133,12 +118,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Page != null)
-                    hashCode = hashCode * 59 + this.Page.GetHashCode();
-                if (this.TotalPages != null)
-                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
-                if (this.Items != null)
-                    hashCode = hashCode * 59 + this.Items.GetHashCode();
+                if (this.ContentType != null)
+                    hashCode = hashCode * 59 + this.ContentType.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 return hashCode;
             }
         }

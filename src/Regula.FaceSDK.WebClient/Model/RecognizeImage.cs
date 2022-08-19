@@ -39,7 +39,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="path">path.</param>
         /// <param name="url">url.</param>
         /// <param name="similarity">similarity.</param>
-        public RecognizeImage(decimal id = default(decimal), string contentType = default(string), DateTime createdAt = default(DateTime), string path = default(string), string url = default(string), float similarity = default(float))
+        public RecognizeImage(int id = default(int), string contentType = default(string), DateTime createdAt = default(DateTime), string path = default(string), string url = default(string), float similarity = default(float))
         {
             this.Id = id;
             this.ContentType = contentType;
@@ -53,7 +53,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Id
         /// </summary>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public decimal Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ContentType

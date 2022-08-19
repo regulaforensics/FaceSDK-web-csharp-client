@@ -9,7 +9,7 @@ namespace Regula.FaceSDK.IdentificationExample
         
         public static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://revenger.local:41101";
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://127.0.0.0:41101";
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");

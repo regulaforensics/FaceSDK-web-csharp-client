@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="contentType">contentType.</param>
         /// <param name="content">content.</param>
-        public ImageFields(string contentType = default(string), System.IO.Stream content = default(System.IO.Stream))
+        public ImageFields(string contentType = default(string), byte[] content = default(byte[]))
         {
             this.ContentType = contentType;
             this.Content = content;
@@ -51,7 +51,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Content
         /// </summary>
         [DataMember(Name="content", EmitDefaultValue=false)]
-        public System.IO.Stream Content { get; set; }
+        public byte[] Content { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

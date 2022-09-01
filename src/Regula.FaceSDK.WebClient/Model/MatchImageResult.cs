@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class MatchImageResult :  IEquatable<MatchImageResult>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets ErrorCode
+        /// </summary>
+        [DataMember(Name="errorCode", EmitDefaultValue=false)]
+        public FaceSDKResultCode? ErrorCode { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="MatchImageResult" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -38,15 +43,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchImageResult" /> class.
         /// </summary>
-        /// <param name="firstIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
+        /// <param name="firstIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used. (required).</param>
         /// <param name="firstFaceIndex">Faces index used to identify faces in scope of one photo..</param>
-        /// <param name="secondIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
+        /// <param name="secondIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used. (required).</param>
         /// <param name="secondFaceIndex">Faces index used to identify faces in scope of one photo..</param>
         /// <param name="score">score.</param>
         /// <param name="similarity">similarity.</param>
         /// <param name="errorCode">errorCode.</param>
         /// <param name="errorMsg">errorMsg.</param>
-        public MatchImageResult(int firstIndex = default(int), int firstFaceIndex = default(int), int secondIndex = default(int), int secondFaceIndex = default(int), decimal score = default(decimal), decimal similarity = default(decimal), int errorCode = default(int), string errorMsg = default(string))
+        public MatchImageResult(int firstIndex = default(int), decimal firstFaceIndex = default(decimal), int secondIndex = default(int), decimal secondFaceIndex = default(decimal), decimal score = default(decimal), decimal similarity = default(decimal), FaceSDKResultCode? errorCode = default(FaceSDKResultCode?), string errorMsg = default(string))
         {
             // to ensure "firstIndex" is required (not null)
             if (firstIndex == null)
@@ -57,7 +62,7 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.FirstIndex = firstIndex;
             }
-            
+
             // to ensure "secondIndex" is required (not null)
             if (secondIndex == null)
             {
@@ -67,7 +72,7 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.SecondIndex = secondIndex;
             }
-            
+
             this.FirstFaceIndex = firstFaceIndex;
             this.SecondFaceIndex = secondFaceIndex;
             this.Score = score;
@@ -75,11 +80,11 @@ namespace Regula.FaceSDK.WebClient.Model
             this.ErrorCode = errorCode;
             this.ErrorMsg = errorMsg;
         }
-        
+
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="firstIndex", EmitDefaultValue=true)]
         public int FirstIndex { get; set; }
 
@@ -88,12 +93,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="firstFaceIndex", EmitDefaultValue=false)]
-        public int FirstFaceIndex { get; set; }
+        public decimal FirstFaceIndex { get; set; }
 
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="secondIndex", EmitDefaultValue=true)]
         public int SecondIndex { get; set; }
 
@@ -102,7 +107,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="secondFaceIndex", EmitDefaultValue=false)]
-        public int SecondFaceIndex { get; set; }
+        public decimal SecondFaceIndex { get; set; }
 
         /// <summary>
         /// Gets or Sets Score
@@ -116,11 +121,6 @@ namespace Regula.FaceSDK.WebClient.Model
         [DataMember(Name="similarity", EmitDefaultValue=false)]
         public decimal Similarity { get; set; }
 
-        /// <summary>
-        /// Gets or Sets ErrorCode
-        /// </summary>
-        [DataMember(Name="errorCode", EmitDefaultValue=false)]
-        public int ErrorCode { get; set; }
 
         /// <summary>
         /// Gets or Sets ErrorMsg
@@ -147,14 +147,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class DetectResponse :  IEquatable<DetectResponse>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name="code", EmitDefaultValue=true)]
+        public FaceSDKResultCode Code { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="DetectResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -40,7 +45,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="code">code (required).</param>
         /// <param name="results">results.</param>
-        public DetectResponse(int code = default(int), DetectResult results = default(DetectResult))
+        public DetectResponse(FaceSDKResultCode code = default(FaceSDKResultCode), DetectResult results = default(DetectResult))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -51,15 +56,10 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Code = code;
             }
-            
+
             this.Results = results;
         }
-        
-        /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public int Code { get; set; }
+
 
         /// <summary>
         /// Gets or Sets Results
@@ -80,14 +80,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

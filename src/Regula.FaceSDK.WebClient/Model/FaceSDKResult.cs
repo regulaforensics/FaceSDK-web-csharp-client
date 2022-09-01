@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class FaceSDKResult :  IEquatable<FaceSDKResult>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name="code", EmitDefaultValue=true)]
+        public FaceSDKResultCode Code { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -39,7 +44,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
         /// </summary>
         /// <param name="code">code (required).</param>
-        public FaceSDKResult(int code = default(int))
+        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -50,14 +55,9 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Code = code;
             }
-            
+
         }
-        
-        /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public int Code { get; set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -71,14 +71,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

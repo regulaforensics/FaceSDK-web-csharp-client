@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class MatchImage :  IEquatable<MatchImage>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public ImageSource? Type { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="MatchImage" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -38,10 +43,10 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchImage" /> class.
         /// </summary>
-        /// <param name="index">Image index used to identify input photos between themselves. If not specified, than input list index is used.</param>
+        /// <param name="index">Image index used to identify input photos between themselves. If not specified, than input list index is used..</param>
         /// <param name="type">type.</param>
-        /// <param name="data">Base64 encoded image (required).</param>
-        public MatchImage(int index = default(int), int type = default(int), byte[] data = default(byte[]))
+        /// <param name="data">Base64 encoded image. (required).</param>
+        public MatchImage(int index = default(int), ImageSource? type = default(ImageSource?), byte[] data = default(byte[]))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -52,28 +57,23 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Data = data;
             }
-            
+
             this.Index = index;
             this.Type = type;
         }
-        
+
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="index", EmitDefaultValue=false)]
         public int Index { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public int Type { get; set; }
 
         /// <summary>
-        /// Base64 encoded image
+        /// Base64 encoded image.
         /// </summary>
-        /// <value>Base64 encoded image</value>
+        /// <value>Base64 encoded image.</value>
         [DataMember(Name="data", EmitDefaultValue=true)]
         public byte[] Data { get; set; }
 
@@ -91,14 +91,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

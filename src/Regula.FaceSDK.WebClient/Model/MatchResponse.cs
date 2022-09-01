@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -31,6 +31,11 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class MatchResponse :  IEquatable<MatchResponse>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name="code", EmitDefaultValue=true)]
+        public FaceSDKResultCode Code { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="MatchResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -41,7 +46,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="code">code (required).</param>
         /// <param name="results">results.</param>
         /// <param name="detections">detections.</param>
-        public MatchResponse(int code = default(int), List<MatchImageResult> results = default(List<MatchImageResult>), List<MatchImageDetection> detections = default(List<MatchImageDetection>))
+        public MatchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageResult> results = default(List<MatchImageResult>), List<MatchImageDetection> detections = default(List<MatchImageDetection>))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -52,16 +57,11 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Code = code;
             }
-            
+
             this.Results = results;
             this.Detections = detections;
         }
-        
-        /// <summary>
-        /// Gets or Sets Code
-        /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public int Code { get; set; }
+
 
         /// <summary>
         /// Gets or Sets Results
@@ -89,14 +89,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

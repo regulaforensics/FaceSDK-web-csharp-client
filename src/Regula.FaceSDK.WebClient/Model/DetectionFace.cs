@@ -1,4 +1,4 @@
-/* 
+/*
  * Regula FaceSDK Web API
  *
  * Regula FaceSDK Web API
@@ -34,28 +34,28 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="DetectionFace" /> class.
         /// </summary>
         /// <param name="faceIndex">Faces index used to identify faces in scope of one photo..</param>
-        /// <param name="landmarks">Main coordinates of the detected face (eyes, nose, lips, ears and etc.)..</param>
+        /// <param name="landmarks">Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips..</param>
         /// <param name="roi">Rectangular area of the detected face. First element - X-axis coordinate. Second element - Y-axis coordinate. (X, Y) - left top point. Third element - rectangular width. Fourth element - rectangular height..</param>
-        /// <param name="thumbnail">Formatted base64 face detection image..</param>
-        public DetectionFace(int faceIndex = default(int), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        /// <param name="thumbnail">Base64 of the cropped portrait..</param>
+        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
             this.Roi = roi;
             this.Thumbnail = thumbnail;
         }
-        
+
         /// <summary>
         /// Faces index used to identify faces in scope of one photo.
         /// </summary>
         /// <value>Faces index used to identify faces in scope of one photo.</value>
         [DataMember(Name="faceIndex", EmitDefaultValue=false)]
-        public int FaceIndex { get; set; }
+        public decimal FaceIndex { get; set; }
 
         /// <summary>
-        /// Main coordinates of the detected face (eyes, nose, lips, ears and etc.).
+        /// Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips.
         /// </summary>
-        /// <value>Main coordinates of the detected face (eyes, nose, lips, ears and etc.).</value>
+        /// <value>Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips.</value>
         [DataMember(Name="landmarks", EmitDefaultValue=false)]
         public List<List<decimal>> Landmarks { get; set; }
 
@@ -67,9 +67,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<decimal> Roi { get; set; }
 
         /// <summary>
-        /// Formatted base64 face detection image.
+        /// Base64 of the cropped portrait.
         /// </summary>
-        /// <value>Formatted base64 face detection image.</value>
+        /// <value>Base64 of the cropped portrait.</value>
         [DataMember(Name="thumbnail", EmitDefaultValue=false)]
         public byte[] Thumbnail { get; set; }
 
@@ -88,14 +88,14 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("}\n");
             return sb.ToString();
         }
-  
+
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>

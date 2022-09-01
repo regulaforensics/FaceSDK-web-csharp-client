@@ -33,13 +33,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchPerson" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="metadata">metadata.</param>
-        /// <param name="id">id.</param>
-        /// <param name="createdAt">createdAt.</param>
-        /// <param name="updatedAt">updatedAt.</param>
+        /// <param name="name">Person name..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        /// <param name="id">Person ID..</param>
+        /// <param name="createdAt">Person creation date..</param>
+        /// <param name="updatedAt">Person update date..</param>
         /// <param name="images">images.</param>
-        public SearchPerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), DateTime createdAt = default(DateTime), DateTime updatedAt = default(DateTime), List<RecognizeImage> images = default(List<RecognizeImage>))
+        public SearchPerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), string createdAt = default(string), string updatedAt = default(string), List<RecognizeImage> images = default(List<RecognizeImage>))
         {
             this.Name = name;
             this.Metadata = metadata;
@@ -50,34 +50,39 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Person name.
         /// </summary>
+        /// <value>Person name.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Metadata
+        /// A free-form object containing person&#39;s extended attributes.
         /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
         [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Person ID.
         /// </summary>
+        /// <value>Person ID.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// Person creation date.
         /// </summary>
+        /// <value>Person creation date.</value>
         [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public DateTime CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets UpdatedAt
+        /// Person update date.
         /// </summary>
+        /// <value>Person update date.</value>
         [DataMember(Name="updated_at", EmitDefaultValue=false)]
-        public DateTime UpdatedAt { get; set; }
+        public string UpdatedAt { get; set; }
 
         /// <summary>
         /// Gets or Sets Images

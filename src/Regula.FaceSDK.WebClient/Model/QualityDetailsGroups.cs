@@ -25,53 +25,51 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Group
+    /// QualityDetailsGroups
     /// </summary>
     [DataContract]
-    public partial class Group :  IEquatable<Group>, IValidatableObject
+    public partial class QualityDetailsGroups :  IEquatable<QualityDetailsGroups>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Group" /> class.
+        /// Gets or Sets GroupId
         /// </summary>
-        /// <param name="name">Group to create name..</param>
-        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
-        /// <param name="id">Group ID..</param>
-        /// <param name="createdAt">Group creation date..</param>
-        public Group(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), string createdAt = default(string))
+        [DataMember(Name="groupId", EmitDefaultValue=false)]
+        public FaceImageQualityGroups? GroupId { get; set; }
+        /// <summary>
+        /// Gets or Sets Name
+        /// </summary>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public FaceQualityConfigName? Name { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QualityDetailsGroups" /> class.
+        /// </summary>
+        /// <param name="groupId">groupId.</param>
+        /// <param name="name">name.</param>
+        /// <param name="totalCount">The total number of characteristics in the group..</param>
+        /// <param name="compliantCount">The number of compliant characteristics in the group..</param>
+        public QualityDetailsGroups(FaceImageQualityGroups? groupId = default(FaceImageQualityGroups?), FaceQualityConfigName? name = default(FaceQualityConfigName?), int totalCount = default(int), int compliantCount = default(int))
         {
+            this.GroupId = groupId;
             this.Name = name;
-            this.Metadata = metadata;
-            this.Id = id;
-            this.CreatedAt = createdAt;
+            this.TotalCount = totalCount;
+            this.CompliantCount = compliantCount;
         }
 
-        /// <summary>
-        /// Group to create name.
-        /// </summary>
-        /// <value>Group to create name.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+
 
         /// <summary>
-        /// A free-form object containing group&#39;s extended attributes.
+        /// The total number of characteristics in the group.
         /// </summary>
-        /// <value>A free-form object containing group&#39;s extended attributes.</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
-        public Dictionary<string, Object> Metadata { get; set; }
+        /// <value>The total number of characteristics in the group.</value>
+        [DataMember(Name="totalCount", EmitDefaultValue=false)]
+        public int TotalCount { get; set; }
 
         /// <summary>
-        /// Group ID.
+        /// The number of compliant characteristics in the group.
         /// </summary>
-        /// <value>Group ID.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Group creation date.
-        /// </summary>
-        /// <value>Group creation date.</value>
-        [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
+        /// <value>The number of compliant characteristics in the group.</value>
+        [DataMember(Name="compliantCount", EmitDefaultValue=false)]
+        public int CompliantCount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,11 +78,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Group {\n");
+            sb.Append("class QualityDetailsGroups {\n");
+            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
+            sb.Append("  CompliantCount: ").Append(CompliantCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,40 +103,39 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Group);
+            return this.Equals(input as QualityDetailsGroups);
         }
 
         /// <summary>
-        /// Returns true if Group instances are equal
+        /// Returns true if QualityDetailsGroups instances are equal
         /// </summary>
-        /// <param name="input">Instance of Group to be compared</param>
+        /// <param name="input">Instance of QualityDetailsGroups to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Group input)
+        public bool Equals(QualityDetailsGroups input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.GroupId == input.GroupId ||
+                    (this.GroupId != null &&
+                    this.GroupId.Equals(input.GroupId))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.TotalCount == input.TotalCount ||
+                    (this.TotalCount != null &&
+                    this.TotalCount.Equals(input.TotalCount))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.CompliantCount == input.CompliantCount ||
+                    (this.CompliantCount != null &&
+                    this.CompliantCount.Equals(input.CompliantCount))
                 );
         }
 
@@ -151,14 +148,14 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.GroupId != null)
+                    hashCode = hashCode * 59 + this.GroupId.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.TotalCount != null)
+                    hashCode = hashCode * 59 + this.TotalCount.GetHashCode();
+                if (this.CompliantCount != null)
+                    hashCode = hashCode * 59 + this.CompliantCount.GetHashCode();
                 return hashCode;
             }
         }

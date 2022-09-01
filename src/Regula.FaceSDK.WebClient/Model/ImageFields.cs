@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// ImageFields
+    /// Image in the request data, includes image and content_type.
     /// </summary>
     [DataContract]
     public partial class ImageFields :  IEquatable<ImageFields>, IValidatableObject

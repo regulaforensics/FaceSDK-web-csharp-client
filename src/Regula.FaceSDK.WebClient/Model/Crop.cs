@@ -25,57 +25,51 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchImage
+    /// Crop
     /// </summary>
     [DataContract]
-    public partial class MatchImage :  IEquatable<MatchImage>, IValidatableObject
+    public partial class Crop :  IEquatable<Crop>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
+        public FaceAlignTypeQuality? Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatchImage" /> class.
+        /// Initializes a new instance of the <see cref="Crop" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected MatchImage() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchImage" /> class.
-        /// </summary>
-        /// <param name="index">Image index used to identify input photos between themselves. If not specified, than input list index is used..</param>
         /// <param name="type">type.</param>
-        /// <param name="data">Base64 encoded image. (required).</param>
-        public MatchImage(int index = default(int), ImageSource? type = default(ImageSource?), byte[] data = default(byte[]))
+        /// <param name="padColor">padColor.</param>
+        /// <param name="size">The resize value in case type matches this value. It it doesn&#39;t, no resize is done..</param>
+        /// <param name="returnOriginalRect">Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop..</param>
+        public Crop(FaceAlignTypeQuality? type = default(FaceAlignTypeQuality?), List<int> padColor = default(List<int>), List<int> size = default(List<int>), bool returnOriginalRect = default(bool))
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
-            {
-                throw new InvalidDataException("data is a required property for MatchImage and cannot be null");
-            }
-            else
-            {
-                this.Data = data;
-            }
-
-            this.Index = index;
             this.Type = type;
+            this.PadColor = padColor;
+            this.Size = size;
+            this.ReturnOriginalRect = returnOriginalRect;
         }
 
-        /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
-        /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
-        [DataMember(Name="index", EmitDefaultValue=false)]
-        public int Index { get; set; }
-
 
         /// <summary>
-        /// Base64 encoded image.
+        /// Gets or Sets PadColor
         /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="data", EmitDefaultValue=true)]
-        public byte[] Data { get; set; }
+        [DataMember(Name="padColor", EmitDefaultValue=false)]
+        public List<int> PadColor { get; set; }
+
+        /// <summary>
+        /// The resize value in case type matches this value. It it doesn&#39;t, no resize is done.
+        /// </summary>
+        /// <value>The resize value in case type matches this value. It it doesn&#39;t, no resize is done.</value>
+        [DataMember(Name="size", EmitDefaultValue=false)]
+        public List<int> Size { get; set; }
+
+        /// <summary>
+        /// Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.
+        /// </summary>
+        /// <value>Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.</value>
+        [DataMember(Name="returnOriginalRect", EmitDefaultValue=false)]
+        public bool ReturnOriginalRect { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,10 +78,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchImage {\n");
-            sb.Append("  Index: ").Append(Index).Append("\n");
+            sb.Append("class Crop {\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  PadColor: ").Append(PadColor).Append("\n");
+            sb.Append("  Size: ").Append(Size).Append("\n");
+            sb.Append("  ReturnOriginalRect: ").Append(ReturnOriginalRect).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,34 +103,41 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchImage);
+            return this.Equals(input as Crop);
         }
 
         /// <summary>
-        /// Returns true if MatchImage instances are equal
+        /// Returns true if Crop instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchImage to be compared</param>
+        /// <param name="input">Instance of Crop to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchImage input)
+        public bool Equals(Crop input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    this.PadColor == input.PadColor ||
+                    this.PadColor != null &&
+                    input.PadColor != null &&
+                    this.PadColor.SequenceEqual(input.PadColor)
+                ) && 
+                (
+                    this.Size == input.Size ||
+                    this.Size != null &&
+                    input.Size != null &&
+                    this.Size.SequenceEqual(input.Size)
+                ) && 
+                (
+                    this.ReturnOriginalRect == input.ReturnOriginalRect ||
+                    (this.ReturnOriginalRect != null &&
+                    this.ReturnOriginalRect.Equals(input.ReturnOriginalRect))
                 );
         }
 
@@ -148,12 +150,14 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (this.PadColor != null)
+                    hashCode = hashCode * 59 + this.PadColor.GetHashCode();
+                if (this.Size != null)
+                    hashCode = hashCode * 59 + this.Size.GetHashCode();
+                if (this.ReturnOriginalRect != null)
+                    hashCode = hashCode * 59 + this.ReturnOriginalRect.GetHashCode();
                 return hashCode;
             }
         }
@@ -165,6 +169,10 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+
+
+
+
             yield break;
         }
     }

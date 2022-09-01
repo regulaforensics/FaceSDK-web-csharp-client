@@ -25,36 +25,36 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face photo image source.
+    /// The aspect ratio according to which alignment is performed.
     /// </summary>
-    /// <value>Face photo image source.</value>
+    /// <value>The aspect ratio according to which alignment is performed.</value>
     
-    public enum ImageSource
+    public enum FaceAlignTypeQuality
     {
         /// <summary>
-        /// Enum DOCUMENT_PRINTED for value: 1
+        /// Enum ALIGN_3x4 for value: 0
         /// </summary>
-        DOCUMENT_PRINTED = 1,
+        ALIGN_3x4 = 0,
 
         /// <summary>
-        /// Enum DOCUMENT_RFID for value: 2
+        /// Enum ALIGN_4x5 for value: 1
         /// </summary>
-        DOCUMENT_RFID = 2,
+        ALIGN_4x5 = 1,
 
         /// <summary>
-        /// Enum LIVE for value: 3
+        /// Enum ALIGN_2x3 for value: 2
         /// </summary>
-        LIVE = 3,
+        ALIGN_2x3 = 2,
 
         /// <summary>
-        /// Enum DOCUMENT_WITH_LIVE for value: 4
+        /// Enum ALIGN_1x1 for value: 3
         /// </summary>
-        DOCUMENT_WITH_LIVE = 4,
+        ALIGN_1x1 = 3,
 
         /// <summary>
-        /// Enum EXTERNAL for value: 5
+        /// Enum ALIGN_7x9 for value: 4
         /// </summary>
-        EXTERNAL = 5
+        ALIGN_7x9 = 4
 
     }
 

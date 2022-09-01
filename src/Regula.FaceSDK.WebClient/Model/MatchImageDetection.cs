@@ -44,7 +44,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="MatchImageDetection" /> class.
         /// </summary>
         /// <param name="faces">faces.</param>
-        /// <param name="imageIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
+        /// <param name="imageIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used. (required).</param>
         /// <param name="status">status (required).</param>
         public MatchImageDetection(List<DetectionFace> faces = default(List<DetectionFace>), int imageIndex = default(int), FaceSDKResultCode status = default(FaceSDKResultCode))
         {
@@ -78,9 +78,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<DetectionFace> Faces { get; set; }
 
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="imageIndex", EmitDefaultValue=true)]
         public int ImageIndex { get; set; }
 

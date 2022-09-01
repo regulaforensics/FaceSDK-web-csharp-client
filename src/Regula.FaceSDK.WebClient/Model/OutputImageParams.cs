@@ -25,33 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Information about current page number and total pages count
+    /// Whether to process the uploaded image according to the indicated settings.
     /// </summary>
     [DataContract]
-    public partial class Page :  IEquatable<Page>, IValidatableObject
+    public partial class OutputImageParams :  IEquatable<OutputImageParams>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Page" /> class.
+        /// Initializes a new instance of the <see cref="OutputImageParams" /> class.
         /// </summary>
-        /// <param name="page">page.</param>
-        /// <param name="totalPages">totalPages.</param>
-        public Page(int page = default(int), int totalPages = default(int))
+        /// <param name="backgroundColor">backgroundColor.</param>
+        /// <param name="crop">crop.</param>
+        public OutputImageParams(List<int> backgroundColor = default(List<int>), Crop crop = default(Crop))
         {
-            this._Page = page;
-            this.TotalPages = totalPages;
+            this.BackgroundColor = backgroundColor;
+            this.Crop = crop;
         }
 
         /// <summary>
-        /// Gets or Sets _Page
+        /// Gets or Sets BackgroundColor
         /// </summary>
-        [DataMember(Name="page", EmitDefaultValue=false)]
-        public int _Page { get; set; }
+        [DataMember(Name="backgroundColor", EmitDefaultValue=false)]
+        public List<int> BackgroundColor { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// Gets or Sets Crop
         /// </summary>
-        [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public int TotalPages { get; set; }
+        [DataMember(Name="crop", EmitDefaultValue=false)]
+        public Crop Crop { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Page {\n");
-            sb.Append("  _Page: ").Append(_Page).Append("\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
+            sb.Append("class OutputImageParams {\n");
+            sb.Append("  BackgroundColor: ").Append(BackgroundColor).Append("\n");
+            sb.Append("  Crop: ").Append(Crop).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +83,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Page);
+            return this.Equals(input as OutputImageParams);
         }
 
         /// <summary>
-        /// Returns true if Page instances are equal
+        /// Returns true if OutputImageParams instances are equal
         /// </summary>
-        /// <param name="input">Instance of Page to be compared</param>
+        /// <param name="input">Instance of OutputImageParams to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Page input)
+        public bool Equals(OutputImageParams input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._Page == input._Page ||
-                    (this._Page != null &&
-                    this._Page.Equals(input._Page))
+                    this.BackgroundColor == input.BackgroundColor ||
+                    this.BackgroundColor != null &&
+                    input.BackgroundColor != null &&
+                    this.BackgroundColor.SequenceEqual(input.BackgroundColor)
                 ) && 
                 (
-                    this.TotalPages == input.TotalPages ||
-                    (this.TotalPages != null &&
-                    this.TotalPages.Equals(input.TotalPages))
+                    this.Crop == input.Crop ||
+                    (this.Crop != null &&
+                    this.Crop.Equals(input.Crop))
                 );
         }
 
@@ -118,10 +119,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Page != null)
-                    hashCode = hashCode * 59 + this._Page.GetHashCode();
-                if (this.TotalPages != null)
-                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
+                if (this.BackgroundColor != null)
+                    hashCode = hashCode * 59 + this.BackgroundColor.GetHashCode();
+                if (this.Crop != null)
+                    hashCode = hashCode * 59 + this.Crop.GetHashCode();
                 return hashCode;
             }
         }
@@ -133,6 +134,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+
+
             yield break;
         }
     }

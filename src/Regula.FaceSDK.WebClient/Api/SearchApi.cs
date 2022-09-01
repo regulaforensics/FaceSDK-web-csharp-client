@@ -26,48 +26,48 @@ namespace Regula.FaceSDK.WebClient.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Find person by image in groups scope
+        /// Find person by image in groups.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <returns>SearchResult</returns>
         SearchResult Search (SearchRequest searchRequest);
 
         /// <summary>
-        /// Find person by image in groups scope
+        /// Find person by image in groups.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <returns>ApiResponse of SearchResult</returns>
         ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Find person by image in groups scope
+        /// Find person by image in groups.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SearchResult</returns>
         System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Find person by image in groups scope
+        /// Find person by image in groups.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
         System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken));
@@ -183,10 +183,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Find person by image in groups scope 
+        /// Find person by image in groups. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <returns>SearchResult</returns>
         public SearchResult Search (SearchRequest searchRequest)
         {
@@ -195,10 +195,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Find person by image in groups scope 
+        /// Find person by image in groups. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <returns>ApiResponse of SearchResult</returns>
         public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest)
         {
@@ -257,10 +257,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Find person by image in groups scope 
+        /// Find person by image in groups. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SearchResult</returns>
         public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken))
@@ -271,10 +271,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Find person by image in groups scope 
+        /// Find person by image in groups. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest">Search argument</param>
+        /// <param name="searchRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
         public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken))

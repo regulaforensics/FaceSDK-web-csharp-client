@@ -33,7 +33,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupPage" /> class.
         /// </summary>
-        /// <param name="items">items.</param>
+        /// <param name="items">The array of Groups that are found during the search..</param>
         /// <param name="page">page.</param>
         /// <param name="totalPages">totalPages.</param>
         public GroupPage(List<Group> items = default(List<Group>), int page = default(int), int totalPages = default(int))
@@ -44,8 +44,9 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets Items
+        /// The array of Groups that are found during the search.
         /// </summary>
+        /// <value>The array of Groups that are found during the search.</value>
         [DataMember(Name="items", EmitDefaultValue=false)]
         public List<Group> Items { get; set; }
 

@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// PersonFields
+    /// Person Request body: name and metadata.
     /// </summary>
     [DataContract]
     public partial class PersonFields :  IEquatable<PersonFields>, IValidatableObject
@@ -33,8 +33,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonFields" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        /// <param name="metadata">metadata.</param>
+        /// <param name="name">Person name..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         public PersonFields(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             this.Name = name;
@@ -42,14 +42,16 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Person name.
         /// </summary>
+        /// <value>Person name.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Metadata
+        /// A free-form object containing person&#39;s extended attributes.
         /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
         [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
 

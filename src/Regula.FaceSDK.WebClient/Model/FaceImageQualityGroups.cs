@@ -25,36 +25,45 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face photo image source.
+    /// Defines FaceImageQualityGroups
     /// </summary>
-    /// <value>Face photo image source.</value>
     
-    public enum ImageSource
+    public enum FaceImageQualityGroups
     {
         /// <summary>
-        /// Enum DOCUMENT_PRINTED for value: 1
+        /// Enum IMAGE_CHARACTERISTICS for value: 1
         /// </summary>
-        DOCUMENT_PRINTED = 1,
+        IMAGE_CHARACTERISTICS = 1,
 
         /// <summary>
-        /// Enum DOCUMENT_RFID for value: 2
+        /// Enum HEAD_SIZE_AND_POSITIONS for value: 2
         /// </summary>
-        DOCUMENT_RFID = 2,
+        HEAD_SIZE_AND_POSITIONS = 2,
 
         /// <summary>
-        /// Enum LIVE for value: 3
+        /// Enum FACE_QUALITY for value: 3
         /// </summary>
-        LIVE = 3,
+        FACE_QUALITY = 3,
 
         /// <summary>
-        /// Enum DOCUMENT_WITH_LIVE for value: 4
+        /// Enum EYES_CHARACTERISTICS for value: 4
         /// </summary>
-        DOCUMENT_WITH_LIVE = 4,
+        EYES_CHARACTERISTICS = 4,
 
         /// <summary>
-        /// Enum EXTERNAL for value: 5
+        /// Enum SHADOWS_AND_LIGHTNING for value: 5
         /// </summary>
-        EXTERNAL = 5
+        SHADOWS_AND_LIGHTNING = 5,
+
+        /// <summary>
+        /// Enum POSE_AND_EXPRESSION for value: 6
+        /// </summary>
+        POSE_AND_EXPRESSION = 6,
+
+        /// <summary>
+        /// Enum HEAD_OCCLUSION for value: 8
+        /// </summary>
+        HEAD_OCCLUSION = 8
 
     }
 

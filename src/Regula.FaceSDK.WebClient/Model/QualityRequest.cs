@@ -25,33 +25,33 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Information about current page number and total pages count
+    /// Whether to perform the portrait quality check.
     /// </summary>
     [DataContract]
-    public partial class Page :  IEquatable<Page>, IValidatableObject
+    public partial class QualityRequest :  IEquatable<QualityRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Page" /> class.
+        /// Initializes a new instance of the <see cref="QualityRequest" /> class.
         /// </summary>
-        /// <param name="page">page.</param>
-        /// <param name="totalPages">totalPages.</param>
-        public Page(int page = default(int), int totalPages = default(int))
+        /// <param name="backgroundMatchColor">backgroundMatchColor.</param>
+        /// <param name="config">config.</param>
+        public QualityRequest(List<int> backgroundMatchColor = default(List<int>), List<QualityConfig> config = default(List<QualityConfig>))
         {
-            this._Page = page;
-            this.TotalPages = totalPages;
+            this.BackgroundMatchColor = backgroundMatchColor;
+            this.Config = config;
         }
 
         /// <summary>
-        /// Gets or Sets _Page
+        /// Gets or Sets BackgroundMatchColor
         /// </summary>
-        [DataMember(Name="page", EmitDefaultValue=false)]
-        public int _Page { get; set; }
+        [DataMember(Name="backgroundMatchColor", EmitDefaultValue=false)]
+        public List<int> BackgroundMatchColor { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// Gets or Sets Config
         /// </summary>
-        [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public int TotalPages { get; set; }
+        [DataMember(Name="config", EmitDefaultValue=false)]
+        public List<QualityConfig> Config { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Page {\n");
-            sb.Append("  _Page: ").Append(_Page).Append("\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
+            sb.Append("class QualityRequest {\n");
+            sb.Append("  BackgroundMatchColor: ").Append(BackgroundMatchColor).Append("\n");
+            sb.Append("  Config: ").Append(Config).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +83,31 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Page);
+            return this.Equals(input as QualityRequest);
         }
 
         /// <summary>
-        /// Returns true if Page instances are equal
+        /// Returns true if QualityRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of Page to be compared</param>
+        /// <param name="input">Instance of QualityRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Page input)
+        public bool Equals(QualityRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._Page == input._Page ||
-                    (this._Page != null &&
-                    this._Page.Equals(input._Page))
+                    this.BackgroundMatchColor == input.BackgroundMatchColor ||
+                    this.BackgroundMatchColor != null &&
+                    input.BackgroundMatchColor != null &&
+                    this.BackgroundMatchColor.SequenceEqual(input.BackgroundMatchColor)
                 ) && 
                 (
-                    this.TotalPages == input.TotalPages ||
-                    (this.TotalPages != null &&
-                    this.TotalPages.Equals(input.TotalPages))
+                    this.Config == input.Config ||
+                    this.Config != null &&
+                    input.Config != null &&
+                    this.Config.SequenceEqual(input.Config)
                 );
         }
 
@@ -118,10 +120,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Page != null)
-                    hashCode = hashCode * 59 + this._Page.GetHashCode();
-                if (this.TotalPages != null)
-                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
+                if (this.BackgroundMatchColor != null)
+                    hashCode = hashCode * 59 + this.BackgroundMatchColor.GetHashCode();
+                if (this.Config != null)
+                    hashCode = hashCode * 59 + this.Config.GetHashCode();
                 return hashCode;
             }
         }
@@ -133,6 +135,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+
+
             yield break;
         }
     }

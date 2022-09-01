@@ -33,13 +33,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RecognizeImage" /> class.
         /// </summary>
-        /// <param name="id">id.</param>
-        /// <param name="contentType">contentType.</param>
-        /// <param name="createdAt">createdAt.</param>
-        /// <param name="path">path.</param>
-        /// <param name="url">url.</param>
-        /// <param name="similarity">similarity.</param>
-        public RecognizeImage(int id = default(int), string contentType = default(string), DateTime createdAt = default(DateTime), string path = default(string), string url = default(string), float similarity = default(float))
+        /// <param name="id">Response image ID..</param>
+        /// <param name="contentType">The original media type of the returned image..</param>
+        /// <param name="createdAt">The returned image creation date..</param>
+        /// <param name="path">The returned image S3 path..</param>
+        /// <param name="url">The returned image URL..</param>
+        /// <param name="similarity">The similarity score..</param>
+        public RecognizeImage(int id = default(int), string contentType = default(string), string createdAt = default(string), string path = default(string), string url = default(string), float similarity = default(float))
         {
             this.Id = id;
             this.ContentType = contentType;
@@ -50,38 +50,44 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// Response image ID.
         /// </summary>
+        /// <value>Response image ID.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets ContentType
+        /// The original media type of the returned image.
         /// </summary>
+        /// <value>The original media type of the returned image.</value>
         [DataMember(Name="content_type", EmitDefaultValue=false)]
         public string ContentType { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatedAt
+        /// The returned image creation date.
         /// </summary>
+        /// <value>The returned image creation date.</value>
         [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public DateTime CreatedAt { get; set; }
+        public string CreatedAt { get; set; }
 
         /// <summary>
-        /// Gets or Sets Path
+        /// The returned image S3 path.
         /// </summary>
+        /// <value>The returned image S3 path.</value>
         [DataMember(Name="path", EmitDefaultValue=false)]
         public string Path { get; set; }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// The returned image URL.
         /// </summary>
+        /// <value>The returned image URL.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; set; }
 
         /// <summary>
-        /// Gets or Sets Similarity
+        /// The similarity score.
         /// </summary>
+        /// <value>The similarity score.</value>
         [DataMember(Name="similarity", EmitDefaultValue=false)]
         public float Similarity { get; set; }
 

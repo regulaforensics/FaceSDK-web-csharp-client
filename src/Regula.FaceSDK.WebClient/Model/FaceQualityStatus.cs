@@ -25,36 +25,25 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face photo image source.
+    /// Defines FaceQualityStatus
     /// </summary>
-    /// <value>Face photo image source.</value>
     
-    public enum ImageSource
+    public enum FaceQualityStatus
     {
         /// <summary>
-        /// Enum DOCUMENT_PRINTED for value: 1
+        /// Enum QUALITY_STATUS_FALSE for value: 0
         /// </summary>
-        DOCUMENT_PRINTED = 1,
+        QUALITY_STATUS_FALSE = 0,
 
         /// <summary>
-        /// Enum DOCUMENT_RFID for value: 2
+        /// Enum QUALITY_STATUS_TRUE for value: 1
         /// </summary>
-        DOCUMENT_RFID = 2,
+        QUALITY_STATUS_TRUE = 1,
 
         /// <summary>
-        /// Enum LIVE for value: 3
+        /// Enum QUALITY_STATUS_UNDETERMINED for value: 2
         /// </summary>
-        LIVE = 3,
-
-        /// <summary>
-        /// Enum DOCUMENT_WITH_LIVE for value: 4
-        /// </summary>
-        DOCUMENT_WITH_LIVE = 4,
-
-        /// <summary>
-        /// Enum EXTERNAL for value: 5
-        /// </summary>
-        EXTERNAL = 5
+        QUALITY_STATUS_UNDETERMINED = 2
 
     }
 

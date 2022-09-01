@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// ImageFieldsImage
+    /// The uploaded image.
     /// </summary>
     [DataContract]
     public partial class ImageFieldsImage :  IEquatable<ImageFieldsImage>, IValidatableObject
@@ -33,8 +33,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ImageFieldsImage" /> class.
         /// </summary>
-        /// <param name="contentType">contentType.</param>
-        /// <param name="content">content.</param>
+        /// <param name="contentType">The original media type of the uploaded image..</param>
+        /// <param name="content">Base64 encoded image..</param>
         public ImageFieldsImage(string contentType = default(string), byte[] content = default(byte[]))
         {
             this.ContentType = contentType;
@@ -42,14 +42,16 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets ContentType
+        /// The original media type of the uploaded image.
         /// </summary>
+        /// <value>The original media type of the uploaded image.</value>
         [DataMember(Name="content_type", EmitDefaultValue=false)]
         public string ContentType { get; set; }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// Base64 encoded image.
         /// </summary>
+        /// <value>Base64 encoded image.</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
         public byte[] Content { get; set; }
 

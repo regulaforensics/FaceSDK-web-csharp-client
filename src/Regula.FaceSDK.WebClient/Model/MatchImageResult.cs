@@ -43,9 +43,9 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchImageResult" /> class.
         /// </summary>
-        /// <param name="firstIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
+        /// <param name="firstIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used. (required).</param>
         /// <param name="firstFaceIndex">Faces index used to identify faces in scope of one photo..</param>
-        /// <param name="secondIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used (required).</param>
+        /// <param name="secondIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used. (required).</param>
         /// <param name="secondFaceIndex">Faces index used to identify faces in scope of one photo..</param>
         /// <param name="score">score.</param>
         /// <param name="similarity">similarity.</param>
@@ -82,9 +82,9 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="firstIndex", EmitDefaultValue=true)]
         public int FirstIndex { get; set; }
 
@@ -96,9 +96,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public decimal FirstFaceIndex { get; set; }
 
         /// <summary>
-        /// Image index used to identify input photos between themselves. If not specified, than input list index is used
+        /// Image index used to identify input photos between themselves. If not specified, than input list index is used.
         /// </summary>
-        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used</value>
+        /// <value>Image index used to identify input photos between themselves. If not specified, than input list index is used.</value>
         [DataMember(Name="secondIndex", EmitDefaultValue=true)]
         public int SecondIndex { get; set; }
 

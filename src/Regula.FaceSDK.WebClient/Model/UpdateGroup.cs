@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// UpdateGroup
+    /// Update group.
     /// </summary>
     [DataContract]
     public partial class UpdateGroup :  IEquatable<UpdateGroup>, IValidatableObject
@@ -33,8 +33,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UpdateGroup" /> class.
         /// </summary>
-        /// <param name="addItems">addItems.</param>
-        /// <param name="removeItems">removeItems.</param>
+        /// <param name="addItems">Add items..</param>
+        /// <param name="removeItems">Remove items..</param>
         public UpdateGroup(List<int> addItems = default(List<int>), List<int> removeItems = default(List<int>))
         {
             this.AddItems = addItems;
@@ -42,14 +42,16 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets AddItems
+        /// Add items.
         /// </summary>
+        /// <value>Add items.</value>
         [DataMember(Name="addItems", EmitDefaultValue=false)]
         public List<int> AddItems { get; set; }
 
         /// <summary>
-        /// Gets or Sets RemoveItems
+        /// Remove items.
         /// </summary>
+        /// <value>Remove items.</value>
         [DataMember(Name="removeItems", EmitDefaultValue=false)]
         public List<int> RemoveItems { get; set; }
 

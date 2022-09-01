@@ -33,9 +33,9 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchRequest" /> class.
         /// </summary>
-        /// <param name="limit">limit (default to 100).</param>
-        /// <param name="threshold">threshold.</param>
-        /// <param name="groupIds">groupIds.</param>
+        /// <param name="limit">The number of returned Persons limit. (default to 100).</param>
+        /// <param name="threshold">Similarity threshold..</param>
+        /// <param name="groupIds">The IDs of the groups in which the search is performed..</param>
         /// <param name="image">image.</param>
         public SearchRequest(int limit = 100, float threshold = default(float), List<int> groupIds = default(List<int>), ImageFieldsImage image = default(ImageFieldsImage))
         {
@@ -54,20 +54,23 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets Limit
+        /// The number of returned Persons limit.
         /// </summary>
+        /// <value>The number of returned Persons limit.</value>
         [DataMember(Name="limit", EmitDefaultValue=false)]
         public int Limit { get; set; }
 
         /// <summary>
-        /// Gets or Sets Threshold
+        /// Similarity threshold.
         /// </summary>
+        /// <value>Similarity threshold.</value>
         [DataMember(Name="threshold", EmitDefaultValue=false)]
         public float Threshold { get; set; }
 
         /// <summary>
-        /// Gets or Sets GroupIds
+        /// The IDs of the groups in which the search is performed.
         /// </summary>
+        /// <value>The IDs of the groups in which the search is performed.</value>
         [DataMember(Name="group_ids", EmitDefaultValue=false)]
         public List<int> GroupIds { get; set; }
 

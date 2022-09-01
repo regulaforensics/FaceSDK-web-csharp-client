@@ -25,33 +25,34 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Information about current page number and total pages count
+    /// The configuration that defines the list of returned quality check characteristics. For every characteristic, includes name, range, unit.
     /// </summary>
     [DataContract]
-    public partial class Page :  IEquatable<Page>, IValidatableObject
+    public partial class QualityConfig :  IEquatable<QualityConfig>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Page" /> class.
+        /// Gets or Sets Name
         /// </summary>
-        /// <param name="page">page.</param>
-        /// <param name="totalPages">totalPages.</param>
-        public Page(int page = default(int), int totalPages = default(int))
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public FaceQualityConfigName? Name { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="QualityConfig" /> class.
+        /// </summary>
+        /// <param name="name">name.</param>
+        /// <param name="range">The range of applicable values for this characteristic. If the returned in the Response value fits this range, the value is identified as compliant with the requirements..</param>
+        public QualityConfig(FaceQualityConfigName? name = default(FaceQualityConfigName?), List<float> range = default(List<float>))
         {
-            this._Page = page;
-            this.TotalPages = totalPages;
+            this.Name = name;
+            this.Range = range;
         }
 
-        /// <summary>
-        /// Gets or Sets _Page
-        /// </summary>
-        [DataMember(Name="page", EmitDefaultValue=false)]
-        public int _Page { get; set; }
 
         /// <summary>
-        /// Gets or Sets TotalPages
+        /// The range of applicable values for this characteristic. If the returned in the Response value fits this range, the value is identified as compliant with the requirements.
         /// </summary>
-        [DataMember(Name="total_pages", EmitDefaultValue=false)]
-        public int TotalPages { get; set; }
+        /// <value>The range of applicable values for this characteristic. If the returned in the Response value fits this range, the value is identified as compliant with the requirements.</value>
+        [DataMember(Name="range", EmitDefaultValue=false)]
+        public List<float> Range { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,9 +61,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Page {\n");
-            sb.Append("  _Page: ").Append(_Page).Append("\n");
-            sb.Append("  TotalPages: ").Append(TotalPages).Append("\n");
+            sb.Append("class QualityConfig {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Range: ").Append(Range).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,29 +84,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Page);
+            return this.Equals(input as QualityConfig);
         }
 
         /// <summary>
-        /// Returns true if Page instances are equal
+        /// Returns true if QualityConfig instances are equal
         /// </summary>
-        /// <param name="input">Instance of Page to be compared</param>
+        /// <param name="input">Instance of QualityConfig to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Page input)
+        public bool Equals(QualityConfig input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this._Page == input._Page ||
-                    (this._Page != null &&
-                    this._Page.Equals(input._Page))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.TotalPages == input.TotalPages ||
-                    (this.TotalPages != null &&
-                    this.TotalPages.Equals(input.TotalPages))
+                    this.Range == input.Range ||
+                    this.Range != null &&
+                    input.Range != null &&
+                    this.Range.SequenceEqual(input.Range)
                 );
         }
 
@@ -118,10 +120,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this._Page != null)
-                    hashCode = hashCode * 59 + this._Page.GetHashCode();
-                if (this.TotalPages != null)
-                    hashCode = hashCode * 59 + this.TotalPages.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Range != null)
+                    hashCode = hashCode * 59 + this.Range.GetHashCode();
                 return hashCode;
             }
         }
@@ -133,6 +135,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+
+
             yield break;
         }
     }

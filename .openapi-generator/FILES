@@ -18,11 +18,11 @@ src/Regula.FaceSDK.WebClient/Model/DetectResult.cs
 src/Regula.FaceSDK.WebClient/Model/Detection.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionFace.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionQuality.cs
-src/Regula.FaceSDK.WebClient/Model/FaceAlignTypeQuality.cs
+src/Regula.FaceSDK.WebClient/Model/FaceImageQualityAlignType.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityGroups.cs
+src/Regula.FaceSDK.WebClient/Model/FaceImageQualityStatus.cs
 src/Regula.FaceSDK.WebClient/Model/FaceQualityConfigName.cs
 src/Regula.FaceSDK.WebClient/Model/FaceQualityScenarios.cs
-src/Regula.FaceSDK.WebClient/Model/FaceQualityStatus.cs
 src/Regula.FaceSDK.WebClient/Model/FaceSDKResult.cs
 src/Regula.FaceSDK.WebClient/Model/FaceSDKResultCode.cs
 src/Regula.FaceSDK.WebClient/Model/Group.cs

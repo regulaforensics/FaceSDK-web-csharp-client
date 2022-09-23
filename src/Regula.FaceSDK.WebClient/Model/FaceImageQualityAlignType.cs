@@ -25,55 +25,36 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face detection scenarios.
+    /// The aspect ratio according to which face alignment is performed during face detection.
     /// </summary>
-    /// <value>Face detection scenarios.</value>
+    /// <value>The aspect ratio according to which face alignment is performed during face detection.</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
-    
-    public enum FaceQualityScenarios
+    public enum FaceImageQualityAlignType
     {
         /// <summary>
-        /// Enum QUALITY_FULL for value: QualityFull
+        /// Enum ALIGN_3x4 for value: 0
         /// </summary>
-        [EnumMember(Value = "QualityFull")]
-        QUALITY_FULL = 1,
+        ALIGN_3x4 = 0,
 
         /// <summary>
-        /// Enum QUALITY_ICAO for value: QualityICAO
+        /// Enum ALIGN_4x5 for value: 1
         /// </summary>
-        [EnumMember(Value = "QualityICAO")]
-        QUALITY_ICAO = 2,
+        ALIGN_4x5 = 1,
 
         /// <summary>
-        /// Enum QUALITY_VISA_SCHENGEN for value: QualityVisaSchengen
+        /// Enum ALIGN_2x3 for value: 2
         /// </summary>
-        [EnumMember(Value = "QualityVisaSchengen")]
-        QUALITY_VISA_SCHENGEN = 3,
+        ALIGN_2x3 = 2,
 
         /// <summary>
-        /// Enum QUALITY_VISA_USA for value: QualityVisaUSA
+        /// Enum ALIGN_1x1 for value: 3
         /// </summary>
-        [EnumMember(Value = "QualityVisaUSA")]
-        QUALITY_VISA_USA = 4,
+        ALIGN_1x1 = 3,
 
         /// <summary>
-        /// Enum CROP_CENTRAL_FACE for value: CropCentralFace
+        /// Enum ALIGN_7x9 for value: 4
         /// </summary>
-        [EnumMember(Value = "CropCentralFace")]
-        CROP_CENTRAL_FACE = 5,
-
-        /// <summary>
-        /// Enum CROP_ALL_FACES for value: CropAllFaces
-        /// </summary>
-        [EnumMember(Value = "CropAllFaces")]
-        CROP_ALL_FACES = 6,
-
-        /// <summary>
-        /// Enum THUMBNAIL for value: Thumbnail
-        /// </summary>
-        [EnumMember(Value = "Thumbnail")]
-        THUMBNAIL = 7
+        ALIGN_7x9 = 4
 
     }
 

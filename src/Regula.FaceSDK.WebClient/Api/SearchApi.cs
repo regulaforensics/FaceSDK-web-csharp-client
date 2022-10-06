@@ -33,8 +33,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>SearchResult</returns>
-        SearchResult Search (SearchRequest searchRequest);
+        SearchResult Search (SearchRequest searchRequest, string xRequestID = default(string));
 
         /// <summary>
         /// Find person by image in groups.
@@ -44,8 +45,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of SearchResult</returns>
-        ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest);
+        ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -56,9 +58,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SearchResult</returns>
-        System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Find person by image in groups.
@@ -68,9 +71,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -187,10 +191,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>SearchResult</returns>
-        public SearchResult Search (SearchRequest searchRequest)
+        public SearchResult Search (SearchRequest searchRequest, string xRequestID = default(string))
         {
-             ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest);
+             ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -199,8 +204,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of SearchResult</returns>
-        public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest)
+        public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string))
         {
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
@@ -228,6 +234,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (searchRequest != null && searchRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(searchRequest); // http body (model) parameter
@@ -261,11 +268,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SearchResult</returns>
-        public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, cancellationToken);
+             ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -275,9 +283,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
@@ -305,6 +314,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (searchRequest != null && searchRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(searchRequest); // http body (model) parameter

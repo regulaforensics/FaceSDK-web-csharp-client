@@ -33,8 +33,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>Group</returns>
-        Group CreateGroup (GroupToCreate groupToCreate);
+        Group CreateGroup (GroupToCreate groupToCreate, string xRequestID = default(string));
 
         /// <summary>
         /// Create group
@@ -44,8 +45,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        ApiResponse<Group> CreateGroupWithHttpInfo (GroupToCreate groupToCreate);
+        ApiResponse<Group> CreateGroupWithHttpInfo (GroupToCreate groupToCreate, string xRequestID = default(string));
         /// <summary>
         /// Delete group
         /// </summary>
@@ -54,8 +56,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        void DeleteGroup (int groupId);
+        void DeleteGroup (int groupId, string xRequestID = default(string));
 
         /// <summary>
         /// Delete group
@@ -65,8 +68,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteGroupWithHttpInfo (int groupId);
+        ApiResponse<Object> DeleteGroupWithHttpInfo (int groupId, string xRequestID = default(string));
         /// <summary>
         /// Get groups
         /// </summary>
@@ -76,8 +80,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>GroupPage</returns>
-        GroupPage GetAllGroups (int page, int size);
+        GroupPage GetAllGroups (int page, int size, string xRequestID = default(string));
 
         /// <summary>
         /// Get groups
@@ -88,8 +93,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of GroupPage</returns>
-        ApiResponse<GroupPage> GetAllGroupsWithHttpInfo (int page, int size);
+        ApiResponse<GroupPage> GetAllGroupsWithHttpInfo (int page, int size, string xRequestID = default(string));
         /// <summary>
         /// Get group persons
         /// </summary>
@@ -100,8 +106,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>PersonsPage</returns>
-        PersonsPage GetAllPersonsByGroupId (int page, int size, int groupId);
+        PersonsPage GetAllPersonsByGroupId (int page, int size, int groupId, string xRequestID = default(string));
 
         /// <summary>
         /// Get group persons
@@ -113,8 +120,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of PersonsPage</returns>
-        ApiResponse<PersonsPage> GetAllPersonsByGroupIdWithHttpInfo (int page, int size, int groupId);
+        ApiResponse<PersonsPage> GetAllPersonsByGroupIdWithHttpInfo (int page, int size, int groupId, string xRequestID = default(string));
         /// <summary>
         /// Get group
         /// </summary>
@@ -123,8 +131,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>Group</returns>
-        Group GetGroup (int groupId);
+        Group GetGroup (int groupId, string xRequestID = default(string));
 
         /// <summary>
         /// Get group
@@ -134,8 +143,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        ApiResponse<Group> GetGroupWithHttpInfo (int groupId);
+        ApiResponse<Group> GetGroupWithHttpInfo (int groupId, string xRequestID = default(string));
         /// <summary>
         /// Update group
         /// </summary>
@@ -145,8 +155,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        void UpdateGroup (int groupId, GroupToCreate groupToCreate);
+        void UpdateGroup (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string));
 
         /// <summary>
         /// Update group
@@ -157,8 +168,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateGroupWithHttpInfo (int groupId, GroupToCreate groupToCreate);
+        ApiResponse<Object> UpdateGroupWithHttpInfo (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string));
         /// <summary>
         /// Add/remove persons to group
         /// </summary>
@@ -168,8 +180,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        void UpdatePersonsInGroup (int groupId, UpdateGroup updateGroup);
+        void UpdatePersonsInGroup (int groupId, UpdateGroup updateGroup, string xRequestID = default(string));
 
         /// <summary>
         /// Add/remove persons to group
@@ -180,8 +193,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdatePersonsInGroupWithHttpInfo (int groupId, UpdateGroup updateGroup);
+        ApiResponse<Object> UpdatePersonsInGroupWithHttpInfo (int groupId, UpdateGroup updateGroup, string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -192,9 +206,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Group</returns>
-        System.Threading.Tasks.Task<Group> CreateGroupAsync (GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<Group> CreateGroupAsync (GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Create group
@@ -204,9 +219,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Group>> CreateGroupWithHttpInfoAsync (GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Group>> CreateGroupWithHttpInfoAsync (GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete group
         /// </summary>
@@ -215,9 +231,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteGroupAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task DeleteGroupAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Delete group
@@ -227,9 +244,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteGroupWithHttpInfoAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteGroupWithHttpInfoAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get groups
         /// </summary>
@@ -239,9 +257,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GroupPage</returns>
-        System.Threading.Tasks.Task<GroupPage> GetAllGroupsAsync (int page, int size, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<GroupPage> GetAllGroupsAsync (int page, int size, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get groups
@@ -252,9 +271,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GroupPage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsWithHttpInfoAsync (int page, int size, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsWithHttpInfoAsync (int page, int size, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get group persons
         /// </summary>
@@ -265,9 +285,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PersonsPage</returns>
-        System.Threading.Tasks.Task<PersonsPage> GetAllPersonsByGroupIdAsync (int page, int size, int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<PersonsPage> GetAllPersonsByGroupIdAsync (int page, int size, int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get group persons
@@ -279,9 +300,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PersonsPage)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsByGroupIdWithHttpInfoAsync (int page, int size, int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsByGroupIdWithHttpInfoAsync (int page, int size, int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get group
         /// </summary>
@@ -290,9 +312,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Group</returns>
-        System.Threading.Tasks.Task<Group> GetGroupAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<Group> GetGroupAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Get group
@@ -302,9 +325,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Group>> GetGroupWithHttpInfoAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Group>> GetGroupWithHttpInfoAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update group
         /// </summary>
@@ -314,9 +338,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateGroupAsync (int groupId, GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task UpdateGroupAsync (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Update group
@@ -327,9 +352,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateGroupWithHttpInfoAsync (int groupId, GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateGroupWithHttpInfoAsync (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Add/remove persons to group
         /// </summary>
@@ -339,9 +365,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdatePersonsInGroupAsync (int groupId, UpdateGroup updateGroup, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task UpdatePersonsInGroupAsync (int groupId, UpdateGroup updateGroup, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Add/remove persons to group
@@ -352,9 +379,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonsInGroupWithHttpInfoAsync (int groupId, UpdateGroup updateGroup, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonsInGroupWithHttpInfoAsync (int groupId, UpdateGroup updateGroup, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -471,10 +499,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>Group</returns>
-        public Group CreateGroup (GroupToCreate groupToCreate)
+        public Group CreateGroup (GroupToCreate groupToCreate, string xRequestID = default(string))
         {
-             ApiResponse<Group> localVarResponse = CreateGroupWithHttpInfo(groupToCreate);
+             ApiResponse<Group> localVarResponse = CreateGroupWithHttpInfo(groupToCreate, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -483,8 +512,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        public ApiResponse<Group> CreateGroupWithHttpInfo (GroupToCreate groupToCreate)
+        public ApiResponse<Group> CreateGroupWithHttpInfo (GroupToCreate groupToCreate, string xRequestID = default(string))
         {
             // verify the required parameter 'groupToCreate' is set
             if (groupToCreate == null)
@@ -512,6 +542,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (groupToCreate != null && groupToCreate.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(groupToCreate); // http body (model) parameter
@@ -545,11 +576,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Group</returns>
-        public async System.Threading.Tasks.Task<Group> CreateGroupAsync (GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<Group> CreateGroupAsync (GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<Group> localVarResponse = await CreateGroupWithHttpInfoAsync(groupToCreate, cancellationToken);
+             ApiResponse<Group> localVarResponse = await CreateGroupWithHttpInfoAsync(groupToCreate, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -559,9 +591,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupToCreate">Request body for the group to create.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Group>> CreateGroupWithHttpInfoAsync (GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Group>> CreateGroupWithHttpInfoAsync (GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'groupToCreate' is set
             if (groupToCreate == null)
@@ -589,6 +622,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (groupToCreate != null && groupToCreate.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(groupToCreate); // http body (model) parameter
@@ -622,10 +656,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        public void DeleteGroup (int groupId)
+        public void DeleteGroup (int groupId, string xRequestID = default(string))
         {
-             DeleteGroupWithHttpInfo(groupId);
+             DeleteGroupWithHttpInfo(groupId, xRequestID);
         }
 
         /// <summary>
@@ -633,8 +668,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteGroupWithHttpInfo (int groupId)
+        public ApiResponse<Object> DeleteGroupWithHttpInfo (int groupId, string xRequestID = default(string))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -662,6 +698,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -687,11 +724,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteGroupAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task DeleteGroupAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             await DeleteGroupWithHttpInfoAsync(groupId, cancellationToken);
+             await DeleteGroupWithHttpInfoAsync(groupId, xRequestID, cancellationToken);
 
         }
 
@@ -700,9 +738,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteGroupWithHttpInfoAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteGroupWithHttpInfoAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -730,6 +769,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -756,10 +796,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>GroupPage</returns>
-        public GroupPage GetAllGroups (int page, int size)
+        public GroupPage GetAllGroups (int page, int size, string xRequestID = default(string))
         {
-             ApiResponse<GroupPage> localVarResponse = GetAllGroupsWithHttpInfo(page, size);
+             ApiResponse<GroupPage> localVarResponse = GetAllGroupsWithHttpInfo(page, size, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -769,8 +810,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of GroupPage</returns>
-        public ApiResponse<GroupPage> GetAllGroupsWithHttpInfo (int page, int size)
+        public ApiResponse<GroupPage> GetAllGroupsWithHttpInfo (int page, int size, string xRequestID = default(string))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -802,6 +844,7 @@ namespace Regula.FaceSDK.WebClient.Api
 
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -828,11 +871,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of GroupPage</returns>
-        public async System.Threading.Tasks.Task<GroupPage> GetAllGroupsAsync (int page, int size, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<GroupPage> GetAllGroupsAsync (int page, int size, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<GroupPage> localVarResponse = await GetAllGroupsWithHttpInfoAsync(page, size, cancellationToken);
+             ApiResponse<GroupPage> localVarResponse = await GetAllGroupsWithHttpInfoAsync(page, size, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -843,9 +887,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (GroupPage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsWithHttpInfoAsync (int page, int size, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<GroupPage>> GetAllGroupsWithHttpInfoAsync (int page, int size, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -877,6 +922,7 @@ namespace Regula.FaceSDK.WebClient.Api
 
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -904,10 +950,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>PersonsPage</returns>
-        public PersonsPage GetAllPersonsByGroupId (int page, int size, int groupId)
+        public PersonsPage GetAllPersonsByGroupId (int page, int size, int groupId, string xRequestID = default(string))
         {
-             ApiResponse<PersonsPage> localVarResponse = GetAllPersonsByGroupIdWithHttpInfo(page, size, groupId);
+             ApiResponse<PersonsPage> localVarResponse = GetAllPersonsByGroupIdWithHttpInfo(page, size, groupId, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -918,8 +965,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of PersonsPage</returns>
-        public ApiResponse<PersonsPage> GetAllPersonsByGroupIdWithHttpInfo (int page, int size, int groupId)
+        public ApiResponse<PersonsPage> GetAllPersonsByGroupIdWithHttpInfo (int page, int size, int groupId, string xRequestID = default(string))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -955,6 +1003,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -982,11 +1031,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of PersonsPage</returns>
-        public async System.Threading.Tasks.Task<PersonsPage> GetAllPersonsByGroupIdAsync (int page, int size, int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<PersonsPage> GetAllPersonsByGroupIdAsync (int page, int size, int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<PersonsPage> localVarResponse = await GetAllPersonsByGroupIdWithHttpInfoAsync(page, size, groupId, cancellationToken);
+             ApiResponse<PersonsPage> localVarResponse = await GetAllPersonsByGroupIdWithHttpInfoAsync(page, size, groupId, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -998,9 +1048,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="page">The page number to get a list of persons or groups.</param>
         /// <param name="size">The page size with a list of persons or groups, items.</param>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (PersonsPage)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsByGroupIdWithHttpInfoAsync (int page, int size, int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<PersonsPage>> GetAllPersonsByGroupIdWithHttpInfoAsync (int page, int size, int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'page' is set
             if (page == null)
@@ -1036,6 +1087,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
             if (page != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "page", page)); // query parameter
             if (size != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "size", size)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -1061,10 +1113,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>Group</returns>
-        public Group GetGroup (int groupId)
+        public Group GetGroup (int groupId, string xRequestID = default(string))
         {
-             ApiResponse<Group> localVarResponse = GetGroupWithHttpInfo(groupId);
+             ApiResponse<Group> localVarResponse = GetGroupWithHttpInfo(groupId, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -1073,8 +1126,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        public ApiResponse<Group> GetGroupWithHttpInfo (int groupId)
+        public ApiResponse<Group> GetGroupWithHttpInfo (int groupId, string xRequestID = default(string))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1102,6 +1156,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -1127,11 +1182,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of Group</returns>
-        public async System.Threading.Tasks.Task<Group> GetGroupAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<Group> GetGroupAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<Group> localVarResponse = await GetGroupWithHttpInfoAsync(groupId, cancellationToken);
+             ApiResponse<Group> localVarResponse = await GetGroupWithHttpInfoAsync(groupId, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -1141,9 +1197,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Group>> GetGroupWithHttpInfoAsync (int groupId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Group>> GetGroupWithHttpInfoAsync (int groupId, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1171,6 +1228,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -1197,10 +1255,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        public void UpdateGroup (int groupId, GroupToCreate groupToCreate)
+        public void UpdateGroup (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string))
         {
-             UpdateGroupWithHttpInfo(groupId, groupToCreate);
+             UpdateGroupWithHttpInfo(groupId, groupToCreate, xRequestID);
         }
 
         /// <summary>
@@ -1209,8 +1268,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdateGroupWithHttpInfo (int groupId, GroupToCreate groupToCreate)
+        public ApiResponse<Object> UpdateGroupWithHttpInfo (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1242,6 +1302,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (groupToCreate != null && groupToCreate.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(groupToCreate); // http body (model) parameter
@@ -1276,11 +1337,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateGroupAsync (int groupId, GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task UpdateGroupAsync (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             await UpdateGroupWithHttpInfoAsync(groupId, groupToCreate, cancellationToken);
+             await UpdateGroupWithHttpInfoAsync(groupId, groupToCreate, xRequestID, cancellationToken);
 
         }
 
@@ -1290,9 +1352,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="groupToCreate">Request body for the group to update.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateGroupWithHttpInfoAsync (int groupId, GroupToCreate groupToCreate, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdateGroupWithHttpInfoAsync (int groupId, GroupToCreate groupToCreate, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1324,6 +1387,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (groupToCreate != null && groupToCreate.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(groupToCreate); // http body (model) parameter
@@ -1358,10 +1422,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns></returns>
-        public void UpdatePersonsInGroup (int groupId, UpdateGroup updateGroup)
+        public void UpdatePersonsInGroup (int groupId, UpdateGroup updateGroup, string xRequestID = default(string))
         {
-             UpdatePersonsInGroupWithHttpInfo(groupId, updateGroup);
+             UpdatePersonsInGroupWithHttpInfo(groupId, updateGroup, xRequestID);
         }
 
         /// <summary>
@@ -1370,8 +1435,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UpdatePersonsInGroupWithHttpInfo (int groupId, UpdateGroup updateGroup)
+        public ApiResponse<Object> UpdatePersonsInGroupWithHttpInfo (int groupId, UpdateGroup updateGroup, string xRequestID = default(string))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1403,6 +1469,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (updateGroup != null && updateGroup.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateGroup); // http body (model) parameter
@@ -1437,11 +1504,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdatePersonsInGroupAsync (int groupId, UpdateGroup updateGroup, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task UpdatePersonsInGroupAsync (int groupId, UpdateGroup updateGroup, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             await UpdatePersonsInGroupWithHttpInfoAsync(groupId, updateGroup, cancellationToken);
+             await UpdatePersonsInGroupWithHttpInfoAsync(groupId, updateGroup, xRequestID, cancellationToken);
 
         }
 
@@ -1451,9 +1519,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="groupId">Group ID.</param>
         /// <param name="updateGroup">Request body for person IDs to add or remove.</param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonsInGroupWithHttpInfoAsync (int groupId, UpdateGroup updateGroup, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> UpdatePersonsInGroupWithHttpInfoAsync (int groupId, UpdateGroup updateGroup, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'groupId' is set
             if (groupId == null)
@@ -1485,6 +1554,7 @@ namespace Regula.FaceSDK.WebClient.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (groupId != null) localVarPathParams.Add("group_id", this.Configuration.ApiClient.ParameterToString(groupId)); // path parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (updateGroup != null && updateGroup.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(updateGroup); // http body (model) parameter

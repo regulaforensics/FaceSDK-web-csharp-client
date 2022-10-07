@@ -33,8 +33,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>DetectResponse</returns>
-        DetectResponse Detect (DetectRequest detectRequest);
+        DetectResponse Detect (DetectRequest detectRequest, string xRequestID = default(string));
 
         /// <summary>
         /// Detect facial coordinates
@@ -44,8 +45,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of DetectResponse</returns>
-        ApiResponse<DetectResponse> DetectWithHttpInfo (DetectRequest detectRequest);
+        ApiResponse<DetectResponse> DetectWithHttpInfo (DetectRequest detectRequest, string xRequestID = default(string));
         /// <summary>
         /// Compare provided face images in all combinations and return similarity score for each pair.
         /// </summary>
@@ -54,8 +56,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>MatchResponse</returns>
-        MatchResponse Match (MatchRequest matchRequest);
+        MatchResponse Match (MatchRequest matchRequest, string xRequestID = default(string));
 
         /// <summary>
         /// Compare provided face images in all combinations and return similarity score for each pair.
@@ -65,8 +68,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of MatchResponse</returns>
-        ApiResponse<MatchResponse> MatchWithHttpInfo (MatchRequest matchRequest);
+        ApiResponse<MatchResponse> MatchWithHttpInfo (MatchRequest matchRequest, string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -77,9 +81,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of DetectResponse</returns>
-        System.Threading.Tasks.Task<DetectResponse> DetectAsync (DetectRequest detectRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<DetectResponse> DetectAsync (DetectRequest detectRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Detect facial coordinates
@@ -89,9 +94,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (DetectResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DetectResponse>> DetectWithHttpInfoAsync (DetectRequest detectRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<DetectResponse>> DetectWithHttpInfoAsync (DetectRequest detectRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Compare provided face images in all combinations and return similarity score for each pair.
         /// </summary>
@@ -100,9 +106,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of MatchResponse</returns>
-        System.Threading.Tasks.Task<MatchResponse> MatchAsync (MatchRequest matchRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<MatchResponse> MatchAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Compare provided face images in all combinations and return similarity score for each pair.
@@ -112,9 +119,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (MatchResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MatchResponse>> MatchWithHttpInfoAsync (MatchRequest matchRequest, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<MatchResponse>> MatchWithHttpInfoAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -231,10 +239,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>DetectResponse</returns>
-        public DetectResponse Detect (DetectRequest detectRequest)
+        public DetectResponse Detect (DetectRequest detectRequest, string xRequestID = default(string))
         {
-             ApiResponse<DetectResponse> localVarResponse = DetectWithHttpInfo(detectRequest);
+             ApiResponse<DetectResponse> localVarResponse = DetectWithHttpInfo(detectRequest, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -243,8 +252,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of DetectResponse</returns>
-        public ApiResponse<DetectResponse> DetectWithHttpInfo (DetectRequest detectRequest)
+        public ApiResponse<DetectResponse> DetectWithHttpInfo (DetectRequest detectRequest, string xRequestID = default(string))
         {
             // verify the required parameter 'detectRequest' is set
             if (detectRequest == null)
@@ -272,6 +282,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (detectRequest != null && detectRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(detectRequest); // http body (model) parameter
@@ -305,11 +316,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of DetectResponse</returns>
-        public async System.Threading.Tasks.Task<DetectResponse> DetectAsync (DetectRequest detectRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<DetectResponse> DetectAsync (DetectRequest detectRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<DetectResponse> localVarResponse = await DetectWithHttpInfoAsync(detectRequest, cancellationToken);
+             ApiResponse<DetectResponse> localVarResponse = await DetectWithHttpInfoAsync(detectRequest, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -319,9 +331,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="detectRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (DetectResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DetectResponse>> DetectWithHttpInfoAsync (DetectRequest detectRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<DetectResponse>> DetectWithHttpInfoAsync (DetectRequest detectRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'detectRequest' is set
             if (detectRequest == null)
@@ -349,6 +362,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (detectRequest != null && detectRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(detectRequest); // http body (model) parameter
@@ -382,10 +396,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>MatchResponse</returns>
-        public MatchResponse Match (MatchRequest matchRequest)
+        public MatchResponse Match (MatchRequest matchRequest, string xRequestID = default(string))
         {
-             ApiResponse<MatchResponse> localVarResponse = MatchWithHttpInfo(matchRequest);
+             ApiResponse<MatchResponse> localVarResponse = MatchWithHttpInfo(matchRequest, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -394,8 +409,9 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of MatchResponse</returns>
-        public ApiResponse<MatchResponse> MatchWithHttpInfo (MatchRequest matchRequest)
+        public ApiResponse<MatchResponse> MatchWithHttpInfo (MatchRequest matchRequest, string xRequestID = default(string))
         {
             // verify the required parameter 'matchRequest' is set
             if (matchRequest == null)
@@ -423,6 +439,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (matchRequest != null && matchRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(matchRequest); // http body (model) parameter
@@ -456,11 +473,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of MatchResponse</returns>
-        public async System.Threading.Tasks.Task<MatchResponse> MatchAsync (MatchRequest matchRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<MatchResponse> MatchAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<MatchResponse> localVarResponse = await MatchWithHttpInfoAsync(matchRequest, cancellationToken);
+             ApiResponse<MatchResponse> localVarResponse = await MatchWithHttpInfoAsync(matchRequest, xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
@@ -470,9 +488,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (MatchResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MatchResponse>> MatchWithHttpInfoAsync (MatchRequest matchRequest, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<MatchResponse>> MatchWithHttpInfoAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'matchRequest' is set
             if (matchRequest == null)
@@ -500,6 +519,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
             if (matchRequest != null && matchRequest.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(matchRequest); // http body (model) parameter

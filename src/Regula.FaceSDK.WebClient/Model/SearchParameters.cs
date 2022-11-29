@@ -25,19 +25,18 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// SearchRequest
+    /// Request search data.
     /// </summary>
     [DataContract]
-    public partial class SearchRequest :  IEquatable<SearchRequest>, IValidatableObject
+    public partial class SearchParameters :  IEquatable<SearchParameters>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchRequest" /> class.
+        /// Initializes a new instance of the <see cref="SearchParameters" /> class.
         /// </summary>
         /// <param name="limit">The number of returned Persons limit. (default to 100).</param>
         /// <param name="threshold">The similarity distance threshold..</param>
         /// <param name="groupIds">The IDs of the groups in which the search is performed..</param>
-        /// <param name="image">image.</param>
-        public SearchRequest(int limit = 100, float threshold = default(float), List<int> groupIds = default(List<int>), ImageFieldsImage image = default(ImageFieldsImage))
+        public SearchParameters(int limit = 100, float threshold = default(float), List<int> groupIds = default(List<int>))
         {
             // use default value if no "limit" provided
             if (limit == null)
@@ -50,7 +49,6 @@ namespace Regula.FaceSDK.WebClient.Model
             }
             this.Threshold = threshold;
             this.GroupIds = groupIds;
-            this.Image = image;
         }
 
         /// <summary>
@@ -75,23 +73,16 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<int> GroupIds { get; set; }
 
         /// <summary>
-        /// Gets or Sets Image
-        /// </summary>
-        [DataMember(Name="image", EmitDefaultValue=false)]
-        public ImageFieldsImage Image { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchRequest {\n");
+            sb.Append("class SearchParameters {\n");
             sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("  Threshold: ").Append(Threshold).Append("\n");
             sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
-            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -112,15 +103,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchRequest);
+            return this.Equals(input as SearchParameters);
         }
 
         /// <summary>
-        /// Returns true if SearchRequest instances are equal
+        /// Returns true if SearchParameters instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchRequest to be compared</param>
+        /// <param name="input">Instance of SearchParameters to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchRequest input)
+        public bool Equals(SearchParameters input)
         {
             if (input == null)
                 return false;
@@ -141,11 +132,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.GroupIds != null &&
                     input.GroupIds != null &&
                     this.GroupIds.SequenceEqual(input.GroupIds)
-                ) && 
-                (
-                    this.Image == input.Image ||
-                    (this.Image != null &&
-                    this.Image.Equals(input.Image))
                 );
         }
 
@@ -164,8 +150,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Threshold.GetHashCode();
                 if (this.GroupIds != null)
                     hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
-                if (this.Image != null)
-                    hashCode = hashCode * 59 + this.Image.GetHashCode();
                 return hashCode;
             }
         }

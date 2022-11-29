@@ -25,51 +25,34 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Crop
+    /// MatchAndSearchRequestAllOfImages
     /// </summary>
     [DataContract]
-    public partial class Crop :  IEquatable<Crop>, IValidatableObject
+    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
     {
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public FaceImageQualityAlignType? Type { get; set; }
+        public ImageSource? Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="Crop" /> class.
+        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
         /// </summary>
+        /// <param name="content">Base64 encoded image..</param>
         /// <param name="type">type.</param>
-        /// <param name="padColor">padColor.</param>
-        /// <param name="size">The resize value in case type matches this value. If it doesn&#39;t, no resize is done..</param>
-        /// <param name="returnOriginalRect">Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop..</param>
-        public Crop(FaceImageQualityAlignType? type = default(FaceImageQualityAlignType?), List<int> padColor = default(List<int>), List<int> size = default(List<int>), bool returnOriginalRect = default(bool))
+        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
         {
+            this.Content = content;
             this.Type = type;
-            this.PadColor = padColor;
-            this.Size = size;
-            this.ReturnOriginalRect = returnOriginalRect;
         }
 
-
         /// <summary>
-        /// Gets or Sets PadColor
+        /// Base64 encoded image.
         /// </summary>
-        [DataMember(Name="padColor", EmitDefaultValue=false)]
-        public List<int> PadColor { get; set; }
+        /// <value>Base64 encoded image.</value>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public byte[] Content { get; set; }
 
-        /// <summary>
-        /// The resize value in case type matches this value. If it doesn&#39;t, no resize is done.
-        /// </summary>
-        /// <value>The resize value in case type matches this value. If it doesn&#39;t, no resize is done.</value>
-        [DataMember(Name="size", EmitDefaultValue=false)]
-        public List<int> Size { get; set; }
-
-        /// <summary>
-        /// Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.
-        /// </summary>
-        /// <value>Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.</value>
-        [DataMember(Name="returnOriginalRect", EmitDefaultValue=false)]
-        public bool ReturnOriginalRect { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,11 +61,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Crop {\n");
+            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  PadColor: ").Append(PadColor).Append("\n");
-            sb.Append("  Size: ").Append(Size).Append("\n");
-            sb.Append("  ReturnOriginalRect: ").Append(ReturnOriginalRect).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,41 +84,29 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Crop);
+            return this.Equals(input as MatchAndSearchRequestAllOfImages);
         }
 
         /// <summary>
-        /// Returns true if Crop instances are equal
+        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
         /// </summary>
-        /// <param name="input">Instance of Crop to be compared</param>
+        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Crop input)
+        public bool Equals(MatchAndSearchRequestAllOfImages input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
+                ) && 
+                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.PadColor == input.PadColor ||
-                    this.PadColor != null &&
-                    input.PadColor != null &&
-                    this.PadColor.SequenceEqual(input.PadColor)
-                ) && 
-                (
-                    this.Size == input.Size ||
-                    this.Size != null &&
-                    input.Size != null &&
-                    this.Size.SequenceEqual(input.Size)
-                ) && 
-                (
-                    this.ReturnOriginalRect == input.ReturnOriginalRect ||
-                    (this.ReturnOriginalRect != null &&
-                    this.ReturnOriginalRect.Equals(input.ReturnOriginalRect))
                 );
         }
 
@@ -150,14 +119,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.PadColor != null)
-                    hashCode = hashCode * 59 + this.PadColor.GetHashCode();
-                if (this.Size != null)
-                    hashCode = hashCode * 59 + this.Size.GetHashCode();
-                if (this.ReturnOriginalRect != null)
-                    hashCode = hashCode * 59 + this.ReturnOriginalRect.GetHashCode();
                 return hashCode;
             }
         }
@@ -169,10 +134,6 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-
-
-
-
             yield break;
         }
     }

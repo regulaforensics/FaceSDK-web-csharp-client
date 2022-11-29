@@ -49,7 +49,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <returns>ApiResponse of DetectResponse</returns>
         ApiResponse<DetectResponse> DetectWithHttpInfo (DetectRequest detectRequest, string xRequestID = default(string));
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair.
+        /// Compare provided face images in all combinations and return the similarity score for each pair.
         /// </summary>
         /// <remarks>
         /// 
@@ -61,7 +61,7 @@ namespace Regula.FaceSDK.WebClient.Api
         MatchResponse Match (MatchRequest matchRequest, string xRequestID = default(string));
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair.
+        /// Compare provided face images in all combinations and return the similarity score for each pair.
         /// </summary>
         /// <remarks>
         /// 
@@ -71,6 +71,29 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="xRequestID"> (optional)</param>
         /// <returns>ApiResponse of MatchResponse</returns>
         ApiResponse<MatchResponse> MatchWithHttpInfo (MatchRequest matchRequest, string xRequestID = default(string));
+        /// <summary>
+        /// Match and Search in one request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <returns>MatchAndSearchResponse</returns>
+        MatchAndSearchResponse MatchAndSearch (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string));
+
+        /// <summary>
+        /// Match and Search in one request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <returns>ApiResponse of MatchAndSearchResponse</returns>
+        ApiResponse<MatchAndSearchResponse> MatchAndSearchWithHttpInfo (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -99,7 +122,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <returns>Task of ApiResponse (DetectResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DetectResponse>> DetectWithHttpInfoAsync (DetectRequest detectRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair.
+        /// Compare provided face images in all combinations and return the similarity score for each pair.
         /// </summary>
         /// <remarks>
         /// 
@@ -112,7 +135,7 @@ namespace Regula.FaceSDK.WebClient.Api
         System.Threading.Tasks.Task<MatchResponse> MatchAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair.
+        /// Compare provided face images in all combinations and return the similarity score for each pair.
         /// </summary>
         /// <remarks>
         /// 
@@ -123,6 +146,31 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (MatchResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<MatchResponse>> MatchWithHttpInfoAsync (MatchRequest matchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Match and Search in one request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of MatchAndSearchResponse</returns>
+        System.Threading.Tasks.Task<MatchAndSearchResponse> MatchAndSearchAsync (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Match and Search in one request
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (MatchAndSearchResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MatchAndSearchResponse>> MatchAndSearchWithHttpInfoAsync (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -392,7 +440,7 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair. 
+        /// Compare provided face images in all combinations and return the similarity score for each pair. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
@@ -405,7 +453,7 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair. 
+        /// Compare provided face images in all combinations and return the similarity score for each pair. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
@@ -469,7 +517,7 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair. 
+        /// Compare provided face images in all combinations and return the similarity score for each pair. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
@@ -484,7 +532,7 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Compare provided face images in all combinations and return similarity score for each pair. 
+        /// Compare provided face images in all combinations and return the similarity score for each pair. 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="matchRequest"></param>
@@ -546,6 +594,163 @@ namespace Regula.FaceSDK.WebClient.Api
             return new ApiResponse<MatchResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
                 (MatchResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatchResponse)));
+        }
+
+        /// <summary>
+        /// Match and Search in one request 
+        /// </summary>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <returns>MatchAndSearchResponse</returns>
+        public MatchAndSearchResponse MatchAndSearch (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string))
+        {
+             ApiResponse<MatchAndSearchResponse> localVarResponse = MatchAndSearchWithHttpInfo(matchAndSearchRequest, xRequestID);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Match and Search in one request 
+        /// </summary>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <returns>ApiResponse of MatchAndSearchResponse</returns>
+        public ApiResponse<MatchAndSearchResponse> MatchAndSearchWithHttpInfo (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string))
+        {
+            // verify the required parameter 'matchAndSearchRequest' is set
+            if (matchAndSearchRequest == null)
+                throw new ApiException(400, "Missing required parameter 'matchAndSearchRequest' when calling MatchingApi->MatchAndSearch");
+
+            var localVarPath = "/api/match_and_search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
+            if (matchAndSearchRequest != null && matchAndSearchRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(matchAndSearchRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = matchAndSearchRequest; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MatchAndSearch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MatchAndSearchResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (MatchAndSearchResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatchAndSearchResponse)));
+        }
+
+        /// <summary>
+        /// Match and Search in one request 
+        /// </summary>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of MatchAndSearchResponse</returns>
+        public async System.Threading.Tasks.Task<MatchAndSearchResponse> MatchAndSearchAsync (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+             ApiResponse<MatchAndSearchResponse> localVarResponse = await MatchAndSearchWithHttpInfoAsync(matchAndSearchRequest, xRequestID, cancellationToken);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Match and Search in one request 
+        /// </summary>
+        /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="matchAndSearchRequest"></param>
+        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
+        /// <returns>Task of ApiResponse (MatchAndSearchResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<MatchAndSearchResponse>> MatchAndSearchWithHttpInfoAsync (MatchAndSearchRequest matchAndSearchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+            // verify the required parameter 'matchAndSearchRequest' is set
+            if (matchAndSearchRequest == null)
+                throw new ApiException(400, "Missing required parameter 'matchAndSearchRequest' when calling MatchingApi->MatchAndSearch");
+
+            var localVarPath = "/api/match_and_search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
+            if (matchAndSearchRequest != null && matchAndSearchRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(matchAndSearchRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = matchAndSearchRequest; // byte array
+            }
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType, cancellationToken);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MatchAndSearch", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<MatchAndSearchResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (MatchAndSearchResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatchAndSearchResponse)));
         }
 
     }

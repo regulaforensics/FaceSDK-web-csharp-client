@@ -36,17 +36,23 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="id">Response image ID..</param>
         /// <param name="contentType">The original media type of the returned image..</param>
         /// <param name="createdAt">The returned image creation date..</param>
+        /// <param name="updatedAt">The returned image update date..</param>
         /// <param name="path">The returned image S3 path..</param>
         /// <param name="url">The returned image URL..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="similarity">The similarity score..</param>
-        public RecognizeImage(int id = default(int), string contentType = default(string), string createdAt = default(string), string path = default(string), string url = default(string), float similarity = default(float))
+        /// <param name="distance">The similarity distance score: the lower the distance, the higher the face&#39;s similarity..</param>
+        public RecognizeImage(int id = default(int), string contentType = default(string), string createdAt = default(string), string updatedAt = default(string), string path = default(string), string url = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), float similarity = default(float), float distance = default(float))
         {
             this.Id = id;
             this.ContentType = contentType;
             this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
             this.Path = path;
             this.Url = url;
+            this.Metadata = metadata;
             this.Similarity = similarity;
+            this.Distance = distance;
         }
 
         /// <summary>
@@ -71,6 +77,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public string CreatedAt { get; set; }
 
         /// <summary>
+        /// The returned image update date.
+        /// </summary>
+        /// <value>The returned image update date.</value>
+        [DataMember(Name="updated_at", EmitDefaultValue=false)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
         /// The returned image S3 path.
         /// </summary>
         /// <value>The returned image S3 path.</value>
@@ -85,11 +98,25 @@ namespace Regula.FaceSDK.WebClient.Model
         public string Url { get; set; }
 
         /// <summary>
+        /// A free-form object containing person&#39;s extended attributes.
+        /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
+
+        /// <summary>
         /// The similarity score.
         /// </summary>
         /// <value>The similarity score.</value>
         [DataMember(Name="similarity", EmitDefaultValue=false)]
         public float Similarity { get; set; }
+
+        /// <summary>
+        /// The similarity distance score: the lower the distance, the higher the face&#39;s similarity.
+        /// </summary>
+        /// <value>The similarity distance score: the lower the distance, the higher the face&#39;s similarity.</value>
+        [DataMember(Name="distance", EmitDefaultValue=false)]
+        public float Distance { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,9 +129,12 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Url: ").Append(Url).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Similarity: ").Append(Similarity).Append("\n");
+            sb.Append("  Distance: ").Append(Distance).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +185,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.CreatedAt.Equals(input.CreatedAt))
                 ) && 
                 (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
                     this.Path == input.Path ||
                     (this.Path != null &&
                     this.Path.Equals(input.Path))
@@ -165,9 +200,20 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Url.Equals(input.Url))
                 ) && 
                 (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
                     this.Similarity == input.Similarity ||
                     (this.Similarity != null &&
                     this.Similarity.Equals(input.Similarity))
+                ) && 
+                (
+                    this.Distance == input.Distance ||
+                    (this.Distance != null &&
+                    this.Distance.Equals(input.Distance))
                 );
         }
 
@@ -186,12 +232,18 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.ContentType.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.UpdatedAt != null)
+                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.Url != null)
                     hashCode = hashCode * 59 + this.Url.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Similarity != null)
                     hashCode = hashCode * 59 + this.Similarity.GetHashCode();
+                if (this.Distance != null)
+                    hashCode = hashCode * 59 + this.Distance.GetHashCode();
                 return hashCode;
             }
         }

@@ -33,6 +33,10 @@ src/Regula.FaceSDK.WebClient/Model/ImageFields.cs
 src/Regula.FaceSDK.WebClient/Model/ImageFieldsImage.cs
 src/Regula.FaceSDK.WebClient/Model/ImagePage.cs
 src/Regula.FaceSDK.WebClient/Model/ImageSource.cs
+src/Regula.FaceSDK.WebClient/Model/MatchAndSearchRequest.cs
+src/Regula.FaceSDK.WebClient/Model/MatchAndSearchRequestAllOfImages.cs
+src/Regula.FaceSDK.WebClient/Model/MatchAndSearchResponse.cs
+src/Regula.FaceSDK.WebClient/Model/MatchAndSearchResponseAllOfDetections.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImage.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImageDetection.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImageResult.cs
@@ -43,6 +47,7 @@ src/Regula.FaceSDK.WebClient/Model/OutputImageParams.cs
 src/Regula.FaceSDK.WebClient/Model/Page.cs
 src/Regula.FaceSDK.WebClient/Model/Person.cs
 src/Regula.FaceSDK.WebClient/Model/PersonFields.cs
+src/Regula.FaceSDK.WebClient/Model/PersonWithImages.cs
 src/Regula.FaceSDK.WebClient/Model/PersonsPage.cs
 src/Regula.FaceSDK.WebClient/Model/ProcessParam.cs
 src/Regula.FaceSDK.WebClient/Model/QualityConfig.cs
@@ -50,6 +55,7 @@ src/Regula.FaceSDK.WebClient/Model/QualityDetail.cs
 src/Regula.FaceSDK.WebClient/Model/QualityDetailsGroups.cs
 src/Regula.FaceSDK.WebClient/Model/QualityRequest.cs
 src/Regula.FaceSDK.WebClient/Model/RecognizeImage.cs
+src/Regula.FaceSDK.WebClient/Model/SearchParameters.cs
 src/Regula.FaceSDK.WebClient/Model/SearchPerson.cs
 src/Regula.FaceSDK.WebClient/Model/SearchRequest.cs
 src/Regula.FaceSDK.WebClient/Model/SearchResult.cs

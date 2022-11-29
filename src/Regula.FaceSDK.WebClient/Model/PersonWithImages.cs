@@ -25,73 +25,42 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Image in the response.
+    /// PersonWithImages
     /// </summary>
     [DataContract]
-    public partial class Image :  IEquatable<Image>, IValidatableObject
+    public partial class PersonWithImages :  IEquatable<PersonWithImages>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Image" /> class.
+        /// Initializes a new instance of the <see cref="PersonWithImages" /> class.
         /// </summary>
-        /// <param name="id">Response image ID..</param>
-        /// <param name="contentType">The original media type of the returned image..</param>
-        /// <param name="createdAt">The returned image creation date..</param>
-        /// <param name="updatedAt">The returned image update date..</param>
-        /// <param name="path">The returned image S3 path..</param>
-        /// <param name="url">The returned image URL..</param>
+        /// <param name="images">images.</param>
+        /// <param name="name">Person name..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        public Image(int id = default(int), string contentType = default(string), string createdAt = default(string), string updatedAt = default(string), string path = default(string), string url = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
+        /// <param name="id">Person ID..</param>
+        /// <param name="createdAt">Person creation date..</param>
+        /// <param name="updatedAt">Person update date..</param>
+        public PersonWithImages(List<RecognizeImage> images = default(List<RecognizeImage>), string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int id = default(int), string createdAt = default(string), string updatedAt = default(string))
         {
+            this.Images = images;
+            this.Name = name;
+            this.Metadata = metadata;
             this.Id = id;
-            this.ContentType = contentType;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
-            this.Path = path;
-            this.Url = url;
-            this.Metadata = metadata;
         }
 
         /// <summary>
-        /// Response image ID.
+        /// Gets or Sets Images
         /// </summary>
-        /// <value>Response image ID.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public int Id { get; set; }
+        [DataMember(Name="images", EmitDefaultValue=false)]
+        public List<RecognizeImage> Images { get; set; }
 
         /// <summary>
-        /// The original media type of the returned image.
+        /// Person name.
         /// </summary>
-        /// <value>The original media type of the returned image.</value>
-        [DataMember(Name="content_type", EmitDefaultValue=false)]
-        public string ContentType { get; set; }
-
-        /// <summary>
-        /// The returned image creation date.
-        /// </summary>
-        /// <value>The returned image creation date.</value>
-        [DataMember(Name="created_at", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// The returned image update date.
-        /// </summary>
-        /// <value>The returned image update date.</value>
-        [DataMember(Name="updated_at", EmitDefaultValue=false)]
-        public string UpdatedAt { get; set; }
-
-        /// <summary>
-        /// The returned image S3 path.
-        /// </summary>
-        /// <value>The returned image S3 path.</value>
-        [DataMember(Name="path", EmitDefaultValue=false)]
-        public string Path { get; set; }
-
-        /// <summary>
-        /// The returned image URL.
-        /// </summary>
-        /// <value>The returned image URL.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
-        public string Url { get; set; }
+        /// <value>Person name.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// A free-form object containing person&#39;s extended attributes.
@@ -101,20 +70,40 @@ namespace Regula.FaceSDK.WebClient.Model
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
+        /// Person ID.
+        /// </summary>
+        /// <value>Person ID.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Person creation date.
+        /// </summary>
+        /// <value>Person creation date.</value>
+        [DataMember(Name="created_at", EmitDefaultValue=false)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Person update date.
+        /// </summary>
+        /// <value>Person update date.</value>
+        [DataMember(Name="updated_at", EmitDefaultValue=false)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Image {\n");
+            sb.Append("class PersonWithImages {\n");
+            sb.Append("  Images: ").Append(Images).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Path: ").Append(Path).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -135,29 +124,41 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Image);
+            return this.Equals(input as PersonWithImages);
         }
 
         /// <summary>
-        /// Returns true if Image instances are equal
+        /// Returns true if PersonWithImages instances are equal
         /// </summary>
-        /// <param name="input">Instance of Image to be compared</param>
+        /// <param name="input">Instance of PersonWithImages to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Image input)
+        public bool Equals(PersonWithImages input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.Images == input.Images ||
+                    this.Images != null &&
+                    input.Images != null &&
+                    this.Images.SequenceEqual(input.Images)
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.ContentType == input.ContentType ||
-                    (this.ContentType != null &&
-                    this.ContentType.Equals(input.ContentType))
                 ) && 
                 (
                     this.CreatedAt == input.CreatedAt ||
@@ -168,22 +169,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.UpdatedAt == input.UpdatedAt ||
                     (this.UpdatedAt != null &&
                     this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
-                ) && 
-                (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
-                ) && 
-                (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -196,20 +181,18 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Images != null)
+                    hashCode = hashCode * 59 + this.Images.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.ContentType != null)
-                    hashCode = hashCode * 59 + this.ContentType.GetHashCode();
                 if (this.CreatedAt != null)
                     hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 if (this.UpdatedAt != null)
                     hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
-                if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
-                if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

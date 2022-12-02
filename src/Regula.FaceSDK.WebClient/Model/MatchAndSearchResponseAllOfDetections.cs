@@ -41,7 +41,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="faces">faces.</param>
         /// <param name="imageIndex">Image index used to identify input photos between themselves. If not specified, than input list index is used..</param>
         /// <param name="status">status.</param>
-        public MatchAndSearchResponseAllOfDetections(List<DetectionFace> faces = default(List<DetectionFace>), int imageIndex = default(int), FaceSDKResultCode? status = default(FaceSDKResultCode?))
+        public MatchAndSearchResponseAllOfDetections(List<FacesResponse> faces = default(List<FacesResponse>), int imageIndex = default(int), FaceSDKResultCode? status = default(FaceSDKResultCode?))
         {
             this.Faces = faces;
             this.ImageIndex = imageIndex;
@@ -52,7 +52,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Faces
         /// </summary>
         [DataMember(Name="faces", EmitDefaultValue=false)]
-        public List<DetectionFace> Faces { get; set; }
+        public List<FacesResponse> Faces { get; set; }
 
         /// <summary>
         /// Image index used to identify input photos between themselves. If not specified, than input list index is used.

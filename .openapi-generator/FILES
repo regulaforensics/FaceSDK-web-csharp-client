@@ -25,6 +25,7 @@ src/Regula.FaceSDK.WebClient/Model/FaceQualityConfigName.cs
 src/Regula.FaceSDK.WebClient/Model/FaceQualityScenarios.cs
 src/Regula.FaceSDK.WebClient/Model/FaceSDKResult.cs
 src/Regula.FaceSDK.WebClient/Model/FaceSDKResultCode.cs
+src/Regula.FaceSDK.WebClient/Model/FacesResponse.cs
 src/Regula.FaceSDK.WebClient/Model/Group.cs
 src/Regula.FaceSDK.WebClient/Model/GroupPage.cs
 src/Regula.FaceSDK.WebClient/Model/GroupToCreate.cs

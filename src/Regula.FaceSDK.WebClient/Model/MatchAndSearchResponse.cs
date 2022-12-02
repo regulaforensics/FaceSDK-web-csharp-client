@@ -44,11 +44,11 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="MatchAndSearchResponse" /> class.
         /// </summary>
         /// <param name="code">code (required).</param>
-        /// <param name="detections">detections.</param>
         /// <param name="results">results.</param>
         /// <param name="elapsedTime">elapsedTime.</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        public MatchAndSearchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchAndSearchResponseAllOfDetections> detections = default(List<MatchAndSearchResponseAllOfDetections>), MatchImageResult results = default(MatchImageResult), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
+        /// <param name="detections">detections.</param>
+        public MatchAndSearchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageResult> results = default(List<MatchImageResult>), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<MatchAndSearchResponseAllOfDetections> detections = default(List<MatchAndSearchResponseAllOfDetections>))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -60,24 +60,18 @@ namespace Regula.FaceSDK.WebClient.Model
                 this.Code = code;
             }
 
-            this.Detections = detections;
             this.Results = results;
             this.ElapsedTime = elapsedTime;
             this.Metadata = metadata;
+            this.Detections = detections;
         }
 
-
-        /// <summary>
-        /// Gets or Sets Detections
-        /// </summary>
-        [DataMember(Name="detections", EmitDefaultValue=false)]
-        public List<MatchAndSearchResponseAllOfDetections> Detections { get; set; }
 
         /// <summary>
         /// Gets or Sets Results
         /// </summary>
         [DataMember(Name="results", EmitDefaultValue=false)]
-        public MatchImageResult Results { get; set; }
+        public List<MatchImageResult> Results { get; set; }
 
         /// <summary>
         /// Gets or Sets ElapsedTime
@@ -93,6 +87,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
+        /// Gets or Sets Detections
+        /// </summary>
+        [DataMember(Name="detections", EmitDefaultValue=false)]
+        public List<MatchAndSearchResponseAllOfDetections> Detections { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -101,10 +101,10 @@ namespace Regula.FaceSDK.WebClient.Model
             var sb = new StringBuilder();
             sb.Append("class MatchAndSearchResponse {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Detections: ").Append(Detections).Append("\n");
             sb.Append("  Results: ").Append(Results).Append("\n");
             sb.Append("  ElapsedTime: ").Append(ElapsedTime).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Detections: ").Append(Detections).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -145,15 +145,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Detections == input.Detections ||
-                    this.Detections != null &&
-                    input.Detections != null &&
-                    this.Detections.SequenceEqual(input.Detections)
-                ) && 
-                (
                     this.Results == input.Results ||
-                    (this.Results != null &&
-                    this.Results.Equals(input.Results))
+                    this.Results != null &&
+                    input.Results != null &&
+                    this.Results.SequenceEqual(input.Results)
                 ) && 
                 (
                     this.ElapsedTime == input.ElapsedTime ||
@@ -165,6 +160,12 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Metadata != null &&
                     input.Metadata != null &&
                     this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
+                    this.Detections == input.Detections ||
+                    this.Detections != null &&
+                    input.Detections != null &&
+                    this.Detections.SequenceEqual(input.Detections)
                 );
         }
 
@@ -179,14 +180,14 @@ namespace Regula.FaceSDK.WebClient.Model
                 int hashCode = 41;
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
-                if (this.Detections != null)
-                    hashCode = hashCode * 59 + this.Detections.GetHashCode();
                 if (this.Results != null)
                     hashCode = hashCode * 59 + this.Results.GetHashCode();
                 if (this.ElapsedTime != null)
                     hashCode = hashCode * 59 + this.ElapsedTime.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                if (this.Detections != null)
+                    hashCode = hashCode * 59 + this.Detections.GetHashCode();
                 return hashCode;
             }
         }

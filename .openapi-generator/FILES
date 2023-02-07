@@ -1,4 +1,5 @@
 src/Regula.FaceSDK.WebClient/Api/GroupApi.cs
+src/Regula.FaceSDK.WebClient/Api/LivenessApi.cs
 src/Regula.FaceSDK.WebClient/Api/MatchingApi.cs
 src/Regula.FaceSDK.WebClient/Api/PersonApi.cs
 src/Regula.FaceSDK.WebClient/Api/SearchApi.cs

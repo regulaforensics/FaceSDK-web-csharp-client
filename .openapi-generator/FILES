@@ -1,5 +1,5 @@
 src/Regula.FaceSDK.WebClient/Api/GroupApi.cs
-src/Regula.FaceSDK.WebClient/Api/LivenessApi.cs
+src/Regula.FaceSDK.WebClient/Api/Liveness20Api.cs
 src/Regula.FaceSDK.WebClient/Api/MatchingApi.cs
 src/Regula.FaceSDK.WebClient/Api/PersonApi.cs
 src/Regula.FaceSDK.WebClient/Api/SearchApi.cs
@@ -61,4 +61,5 @@ src/Regula.FaceSDK.WebClient/Model/SearchParameters.cs
 src/Regula.FaceSDK.WebClient/Model/SearchPerson.cs
 src/Regula.FaceSDK.WebClient/Model/SearchRequest.cs
 src/Regula.FaceSDK.WebClient/Model/SearchResult.cs
+src/Regula.FaceSDK.WebClient/Model/TransactionInfo.cs
 src/Regula.FaceSDK.WebClient/Model/UpdateGroup.cs

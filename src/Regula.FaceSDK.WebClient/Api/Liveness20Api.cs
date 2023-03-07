@@ -22,74 +22,70 @@ namespace Regula.FaceSDK.WebClient.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ISearchApi : IApiAccessor
+    public interface ILiveness20Api : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Find person by image in groups.
+        /// liveness
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
-        /// <returns>SearchResult</returns>
-        SearchResult Search (SearchRequest searchRequest, string xRequestID = default(string));
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <returns>TransactionInfo</returns>
+        TransactionInfo GetLivenessTransactionInfo (int transactionId);
 
         /// <summary>
-        /// Find person by image in groups.
+        /// liveness
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
-        /// <returns>ApiResponse of SearchResult</returns>
-        ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string));
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <returns>ApiResponse of TransactionInfo</returns>
+        ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Find person by image in groups.
+        /// liveness
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of SearchResult</returns>
-        System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        /// <returns>Task of TransactionInfo</returns>
+        System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Find person by image in groups.
+        /// liveness
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of ApiResponse (SearchResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        /// <returns>Task of ApiResponse (TransactionInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class SearchApi : ISearchApi
+    public partial class Liveness20Api : ILiveness20Api
     {
         private Regula.FaceSDK.WebClient.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchApi"/> class.
+        /// Initializes a new instance of the <see cref="Liveness20Api"/> class.
         /// </summary>
         /// <returns></returns>
-        public SearchApi(String basePath)
+        public Liveness20Api(String basePath)
         {
             this.Configuration = new Regula.FaceSDK.WebClient.Client.Configuration { BasePath = basePath };
 
@@ -97,10 +93,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchApi"/> class
+        /// Initializes a new instance of the <see cref="Liveness20Api"/> class
         /// </summary>
         /// <returns></returns>
-        public SearchApi()
+        public Liveness20Api()
         {
             this.Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
 
@@ -108,12 +104,12 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchApi"/> class
+        /// Initializes a new instance of the <see cref="Liveness20Api"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public SearchApi(Regula.FaceSDK.WebClient.Client.Configuration configuration = null)
+        public Liveness20Api(Regula.FaceSDK.WebClient.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
@@ -187,32 +183,30 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Find person by image in groups. 
+        /// liveness 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
-        /// <returns>SearchResult</returns>
-        public SearchResult Search (SearchRequest searchRequest, string xRequestID = default(string))
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <returns>TransactionInfo</returns>
+        public TransactionInfo GetLivenessTransactionInfo (int transactionId)
         {
-             ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest, xRequestID);
+             ApiResponse<TransactionInfo> localVarResponse = GetLivenessTransactionInfoWithHttpInfo(transactionId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Find person by image in groups. 
+        /// liveness 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
-        /// <returns>ApiResponse of SearchResult</returns>
-        public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string))
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <returns>ApiResponse of TransactionInfo</returns>
+        public ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId)
         {
-            // verify the required parameter 'searchRequest' is set
-            if (searchRequest == null)
-                throw new ApiException(400, "Missing required parameter 'searchRequest' when calling SearchApi->Search");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling Liveness20Api->GetLivenessTransactionInfo");
 
-            var localVarPath = "/api/search";
+            var localVarPath = "/api/v2/liveness";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -222,7 +216,6 @@ namespace Regula.FaceSDK.WebClient.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -234,65 +227,55 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
-            if (searchRequest != null && searchRequest.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(searchRequest); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = searchRequest; // byte array
-            }
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Search", localVarResponse);
+                Exception exception = ExceptionFactory("GetLivenessTransactionInfo", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SearchResult>(localVarStatusCode,
+            return new ApiResponse<TransactionInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResult)));
+                (TransactionInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionInfo)));
         }
 
         /// <summary>
-        /// Find person by image in groups. 
+        /// liveness 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of SearchResult</returns>
-        public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <returns>Task of TransactionInfo</returns>
+        public async System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, xRequestID, cancellationToken);
+             ApiResponse<TransactionInfo> localVarResponse = await GetLivenessTransactionInfoWithHttpInfoAsync(transactionId, cancellationToken);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Find person by image in groups. 
+        /// liveness 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="searchRequest"></param>
-        /// <param name="xRequestID"> (optional)</param>
+        /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of ApiResponse (SearchResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        /// <returns>Task of ApiResponse (TransactionInfo)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
         {
-            // verify the required parameter 'searchRequest' is set
-            if (searchRequest == null)
-                throw new ApiException(400, "Missing required parameter 'searchRequest' when calling SearchApi->Search");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling Liveness20Api->GetLivenessTransactionInfo");
 
-            var localVarPath = "/api/search";
+            var localVarPath = "/api/v2/liveness";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -302,7 +285,6 @@ namespace Regula.FaceSDK.WebClient.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -314,33 +296,25 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
-            if (searchRequest != null && searchRequest.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(searchRequest); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = searchRequest; // byte array
-            }
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
 
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType, cancellationToken);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Search", localVarResponse);
+                Exception exception = ExceptionFactory("GetLivenessTransactionInfo", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SearchResult>(localVarStatusCode,
+            return new ApiResponse<TransactionInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (SearchResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchResult)));
+                (TransactionInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionInfo)));
         }
 
     }

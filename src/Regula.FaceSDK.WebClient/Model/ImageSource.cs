@@ -54,7 +54,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Enum EXTERNAL for value: 5
         /// </summary>
-        EXTERNAL = 5
+        EXTERNAL = 5,
+
+        /// <summary>
+        /// Enum GHOST for value: 6
+        /// </summary>
+        GHOST = 6
 
     }
 

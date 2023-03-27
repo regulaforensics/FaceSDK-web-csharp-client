@@ -34,46 +34,52 @@ namespace Regula.FaceSDK.WebClient.Model
     public enum FaceQualityScenarios
     {
         /// <summary>
+        /// Enum OLD_MODE for value: OldMode
+        /// </summary>
+        [EnumMember(Value = "OldMode")]
+        OLD_MODE = 1,
+
+        /// <summary>
         /// Enum QUALITY_FULL for value: QualityFull
         /// </summary>
         [EnumMember(Value = "QualityFull")]
-        QUALITY_FULL = 1,
+        QUALITY_FULL = 2,
 
         /// <summary>
         /// Enum QUALITY_ICAO for value: QualityICAO
         /// </summary>
         [EnumMember(Value = "QualityICAO")]
-        QUALITY_ICAO = 2,
+        QUALITY_ICAO = 3,
 
         /// <summary>
         /// Enum QUALITY_VISA_SCHENGEN for value: QualityVisaSchengen
         /// </summary>
         [EnumMember(Value = "QualityVisaSchengen")]
-        QUALITY_VISA_SCHENGEN = 3,
+        QUALITY_VISA_SCHENGEN = 4,
 
         /// <summary>
         /// Enum QUALITY_VISA_USA for value: QualityVisaUSA
         /// </summary>
         [EnumMember(Value = "QualityVisaUSA")]
-        QUALITY_VISA_USA = 4,
+        QUALITY_VISA_USA = 5,
 
         /// <summary>
         /// Enum CROP_CENTRAL_FACE for value: CropCentralFace
         /// </summary>
         [EnumMember(Value = "CropCentralFace")]
-        CROP_CENTRAL_FACE = 5,
+        CROP_CENTRAL_FACE = 6,
 
         /// <summary>
         /// Enum CROP_ALL_FACES for value: CropAllFaces
         /// </summary>
         [EnumMember(Value = "CropAllFaces")]
-        CROP_ALL_FACES = 6,
+        CROP_ALL_FACES = 7,
 
         /// <summary>
         /// Enum THUMBNAIL for value: Thumbnail
         /// </summary>
         [EnumMember(Value = "Thumbnail")]
-        THUMBNAIL = 7
+        THUMBNAIL = 8
 
     }
 

@@ -25,72 +25,70 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchResponse
+    /// TransactionInfo
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchResponse :  IEquatable<MatchAndSearchResponse>, IValidatableObject
+    public partial class TransactionInfo :  IEquatable<TransactionInfo>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Code
+        /// Initializes a new instance of the <see cref="TransactionInfo" /> class.
         /// </summary>
-        [DataMember(Name="code", EmitDefaultValue=true)]
-        public FaceSDKResultCode Code { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchResponse" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        protected MatchAndSearchResponse() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchResponse" /> class.
-        /// </summary>
-        /// <param name="code">code (required).</param>
-        /// <param name="results">results.</param>
-        /// <param name="elapsedTime">elapsedTime.</param>
-        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        /// <param name="detections">detections.</param>
-        public MatchAndSearchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageResult> results = default(List<MatchImageResult>), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<MatchAndSearchResponseAllOfDetections> detections = default(List<MatchAndSearchResponseAllOfDetections>))
+        /// <param name="code">Return code value.</param>
+        /// <param name="sessionId">Session ID.</param>
+        /// <param name="transactionId">Transaction ID.</param>
+        /// <param name="video">S3 link to transaction video.</param>
+        /// <param name="portrait">S3 link to transaction portrait.</param>
+        /// <param name="metadata">metadata.</param>
+        public TransactionInfo(int code = default(int), int sessionId = default(int), string transactionId = default(string), string video = default(string), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
-            // to ensure "code" is required (not null)
-            if (code == null)
-            {
-                throw new InvalidDataException("code is a required property for MatchAndSearchResponse and cannot be null");
-            }
-            else
-            {
-                this.Code = code;
-            }
-
-            this.Results = results;
-            this.ElapsedTime = elapsedTime;
+            this.Code = code;
+            this.SessionId = sessionId;
+            this.TransactionId = transactionId;
+            this.Video = video;
+            this.Portrait = portrait;
             this.Metadata = metadata;
-            this.Detections = detections;
         }
 
+        /// <summary>
+        /// Return code value
+        /// </summary>
+        /// <value>Return code value</value>
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int Code { get; set; }
 
         /// <summary>
-        /// Gets or Sets Results
+        /// Session ID
         /// </summary>
-        [DataMember(Name="results", EmitDefaultValue=false)]
-        public List<MatchImageResult> Results { get; set; }
+        /// <value>Session ID</value>
+        [DataMember(Name="sessionId", EmitDefaultValue=false)]
+        public int SessionId { get; set; }
 
         /// <summary>
-        /// Gets or Sets ElapsedTime
+        /// Transaction ID
         /// </summary>
-        [DataMember(Name="elapsedTime", EmitDefaultValue=false)]
-        public float ElapsedTime { get; set; }
+        /// <value>Transaction ID</value>
+        [DataMember(Name="transactionId", EmitDefaultValue=false)]
+        public string TransactionId { get; set; }
 
         /// <summary>
-        /// A free-form object containing person&#39;s extended attributes.
+        /// S3 link to transaction video
         /// </summary>
-        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        /// <value>S3 link to transaction video</value>
+        [DataMember(Name="video", EmitDefaultValue=false)]
+        public string Video { get; set; }
+
+        /// <summary>
+        /// S3 link to transaction portrait
+        /// </summary>
+        /// <value>S3 link to transaction portrait</value>
+        [DataMember(Name="portrait", EmitDefaultValue=false)]
+        public string Portrait { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Metadata
+        /// </summary>
         [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Detections
-        /// </summary>
-        [DataMember(Name="detections", EmitDefaultValue=false)]
-        public List<MatchAndSearchResponseAllOfDetections> Detections { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -99,12 +97,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchResponse {\n");
+            sb.Append("class TransactionInfo {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Results: ").Append(Results).Append("\n");
-            sb.Append("  ElapsedTime: ").Append(ElapsedTime).Append("\n");
+            sb.Append("  SessionId: ").Append(SessionId).Append("\n");
+            sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
+            sb.Append("  Video: ").Append(Video).Append("\n");
+            sb.Append("  Portrait: ").Append(Portrait).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Detections: ").Append(Detections).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -125,15 +124,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchResponse);
+            return this.Equals(input as TransactionInfo);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchResponse instances are equal
+        /// Returns true if TransactionInfo instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchResponse to be compared</param>
+        /// <param name="input">Instance of TransactionInfo to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchResponse input)
+        public bool Equals(TransactionInfo input)
         {
             if (input == null)
                 return false;
@@ -145,27 +144,30 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Results == input.Results ||
-                    this.Results != null &&
-                    input.Results != null &&
-                    this.Results.SequenceEqual(input.Results)
+                    this.SessionId == input.SessionId ||
+                    (this.SessionId != null &&
+                    this.SessionId.Equals(input.SessionId))
                 ) && 
                 (
-                    this.ElapsedTime == input.ElapsedTime ||
-                    (this.ElapsedTime != null &&
-                    this.ElapsedTime.Equals(input.ElapsedTime))
+                    this.TransactionId == input.TransactionId ||
+                    (this.TransactionId != null &&
+                    this.TransactionId.Equals(input.TransactionId))
+                ) && 
+                (
+                    this.Video == input.Video ||
+                    (this.Video != null &&
+                    this.Video.Equals(input.Video))
+                ) && 
+                (
+                    this.Portrait == input.Portrait ||
+                    (this.Portrait != null &&
+                    this.Portrait.Equals(input.Portrait))
                 ) && 
                 (
                     this.Metadata == input.Metadata ||
                     this.Metadata != null &&
                     input.Metadata != null &&
                     this.Metadata.SequenceEqual(input.Metadata)
-                ) && 
-                (
-                    this.Detections == input.Detections ||
-                    this.Detections != null &&
-                    input.Detections != null &&
-                    this.Detections.SequenceEqual(input.Detections)
                 );
         }
 
@@ -180,14 +182,16 @@ namespace Regula.FaceSDK.WebClient.Model
                 int hashCode = 41;
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
-                if (this.Results != null)
-                    hashCode = hashCode * 59 + this.Results.GetHashCode();
-                if (this.ElapsedTime != null)
-                    hashCode = hashCode * 59 + this.ElapsedTime.GetHashCode();
+                if (this.SessionId != null)
+                    hashCode = hashCode * 59 + this.SessionId.GetHashCode();
+                if (this.TransactionId != null)
+                    hashCode = hashCode * 59 + this.TransactionId.GetHashCode();
+                if (this.Video != null)
+                    hashCode = hashCode * 59 + this.Video.GetHashCode();
+                if (this.Portrait != null)
+                    hashCode = hashCode * 59 + this.Portrait.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Detections != null)
-                    hashCode = hashCode * 59 + this.Detections.GetHashCode();
                 return hashCode;
             }
         }

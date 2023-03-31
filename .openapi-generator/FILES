@@ -35,7 +35,6 @@ src/Regula.FaceSDK.WebClient/Model/ImageFields.cs
 src/Regula.FaceSDK.WebClient/Model/ImageFieldsImage.cs
 src/Regula.FaceSDK.WebClient/Model/ImagePage.cs
 src/Regula.FaceSDK.WebClient/Model/ImageSource.cs
-src/Regula.FaceSDK.WebClient/Model/LivenessTransaction.cs
 src/Regula.FaceSDK.WebClient/Model/MatchAndSearchRequest.cs
 src/Regula.FaceSDK.WebClient/Model/MatchAndSearchRequestAllOfImages.cs
 src/Regula.FaceSDK.WebClient/Model/MatchAndSearchResponse.cs
@@ -62,4 +61,5 @@ src/Regula.FaceSDK.WebClient/Model/SearchParameters.cs
 src/Regula.FaceSDK.WebClient/Model/SearchPerson.cs
 src/Regula.FaceSDK.WebClient/Model/SearchRequest.cs
 src/Regula.FaceSDK.WebClient/Model/SearchResult.cs
+src/Regula.FaceSDK.WebClient/Model/TransactionInfo.cs
 src/Regula.FaceSDK.WebClient/Model/UpdateGroup.cs

@@ -1,3 +1,4 @@
+src/Regula.FaceSDK.WebClient/Api/DiagnosticsApi.cs
 src/Regula.FaceSDK.WebClient/Api/GroupApi.cs
 src/Regula.FaceSDK.WebClient/Api/Liveness20Api.cs
 src/Regula.FaceSDK.WebClient/Api/MatchingApi.cs
@@ -14,11 +15,13 @@ src/Regula.FaceSDK.WebClient/Client/IReadableConfiguration.cs
 src/Regula.FaceSDK.WebClient/Client/OpenAPIDateConverter.cs
 src/Regula.FaceSDK.WebClient/Model/Crop.cs
 src/Regula.FaceSDK.WebClient/Model/DetectRequest.cs
+src/Regula.FaceSDK.WebClient/Model/DetectRequestAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResponse.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResult.cs
 src/Regula.FaceSDK.WebClient/Model/Detection.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionFace.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionQuality.cs
+src/Regula.FaceSDK.WebClient/Model/FaceAttribute.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityAlignType.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityGroups.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityStatus.cs
@@ -48,6 +51,7 @@ src/Regula.FaceSDK.WebClient/Model/OperationLog.cs
 src/Regula.FaceSDK.WebClient/Model/OutputImageParams.cs
 src/Regula.FaceSDK.WebClient/Model/Page.cs
 src/Regula.FaceSDK.WebClient/Model/Person.cs
+src/Regula.FaceSDK.WebClient/Model/PersonCreatedResponse.cs
 src/Regula.FaceSDK.WebClient/Model/PersonFields.cs
 src/Regula.FaceSDK.WebClient/Model/PersonWithImages.cs
 src/Regula.FaceSDK.WebClient/Model/PersonsPage.cs
@@ -57,7 +61,11 @@ src/Regula.FaceSDK.WebClient/Model/QualityDetail.cs
 src/Regula.FaceSDK.WebClient/Model/QualityDetailsGroups.cs
 src/Regula.FaceSDK.WebClient/Model/QualityRequest.cs
 src/Regula.FaceSDK.WebClient/Model/RecognizeImage.cs
+src/Regula.FaceSDK.WebClient/Model/ResizeOptions.cs
+src/Regula.FaceSDK.WebClient/Model/SearchBadParams.cs
+src/Regula.FaceSDK.WebClient/Model/SearchDetection.cs
 src/Regula.FaceSDK.WebClient/Model/SearchParameters.cs
+src/Regula.FaceSDK.WebClient/Model/SearchParametersCreatePerson.cs
 src/Regula.FaceSDK.WebClient/Model/SearchPerson.cs
 src/Regula.FaceSDK.WebClient/Model/SearchRequest.cs
 src/Regula.FaceSDK.WebClient/Model/SearchResult.cs

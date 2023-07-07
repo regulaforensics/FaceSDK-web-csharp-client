@@ -25,34 +25,65 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchRequestAllOfImages
+    /// SearchBadParams
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
+    public partial class SearchBadParams :  IEquatable<SearchBadParams>, IValidatableObject
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchBadParams" /> class.
+        /// </summary>
+        /// <param name="msg">msg (default to &quot;Descriptor already calculated&quot;).</param>
+        /// <param name="statusCode">statusCode (default to 400).</param>
+        /// <param name="type">type (default to &quot;BadParamsException&quot;).</param>
+        public SearchBadParams(string msg = "Descriptor already calculated", int statusCode = 400, string type = "BadParamsException")
+        {
+            // use default value if no "msg" provided
+            if (msg == null)
+            {
+                this.Msg = "Descriptor already calculated";
+            }
+            else
+            {
+                this.Msg = msg;
+            }
+            // use default value if no "statusCode" provided
+            if (statusCode == null)
+            {
+                this.StatusCode = 400;
+            }
+            else
+            {
+                this.StatusCode = statusCode;
+            }
+            // use default value if no "type" provided
+            if (type == null)
+            {
+                this.Type = "BadParamsException";
+            }
+            else
+            {
+                this.Type = type;
+            }
+        }
+
+        /// <summary>
+        /// Gets or Sets Msg
+        /// </summary>
+        [DataMember(Name="msg", EmitDefaultValue=false)]
+        public string Msg { get; set; }
+
+        /// <summary>
+        /// Gets or Sets StatusCode
+        /// </summary>
+        [DataMember(Name="statusCode", EmitDefaultValue=false)]
+        public int StatusCode { get; set; }
+
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
-        /// </summary>
-        /// <param name="content">Base64 encoded image..</param>
-        /// <param name="type">type.</param>
-        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
-        {
-            this.Content = content;
-            this.Type = type;
-        }
-
-        /// <summary>
-        /// Base64 encoded image.
-        /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
-
+        public string Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,8 +92,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
+            sb.Append("class SearchBadParams {\n");
+            sb.Append("  Msg: ").Append(Msg).Append("\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -84,24 +116,29 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchRequestAllOfImages);
+            return this.Equals(input as SearchBadParams);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
+        /// Returns true if SearchBadParams instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
+        /// <param name="input">Instance of SearchBadParams to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchRequestAllOfImages input)
+        public bool Equals(SearchBadParams input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Msg == input.Msg ||
+                    (this.Msg != null &&
+                    this.Msg.Equals(input.Msg))
+                ) && 
+                (
+                    this.StatusCode == input.StatusCode ||
+                    (this.StatusCode != null &&
+                    this.StatusCode.Equals(input.StatusCode))
                 ) && 
                 (
                     this.Type == input.Type ||
@@ -119,8 +156,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
+                if (this.Msg != null)
+                    hashCode = hashCode * 59 + this.Msg.GetHashCode();
+                if (this.StatusCode != null)
+                    hashCode = hashCode * 59 + this.StatusCode.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;

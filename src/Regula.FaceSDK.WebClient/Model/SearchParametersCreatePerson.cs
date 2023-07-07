@@ -25,34 +25,35 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchRequestAllOfImages
+    /// If a person is not found, a new person entry is created using the descriptor calculated while searching.
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
+    public partial class SearchParametersCreatePerson :  IEquatable<SearchParametersCreatePerson>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// Initializes a new instance of the <see cref="SearchParametersCreatePerson" /> class.
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
-        /// </summary>
-        /// <param name="content">Base64 encoded image..</param>
-        /// <param name="type">type.</param>
-        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
+        /// <param name="name">Person&#39;s name..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        public SearchParametersCreatePerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
-            this.Content = content;
-            this.Type = type;
+            this.Name = name;
+            this.Metadata = metadata;
         }
 
         /// <summary>
-        /// Base64 encoded image.
+        /// Person&#39;s name.
         /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
+        /// <value>Person&#39;s name.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
+        /// <summary>
+        /// A free-form object containing person&#39;s extended attributes.
+        /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +62,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class SearchParametersCreatePerson {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,29 +85,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchRequestAllOfImages);
+            return this.Equals(input as SearchParametersCreatePerson);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
+        /// Returns true if SearchParametersCreatePerson instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
+        /// <param name="input">Instance of SearchParametersCreatePerson to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchRequestAllOfImages input)
+        public bool Equals(SearchParametersCreatePerson input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -119,10 +121,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

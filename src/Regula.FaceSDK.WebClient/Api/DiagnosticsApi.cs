@@ -15,77 +15,76 @@ using System.Linq;
 using System.Threading;
 using RestSharp;
 using Regula.FaceSDK.WebClient.Client;
-using Regula.FaceSDK.WebClient.Model;
 
 namespace Regula.FaceSDK.WebClient.Api
 {
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ILiveness20Api : IApiAccessor
+    public interface IDiagnosticsApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Liveness assessment
+        /// Checking the license status
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <returns>TransactionInfo</returns>
-        TransactionInfo GetLivenessTransactionInfo (int transactionId);
+        /// <param name="xRequestID">Request header label. (optional)</param>
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        Dictionary<string, Object> Readiness (string xRequestID = default(string));
 
         /// <summary>
-        /// Liveness assessment
+        /// Checking the license status
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <returns>ApiResponse of TransactionInfo</returns>
-        ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId);
+        /// <param name="xRequestID">Request header label. (optional)</param>
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        ApiResponse<Dictionary<string, Object>> ReadinessWithHttpInfo (string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Liveness assessment
+        /// Checking the license status
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of TransactionInfo</returns>
-        System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, Object>> ReadinessAsync (string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
-        /// Liveness assessment
+        /// Checking the license status
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of ApiResponse (TransactionInfo)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ReadinessWithHttpInfoAsync (string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class Liveness20Api : ILiveness20Api
+    public partial class DiagnosticsApi : IDiagnosticsApi
     {
         private Regula.FaceSDK.WebClient.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Liveness20Api"/> class.
+        /// Initializes a new instance of the <see cref="DiagnosticsApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public Liveness20Api(String basePath)
+        public DiagnosticsApi(String basePath)
         {
             this.Configuration = new Regula.FaceSDK.WebClient.Client.Configuration { BasePath = basePath };
 
@@ -93,10 +92,10 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Liveness20Api"/> class
+        /// Initializes a new instance of the <see cref="DiagnosticsApi"/> class
         /// </summary>
         /// <returns></returns>
-        public Liveness20Api()
+        public DiagnosticsApi()
         {
             this.Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
 
@@ -104,12 +103,12 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Liveness20Api"/> class
+        /// Initializes a new instance of the <see cref="DiagnosticsApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public Liveness20Api(Regula.FaceSDK.WebClient.Client.Configuration configuration = null)
+        public DiagnosticsApi(Regula.FaceSDK.WebClient.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
@@ -183,30 +182,27 @@ namespace Regula.FaceSDK.WebClient.Api
         }
 
         /// <summary>
-        /// Liveness assessment 
+        /// Checking the license status 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <returns>TransactionInfo</returns>
-        public TransactionInfo GetLivenessTransactionInfo (int transactionId)
+        /// <param name="xRequestID">Request header label. (optional)</param>
+        /// <returns>Dictionary&lt;string, Object&gt;</returns>
+        public Dictionary<string, Object> Readiness (string xRequestID = default(string))
         {
-             ApiResponse<TransactionInfo> localVarResponse = GetLivenessTransactionInfoWithHttpInfo(transactionId);
+             ApiResponse<Dictionary<string, Object>> localVarResponse = ReadinessWithHttpInfo(xRequestID);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Liveness assessment 
+        /// Checking the license status 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <returns>ApiResponse of TransactionInfo</returns>
-        public ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId)
+        /// <param name="xRequestID">Request header label. (optional)</param>
+        /// <returns>ApiResponse of Dictionary&lt;string, Object&gt;</returns>
+        public ApiResponse<Dictionary<string, Object>> ReadinessWithHttpInfo (string xRequestID = default(string))
         {
-            // verify the required parameter 'transactionId' is set
-            if (transactionId == null)
-                throw new ApiException(400, "Missing required parameter 'transactionId' when calling Liveness20Api->GetLivenessTransactionInfo");
 
-            var localVarPath = "/api/v2/liveness";
+            var localVarPath = "/api/readiness";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -227,7 +223,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -239,43 +235,40 @@ namespace Regula.FaceSDK.WebClient.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLivenessTransactionInfo", localVarResponse);
+                Exception exception = ExceptionFactory("Readiness", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TransactionInfo>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TransactionInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionInfo)));
+                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
         /// <summary>
-        /// Liveness assessment 
+        /// Checking the license status 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of TransactionInfo</returns>
-        public async System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <returns>Task of Dictionary&lt;string, Object&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, Object>> ReadinessAsync (string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<TransactionInfo> localVarResponse = await GetLivenessTransactionInfoWithHttpInfoAsync(transactionId, cancellationToken);
+             ApiResponse<Dictionary<string, Object>> localVarResponse = await ReadinessWithHttpInfoAsync(xRequestID, cancellationToken);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Liveness assessment 
+        /// Checking the license status 
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
+        /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
-        /// <returns>Task of ApiResponse (TransactionInfo)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, Object&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, Object>>> ReadinessWithHttpInfoAsync (string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-            // verify the required parameter 'transactionId' is set
-            if (transactionId == null)
-                throw new ApiException(400, "Missing required parameter 'transactionId' when calling Liveness20Api->GetLivenessTransactionInfo");
 
-            var localVarPath = "/api/v2/liveness";
+            var localVarPath = "/api/readiness";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -296,7 +289,7 @@ namespace Regula.FaceSDK.WebClient.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+            if (xRequestID != null) localVarHeaderParams.Add("X-RequestID", this.Configuration.ApiClient.ParameterToString(xRequestID)); // header parameter
 
 
             // make the HTTP request
@@ -308,13 +301,13 @@ namespace Regula.FaceSDK.WebClient.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetLivenessTransactionInfo", localVarResponse);
+                Exception exception = ExceptionFactory("Readiness", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<TransactionInfo>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, Object>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (TransactionInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionInfo)));
+                (Dictionary<string, Object>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, Object>)));
         }
 
     }

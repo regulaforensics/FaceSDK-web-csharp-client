@@ -25,34 +25,44 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchRequestAllOfImages
+    /// PersonCreatedResponse
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
+    public partial class PersonCreatedResponse :  IEquatable<PersonCreatedResponse>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// Initializes a new instance of the <see cref="PersonCreatedResponse" /> class.
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
-        /// </summary>
-        /// <param name="content">Base64 encoded image..</param>
-        /// <param name="type">type.</param>
-        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
+        /// <param name="code">Result code..</param>
+        /// <param name="persons">Array of Person images..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        public PersonCreatedResponse(int code = default(int), List<SearchPerson> persons = default(List<SearchPerson>), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
-            this.Content = content;
-            this.Type = type;
+            this.Code = code;
+            this.Persons = persons;
+            this.Metadata = metadata;
         }
 
         /// <summary>
-        /// Base64 encoded image.
+        /// Result code.
         /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
+        /// <value>Result code.</value>
+        [DataMember(Name="code", EmitDefaultValue=false)]
+        public int Code { get; set; }
 
+        /// <summary>
+        /// Array of Person images.
+        /// </summary>
+        /// <value>Array of Person images.</value>
+        [DataMember(Name="persons", EmitDefaultValue=false)]
+        public List<SearchPerson> Persons { get; set; }
+
+        /// <summary>
+        /// A free-form object containing person&#39;s extended attributes.
+        /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +71,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class PersonCreatedResponse {\n");
+            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Persons: ").Append(Persons).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,29 +95,36 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchRequestAllOfImages);
+            return this.Equals(input as PersonCreatedResponse);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
+        /// Returns true if PersonCreatedResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
+        /// <param name="input">Instance of PersonCreatedResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchRequestAllOfImages input)
+        public bool Equals(PersonCreatedResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Code == input.Code ||
+                    (this.Code != null &&
+                    this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Persons == input.Persons ||
+                    this.Persons != null &&
+                    input.Persons != null &&
+                    this.Persons.SequenceEqual(input.Persons)
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -119,10 +137,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Code != null)
+                    hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Persons != null)
+                    hashCode = hashCode * 59 + this.Persons.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

@@ -25,34 +25,52 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchRequestAllOfImages
+    /// Set to resize the original image.
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
+    public partial class ResizeOptions :  IEquatable<ResizeOptions>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// Initializes a new instance of the <see cref="ResizeOptions" /> class.
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
-        /// </summary>
-        /// <param name="content">Base64 encoded image..</param>
-        /// <param name="type">type.</param>
-        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
+        /// <param name="width">Resized image width, px..</param>
+        /// <param name="height">Resized image height, px..</param>
+        /// <param name="quality">Resized image quality, percent. (default to 100).</param>
+        public ResizeOptions(int width = default(int), int height = default(int), int quality = 100)
         {
-            this.Content = content;
-            this.Type = type;
+            this.Width = width;
+            this.Height = height;
+            // use default value if no "quality" provided
+            if (quality == null)
+            {
+                this.Quality = 100;
+            }
+            else
+            {
+                this.Quality = quality;
+            }
         }
 
         /// <summary>
-        /// Base64 encoded image.
+        /// Resized image width, px.
         /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
+        /// <value>Resized image width, px.</value>
+        [DataMember(Name="width", EmitDefaultValue=false)]
+        public int Width { get; set; }
 
+        /// <summary>
+        /// Resized image height, px.
+        /// </summary>
+        /// <value>Resized image height, px.</value>
+        [DataMember(Name="height", EmitDefaultValue=false)]
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Resized image quality, percent.
+        /// </summary>
+        /// <value>Resized image quality, percent.</value>
+        [DataMember(Name="quality", EmitDefaultValue=false)]
+        public int Quality { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +79,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class ResizeOptions {\n");
+            sb.Append("  Width: ").Append(Width).Append("\n");
+            sb.Append("  Height: ").Append(Height).Append("\n");
+            sb.Append("  Quality: ").Append(Quality).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,29 +103,34 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchRequestAllOfImages);
+            return this.Equals(input as ResizeOptions);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
+        /// Returns true if ResizeOptions instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
+        /// <param name="input">Instance of ResizeOptions to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchRequestAllOfImages input)
+        public bool Equals(ResizeOptions input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
+                    this.Width == input.Width ||
+                    (this.Width != null &&
+                    this.Width.Equals(input.Width))
                 ) && 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Height == input.Height ||
+                    (this.Height != null &&
+                    this.Height.Equals(input.Height))
+                ) && 
+                (
+                    this.Quality == input.Quality ||
+                    (this.Quality != null &&
+                    this.Quality.Equals(input.Quality))
                 );
         }
 
@@ -119,10 +143,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Width != null)
+                    hashCode = hashCode * 59 + this.Width.GetHashCode();
+                if (this.Height != null)
+                    hashCode = hashCode * 59 + this.Height.GetHashCode();
+                if (this.Quality != null)
+                    hashCode = hashCode * 59 + this.Quality.GetHashCode();
                 return hashCode;
             }
         }

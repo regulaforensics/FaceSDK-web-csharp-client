@@ -37,10 +37,10 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="status">Whether the liveness detection is confirmed (0) or not (1)..</param>
         /// <param name="tag">Session identificator..</param>
         /// <param name="transactionId">Transaction ID, there can be several transactions within one session..</param>
-        /// <param name="video">An S3 link to the session video..</param>
+        /// <param name="video">Link to the session video..</param>
         /// <param name="images">List of base64 images.</param>
         /// <param name="estimatedAge">Approximate age with an accuracy of +/-3 years..</param>
-        /// <param name="portrait">S3 link to the portrait..</param>
+        /// <param name="portrait">Link to the portrait..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<string> images = default(List<string>), int estimatedAge = default(int), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
@@ -84,9 +84,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// An S3 link to the session video.
+        /// Link to the session video.
         /// </summary>
-        /// <value>An S3 link to the session video.</value>
+        /// <value>Link to the session video.</value>
         [DataMember(Name="video", EmitDefaultValue=false)]
         public string Video { get; set; }
 
@@ -105,9 +105,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public int EstimatedAge { get; set; }
 
         /// <summary>
-        /// S3 link to the portrait.
+        /// Link to the portrait.
         /// </summary>
-        /// <value>S3 link to the portrait.</value>
+        /// <value>Link to the portrait.</value>
         [DataMember(Name="portrait", EmitDefaultValue=false)]
         public string Portrait { get; set; }
 

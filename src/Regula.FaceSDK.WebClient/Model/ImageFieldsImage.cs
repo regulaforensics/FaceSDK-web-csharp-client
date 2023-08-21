@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="contentType">Original media type of the uploaded image..</param>
         /// <param name="content">Base64 encoded image..</param>
-        /// <param name="imageUrl">Image URL, can be a link to Amazon S3, Google Storage, File System, or HTTP(S)..</param>
+        /// <param name="imageUrl">Image URL..</param>
         /// <param name="resizeOptions">resizeOptions.</param>
         public ImageFieldsImage(string contentType = default(string), byte[] content = default(byte[]), string imageUrl = default(string), ResizeOptions resizeOptions = default(ResizeOptions))
         {
@@ -60,9 +60,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public byte[] Content { get; set; }
 
         /// <summary>
-        /// Image URL, can be a link to Amazon S3, Google Storage, File System, or HTTP(S).
+        /// Image URL.
         /// </summary>
-        /// <value>Image URL, can be a link to Amazon S3, Google Storage, File System, or HTTP(S).</value>
+        /// <value>Image URL.</value>
         [DataMember(Name="imageUrl", EmitDefaultValue=false)]
         public string ImageUrl { get; set; }
 

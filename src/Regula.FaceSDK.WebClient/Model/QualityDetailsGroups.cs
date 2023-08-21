@@ -39,7 +39,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceImageQualityGroups? Name { get; set; }
+        public FaceImageQualityGroupsStrings? Name { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="QualityDetailsGroups" /> class.
         /// </summary>
@@ -47,7 +47,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="name">name.</param>
         /// <param name="totalCount">The total number of characteristics in the group..</param>
         /// <param name="compliantCount">The number of compliant characteristics in the group..</param>
-        public QualityDetailsGroups(FaceImageQualityGroups? groupId = default(FaceImageQualityGroups?), FaceImageQualityGroups? name = default(FaceImageQualityGroups?), int totalCount = default(int), int compliantCount = default(int))
+        public QualityDetailsGroups(FaceImageQualityGroups? groupId = default(FaceImageQualityGroups?), FaceImageQualityGroupsStrings? name = default(FaceImageQualityGroupsStrings?), int totalCount = default(int), int compliantCount = default(int))
         {
             this.GroupId = groupId;
             this.Name = name;

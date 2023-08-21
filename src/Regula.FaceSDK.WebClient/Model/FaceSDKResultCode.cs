@@ -37,6 +37,41 @@ namespace Regula.FaceSDK.WebClient.Model
         FACER_OK = 0,
 
         /// <summary>
+        /// Enum FR_IMAGE_EMPTY for value: 1
+        /// </summary>
+        FR_IMAGE_EMPTY = 1,
+
+        /// <summary>
+        /// Enum FR_FACE_NOT_DETECTED for value: 2
+        /// </summary>
+        FR_FACE_NOT_DETECTED = 2,
+
+        /// <summary>
+        /// Enum FR_LANDMARKS_NOT_DETECTED for value: 3
+        /// </summary>
+        FR_LANDMARKS_NOT_DETECTED = 3,
+
+        /// <summary>
+        /// Enum FR_FACE_ALIGHNER_FAILED for value: 4
+        /// </summary>
+        FR_FACE_ALIGHNER_FAILED = 4,
+
+        /// <summary>
+        /// Enum FR_DESCRIPTOR_EXTRACTOR_ERROR for value: 5
+        /// </summary>
+        FR_DESCRIPTOR_EXTRACTOR_ERROR = 5,
+
+        /// <summary>
+        /// Enum FR_IMAGE_DECODE_ERROR for value: 6
+        /// </summary>
+        FR_IMAGE_DECODE_ERROR = 6,
+
+        /// <summary>
+        /// Enum FR_INTERNAL_ERROR for value: 7
+        /// </summary>
+        FR_INTERNAL_ERROR = 7,
+
+        /// <summary>
         /// Enum FACER_CONFIG_ERROR for value: 199
         /// </summary>
         FACER_CONFIG_ERROR = 199,

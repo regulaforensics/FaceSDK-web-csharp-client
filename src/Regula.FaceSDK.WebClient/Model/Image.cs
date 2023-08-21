@@ -37,7 +37,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="contentType">Original media type of the returned image..</param>
         /// <param name="createdAt">Returned image creation date..</param>
         /// <param name="updatedAt">Returned image update date..</param>
-        /// <param name="path">Returned image S3 path..</param>
+        /// <param name="path">Returned image path..</param>
         /// <param name="url">Returned image URL..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         public Image(int id = default(int), string contentType = default(string), string createdAt = default(string), string updatedAt = default(string), string path = default(string), string url = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
@@ -80,9 +80,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public string UpdatedAt { get; set; }
 
         /// <summary>
-        /// Returned image S3 path.
+        /// Returned image path.
         /// </summary>
-        /// <value>Returned image S3 path.</value>
+        /// <value>Returned image path.</value>
         [DataMember(Name="path", EmitDefaultValue=false)]
         public string Path { get; set; }
 

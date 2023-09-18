@@ -38,13 +38,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="rotationAngle">Angle of rotation of the face from the vertical axis, degrees..</param>
         /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle..</param>
         /// <param name="thumbnail">Base64 of the cropped portrait..</param>
-        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), float rotationAngle = default(float), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        /// <param name="crop">crop.</param>
+        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), decimal rotationAngle = default(decimal), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]), byte[] crop = default(byte[]))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
             this.RotationAngle = rotationAngle;
             this.Roi = roi;
             this.Thumbnail = thumbnail;
+            this.Crop = crop;
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Angle of rotation of the face from the vertical axis, degrees.</value>
         [DataMember(Name="rotationAngle", EmitDefaultValue=false)]
-        public float RotationAngle { get; set; }
+        public decimal RotationAngle { get; set; }
 
         /// <summary>
         /// The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.
@@ -83,6 +85,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public byte[] Thumbnail { get; set; }
 
         /// <summary>
+        /// Gets or Sets Crop
+        /// </summary>
+        [DataMember(Name="crop", EmitDefaultValue=false)]
+        public byte[] Crop { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -95,6 +103,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  RotationAngle: ").Append(RotationAngle).Append("\n");
             sb.Append("  Roi: ").Append(Roi).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  Crop: ").Append(Crop).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,6 +164,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Thumbnail == input.Thumbnail ||
                     (this.Thumbnail != null &&
                     this.Thumbnail.Equals(input.Thumbnail))
+                ) && 
+                (
+                    this.Crop == input.Crop ||
+                    (this.Crop != null &&
+                    this.Crop.Equals(input.Crop))
                 );
         }
 
@@ -177,6 +191,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Roi.GetHashCode();
                 if (this.Thumbnail != null)
                     hashCode = hashCode * 59 + this.Thumbnail.GetHashCode();
+                if (this.Crop != null)
+                    hashCode = hashCode * 59 + this.Crop.GetHashCode();
                 return hashCode;
             }
         }

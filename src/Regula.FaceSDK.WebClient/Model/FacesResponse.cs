@@ -38,14 +38,16 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="rotationAngle">rotationAngle.</param>
         /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle..</param>
         /// <param name="thumbnail">Base64 of the cropped portrait..</param>
+        /// <param name="crop">crop.</param>
         /// <param name="persons">persons.</param>
-        public FacesResponse(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), float rotationAngle = default(float), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]), List<PersonWithImages> persons = default(List<PersonWithImages>))
+        public FacesResponse(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), float rotationAngle = default(float), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]), byte[] crop = default(byte[]), List<PersonWithImages> persons = default(List<PersonWithImages>))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
             this.RotationAngle = rotationAngle;
             this.Roi = roi;
             this.Thumbnail = thumbnail;
+            this.Crop = crop;
             this.Persons = persons;
         }
 
@@ -84,6 +86,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public byte[] Thumbnail { get; set; }
 
         /// <summary>
+        /// Gets or Sets Crop
+        /// </summary>
+        [DataMember(Name="crop", EmitDefaultValue=false)]
+        public byte[] Crop { get; set; }
+
+        /// <summary>
         /// Gets or Sets Persons
         /// </summary>
         [DataMember(Name="persons", EmitDefaultValue=false)]
@@ -102,6 +110,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  RotationAngle: ").Append(RotationAngle).Append("\n");
             sb.Append("  Roi: ").Append(Roi).Append("\n");
             sb.Append("  Thumbnail: ").Append(Thumbnail).Append("\n");
+            sb.Append("  Crop: ").Append(Crop).Append("\n");
             sb.Append("  Persons: ").Append(Persons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -165,6 +174,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Thumbnail.Equals(input.Thumbnail))
                 ) && 
                 (
+                    this.Crop == input.Crop ||
+                    (this.Crop != null &&
+                    this.Crop.Equals(input.Crop))
+                ) && 
+                (
                     this.Persons == input.Persons ||
                     this.Persons != null &&
                     input.Persons != null &&
@@ -191,6 +205,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Roi.GetHashCode();
                 if (this.Thumbnail != null)
                     hashCode = hashCode * 59 + this.Thumbnail.GetHashCode();
+                if (this.Crop != null)
+                    hashCode = hashCode * 59 + this.Crop.GetHashCode();
                 if (this.Persons != null)
                     hashCode = hashCode * 59 + this.Persons.GetHashCode();
                 return hashCode;

@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="rotationAngle">Angle of rotation of the face from the vertical axis, degrees..</param>
         /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle..</param>
         /// <param name="thumbnail">Base64 of the cropped portrait..</param>
-        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), float rotationAngle = default(float), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        public DetectionFace(decimal faceIndex = default(decimal), List<List<decimal>> landmarks = default(List<List<decimal>>), decimal rotationAngle = default(decimal), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             this.FaceIndex = faceIndex;
             this.Landmarks = landmarks;
@@ -66,7 +66,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Angle of rotation of the face from the vertical axis, degrees.</value>
         [DataMember(Name="rotationAngle", EmitDefaultValue=false)]
-        public float RotationAngle { get; set; }
+        public decimal RotationAngle { get; set; }
 
         /// <summary>
         /// The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.

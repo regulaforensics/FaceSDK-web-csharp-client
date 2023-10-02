@@ -42,7 +42,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="similarity">Similarity score..</param>
         /// <param name="distance">Similarity distance score: the lower the distance, the higher the face&#39;s similarity..</param>
-        public RecognizeImage(int id = default(int), string contentType = default(string), string createdAt = default(string), string updatedAt = default(string), string path = default(string), string url = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), float similarity = default(float), float distance = default(float))
+        public RecognizeImage(string id = default(string), string contentType = default(string), string createdAt = default(string), string updatedAt = default(string), string path = default(string), string url = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), float similarity = default(float), float distance = default(float))
         {
             this.Id = id;
             this.ContentType = contentType;
@@ -60,7 +60,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Response image ID. The list is sorted by decreasing ID value.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Original media type of the returned image.

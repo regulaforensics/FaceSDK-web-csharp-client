@@ -41,8 +41,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="tag">Session identificator..</param>
         /// <param name="thumbnails">Whether to return thumbnails: Base64 cropped images that contain vertically aligned faces. (default to false).</param>
         /// <param name="images">The array of all images included in the comparison. (required).</param>
-        /// <param name="outputImageParams">outputImageParams.</param>
-        public MatchRequest(string tag = default(string), bool thumbnails = false, List<MatchImage> images = default(List<MatchImage>), MatchRequestOutputImageParams outputImageParams = default(MatchRequestOutputImageParams))
+        public MatchRequest(string tag = default(string), bool thumbnails = false, List<MatchImage> images = default(List<MatchImage>))
         {
             // to ensure "images" is required (not null)
             if (images == null)
@@ -64,7 +63,6 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Thumbnails = thumbnails;
             }
-            this.OutputImageParams = outputImageParams;
         }
 
         /// <summary>
@@ -89,12 +87,6 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<MatchImage> Images { get; set; }
 
         /// <summary>
-        /// Gets or Sets OutputImageParams
-        /// </summary>
-        [DataMember(Name="outputImageParams", EmitDefaultValue=false)]
-        public MatchRequestOutputImageParams OutputImageParams { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -105,7 +97,6 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
             sb.Append("  Images: ").Append(Images).Append("\n");
-            sb.Append("  OutputImageParams: ").Append(OutputImageParams).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -155,11 +146,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Images != null &&
                     input.Images != null &&
                     this.Images.SequenceEqual(input.Images)
-                ) && 
-                (
-                    this.OutputImageParams == input.OutputImageParams ||
-                    (this.OutputImageParams != null &&
-                    this.OutputImageParams.Equals(input.OutputImageParams))
                 );
         }
 
@@ -178,8 +164,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Thumbnails.GetHashCode();
                 if (this.Images != null)
                     hashCode = hashCode * 59 + this.Images.GetHashCode();
-                if (this.OutputImageParams != null)
-                    hashCode = hashCode * 59 + this.OutputImageParams.GetHashCode();
                 return hashCode;
             }
         }

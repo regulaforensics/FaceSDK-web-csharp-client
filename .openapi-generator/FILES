@@ -47,8 +47,6 @@ src/Regula.FaceSDK.WebClient/Model/MatchImage.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImageDetection.cs
 src/Regula.FaceSDK.WebClient/Model/MatchImageResult.cs
 src/Regula.FaceSDK.WebClient/Model/MatchRequest.cs
-src/Regula.FaceSDK.WebClient/Model/MatchRequestOutputImageParams.cs
-src/Regula.FaceSDK.WebClient/Model/MatchRequestOutputImageParamsCrop.cs
 src/Regula.FaceSDK.WebClient/Model/MatchResponse.cs
 src/Regula.FaceSDK.WebClient/Model/OperationLog.cs
 src/Regula.FaceSDK.WebClient/Model/OutputImageParams.cs

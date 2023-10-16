@@ -34,7 +34,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <returns>TransactionInfo</returns>
-        TransactionInfo GetLivenessTransactionInfo (int transactionId);
+        TransactionInfo GetLivenessTransactionInfo (Guid transactionId);
 
         /// <summary>
         /// Liveness assessment
@@ -45,7 +45,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <returns>ApiResponse of TransactionInfo</returns>
-        ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId);
+        ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (Guid transactionId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -58,7 +58,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TransactionInfo</returns>
-        System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (Guid transactionId, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Liveness assessment
@@ -70,7 +70,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TransactionInfo)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (Guid transactionId, CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -188,7 +188,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <returns>TransactionInfo</returns>
-        public TransactionInfo GetLivenessTransactionInfo (int transactionId)
+        public TransactionInfo GetLivenessTransactionInfo (Guid transactionId)
         {
              ApiResponse<TransactionInfo> localVarResponse = GetLivenessTransactionInfoWithHttpInfo(transactionId);
              return localVarResponse.Data;
@@ -200,7 +200,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <returns>ApiResponse of TransactionInfo</returns>
-        public ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (int transactionId)
+        public ApiResponse<TransactionInfo> GetLivenessTransactionInfoWithHttpInfo (Guid transactionId)
         {
             // verify the required parameter 'transactionId' is set
             if (transactionId == null)
@@ -255,7 +255,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of TransactionInfo</returns>
-        public async System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<TransactionInfo> GetLivenessTransactionInfoAsync (Guid transactionId, CancellationToken cancellationToken = default(CancellationToken))
         {
              ApiResponse<TransactionInfo> localVarResponse = await GetLivenessTransactionInfoWithHttpInfoAsync(transactionId, cancellationToken);
              return localVarResponse.Data;
@@ -269,7 +269,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="transactionId">ID of the current liveness transaction.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (TransactionInfo)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (int transactionId, CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<TransactionInfo>> GetLivenessTransactionInfoWithHttpInfoAsync (Guid transactionId, CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'transactionId' is set
             if (transactionId == null)

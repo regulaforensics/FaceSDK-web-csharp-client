@@ -44,7 +44,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="quality">quality.</param>
         /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle. (required).</param>
         /// <param name="thumbnail">Base64 of the cropped portrait..</param>
-        public Detection(byte[] crop = default(byte[]), Dictionary<string, Object> attributes = default(Dictionary<string, Object>), List<List<int>> landmarks = default(List<List<int>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        public Detection(byte[] crop = default(byte[]), DetectionAttributes attributes = default(DetectionAttributes), List<List<int>> landmarks = default(List<List<int>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
         {
             // to ensure "landmarks" is required (not null)
             if (landmarks == null)
@@ -83,7 +83,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Attributes
         /// </summary>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public Dictionary<string, Object> Attributes { get; set; }
+        public DetectionAttributes Attributes { get; set; }
 
         /// <summary>
         /// Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips.
@@ -167,9 +167,8 @@ namespace Regula.FaceSDK.WebClient.Model
                 ) && 
                 (
                     this.Attributes == input.Attributes ||
-                    this.Attributes != null &&
-                    input.Attributes != null &&
-                    this.Attributes.SequenceEqual(input.Attributes)
+                    (this.Attributes != null &&
+                    this.Attributes.Equals(input.Attributes))
                 ) && 
                 (
                     this.Landmarks == input.Landmarks ||

@@ -19,6 +19,7 @@ src/Regula.FaceSDK.WebClient/Model/DetectRequestAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResponse.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResult.cs
 src/Regula.FaceSDK.WebClient/Model/Detection.cs
+src/Regula.FaceSDK.WebClient/Model/DetectionAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionFace.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionQuality.cs
 src/Regula.FaceSDK.WebClient/Model/FaceAttribute.cs

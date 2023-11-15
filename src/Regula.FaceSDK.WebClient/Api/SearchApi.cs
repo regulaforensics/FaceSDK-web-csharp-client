@@ -47,7 +47,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="searchRequest"></param>
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <returns>ApiResponse of SearchResult</returns>
-        ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string));
+        ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -193,9 +193,16 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="searchRequest"></param>
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <returns>SearchResult</returns>
-        public SearchResult Search (SearchRequest searchRequest, string xRequestID = default(string))
+        ///
+        public SearchResult Search(SearchRequest searchRequest, string xRequestID = default(string))
         {
-             ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest, xRequestID);
+            ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest, new Dictionary<String, String>(), xRequestID);
+            return localVarResponse.Data;
+        }
+
+        public SearchResult Search(SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string))
+        {
+             ApiResponse<SearchResult> localVarResponse = SearchWithHttpInfo(searchRequest, headers, xRequestID);
              return localVarResponse.Data;
         }
 
@@ -206,7 +213,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="searchRequest"></param>
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <returns>ApiResponse of SearchResult</returns>
-        public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, string xRequestID = default(string))
+        public ApiResponse<SearchResult> SearchWithHttpInfo (SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string))
         {
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
@@ -215,7 +222,7 @@ namespace Regula.FaceSDK.WebClient.Api
             var localVarPath = "/api/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = this.Configuration.DefaultHeader.Union(headers).ToDictionary(k => k.Key, v => v.Value);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;

@@ -74,7 +74,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -278,13 +278,18 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of SearchResult</returns>
-        public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<SearchResult> SearchAsync(SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
-             ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, xRequestID, cancellationToken);
-             return localVarResponse.Data;
+            ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, new Dictionary<String, String>(), xRequestID, cancellationToken);
+            return localVarResponse.Data;
 
         }
 
+        public async System.Threading.Tasks.Task<SearchResult> SearchAsync (SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        {
+             ApiResponse<SearchResult> localVarResponse = await SearchWithHttpInfoAsync(searchRequest, headers, xRequestID, cancellationToken);
+             return localVarResponse.Data;
+        }
         /// <summary>
         /// Find person by image in groups 
         /// </summary>
@@ -293,7 +298,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel request (optional) </param>
         /// <returns>Task of ApiResponse (SearchResult)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
+        public async System.Threading.Tasks.Task<ApiResponse<SearchResult>> SearchWithHttpInfoAsync (SearchRequest searchRequest, Dictionary<String, String> headers, string xRequestID = default(string), CancellationToken cancellationToken = default(CancellationToken))
         {
             // verify the required parameter 'searchRequest' is set
             if (searchRequest == null)
@@ -302,7 +307,7 @@ namespace Regula.FaceSDK.WebClient.Api
             var localVarPath = "/api/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = this.Configuration.DefaultHeader.Union(headers).ToDictionary(k => k.Key, v => v.Value);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;

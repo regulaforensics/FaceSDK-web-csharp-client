@@ -41,7 +41,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="detectAll">Whether to detect all faces in the image. If set to false, only the most central face is detected. (default to false).</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
-        public SearchRequest(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<int> groupIds = default(List<int>), string tag = default(string), ImageFieldsImage image = default(ImageFieldsImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
+        public SearchRequest(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>), string tag = default(string), ImageFieldsImage image = default(ImageFieldsImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
         {
             this.CreatePerson = createPerson;
             this.GroupIds = groupIds;
@@ -72,7 +72,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>IDs of the groups in which the search is performed.</value>
         [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<int> GroupIds { get; set; }
+        public List<Guid> GroupIds { get; set; }
 
         /// <summary>
         /// Session identificator.

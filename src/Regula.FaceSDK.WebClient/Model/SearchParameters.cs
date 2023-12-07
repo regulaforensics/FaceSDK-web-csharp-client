@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="createPerson">createPerson.</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<int> groupIds = default(List<int>))
+        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
         {
             this.CreatePerson = createPerson;
             this.GroupIds = groupIds;
@@ -52,7 +52,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>IDs of the groups in which the search is performed.</value>
         [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<int> GroupIds { get; set; }
+        public List<Guid> GroupIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

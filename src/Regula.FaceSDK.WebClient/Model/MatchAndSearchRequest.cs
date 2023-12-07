@@ -37,7 +37,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="images">Array of Person images..</param>
         /// <param name="createPerson">createPerson.</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestAllOfImages> images = default(List<MatchAndSearchRequestAllOfImages>), SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<int> groupIds = default(List<int>))
+        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestAllOfImages> images = default(List<MatchAndSearchRequestAllOfImages>), SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
         {
             this.Tag = tag;
             this.Images = images;
@@ -70,7 +70,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>IDs of the groups in which the search is performed.</value>
         [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<int> GroupIds { get; set; }
+        public List<Guid> GroupIds { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

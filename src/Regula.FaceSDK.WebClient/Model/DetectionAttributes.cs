@@ -25,34 +25,34 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Request search data.
+    /// DetectionAttributes
     /// </summary>
     [DataContract]
-    public partial class SearchParameters :  IEquatable<SearchParameters>, IValidatableObject
+    public partial class DetectionAttributes :  IEquatable<DetectionAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchParameters" /> class.
+        /// Initializes a new instance of the <see cref="DetectionAttributes" /> class.
         /// </summary>
-        /// <param name="createPerson">createPerson.</param>
-        /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
+        /// <param name="details">details.</param>
+        /// <param name="elapsedTime">The elapsed time for attribute detection..</param>
+        public DetectionAttributes(List<Dictionary<string, Object>> details = default(List<Dictionary<string, Object>>), decimal elapsedTime = default(decimal))
         {
-            this.CreatePerson = createPerson;
-            this.GroupIds = groupIds;
+            this.Details = details;
+            this.ElapsedTime = elapsedTime;
         }
 
         /// <summary>
-        /// Gets or Sets CreatePerson
+        /// Gets or Sets Details
         /// </summary>
-        [DataMember(Name="createPerson", EmitDefaultValue=false)]
-        public SearchParametersCreatePerson CreatePerson { get; set; }
+        [DataMember(Name="details", EmitDefaultValue=false)]
+        public List<Dictionary<string, Object>> Details { get; set; }
 
         /// <summary>
-        /// IDs of the groups in which the search is performed.
+        /// The elapsed time for attribute detection.
         /// </summary>
-        /// <value>IDs of the groups in which the search is performed.</value>
-        [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<Guid> GroupIds { get; set; }
+        /// <value>The elapsed time for attribute detection.</value>
+        [DataMember(Name="elapsedTime", EmitDefaultValue=false)]
+        public decimal ElapsedTime { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +61,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchParameters {\n");
-            sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
-            sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("class DetectionAttributes {\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
+            sb.Append("  ElapsedTime: ").Append(ElapsedTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,30 +84,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchParameters);
+            return this.Equals(input as DetectionAttributes);
         }
 
         /// <summary>
-        /// Returns true if SearchParameters instances are equal
+        /// Returns true if DetectionAttributes instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchParameters to be compared</param>
+        /// <param name="input">Instance of DetectionAttributes to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchParameters input)
+        public bool Equals(DetectionAttributes input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.CreatePerson == input.CreatePerson ||
-                    (this.CreatePerson != null &&
-                    this.CreatePerson.Equals(input.CreatePerson))
+                    this.Details == input.Details ||
+                    this.Details != null &&
+                    input.Details != null &&
+                    this.Details.SequenceEqual(input.Details)
                 ) && 
                 (
-                    this.GroupIds == input.GroupIds ||
-                    this.GroupIds != null &&
-                    input.GroupIds != null &&
-                    this.GroupIds.SequenceEqual(input.GroupIds)
+                    this.ElapsedTime == input.ElapsedTime ||
+                    (this.ElapsedTime != null &&
+                    this.ElapsedTime.Equals(input.ElapsedTime))
                 );
         }
 
@@ -120,10 +120,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CreatePerson != null)
-                    hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
-                if (this.GroupIds != null)
-                    hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
+                if (this.Details != null)
+                    hashCode = hashCode * 59 + this.Details.GetHashCode();
+                if (this.ElapsedTime != null)
+                    hashCode = hashCode * 59 + this.ElapsedTime.GetHashCode();
                 return hashCode;
             }
         }

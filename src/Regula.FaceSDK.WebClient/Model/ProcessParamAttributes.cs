@@ -25,34 +25,25 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Request search data.
+    /// If set, the selected attributes, such as age or emotions, are evaluated.
     /// </summary>
     [DataContract]
-    public partial class SearchParameters :  IEquatable<SearchParameters>, IValidatableObject
+    public partial class ProcessParamAttributes :  IEquatable<ProcessParamAttributes>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchParameters" /> class.
+        /// Initializes a new instance of the <see cref="ProcessParamAttributes" /> class.
         /// </summary>
-        /// <param name="createPerson">createPerson.</param>
-        /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
+        /// <param name="config">config.</param>
+        public ProcessParamAttributes(List<QualityConfig> config = default(List<QualityConfig>))
         {
-            this.CreatePerson = createPerson;
-            this.GroupIds = groupIds;
+            this.Config = config;
         }
 
         /// <summary>
-        /// Gets or Sets CreatePerson
+        /// Gets or Sets Config
         /// </summary>
-        [DataMember(Name="createPerson", EmitDefaultValue=false)]
-        public SearchParametersCreatePerson CreatePerson { get; set; }
-
-        /// <summary>
-        /// IDs of the groups in which the search is performed.
-        /// </summary>
-        /// <value>IDs of the groups in which the search is performed.</value>
-        [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<Guid> GroupIds { get; set; }
+        [DataMember(Name="config", EmitDefaultValue=false)]
+        public List<QualityConfig> Config { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,9 +52,8 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchParameters {\n");
-            sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
-            sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("class ProcessParamAttributes {\n");
+            sb.Append("  Config: ").Append(Config).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,30 +74,25 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchParameters);
+            return this.Equals(input as ProcessParamAttributes);
         }
 
         /// <summary>
-        /// Returns true if SearchParameters instances are equal
+        /// Returns true if ProcessParamAttributes instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchParameters to be compared</param>
+        /// <param name="input">Instance of ProcessParamAttributes to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchParameters input)
+        public bool Equals(ProcessParamAttributes input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.CreatePerson == input.CreatePerson ||
-                    (this.CreatePerson != null &&
-                    this.CreatePerson.Equals(input.CreatePerson))
-                ) && 
-                (
-                    this.GroupIds == input.GroupIds ||
-                    this.GroupIds != null &&
-                    input.GroupIds != null &&
-                    this.GroupIds.SequenceEqual(input.GroupIds)
+                    this.Config == input.Config ||
+                    this.Config != null &&
+                    input.Config != null &&
+                    this.Config.SequenceEqual(input.Config)
                 );
         }
 
@@ -120,10 +105,8 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CreatePerson != null)
-                    hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
-                if (this.GroupIds != null)
-                    hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
+                if (this.Config != null)
+                    hashCode = hashCode * 59 + this.Config.GetHashCode();
                 return hashCode;
             }
         }

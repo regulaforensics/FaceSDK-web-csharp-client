@@ -38,19 +38,17 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="tag">Session identificator..</param>
         /// <param name="transactionId">Transaction ID, there can be several transactions within one session..</param>
         /// <param name="video">Link to the session video..</param>
-        /// <param name="images">List of base64 images.</param>
-        /// <param name="estimatedAge">Approximate age with an accuracy of +/-3 years..</param>
+        /// <param name="age">Approximate age with an accuracy of +/-3 years..</param>
         /// <param name="portrait">Link to the portrait..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<string> images = default(List<string>), int estimatedAge = default(int), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
+        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), int age = default(int), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             this.Code = code;
             this.Status = status;
             this.Tag = tag;
             this.TransactionId = transactionId;
             this.Video = video;
-            this.Images = images;
-            this.EstimatedAge = estimatedAge;
+            this.Age = age;
             this.Portrait = portrait;
             this.Metadata = metadata;
         }
@@ -91,18 +89,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public string Video { get; set; }
 
         /// <summary>
-        /// List of base64 images
-        /// </summary>
-        /// <value>List of base64 images</value>
-        [DataMember(Name="images", EmitDefaultValue=false)]
-        public List<string> Images { get; set; }
-
-        /// <summary>
         /// Approximate age with an accuracy of +/-3 years.
         /// </summary>
         /// <value>Approximate age with an accuracy of +/-3 years.</value>
-        [DataMember(Name="estimatedAge", EmitDefaultValue=false)]
-        public int EstimatedAge { get; set; }
+        [DataMember(Name="age", EmitDefaultValue=false)]
+        public int Age { get; set; }
 
         /// <summary>
         /// Link to the portrait.
@@ -131,8 +122,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("  Video: ").Append(Video).Append("\n");
-            sb.Append("  Images: ").Append(Images).Append("\n");
-            sb.Append("  EstimatedAge: ").Append(EstimatedAge).Append("\n");
+            sb.Append("  Age: ").Append(Age).Append("\n");
             sb.Append("  Portrait: ").Append(Portrait).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
@@ -195,15 +185,9 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Video.Equals(input.Video))
                 ) && 
                 (
-                    this.Images == input.Images ||
-                    this.Images != null &&
-                    input.Images != null &&
-                    this.Images.SequenceEqual(input.Images)
-                ) && 
-                (
-                    this.EstimatedAge == input.EstimatedAge ||
-                    (this.EstimatedAge != null &&
-                    this.EstimatedAge.Equals(input.EstimatedAge))
+                    this.Age == input.Age ||
+                    (this.Age != null &&
+                    this.Age.Equals(input.Age))
                 ) && 
                 (
                     this.Portrait == input.Portrait ||
@@ -237,10 +221,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.TransactionId.GetHashCode();
                 if (this.Video != null)
                     hashCode = hashCode * 59 + this.Video.GetHashCode();
-                if (this.Images != null)
-                    hashCode = hashCode * 59 + this.Images.GetHashCode();
-                if (this.EstimatedAge != null)
-                    hashCode = hashCode * 59 + this.EstimatedAge.GetHashCode();
+                if (this.Age != null)
+                    hashCode = hashCode * 59 + this.Age.GetHashCode();
                 if (this.Portrait != null)
                     hashCode = hashCode * 59 + this.Portrait.GetHashCode();
                 if (this.Metadata != null)

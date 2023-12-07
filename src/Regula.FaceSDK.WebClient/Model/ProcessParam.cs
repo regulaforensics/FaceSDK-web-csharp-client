@@ -42,22 +42,14 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="onlyCentralFace">Whether to process only the central face on the image (true) or all the faces (false)..</param>
         /// <param name="outputImageParams">outputImageParams.</param>
         /// <param name="quality">quality.</param>
-        /// <param name="attributes">Whether to evaluate attributes, such as age and emotions. (default to false).</param>
-        public ProcessParam(FaceQualityScenarios? scenario = default(FaceQualityScenarios?), bool onlyCentralFace = default(bool), OutputImageParams outputImageParams = default(OutputImageParams), QualityRequest quality = default(QualityRequest), bool attributes = false)
+        /// <param name="attributes">attributes.</param>
+        public ProcessParam(FaceQualityScenarios? scenario = default(FaceQualityScenarios?), bool onlyCentralFace = default(bool), OutputImageParams outputImageParams = default(OutputImageParams), QualityRequest quality = default(QualityRequest), ProcessParamAttributes attributes = default(ProcessParamAttributes))
         {
             this.Scenario = scenario;
             this.OnlyCentralFace = onlyCentralFace;
             this.OutputImageParams = outputImageParams;
             this.Quality = quality;
-            // use default value if no "attributes" provided
-            if (attributes == null)
-            {
-                this.Attributes = false;
-            }
-            else
-            {
-                this.Attributes = attributes;
-            }
+            this.Attributes = attributes;
         }
 
 
@@ -81,11 +73,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public QualityRequest Quality { get; set; }
 
         /// <summary>
-        /// Whether to evaluate attributes, such as age and emotions.
+        /// Gets or Sets Attributes
         /// </summary>
-        /// <value>Whether to evaluate attributes, such as age and emotions.</value>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public bool Attributes { get; set; }
+        public ProcessParamAttributes Attributes { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

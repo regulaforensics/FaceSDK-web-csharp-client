@@ -37,8 +37,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="processParam">processParam.</param>
         /// <param name="image">Base64 encoded image..</param>
         /// <param name="thumbnails">Whether to return the cropped portrains with the detected faces. (default to false).</param>
-        /// <param name="attributes">attributes.</param>
-        public DetectRequest(string tag = default(string), ProcessParam processParam = default(ProcessParam), byte[] image = default(byte[]), bool thumbnails = false, DetectRequestAttributes attributes = default(DetectRequestAttributes))
+        public DetectRequest(string tag = default(string), ProcessParam processParam = default(ProcessParam), byte[] image = default(byte[]), bool thumbnails = false)
         {
             this.Tag = tag;
             this.ProcessParam = processParam;
@@ -52,7 +51,6 @@ namespace Regula.FaceSDK.WebClient.Model
             {
                 this.Thumbnails = thumbnails;
             }
-            this.Attributes = attributes;
         }
 
         /// <summary>
@@ -83,12 +81,6 @@ namespace Regula.FaceSDK.WebClient.Model
         public bool Thumbnails { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
-        /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
-        public DetectRequestAttributes Attributes { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,7 +92,6 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  ProcessParam: ").Append(ProcessParam).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  Thumbnails: ").Append(Thumbnails).Append("\n");
-            sb.Append("  Attributes: ").Append(Attributes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,11 +145,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Thumbnails == input.Thumbnails ||
                     (this.Thumbnails != null &&
                     this.Thumbnails.Equals(input.Thumbnails))
-                ) && 
-                (
-                    this.Attributes == input.Attributes ||
-                    (this.Attributes != null &&
-                    this.Attributes.Equals(input.Attributes))
                 );
         }
 
@@ -179,8 +165,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Image.GetHashCode();
                 if (this.Thumbnails != null)
                     hashCode = hashCode * 59 + this.Thumbnails.GetHashCode();
-                if (this.Attributes != null)
-                    hashCode = hashCode * 59 + this.Attributes.GetHashCode();
                 return hashCode;
             }
         }

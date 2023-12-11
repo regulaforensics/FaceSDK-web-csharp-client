@@ -15,7 +15,6 @@ src/Regula.FaceSDK.WebClient/Client/IReadableConfiguration.cs
 src/Regula.FaceSDK.WebClient/Client/OpenAPIDateConverter.cs
 src/Regula.FaceSDK.WebClient/Model/Crop.cs
 src/Regula.FaceSDK.WebClient/Model/DetectRequest.cs
-src/Regula.FaceSDK.WebClient/Model/DetectRequestAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResponse.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResult.cs
 src/Regula.FaceSDK.WebClient/Model/Detection.cs
@@ -58,6 +57,7 @@ src/Regula.FaceSDK.WebClient/Model/PersonFields.cs
 src/Regula.FaceSDK.WebClient/Model/PersonWithImages.cs
 src/Regula.FaceSDK.WebClient/Model/PersonsPage.cs
 src/Regula.FaceSDK.WebClient/Model/ProcessParam.cs
+src/Regula.FaceSDK.WebClient/Model/ProcessParamAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/QualityConfig.cs
 src/Regula.FaceSDK.WebClient/Model/QualityDetail.cs
 src/Regula.FaceSDK.WebClient/Model/QualityDetailsGroups.cs

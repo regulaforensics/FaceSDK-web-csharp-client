@@ -1,4 +1,5 @@
-﻿using Regula.FaceSDK.WebClient.Api;
+﻿using System.Net;
+using Regula.FaceSDK.WebClient.Api;
 using Regula.FaceSDK.WebClient.Model;
 
 namespace Regula.FaceSDK.IdentificationExample
@@ -13,6 +14,8 @@ namespace Regula.FaceSDK.IdentificationExample
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");
+
+            ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
 
             var sdk = new FaceSdk(apiBasePath);
 
@@ -45,7 +48,7 @@ namespace Regula.FaceSDK.IdentificationExample
             Console.WriteLine($"Person #1 {person1.Id} {person1.Name}");
             Console.WriteLine($"Person #2 {person2.Id} {person2.Name}");
             Console.WriteLine($"Group {group.Id} {group.Name}");
-            Console.WriteLine(searchResult.ToString());
+            Console.WriteLine(searchResult.ToJson());
         }
     }
 }

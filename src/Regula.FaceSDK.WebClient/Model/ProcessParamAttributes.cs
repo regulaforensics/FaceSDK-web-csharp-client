@@ -25,7 +25,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Whether to evaluate attributes, such as age and emotions.
+    /// If set, the selected attributes, such as age or emotions, are evaluated.
     /// </summary>
     [DataContract]
     public partial class ProcessParamAttributes :  IEquatable<ProcessParamAttributes>, IValidatableObject

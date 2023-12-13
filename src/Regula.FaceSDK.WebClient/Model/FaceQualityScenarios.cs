@@ -79,7 +79,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Enum THUMBNAIL for value: Thumbnail
         /// </summary>
         [EnumMember(Value = "Thumbnail")]
-        THUMBNAIL = 8
+        THUMBNAIL = 8,
+
+        /// <summary>
+        /// Enum EMPTY for value: 
+        /// </summary>
+        [EnumMember(Value = "")]
+        EMPTY = 9
 
     }
 

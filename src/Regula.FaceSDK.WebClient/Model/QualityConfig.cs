@@ -34,13 +34,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceAttribute? Name { get; set; }
+        public FaceQualityConfigName? Name { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="QualityConfig" /> class.
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="range">The range of applicable values for this characteristic. If the returned in the Response value fits this range, the value is identified as compliant with the requirements..</param>
-        public QualityConfig(FaceAttribute? name = default(FaceAttribute?), List<float> range = default(List<float>))
+        public QualityConfig(FaceQualityConfigName? name = default(FaceQualityConfigName?), List<float> range = default(List<float>))
         {
             this.Name = name;
             this.Range = range;

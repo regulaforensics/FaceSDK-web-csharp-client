@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.IdentificationExample
             );
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
-                    groupIds: new List<int>() {},
+                    groupIds: new List<Guid>() {},
                     image: new ImageFieldsImage(content: face1),
                     limit: 10,
                     threshold: 0.8f

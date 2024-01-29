@@ -20,9 +20,9 @@ namespace Regula.FaceSDK.IdentificationExample
             var sdk = new FaceSdk(apiBasePath);
 
             var person1Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1", metadata:new Dictionary<string, object>())).Id;
+                new PersonFields(name:"person1")).Id;
             var person2Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1", metadata:new Dictionary<string, object>())).Id;
+                new PersonFields(name:"person1")).Id;
 
             sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(image:new ImageFieldsImage(content: face1)));
             sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(image:new ImageFieldsImage(content: face2)));
@@ -30,7 +30,7 @@ namespace Regula.FaceSDK.IdentificationExample
             var person1 = sdk.PersonApi.GetPerson(person1Id);
             var person2 = sdk.PersonApi.GetPerson(person2Id);
 
-            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1", metadata: new Dictionary<string, object>()));
+            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1"));
 
             sdk.GroupApi.UpdatePersonsInGroup(
                 group.Id,

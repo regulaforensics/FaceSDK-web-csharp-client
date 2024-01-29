@@ -501,7 +501,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="groupToCreate">Request body for the group to create.</param>
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <returns>Group</returns>
-        public Group CreateGroup (GroupToCreate groupToCreate, string xRequestID = default(string))
+        public virtual Group CreateGroup (GroupToCreate groupToCreate, string xRequestID = default(string))
         {
              ApiResponse<Group> localVarResponse = CreateGroupWithHttpInfo(groupToCreate, xRequestID);
              return localVarResponse.Data;

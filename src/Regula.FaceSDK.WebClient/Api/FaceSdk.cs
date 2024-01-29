@@ -20,7 +20,7 @@ namespace Regula.FaceSDK.WebClient.Api
             this.MatchingApi = new MatchingApi(config);
             this.GroupApi = new GroupApiGateway(config);
             this.PersonApi = new PersonApiGateway(config);
-            this.SearchApi = new SearchApi(config);
+            this.SearchApi = new SearchApiGateway(config);
         }
 
         public FaceSdk(ApiClient apiClient)

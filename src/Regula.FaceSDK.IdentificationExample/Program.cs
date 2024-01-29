@@ -36,6 +36,12 @@ namespace Regula.FaceSDK.IdentificationExample
                 group.Id,
                 new UpdateGroup(addItems: new List<Guid>() {person1Id, person2Id})
             );
+            // Authorization:
+            // var authHeaders = new Dictionary<string, string>()
+            // {
+            // 	{ "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
+            // };
+            // var response = api.Search(request, headers: authHeaders);
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
                     groupIds: new List<Guid>() {},
@@ -44,7 +50,7 @@ namespace Regula.FaceSDK.IdentificationExample
                     threshold: 0.8f
                     )
             );
-            
+
             Console.WriteLine($"Person #1 {person1.Id} {person1.Name}");
             Console.WriteLine($"Person #2 {person2.Id} {person2.Name}");
             Console.WriteLine($"Group {group.Id} {group.Name}");

@@ -10,7 +10,7 @@ namespace Regula.FaceSDK.IdentificationExample
         
         public static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://127.0.0.0:41101";
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://172.20.40.141:41101";
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");
@@ -37,11 +37,20 @@ namespace Regula.FaceSDK.IdentificationExample
                 new UpdateGroup(addItems: new List<Guid>() {person1Id, person2Id})
             );
             // Authorization:
-            // var authHeaders = new Dictionary<string, string>()
-            // {
-            // 	{ "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
-            // };
-            // var response = api.Search(request, headers: authHeaders);
+            //var authHeaders = new Dictionary<string, string>()
+            //{
+            //    { "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
+            //};
+            //var response = sdk.SearchApi.Search(
+            //    new SearchRequest(
+            //      groupIds: new List<Guid>() { },
+            //      image: new ImageFieldsImage(content: face1),
+            //      limit: 10,
+            //      threshold: 0.8f
+            //    ),
+            //    headers: authHeaders
+            //   );
+
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
                     groupIds: new List<Guid>() {},

@@ -1,5 +1,5 @@
 using Regula.FaceSDK.WebClient.Client;
-
+using Regula.FaceSDK.WebClient.Ext;
 
 namespace Regula.FaceSDK.WebClient.Api
 {
@@ -18,9 +18,9 @@ namespace Regula.FaceSDK.WebClient.Api
             Configuration config = new Configuration() {BasePath = basePath};
             this.ApiClient = new ApiClient(){Configuration = config};
             this.MatchingApi = new MatchingApi(config);
-            this.GroupApi = new GroupApi(config);
-            this.PersonApi = new PersonApi(config);
-            this.SearchApi = new SearchApi(config);
+            this.GroupApi = new GroupApiGateway(config);
+            this.PersonApi = new PersonApiGateway(config);
+            this.SearchApi = new SearchApiGateway(config);
         }
 
         public FaceSdk(ApiClient apiClient)

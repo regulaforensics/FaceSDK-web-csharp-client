@@ -778,7 +778,7 @@ namespace Regula.FaceSDK.WebClient.Api
         /// <param name="personFields"></param>
         /// <param name="xRequestID">Request header label. (optional)</param>
         /// <returns>Person</returns>
-        public Person CreatePerson (PersonFields personFields, string xRequestID = default(string))
+        public virtual Person CreatePerson (PersonFields personFields, string xRequestID = default(string))
         {
              ApiResponse<Person> localVarResponse = CreatePersonWithHttpInfo(personFields, xRequestID);
              return localVarResponse.Data;

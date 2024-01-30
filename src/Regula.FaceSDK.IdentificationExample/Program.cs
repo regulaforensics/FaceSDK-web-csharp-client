@@ -20,9 +20,9 @@ namespace Regula.FaceSDK.IdentificationExample
             var sdk = new FaceSdk(apiBasePath);
 
             var person1Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1", metadata:new Dictionary<string, object>())).Id;
+                new PersonFields(name:"person1")).Id;
             var person2Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1", metadata:new Dictionary<string, object>())).Id;
+                new PersonFields(name:"person1")).Id;
 
             sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(image:new ImageFieldsImage(content: face1)));
             sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(image:new ImageFieldsImage(content: face2)));
@@ -30,12 +30,27 @@ namespace Regula.FaceSDK.IdentificationExample
             var person1 = sdk.PersonApi.GetPerson(person1Id);
             var person2 = sdk.PersonApi.GetPerson(person2Id);
 
-            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1", metadata: new Dictionary<string, object>()));
+            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1"));
 
             sdk.GroupApi.UpdatePersonsInGroup(
                 group.Id,
                 new UpdateGroup(addItems: new List<Guid>() {person1Id, person2Id})
             );
+            // Authorization:
+            //var authHeaders = new Dictionary<string, string>()
+            //{
+            //    { "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
+            //};
+            //var response = sdk.SearchApi.Search(
+            //    new SearchRequest(
+            //      groupIds: new List<Guid>() { },
+            //      image: new ImageFieldsImage(content: face1),
+            //      limit: 10,
+            //      threshold: 0.8f
+            //    ),
+            //    headers: authHeaders
+            //   );
+
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
                     groupIds: new List<Guid>() {},
@@ -44,7 +59,7 @@ namespace Regula.FaceSDK.IdentificationExample
                     threshold: 0.8f
                     )
             );
-            
+
             Console.WriteLine($"Person #1 {person1.Id} {person1.Name}");
             Console.WriteLine($"Person #2 {person2.Id} {person2.Name}");
             Console.WriteLine($"Group {group.Id} {group.Name}");

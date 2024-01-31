@@ -38,14 +38,14 @@ namespace Regula.FaceSDK.WebClient.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(IRestRequest request);
+        partial void InterceptRequest(RestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(IRestRequest request, IRestResponse response);
+        partial void InterceptResponse(RestRequest request, RestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
@@ -54,7 +54,12 @@ namespace Regula.FaceSDK.WebClient.Client
         public ApiClient()
         {
             Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
-            RestClient = new RestClient("http://localhost:41101");
+            var options = new RestClientOptions("http://localhost:41101")
+            {
+                ThrowOnAnyError = true,
+                MaxTimeout = Configuration.Timeout
+            };
+            RestClient = new RestClient(options);
         }
 
         /// <summary>
@@ -65,8 +70,12 @@ namespace Regula.FaceSDK.WebClient.Client
         public ApiClient(Configuration config)
         {
             Configuration = config ?? Regula.FaceSDK.WebClient.Client.Configuration.Default;
-
-            RestClient = new RestClient(Configuration.BasePath);
+            var options = new RestClientOptions(Configuration.BasePath)
+            {
+                ThrowOnAnyError = true,
+                MaxTimeout = Configuration.Timeout
+            };
+            RestClient = new RestClient(options);
         }
 
         /// <summary>
@@ -78,9 +87,13 @@ namespace Regula.FaceSDK.WebClient.Client
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
-
-            RestClient = new RestClient(basePath);
-            Configuration = Client.Configuration.Default;
+           Configuration = Client.Configuration.Default;
+            var options = new RestClientOptions(basePath)
+            {
+                ThrowOnAnyError = true,
+                MaxTimeout = Configuration.Timeout
+            };
+           RestClient = new RestClient(basePath);
         }
 
         /// <summary>
@@ -135,7 +148,7 @@ namespace Regula.FaceSDK.WebClient.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
+                request.AddFile(param.Value.Name, () => param.Value.GetFile(), param.Value.FileName, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -169,12 +182,7 @@ namespace Regula.FaceSDK.WebClient.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            // set timeout
-            
-            RestClient.Timeout = Configuration.Timeout;
-            // set user agent
-            RestClient.UserAgent = Configuration.UserAgent;
-
+            request.AddHeader("UserAgent", Configuration.UserAgent);
             InterceptRequest(request);
             var response = RestClient.Execute(request);
             InterceptResponse(request, response);
@@ -204,9 +212,9 @@ namespace Regula.FaceSDK.WebClient.Client
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
-            RestClient.UserAgent = Configuration.UserAgent;
+            request.AddHeader("UserAgent", Configuration.UserAgent);
             InterceptRequest(request);
-            var response = await RestClient.ExecuteTaskAsync(request, cancellationToken);
+            var response = await RestClient.ExecuteAsync(request, cancellationToken);
             InterceptResponse(request, response);
             return (Object)response;
         }
@@ -279,9 +287,9 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(RestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
+            IReadOnlyCollection<HeaderParameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;

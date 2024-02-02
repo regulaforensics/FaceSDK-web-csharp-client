@@ -25,33 +25,24 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchAndSearchRequestAllOfImages
+    /// The configuration that defines the list of returned attribute check characteristics.
     /// </summary>
     [DataContract]
-    public partial class MatchAndSearchRequestAllOfImages :  IEquatable<MatchAndSearchRequestAllOfImages>, IValidatableObject
+    public partial class AttributeConfig :  IEquatable<AttributeConfig>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ImageSource? Type { get; set; }
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public FaceAttribute? Name { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatchAndSearchRequestAllOfImages" /> class.
+        /// Initializes a new instance of the <see cref="AttributeConfig" /> class.
         /// </summary>
-        /// <param name="content">Base64 encoded image..</param>
-        /// <param name="type">type.</param>
-        public MatchAndSearchRequestAllOfImages(byte[] content = default(byte[]), ImageSource? type = default(ImageSource?))
+        /// <param name="name">name.</param>
+        public AttributeConfig(FaceAttribute? name = default(FaceAttribute?))
         {
-            this.Content = content;
-            this.Type = type;
+            this.Name = name;
         }
-
-        /// <summary>
-        /// Base64 encoded image.
-        /// </summary>
-        /// <value>Base64 encoded image.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
-        public byte[] Content { get; set; }
 
 
         /// <summary>
@@ -61,9 +52,8 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchAndSearchRequestAllOfImages {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("class AttributeConfig {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -84,29 +74,24 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchAndSearchRequestAllOfImages);
+            return this.Equals(input as AttributeConfig);
         }
 
         /// <summary>
-        /// Returns true if MatchAndSearchRequestAllOfImages instances are equal
+        /// Returns true if AttributeConfig instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchAndSearchRequestAllOfImages to be compared</param>
+        /// <param name="input">Instance of AttributeConfig to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchAndSearchRequestAllOfImages input)
+        public bool Equals(AttributeConfig input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 );
         }
 
@@ -119,10 +104,8 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,7 +1,7 @@
 /*
  * Regula FaceSDK Web API
  *
- * Regula FaceSDK Web API # Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -38,14 +38,14 @@ namespace Regula.FaceSDK.WebClient.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(RestRequest request);
+        partial void InterceptRequest(IRestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(RestRequest request, RestResponse response);
+        partial void InterceptResponse(IRestRequest request, IRestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
@@ -54,12 +54,7 @@ namespace Regula.FaceSDK.WebClient.Client
         public ApiClient()
         {
             Configuration = Regula.FaceSDK.WebClient.Client.Configuration.Default;
-            var options = new RestClientOptions("http://localhost:41101")
-            {
-                ThrowOnAnyError = true,
-                MaxTimeout = Configuration.Timeout
-            };
-            RestClient = new RestClient(options);
+            RestClient = new RestClient("http://localhost:41101");
         }
 
         /// <summary>
@@ -70,12 +65,8 @@ namespace Regula.FaceSDK.WebClient.Client
         public ApiClient(Configuration config)
         {
             Configuration = config ?? Regula.FaceSDK.WebClient.Client.Configuration.Default;
-            var options = new RestClientOptions(Configuration.BasePath)
-            {
-                ThrowOnAnyError = true,
-                MaxTimeout = Configuration.Timeout
-            };
-            RestClient = new RestClient(options);
+
+            RestClient = new RestClient(Configuration.BasePath);
         }
 
         /// <summary>
@@ -87,13 +78,9 @@ namespace Regula.FaceSDK.WebClient.Client
         {
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
-           Configuration = Client.Configuration.Default;
-            var options = new RestClientOptions(basePath)
-            {
-                ThrowOnAnyError = true,
-                MaxTimeout = Configuration.Timeout
-            };
-           RestClient = new RestClient(basePath);
+
+            RestClient = new RestClient(basePath);
+            Configuration = Client.Configuration.Default;
         }
 
         /// <summary>
@@ -148,7 +135,7 @@ namespace Regula.FaceSDK.WebClient.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, () => param.Value.GetFile(), param.Value.FileName, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
@@ -182,7 +169,12 @@ namespace Regula.FaceSDK.WebClient.Client
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
 
-            request.AddHeader("UserAgent", Configuration.UserAgent);
+            // set timeout
+            
+            RestClient.Timeout = Configuration.Timeout;
+            // set user agent
+            RestClient.UserAgent = Configuration.UserAgent;
+
             InterceptRequest(request);
             var response = RestClient.Execute(request);
             InterceptResponse(request, response);
@@ -212,9 +204,9 @@ namespace Regula.FaceSDK.WebClient.Client
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
                 pathParams, contentType);
-            request.AddHeader("UserAgent", Configuration.UserAgent);
+            RestClient.UserAgent = Configuration.UserAgent;
             InterceptRequest(request);
-            var response = await RestClient.ExecuteAsync(request, cancellationToken);
+            var response = await RestClient.ExecuteTaskAsync(request, cancellationToken);
             InterceptResponse(request, response);
             return (Object)response;
         }
@@ -287,9 +279,9 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(RestResponse response, Type type)
+        public object Deserialize(IRestResponse response, Type type)
         {
-            IReadOnlyCollection<HeaderParameter> headers = response.Headers;
+            IList<Parameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;

@@ -1,7 +1,7 @@
 /*
  * Regula FaceSDK Web API
  *
- * Regula FaceSDK Web API # Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -37,9 +37,9 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="status">Whether the liveness detection is confirmed (0) or not (1)..</param>
         /// <param name="tag">Session identificator..</param>
         /// <param name="transactionId">Transaction ID, there can be several transactions within one session..</param>
-        /// <param name="video">Link to the session video..</param>
+        /// <param name="video">Link to the session video, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="age">Approximate age with an accuracy of +/-3 years..</param>
-        /// <param name="portrait">Link to the portrait..</param>
+        /// <param name="portrait">Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), int age = default(int), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
@@ -82,9 +82,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public string TransactionId { get; set; }
 
         /// <summary>
-        /// Link to the session video.
+        /// Link to the session video, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)
         /// </summary>
-        /// <value>Link to the session video.</value>
+        /// <value>Link to the session video, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)</value>
         [DataMember(Name="video", EmitDefaultValue=false)]
         public string Video { get; set; }
 
@@ -96,9 +96,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public int Age { get; set; }
 
         /// <summary>
-        /// Link to the portrait.
+        /// Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)
         /// </summary>
-        /// <value>Link to the portrait.</value>
+        /// <value>Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)</value>
         [DataMember(Name="portrait", EmitDefaultValue=false)]
         public string Portrait { get; set; }
 

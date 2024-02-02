@@ -13,6 +13,7 @@ src/Regula.FaceSDK.WebClient/Client/GlobalConfiguration.cs
 src/Regula.FaceSDK.WebClient/Client/IApiAccessor.cs
 src/Regula.FaceSDK.WebClient/Client/IReadableConfiguration.cs
 src/Regula.FaceSDK.WebClient/Client/OpenAPIDateConverter.cs
+src/Regula.FaceSDK.WebClient/Model/AttributeConfig.cs
 src/Regula.FaceSDK.WebClient/Model/Crop.cs
 src/Regula.FaceSDK.WebClient/Model/DetectRequest.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResponse.cs
@@ -21,6 +22,7 @@ src/Regula.FaceSDK.WebClient/Model/Detection.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionAttributes.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionFace.cs
 src/Regula.FaceSDK.WebClient/Model/DetectionQuality.cs
+src/Regula.FaceSDK.WebClient/Model/FaceAttribute.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityAlignType.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityGroups.cs
 src/Regula.FaceSDK.WebClient/Model/FaceImageQualityGroupsStrings.cs

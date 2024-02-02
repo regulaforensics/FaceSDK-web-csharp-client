@@ -1,7 +1,7 @@
 /*
  * Regula FaceSDK Web API
  *
- * Regula FaceSDK Web API # Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -227,7 +227,16 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath { get; set; }
+        public virtual string BasePath {
+            get { return _basePath; }
+            set {
+                _basePath = value;
+                // pass-through to ApiClient if it's set.
+                if(_apiClient != null) {
+                    _apiClient.RestClient.BaseUrl = new Uri(_basePath);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the default header.
@@ -237,7 +246,12 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <summary>
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
-        public virtual int Timeout { get; set; }
+        public virtual int Timeout
+        {
+            
+            get { return ApiClient.RestClient.Timeout; }
+            set { ApiClient.RestClient.Timeout = value; }
+        }
 
         /// <summary>
         /// Gets or sets the HTTP user agent.

@@ -1,3 +1,5 @@
+api/openapi.yaml
+appveyor.yml
 src/Regula.FaceSDK.WebClient/Api/DiagnosticsApi.cs
 src/Regula.FaceSDK.WebClient/Api/GroupApi.cs
 src/Regula.FaceSDK.WebClient/Api/Liveness20Api.cs
@@ -7,12 +9,20 @@ src/Regula.FaceSDK.WebClient/Api/SearchApi.cs
 src/Regula.FaceSDK.WebClient/Client/ApiClient.cs
 src/Regula.FaceSDK.WebClient/Client/ApiException.cs
 src/Regula.FaceSDK.WebClient/Client/ApiResponse.cs
+src/Regula.FaceSDK.WebClient/Client/ClientUtils.cs
 src/Regula.FaceSDK.WebClient/Client/Configuration.cs
 src/Regula.FaceSDK.WebClient/Client/ExceptionFactory.cs
 src/Regula.FaceSDK.WebClient/Client/GlobalConfiguration.cs
+src/Regula.FaceSDK.WebClient/Client/HttpMethod.cs
 src/Regula.FaceSDK.WebClient/Client/IApiAccessor.cs
+src/Regula.FaceSDK.WebClient/Client/IAsynchronousClient.cs
 src/Regula.FaceSDK.WebClient/Client/IReadableConfiguration.cs
+src/Regula.FaceSDK.WebClient/Client/ISynchronousClient.cs
+src/Regula.FaceSDK.WebClient/Client/Multimap.cs
 src/Regula.FaceSDK.WebClient/Client/OpenAPIDateConverter.cs
+src/Regula.FaceSDK.WebClient/Client/RequestOptions.cs
+src/Regula.FaceSDK.WebClient/Client/RetryConfiguration.cs
+src/Regula.FaceSDK.WebClient/Model/AbstractOpenAPISchema.cs
 src/Regula.FaceSDK.WebClient/Model/Crop.cs
 src/Regula.FaceSDK.WebClient/Model/DetectRequest.cs
 src/Regula.FaceSDK.WebClient/Model/DetectResponse.cs

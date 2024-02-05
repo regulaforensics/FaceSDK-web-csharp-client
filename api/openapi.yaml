@@ -1,0 +1,2547 @@
+openapi: 3.0.3
+info:
+  description: |
+    [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi)
+    ### Clients
+    * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios
+    * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android
+    * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client
+    * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core
+  title: Regula FaceSDK Web API
+  version: 6.1.0
+  x-logo:
+    url: https://static-content.regulaforensics.com/Icons/Logos/Regula-logo.svg
+    href: https://mobile.regulaforensics.com/
+  x-tagGroups:
+    name: liveness
+    tags:
+    - liveness
+    - match
+servers:
+- description: Local on-premise installation
+  url: http://localhost:41101/
+paths:
+  /api/match:
+    post:
+      operationId: match
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchResponse'
+          description: Successful operation; the compare results are returned.
+        "403":
+          description: Bad license. Either the server or request does not contain
+            a valid license.
+      summary: Compare faces in all combinations
+      tags:
+      - matching
+  /api/match_and_search:
+    post:
+      operationId: match_and_search
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MatchAndSearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchAndSearchResponse'
+          description: Successful operation; the compare results are returned.
+        "403":
+          description: Bad license. Either the server or request does not contain
+            a valid license.
+      summary: Match and Search in one request
+      tags:
+      - matching
+  /api/detect:
+    post:
+      operationId: detect
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DetectRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetectResponse'
+          description: Successful operation; the coordinates of the detected faces
+            are returned.
+        "403":
+          description: Bad license. Either the server or request does not contain
+            a valid license.
+      summary: "Detect face, evaluate attributes, assess the portrait quality"
+      tags:
+      - matching
+  /api/persons:
+    post:
+      operationId: create_person
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonFields'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: Successful operation; return person.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+      summary: Create person
+      tags:
+      - person
+  /api/persons/{personId}:
+    delete:
+      operationId: delete_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Delete person
+      tags:
+      - person
+    get:
+      operationId: get_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+          description: Successful operation; return person.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Get person
+      tags:
+      - person
+    put:
+      operationId: update_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonFields'
+        description: Request body for the Person to update.
+        required: true
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Update person
+      tags:
+      - person
+  /api/persons/{personId}/images:
+    get:
+      operationId: get_all_images_by_person_id
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: The page number to get a list of persons or groups.
+        in: query
+        name: page
+        required: true
+        schema:
+          default: 1
+          type: integer
+      - description: "The page size with a list of persons or groups, items."
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 1000
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/ImagePage'
+          description: Successful operation; return all person images.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Get person images
+      tags:
+      - person
+    post:
+      operationId: add_image_to_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageFields'
+        description: Image to add.
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Image'
+          description: Successful operation; return image ID.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Add person image
+      tags:
+      - person
+  /api/persons/{personId}/images/{imageId}:
+    delete:
+      operationId: delete_image_of_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: Image ID.
+        in: path
+        name: imageId
+        required: true
+        schema:
+          type: string
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId or image with the imageId is not found.
+      summary: Delete image of person
+      tags:
+      - person
+    get:
+      operationId: get_image_of_person
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: Image ID.
+        in: path
+        name: imageId
+        required: true
+        schema:
+          type: string
+      responses:
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "200":
+          content:
+            image/*:
+              schema:
+                format: binary
+                type: string
+          description: "Successful operation, return image."
+      summary: Get person image by id
+      tags:
+      - person
+  /api/persons/{personId}/groups:
+    get:
+      operationId: get_all_groups_by_person_id
+      parameters:
+      - description: Person ID.
+        in: path
+        name: personId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: The page number to get a list of persons or groups.
+        in: query
+        name: page
+        required: true
+        schema:
+          default: 1
+          type: integer
+      - description: "The page size with a list of persons or groups, items."
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 1000
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPage'
+          description: Successful operation; return all groups.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Person with the personId is not found.
+      summary: Get person groups
+      tags:
+      - person
+  /api/groups:
+    get:
+      operationId: get_all_groups
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: The page number to get a list of persons or groups.
+        in: query
+        name: page
+        required: true
+        schema:
+          default: 1
+          type: integer
+      - description: "The page size with a list of persons or groups, items."
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 1000
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupPage'
+          description: "Successful operation, return all groups."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+      summary: Get groups
+      tags:
+      - group
+    post:
+      operationId: create_group
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupToCreate'
+        description: Request body for the group to create.
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful operation; return group.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+      summary: Create group
+      tags:
+      - group
+  /api/groups/{groupId}:
+    delete:
+      operationId: delete_group
+      parameters:
+      - description: Group ID.
+        in: path
+        name: groupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Group with the groupId is not found.
+      summary: Delete group
+      tags:
+      - group
+    get:
+      operationId: get_group
+      parameters:
+      - description: Group ID.
+        in: path
+        name: groupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful operation; return group.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Group with the groupId is not found.
+      summary: Get group
+      tags:
+      - group
+    put:
+      operationId: update_group
+      parameters:
+      - description: Group ID.
+        in: path
+        name: groupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupToCreate'
+        description: Request body for the group to update.
+        required: true
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Group with the groupId is not found.
+      summary: Update group
+      tags:
+      - group
+  /api/groups/{groupId}/persons:
+    get:
+      operationId: get_all_persons_by_group_id
+      parameters:
+      - description: Group ID.
+        in: path
+        name: groupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      - description: The page number to get a list of persons or groups.
+        in: query
+        name: page
+        required: true
+        schema:
+          default: 1
+          type: integer
+      - description: "The page size with a list of persons or groups, items."
+        in: query
+        name: size
+        required: true
+        schema:
+          default: 1000
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonsPage'
+          description: "Successful operation, return all persons."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Group with the groupId or persons with the personIds are not
+            found.
+      summary: Get group persons
+      tags:
+      - group
+    put:
+      operationId: update_persons_in_group
+      parameters:
+      - description: Group ID.
+        in: path
+        name: groupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroup'
+        description: Request body for person IDs to add or remove.
+        required: true
+      responses:
+        "204":
+          description: "Successful operation, return nothing."
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Bad request. Check your input data.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationLog'
+          description: Group with the groupId is not found.
+      summary: Add/remove persons to group
+      tags:
+      - group
+  /api/search:
+    post:
+      operationId: search
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/SearchResult'
+          description: Successful operation; the search result is returned.
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/PersonCreatedResponse'
+          description: New person created with the search photo and the data specified.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchBadParams'
+          description: Bad request. Check your input data.
+      summary: Find person by image in groups
+      tags:
+      - search
+  /api/v2/liveness:
+    get:
+      operationId: get_liveness_transaction_info
+      parameters:
+      - description: ID of the current liveness transaction.
+        in: query
+        name: transactionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionInfo'
+      summary: Liveness assessment
+      tags:
+      - liveness 2.0
+  /api/readiness:
+    get:
+      operationId: readiness
+      parameters:
+      - description: Request header label.
+        in: header
+        name: X-RequestID
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+          description: License is OK.
+        "400":
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+          description: "Bad license: deactivated, expired, etc."
+      summary: Checking the license status
+      tags:
+      - diagnostics
+components:
+  parameters:
+    x-request:
+      description: Request header label.
+      in: header
+      name: X-RequestID
+      schema:
+        type: string
+    personId:
+      description: Person ID.
+      in: path
+      name: personId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    page:
+      description: The page number to get a list of persons or groups.
+      in: query
+      name: page
+      required: true
+      schema:
+        default: 1
+        type: integer
+    size:
+      description: "The page size with a list of persons or groups, items."
+      in: query
+      name: size
+      required: true
+      schema:
+        default: 1000
+        type: integer
+    imageId:
+      description: Image ID.
+      in: path
+      name: imageId
+      required: true
+      schema:
+        type: string
+    groupId:
+      description: Group ID.
+      in: path
+      name: groupId
+      required: true
+      schema:
+        format: uuid
+        type: string
+    transactionId:
+      description: ID of the current liveness transaction.
+      in: query
+      name: transactionId
+      required: true
+      schema:
+        format: uuid
+        type: string
+  responses:
+    BadLicense:
+      description: Bad license. Either the server or request does not contain a valid
+        license.
+    SuccessPerson:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Person'
+      description: Successful operation; return person.
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationLog'
+      description: Bad request. Check your input data.
+    PersonNotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationLog'
+      description: Person with the personId is not found.
+    SuccessEmpty:
+      description: "Successful operation, return nothing."
+    SuccessGroup:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Group'
+      description: Successful operation; return group.
+    GroupNotFound:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/OperationLog'
+      description: Group with the groupId is not found.
+    SearchBadParamsException:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SearchBadParams'
+      description: Bad request. Check your input data.
+    ReadinessOK:
+      content:
+        application/json:
+          schema:
+            additionalProperties: true
+            type: object
+      description: License is OK.
+    ReadinessBad:
+      content:
+        application/json:
+          schema:
+            additionalProperties: true
+            type: object
+      description: "Bad license: deactivated, expired, etc."
+  schemas:
+    MatchResponse:
+      allOf:
+      - $ref: '#/components/schemas/FaceSDKResult'
+      - properties:
+          detections:
+            description: The array of detected faces.
+            items:
+              $ref: '#/components/schemas/MatchImageDetection'
+            type: array
+          results:
+            description: The array of matching results.
+            items:
+              $ref: '#/components/schemas/MatchImageResult'
+            type: array
+        type: object
+    MatchImageDetection:
+      properties:
+        faces:
+          description: The array of detected faces.
+          items:
+            $ref: '#/components/schemas/DetectionFace'
+          type: array
+        imageIndex:
+          description: "The image index number. Can be given; if not given, the index\
+            \ numbers are set automatically starting from 0. All index numbers must\
+            \ be whole and unique—not repeated."
+          type: integer
+        status:
+          $ref: '#/components/schemas/FaceSDKResultCode'
+      required:
+      - imageIndex
+      - status
+      type: object
+    DetectionFace:
+      properties:
+        faceIndex:
+          description: The detected face index number.
+          type: number
+        landmarks:
+          description: "Absolute coordinates (x,y) of five points of each detected\
+            \ face: left eye, right eye, nose, left point of lips, right point of\
+            \ lips."
+          example:
+          - - x
+            - "y"
+          items:
+            description: Cartesian points. First element - X-axis coordinate. Second
+              element - Y-axis coordinate.
+            items:
+              type: number
+            type: array
+          type: array
+        rotationAngle:
+          description: "Angle of rotation of the face from the vertical axis, degrees."
+          type: number
+        roi:
+          description: "The rectangular area of a detected face that is represented\
+            \ by a set of four elements: the X and Y coordinates of the top-left point,\
+            \ and the width and height dimensions of the rectangle."
+          example:
+          - x
+          - "y"
+          - width
+          - height
+          items:
+            type: number
+          type: array
+        thumbnail:
+          description: Base64 of the cropped portrait.
+          format: byte
+          type: string
+        crop:
+          description: Base64 of the cropped portrait.
+          format: byte
+          type: string
+      type: object
+    MatchFaceIndex:
+      description: The detected face index number.
+      type: number
+    MatchImageIndex:
+      description: "The image index number. Can be given; if not given, the index\
+        \ numbers are set automatically starting from 0. All index numbers must be\
+        \ whole and unique—not repeated."
+      type: integer
+    MatchImageResult:
+      properties:
+        firstIndex:
+          description: "The image index number. Can be given; if not given, the index\
+            \ numbers are set automatically starting from 0. All index numbers must\
+            \ be whole and unique—not repeated."
+          type: integer
+        firstFaceIndex:
+          description: The detected face index number.
+          type: number
+        first:
+          $ref: '#/components/schemas/ImageSource'
+        secondIndex:
+          description: "The image index number. Can be given; if not given, the index\
+            \ numbers are set automatically starting from 0. All index numbers must\
+            \ be whole and unique—not repeated."
+          type: integer
+        secondFaceIndex:
+          description: The detected face index number.
+          type: number
+        second:
+          $ref: '#/components/schemas/ImageSource'
+        score:
+          description: A dimensionless number that shows how similar the compared
+            faces are. 0—absolutely identical faces.
+          type: number
+        similarity:
+          description: "The detected faces similarity, %. 100%—absolutely identical\
+            \ faces, 0%—absolutely not identical."
+          type: number
+      required:
+      - firstIndex
+      - secondIndex
+      type: object
+    ImageSource:
+      description: "The type of the image, defines the way the comparison is performed.\
+        \ See the enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/image-source/"
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: integer
+      x-enum-varnames:
+      - DOCUMENT_PRINTED
+      - DOCUMENT_RFID
+      - LIVE
+      - DOCUMENT_WITH_LIVE
+      - EXTERNAL
+      - GHOST
+    MatchRequest:
+      example:
+        images:
+        - data: data
+          index: 0
+          detectAll: false
+          type: null
+        - data: data
+          index: 0
+          detectAll: false
+          type: null
+        tag: tag
+        thumbnails: false
+        outputImageParams:
+          backgroundColor:
+          - 6
+          - 6
+          crop:
+            returnOriginalRect: true
+            size:
+            - 5
+            - 5
+            padColor:
+            - 1
+            - 1
+            type: 5
+      properties:
+        tag:
+          description: Session identificator.
+          type: string
+        thumbnails:
+          default: false
+          deprecated: true
+          description: "Deprecated, use the `crop` field in `outputImageParams` instead."
+          type: boolean
+        images:
+          description: The array of all images included in the comparison.
+          items:
+            $ref: '#/components/schemas/MatchImage'
+          type: array
+        outputImageParams:
+          $ref: '#/components/schemas/MatchRequest_outputImageParams'
+      required:
+      - images
+      type: object
+    MatchImage:
+      example:
+        data: data
+        index: 0
+        detectAll: false
+        type: null
+      properties:
+        index:
+          description: "The image index number. Can be given; if not given, the index\
+            \ numbers are set automatically starting from 0. All index numbers must\
+            \ be whole and unique—not repeated."
+          type: integer
+        type:
+          $ref: '#/components/schemas/ImageSource'
+        data:
+          description: Base64 encoded image.
+          format: byte
+          type: string
+        detectAll:
+          default: false
+          description: "Whether to detect all faces in the image. If set to false,\
+            \ only the most central face is detected."
+          type: boolean
+      required:
+      - data
+      type: object
+    detectAll:
+      default: false
+      description: "Whether to detect all faces in the image. If set to false, only\
+        \ the most central face is detected."
+      type: boolean
+    MatchAndSearchResponse:
+      allOf:
+      - $ref: '#/components/schemas/FaceSDKResult'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/MatchImageResult'
+            type: array
+          elapsedTime:
+            example: 1.317137987
+            format: float
+            type: number
+          metadata:
+            additionalProperties: true
+            description: A free-form object containing person's extended attributes.
+            type: object
+          detections:
+            items:
+              $ref: '#/components/schemas/MatchAndSearchResponse_allOf_detections'
+            type: array
+        type: object
+    FacesResponse:
+      allOf:
+      - $ref: '#/components/schemas/DetectionFace'
+      - properties:
+          persons:
+            items:
+              $ref: '#/components/schemas/PersonWithImages'
+            type: array
+          rotationAngle:
+            example: 2.1272900104522705
+            format: float
+            type: number
+        type: object
+    PersonWithImages:
+      allOf:
+      - properties:
+          images:
+            items:
+              $ref: '#/components/schemas/RecognizeImage'
+            type: array
+        type: object
+      - $ref: '#/components/schemas/Person'
+    MatchAndSearchRequest:
+      allOf:
+      - properties:
+          tag:
+            description: Session identificator.
+            type: string
+          images:
+            description: Array of Person images.
+            items:
+              $ref: '#/components/schemas/MatchAndSearchRequest_allOf_images'
+            type: array
+        type: object
+      - $ref: '#/components/schemas/SearchParameters'
+    DetectResponse:
+      allOf:
+      - $ref: '#/components/schemas/FaceSDKResult'
+      - properties:
+          results:
+            $ref: '#/components/schemas/DetectResult'
+        type: object
+    DetectResult:
+      properties:
+        detections:
+          items:
+            $ref: '#/components/schemas/Detection'
+          type: array
+        detectorType:
+          description: Internal.
+          type: integer
+        landmarksType:
+          description: Internal.
+          type: integer
+        scenario:
+          $ref: '#/components/schemas/FaceQualityScenarios'
+        timer:
+          description: The total time taken for the detection.
+          example: 0.8479356
+          format: float
+          type: number
+      required:
+      - detections
+      type: object
+    Detection:
+      properties:
+        crop:
+          description: Base64 encoded image.
+          format: byte
+          type: string
+        attributes:
+          $ref: '#/components/schemas/Detection_attributes'
+        landmarks:
+          description: "Absolute coordinates (x,y) of five points of each detected\
+            \ face: left eye, right eye, nose, left point of lips, right point of\
+            \ lips."
+          example:
+          - - x
+            - "y"
+          items:
+            description: Cartesian points. First element - X-axis coordinate. Second
+              element - Y-axis coordinate.
+            items:
+              type: integer
+            type: array
+          type: array
+        quality:
+          $ref: '#/components/schemas/Detection_quality'
+        roi:
+          description: "The rectangular area of a detected face that is represented\
+            \ by a set of four elements: the X and Y coordinates of the top-left point,\
+            \ and the width and height dimensions of the rectangle."
+          example:
+          - x
+          - "y"
+          - width
+          - height
+          items:
+            type: number
+          type: array
+        thumbnail:
+          description: Base64 of the cropped portrait.
+          format: byte
+          type: string
+      required:
+      - landmarks
+      - roi
+      type: object
+    DetectRequest:
+      example:
+        image: image
+        processParam:
+          scenario: null
+          onlyCentralFace: false
+          attributes:
+            config:
+            - name: null
+              range:
+              - x
+              - "y"
+            - name: null
+              range:
+              - x
+              - "y"
+          outputImageParams:
+            backgroundColor:
+            - 128
+            - 128
+            - 128
+            crop:
+              returnOriginalRect: true
+              size:
+              - 300
+              - 400
+              padColor:
+              - 128
+              - 128
+              - 128
+              type: null
+          quality:
+            backgroundMatchColor:
+            - 128
+            - 128
+            - 128
+            config:
+            - name: null
+              range:
+              - x
+              - "y"
+            - name: null
+              range:
+              - x
+              - "y"
+        tag: tag
+        thumbnails: false
+      properties:
+        tag:
+          description: Session identificator.
+          type: string
+        processParam:
+          $ref: '#/components/schemas/ProcessParam'
+        image:
+          description: Base64 encoded image.
+          format: byte
+          type: string
+        thumbnails:
+          default: false
+          description: "Deprecated, use the `crop` field in `processParam` instead."
+          type: boolean
+      type: object
+    PersonFields:
+      description: "Person Request body: name and metadata."
+      example:
+        metadata:
+          key: ""
+        name: name
+        groups:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          description: Person name.
+          type: string
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing person's extended attributes.
+          type: object
+        groups:
+          description: "Groups a person should be placed to. If no group is specified\
+            \ in request, a Default group is created and the person is placed to it."
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    Person:
+      allOf:
+      - $ref: '#/components/schemas/PersonFields'
+      - properties:
+          id:
+            description: Person ID. The list of persons is sorted by decreasing ID
+              value.
+            format: uuid
+            type: string
+          createdAt:
+            description: Person creation date.
+            type: string
+          updatedAt:
+            description: Person update date.
+            type: string
+          groups:
+            description: List of groups this person belongs to.
+            items:
+              format: uuid
+              type: string
+            type: array
+        type: object
+      description: "Person response body: person ID, creation date, update date if\
+        \ any."
+    OperationLog:
+      properties:
+        statusCode:
+          description: Status code.
+          type: integer
+        type:
+          description: Error type.
+          type: string
+        msg:
+          description: Error message.
+          type: string
+      type: object
+    ImagePage:
+      allOf:
+      - $ref: '#/components/schemas/Page'
+      - description: Image page.
+        properties:
+          items:
+            items:
+              $ref: '#/components/schemas/Image'
+            type: array
+        type: object
+    ImageFields:
+      description: "Image in the request data, includes image and contentType."
+      example:
+        image:
+          imageUrl: imageUrl
+          resizeOptions:
+            width: 0
+            height: 6
+            quality: 1
+          contentType: contentType
+          content: content
+        limit: 5
+        detectAll: false
+        threshold: 5.962134
+        tag: tag
+        outputImageParams:
+          backgroundColor:
+          - 128
+          - 128
+          - 128
+          crop:
+            returnOriginalRect: true
+            size:
+            - 300
+            - 400
+            padColor:
+            - 128
+            - 128
+            - 128
+            type: null
+      properties:
+        tag:
+          description: Session identificator.
+          type: string
+        image:
+          $ref: '#/components/schemas/ImageFields_image'
+        outputImageParams:
+          $ref: '#/components/schemas/OutputImageParams'
+        detectAll:
+          default: false
+          description: "Whether to detect all faces in the image. If set to false,\
+            \ only the most central face is detected."
+          type: boolean
+        threshold:
+          description: The similarity threshold.
+          format: float
+          type: number
+        limit:
+          description: The maximum number of results to be returned.
+          type: integer
+      type: object
+    ResizeOptions:
+      description: Set to resize the original image.
+      example:
+        width: 0
+        height: 6
+        quality: 1
+      properties:
+        width:
+          description: "Resized image width, px."
+          type: integer
+        height:
+          description: "Resized image height, px."
+          type: integer
+        quality:
+          default: 100
+          description: "Resized image quality, percent."
+          type: integer
+      type: object
+    Image:
+      description: Image in the response.
+      example:
+        createdAt: createdAt
+        path: path
+        metadata:
+          key: ""
+        id: id
+        contentType: contentType
+        url: url
+        updatedAt: updatedAt
+      properties:
+        id:
+          description: Response image ID. The list is sorted by decreasing ID value.
+          type: string
+        contentType:
+          description: Original media type of the returned image.
+          type: string
+        createdAt:
+          description: Returned image creation date.
+          type: string
+        updatedAt:
+          description: Returned image update date.
+          type: string
+        path:
+          description: Returned image path.
+          type: string
+        url:
+          description: Returned image URL.
+          type: string
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing person's extended attributes.
+          type: object
+      type: object
+    GroupPage:
+      allOf:
+      - properties:
+          items:
+            description: Array of Groups that are found during the search.
+            items:
+              $ref: '#/components/schemas/Group'
+            type: array
+        type: object
+      - $ref: '#/components/schemas/Page'
+    Group:
+      allOf:
+      - $ref: '#/components/schemas/GroupToCreate'
+      - description: "Additional group data in the response, includes id and createdAt."
+        properties:
+          id:
+            description: Group ID.
+            format: uuid
+            type: string
+          createdAt:
+            description: Group creation date.
+            type: string
+        type: object
+    GroupToCreate:
+      description: "Request body of the group to create data, includes name and metadata."
+      example:
+        metadata:
+          key: ""
+        name: name
+        tag: tag
+      properties:
+        tag:
+          description: Session identificator.
+          type: string
+        name:
+          description: Group to create name.
+          type: string
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing group's extended attributes.
+          type: object
+      type: object
+    UpdateGroup:
+      description: Update group.
+      example:
+        removeItems:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        addItems:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        addItems:
+          description: Add items.
+          items:
+            format: uuid
+            type: string
+          type: array
+        removeItems:
+          description: Remove items.
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    PersonsPage:
+      allOf:
+      - properties:
+          items:
+            items:
+              $ref: '#/components/schemas/Person'
+            type: array
+        type: object
+      - $ref: '#/components/schemas/Page'
+    SearchResult:
+      example:
+        persons:
+        - null
+        - null
+        code: 0
+      properties:
+        code:
+          description: Search result code.
+          type: integer
+        persons:
+          description: Person data.
+          items:
+            $ref: '#/components/schemas/SearchPerson'
+          type: array
+      type: object
+    SearchPerson:
+      allOf:
+      - $ref: '#/components/schemas/Person'
+      - description: Person data.
+        properties:
+          detection:
+            $ref: '#/components/schemas/SearchDetection'
+          images:
+            description: Array of Person images.
+            items:
+              $ref: '#/components/schemas/RecognizeImage'
+            type: array
+        type: object
+    SearchDetection:
+      description: The array of identified persons.
+      properties:
+        code:
+          description: Internal.
+          type: integer
+        crop:
+          description: Base64 of the aligned and cropped portrait.
+          format: base64
+          type: string
+        detectorType:
+          description: Internal.
+          type: integer
+        hash:
+          description: Internal.
+          type: string
+        idx:
+          description: Internal.
+          type: integer
+        image:
+          description: Internal.
+          format: base64
+          type: string
+        landmarks:
+          description: "Absolute coordinates (x,y) of five points of each detected\
+            \ face: left eye, right eye, nose, left point of lips, right point of\
+            \ lips."
+          example:
+          - - x
+            - "y"
+          items:
+            description: Cartesian points. First element - X-axis coordinate. Second
+              element - Y-axis coordinate.
+            items:
+              type: integer
+            type: array
+          type: array
+        landmarksType:
+          description: Internal.
+          example: 2
+          type: integer
+        msg:
+          description: Internal.
+          type: string
+        roi:
+          description: "The rectangular area of a detected face that is represented\
+            \ by a set of four elements: the X and Y coordinates of the top-left point,\
+            \ and the width and height dimensions of the rectangle."
+          example:
+          - x
+          - "y"
+          - width
+          - height
+          items:
+            type: number
+          type: array
+        versionSDK:
+          example: 5.2.245.687
+          type: string
+      type: object
+    RecognizeImage:
+      allOf:
+      - $ref: '#/components/schemas/Image'
+      - properties:
+          similarity:
+            description: Similarity score.
+            format: float
+            type: number
+          distance:
+            description: "Similarity distance score: the lower the distance, the higher\
+              \ the face's similarity."
+            format: float
+            type: number
+        type: object
+    PersonCreatedResponse:
+      properties:
+        code:
+          description: Result code.
+          type: integer
+        persons:
+          description: Array of Person images.
+          items:
+            $ref: '#/components/schemas/SearchPerson'
+          type: array
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing person's extended attributes.
+          type: object
+      type: object
+    SearchRequest:
+      allOf:
+      - $ref: '#/components/schemas/SearchParameters'
+      - $ref: '#/components/schemas/ImageFields'
+    SearchParameters:
+      description: Request search data.
+      properties:
+        createPerson:
+          $ref: '#/components/schemas/SearchParameters_createPerson'
+        groupIds:
+          description: IDs of the groups in which the search is performed.
+          items:
+            format: uuid
+            type: string
+          type: array
+      type: object
+    SearchBadParams:
+      properties:
+        msg:
+          default: Descriptor already calculated
+          type: string
+        statusCode:
+          default: 400
+          type: integer
+        type:
+          default: BadParamsException
+          type: string
+      type: object
+    TransactionInfo:
+      example:
+        metadata:
+          key: ""
+        code: 0
+        tag: tag
+        video: video
+        portrait: portrait
+        transactionId: transactionId
+        age: 1
+        status: 6
+      properties:
+        code:
+          description: "Result code, one of the FaceSDKResultCode enum values. See\
+            \ the enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/"
+          type: integer
+        status:
+          description: Whether the liveness detection is confirmed (0) or not (1).
+          type: integer
+        tag:
+          description: Session identificator.
+          type: string
+        transactionId:
+          description: "Transaction ID, there can be several transactions within one\
+            \ session."
+          type: string
+        video:
+          description: "Link to the session video, depends on the selected storage\
+            \ type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)"
+          type: string
+        age:
+          description: Approximate age with an accuracy of +/-3 years.
+          type: integer
+        portrait:
+          description: "Link to the portrait, depends on the selected storage type.\
+            \ [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)"
+          type: string
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing person's extended attributes.
+          type: object
+      type: object
+    FaceSDKResult:
+      properties:
+        code:
+          $ref: '#/components/schemas/FaceSDKResultCode'
+      required:
+      - code
+      type: object
+    FaceSDKResultCode:
+      description: "The result code, see enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/"
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 199
+      - 200
+      - 201
+      - 202
+      - 203
+      - 224
+      - 227
+      - 228
+      - 229
+      - 230
+      - 231
+      - 232
+      - 233
+      - 234
+      - 235
+      - 236
+      - 237
+      - 238
+      - 239
+      - 240
+      - 242
+      - 243
+      - 244
+      - 245
+      - 246
+      - 247
+      - 248
+      - 249
+      - 250
+      - 251
+      - 252
+      type: integer
+      x-enum-varnames:
+      - FACER_OK
+      - FR_IMAGE_EMPTY
+      - FR_FACE_NOT_DETECTED
+      - FR_LANDMARKS_NOT_DETECTED
+      - FR_FACE_ALIGHNER_FAILED
+      - FR_DESCRIPTOR_EXTRACTOR_ERROR
+      - FR_IMAGE_DECODE_ERROR
+      - FR_INTERNAL_ERROR
+      - FACER_CONFIG_ERROR
+      - FACER_NO_LICENSE
+      - FACER_IS_NOT_INITIALIZED
+      - FACER_COMMAND_IS_NOT_SUPPORTED
+      - FACER_COMMAND_PARAMS_READ_ERROR
+      - FACER_LESS_THAN_TWO_IMAGES_IN_REQUEST
+      - FACER_VIDEO_DECODE_ERROR
+      - FACER_NOT_ENOUGH_FRAMES
+      - FACER_OUTPUT_IS_NOT_DEFINED
+      - FACER_CLOSED_EYES_DETECTED
+      - FACER_LOW_QUALITY
+      - FACER_HIGH_ASYMMETRY
+      - FACER_FACE_OVER_EMOTIONAL
+      - FACER_SUNGLASSES_DETECTED
+      - FACER_SMALL_AGE
+      - FACER_HEADDRESS_DETECTED
+      - FACER_FACES_NOT_MATCHED
+      - FACER_IMAGES_COUNT_LIMIT_EXCEEDED
+      - FACER_MEDICINE_MASK_DETECTED
+      - FACER_OCCLUSION_DETECTED
+      - FACER_FOREHEAD_GLASSES_DETECTED
+      - FACER_MOUTH_OPENED
+      - FACER_ART_MASK_DETECTED
+      - FACER_ELECTRONIC_DEVICE_DETECTED
+      - FACER_TRACK_BREAK
+      - FACER_WRONG_GEO
+      - FACER_WRONG_OF
+      - FACER_WRONG_VIEW
+      - FACER_TIMEOUT_LIVENESS_TRANSACTION
+      - FACER_FAILED_LIVENESS_TRANSACTION
+      - FACER_ABORTED_LIVENESS_TRANSACTION
+    FaceRectangular:
+      description: "The rectangular area of a detected face that is represented by\
+        \ a set of four elements: the X and Y coordinates of the top-left point, and\
+        \ the width and height dimensions of the rectangle."
+      example:
+      - x
+      - "y"
+      - width
+      - height
+      items:
+        type: number
+      type: array
+    Thumbnail:
+      description: Base64 of the cropped portrait.
+      format: byte
+      type: string
+    ImageData:
+      description: Base64 encoded image.
+      format: byte
+      type: string
+    FaceQualityScenarios:
+      description: Face detection scenario.
+      enum:
+      - OldMode
+      - QualityFull
+      - QualityICAO
+      - QualityVisaSchengen
+      - QualityVisaUSA
+      - CropCentralFace
+      - CropAllFaces
+      - Thumbnail
+      - ""
+      type: string
+      x-enum-varnames:
+      - OLD_MODE
+      - QUALITY_FULL
+      - QUALITY_ICAO
+      - QUALITY_VISA_SCHENGEN
+      - QUALITY_VISA_USA
+      - CROP_CENTRAL_FACE
+      - CROP_ALL_FACES
+      - THUMBNAIL
+      - EMPTY
+    FaceQualityConfigName:
+      description: All image characteristics that can be assessed during face image
+        quality assessment.
+      enum:
+      - ImageWidth
+      - ImageHeight
+      - ImageWidthToHeight
+      - ImageChannelsNumber
+      - PaddingRatio
+      - FaceMidPointHorizontalPosition
+      - FaceMidPointVerticalPosition
+      - HeadWidthRatio
+      - HeadHeightRatio
+      - EyesDistance
+      - Yaw
+      - Pitch
+      - Roll
+      - BlurLevel
+      - NoiseLevel
+      - EyeRightClosed
+      - EyeLeftClosed
+      - EyeRightOccluded
+      - EyeLeftOccluded
+      - EyesRed
+      - EyeRightCoveredWithHair
+      - EyeLeftCoveredWithHair
+      - OffGaze
+      - FaceDynamicRange
+      - UnnaturalSkinTone
+      - TooDark
+      - TooLight
+      - FaceGlare
+      - ShadowsOnFace
+      - DarkGlasses
+      - ReflectionOnGlasses
+      - FramesTooHeavy
+      - FaceOccluded
+      - HeadCovering
+      - BackgroundUniformity
+      - ShadowsOnBackground
+      - OtherFaces
+      - ShouldersPose
+      - ExpressionLevel
+      - MouthOpen
+      - ForeheadCovering
+      - Smile
+      - StrongMakeup
+      - Headphones
+      - MedicalMask
+      - BackgroundColorMatch
+      - ArtFace
+      - ContactLenses
+      type: string
+      x-enum-varnames:
+      - IMAGE_WIDTH
+      - IMAGE_HEIGHT
+      - IMAGE_WIDTH_TO_HEIGHT
+      - IMAGE_CHANNELS_NUMBER
+      - PADDING_RATIO
+      - FACE_MID_POINT_HORIZONTAL_POSITION
+      - FACE_MID_POINT_VERTICAL_POSITION
+      - HEAD_WIDTH_RATIO
+      - HEAD_HEIGHT_RATIO
+      - EYES_DISTANCE
+      - YAW
+      - PITCH
+      - ROLL
+      - BLUR_LEVEL
+      - NOISE_LEVEL
+      - EYE_RIGHT_CLOSED
+      - EYE_LEFT_CLOSED
+      - EYE_RIGHT_OCCLUDED
+      - EYE_LEFT_OCCLUDED
+      - EYES_RED
+      - EYE_RIGHT_COVERED_WITH_HAIR
+      - EYE_LEFT_COVERED_WITH_HAIR
+      - OFF_GAZE
+      - FACE_DYNAMIC_RANGE
+      - UNNATURAL_SKIN_TONE
+      - TOO_DARK
+      - TOO_LIGHT
+      - FACE_GLARE
+      - SHADOWS_ON_FACE
+      - DARK_GLASSES
+      - REFLECTION_ON_GLASSES
+      - FRAMES_TOO_HEAVY
+      - FACE_OCCLUDED
+      - HEAD_COVERING
+      - BACKGROUND_UNIFORMITY
+      - SHADOWS_ON_BACKGROUND
+      - OTHER_FACES
+      - SHOULDERS_POSE
+      - EXPRESSION_LEVEL
+      - MOUTH_OPEN
+      - FOREHEAD_COVERING
+      - SMILE
+      - STRONG_MAKEUP
+      - HEADPHONES
+      - MEDICAL_MASK
+      - BACKGROUND_COLOR_MATCH
+      - ART_FACE
+      - CONTACT_LENSES
+    QualityDetailsGroups:
+      properties:
+        groupId:
+          $ref: '#/components/schemas/FaceImageQualityGroups'
+        name:
+          $ref: '#/components/schemas/FaceImageQualityGroupsStrings'
+        totalCount:
+          description: The total number of characteristics in the group.
+          example: 5
+          type: integer
+        compliantCount:
+          description: The number of compliant characteristics in the group.
+          example: 4
+          type: integer
+      type: object
+    FaceImageQualityGroups:
+      description: Face image quality group types for face image quality assessment.
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      type: integer
+      x-enum-varnames:
+      - IMAGE_CHARACTERISTICS
+      - HEAD_SIZE_AND_POSITIONS
+      - FACE_QUALITY
+      - EYES_CHARACTERISTICS
+      - SHADOWS_AND_LIGHTNING
+      - POSE_AND_EXPRESSION
+      - HEAD_OCCLUSION
+      - BACKGROUND
+    FaceImageQualityGroupsStrings:
+      description: Face image quality group types for face image quality assessment.
+      enum:
+      - ImageCharacteristics
+      - HeadSizeAndPosition
+      - FaceQuality
+      - EyesCharacteristics
+      - ShadowsAndLightning
+      - PoseAndExpression
+      - HeadOcclusion
+      - Background
+      type: string
+      x-enum-varnames:
+      - IMAGE_CHARACTERISTICS
+      - HEAD_SIZE_AND_POSITIONS
+      - FACE_QUALITY
+      - EYES_CHARACTERISTICS
+      - SHADOWS_AND_LIGHTNING
+      - POSE_AND_EXPRESSION
+      - HEAD_OCCLUSION
+      - BACKGROUND
+    QualityDetail:
+      properties:
+        groupId:
+          $ref: '#/components/schemas/FaceImageQualityGroups'
+        name:
+          $ref: '#/components/schemas/FaceQualityConfigName'
+        range:
+          description: The range of set values for this characteristic.
+          example:
+          - x
+          - "y"
+          items:
+            format: float
+            type: number
+          maxItems: 2
+          minItems: 2
+          type: array
+        status:
+          $ref: '#/components/schemas/FaceImageQualityStatus'
+        value:
+          description: "The assessed value for the characteristic, returned in the\
+            \ set units."
+          example: 0.0
+          format: float
+          type: number
+      type: object
+    FaceImageQualityStatus:
+      description: The processing status returned for each assessed quality characteristic.
+      enum:
+      - 0
+      - 1
+      - 2
+      type: integer
+      x-enum-varnames:
+      - QUALITY_STATUS_FALSE
+      - QUALITY_STATUS_TRUE
+      - QUALITY_STATUS_UNDETERMINED
+    ProcessParam:
+      description: The processing parameters.
+      example:
+        scenario: null
+        onlyCentralFace: false
+        attributes:
+          config:
+          - name: null
+            range:
+            - x
+            - "y"
+          - name: null
+            range:
+            - x
+            - "y"
+        outputImageParams:
+          backgroundColor:
+          - 128
+          - 128
+          - 128
+          crop:
+            returnOriginalRect: true
+            size:
+            - 300
+            - 400
+            padColor:
+            - 128
+            - 128
+            - 128
+            type: null
+        quality:
+          backgroundMatchColor:
+          - 128
+          - 128
+          - 128
+          config:
+          - name: null
+            range:
+            - x
+            - "y"
+          - name: null
+            range:
+            - x
+            - "y"
+      properties:
+        scenario:
+          $ref: '#/components/schemas/FaceQualityScenarios'
+        onlyCentralFace:
+          description: Whether to process only the central face on the image (true)
+            or all the faces (false).
+          example: false
+          type: boolean
+        outputImageParams:
+          $ref: '#/components/schemas/OutputImageParams'
+        quality:
+          $ref: '#/components/schemas/QualityRequest'
+        attributes:
+          $ref: '#/components/schemas/ProcessParam_attributes'
+      type: object
+    OutputImageParams:
+      description: Whether to process the uploaded image according to the indicated
+        settings.
+      example:
+        backgroundColor:
+        - 128
+        - 128
+        - 128
+        crop:
+          returnOriginalRect: true
+          size:
+          - 300
+          - 400
+          padColor:
+          - 128
+          - 128
+          - 128
+          type: null
+      properties:
+        backgroundColor:
+          description: The RGB value of a color for filling background behind a person's
+            silhouette and for aligning the image.
+          example:
+          - 128
+          - 128
+          - 128
+          items:
+            type: integer
+          maxItems: 3
+          minItems: 3
+          type: array
+        crop:
+          $ref: '#/components/schemas/Crop'
+      type: object
+    RGB:
+      description: The RGB value of a color for filling background behind a person's
+        silhouette and for aligning the image.
+      example:
+      - 128
+      - 128
+      - 128
+      items:
+        type: integer
+      maxItems: 3
+      minItems: 3
+      type: array
+    Crop:
+      description: Whether to return the Base64 image of an aligned and cropped portrait
+        in the `crop` field.
+      example:
+        returnOriginalRect: true
+        size:
+        - 300
+        - 400
+        padColor:
+        - 128
+        - 128
+        - 128
+        type: null
+      properties:
+        type:
+          $ref: '#/components/schemas/FaceImageQualityAlignType'
+        padColor:
+          description: The RGB value of a color for filling background behind a person's
+            silhouette and for aligning the image.
+          example:
+          - 128
+          - 128
+          - 128
+          items:
+            type: integer
+          maxItems: 3
+          minItems: 3
+          type: array
+        size:
+          description: "The resize value in case `type` matches this value. If it\
+            \ doesn't, no resize is performed."
+          example:
+          - 300
+          - 400
+          items:
+            type: integer
+          maxItems: 2
+          minItems: 2
+          type: array
+        returnOriginalRect:
+          description: Whether to return the coordinates of the rectangle with the
+            face in the original image prepared for the face crop.
+          example: true
+          type: boolean
+      type: object
+    FaceImageQualityAlignType:
+      description: The aspect ratio according to which face alignment is performed
+        during face detection.
+      enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      x-enum-varnames:
+      - ALIGN_3x4
+      - ALIGN_4x5
+      - ALIGN_2x3
+      - ALIGN_1x1
+      - ALIGN_7x9
+    QualityRequest:
+      description: Whether to perform the portrait quality check.
+      example:
+        backgroundMatchColor:
+        - 128
+        - 128
+        - 128
+        config:
+        - name: null
+          range:
+          - x
+          - "y"
+        - name: null
+          range:
+          - x
+          - "y"
+      properties:
+        backgroundMatchColor:
+          description: The RGB value of a color for filling background behind a person's
+            silhouette and for aligning the image.
+          example:
+          - 128
+          - 128
+          - 128
+          items:
+            type: integer
+          maxItems: 3
+          minItems: 3
+          type: array
+        config:
+          items:
+            $ref: '#/components/schemas/QualityConfig'
+          type: array
+      type: object
+    QualityConfigList:
+      items:
+        $ref: '#/components/schemas/QualityConfig'
+      type: array
+    QualityConfig:
+      description: The configuration that defines the list of returned quality check
+        characteristics.
+      example:
+        name: null
+        range:
+        - x
+        - "y"
+      properties:
+        name:
+          $ref: '#/components/schemas/FaceQualityConfigName'
+        range:
+          description: "The range of applicable values for this characteristic. If\
+            \ the returned in the Response value fits this range, the value is identified\
+            \ as compliant with the requirements."
+          example:
+          - x
+          - "y"
+          items:
+            format: float
+            type: number
+          maxItems: 2
+          minItems: 2
+          type: array
+      type: object
+    Page:
+      description: Information about current page number and total pages count
+      properties:
+        page:
+          description: Current page number.
+          example: 1
+          type: integer
+        totalPages:
+          description: Total number of pages.
+          example: 2
+          type: integer
+      type: object
+    MatchRequest_outputImageParams_crop:
+      description: Whether to return the Base64 of an aligned and cropped portrait
+        in the `crop` field.
+      example:
+        returnOriginalRect: true
+        size:
+        - 5
+        - 5
+        padColor:
+        - 1
+        - 1
+        type: 5
+      properties:
+        padColor:
+          description: The RGB value of a color for filling background behind a person's
+            silhouette and for aligning the image.
+          items:
+            type: integer
+          type: array
+        returnOriginalRect:
+          description: Whether to return the coordinates of the rectangle with the
+            face in the original image prepared for the face crop.
+          type: boolean
+        size:
+          description: "The resize value in case `type` matches this value. If it\
+            \ doesn't, no resize is performed."
+          items:
+            type: integer
+          type: array
+        type:
+          description: The aspect ratio according to which face alignment is performed
+            during face detection.
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          type: integer
+      type: object
+    MatchRequest_outputImageParams:
+      description: Whether to process the uploaded image according to the indicated
+        settings.
+      example:
+        backgroundColor:
+        - 6
+        - 6
+        crop:
+          returnOriginalRect: true
+          size:
+          - 5
+          - 5
+          padColor:
+          - 1
+          - 1
+          type: 5
+      properties:
+        backgroundColor:
+          description: The RGB value of a color for filling background behind a person's
+            silhouette and for aligning the image.
+          items:
+            type: integer
+          type: array
+        crop:
+          $ref: '#/components/schemas/MatchRequest_outputImageParams_crop'
+      type: object
+    MatchAndSearchResponse_allOf_detections:
+      properties:
+        faces:
+          items:
+            $ref: '#/components/schemas/FacesResponse'
+          type: array
+        imageIndex:
+          description: "The image index number. Can be given; if not given, the index\
+            \ numbers are set automatically starting from 0. All index numbers must\
+            \ be whole and unique—not repeated."
+          type: integer
+        status:
+          $ref: '#/components/schemas/FaceSDKResultCode'
+      type: object
+    MatchAndSearchRequest_allOf_images:
+      properties:
+        content:
+          description: Base64 encoded image.
+          format: byte
+          type: string
+        type:
+          $ref: '#/components/schemas/ImageSource'
+      type: object
+    Detection_attributes:
+      properties:
+        details:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+        elapsedTime:
+          description: The elapsed time for attribute detection.
+          type: number
+      type: object
+    Detection_quality:
+      description: "Field for checking the portrait quality. If it is not mentioned,\
+        \ no quality check is performed."
+      properties:
+        nonCompliant:
+          description: The array of all the non-compliant assessment characteristics.
+          example:
+          - ImageWidthToHeight
+          - Yaw
+          items:
+            $ref: '#/components/schemas/FaceQualityConfigName'
+          type: array
+        detailsGroups:
+          description: The array of the assessment results for each group of characteristics.
+          items:
+            $ref: '#/components/schemas/QualityDetailsGroups'
+          type: array
+        details:
+          description: The array of the assessment characteristics that were set in
+            the request.
+          items:
+            $ref: '#/components/schemas/QualityDetail'
+          type: array
+        score:
+          description: "Returns the estimated portrait quality assessment result,\
+            \ a number from 0 to 1, where 1 is for absolute compliance."
+          example: -1.0
+          format: float
+          type: number
+        timer:
+          description: The total time the quality assessment has taken.
+          example: 0.420364111661911
+          format: float
+          type: number
+      type: object
+    ImageFields_image:
+      description: Uploaded image.
+      example:
+        imageUrl: imageUrl
+        resizeOptions:
+          width: 0
+          height: 6
+          quality: 1
+        contentType: contentType
+        content: content
+      properties:
+        contentType:
+          description: Original media type of the uploaded image.
+          type: string
+        content:
+          description: Base64 encoded image.
+          format: byte
+          type: string
+        imageUrl:
+          description: Image URL.
+          type: string
+        resizeOptions:
+          $ref: '#/components/schemas/ResizeOptions'
+      type: object
+    SearchParameters_createPerson:
+      description: "If a person is not found, a new person entry is created using\
+        \ the descriptor calculated while searching."
+      properties:
+        name:
+          description: Person's name.
+          type: string
+        metadata:
+          additionalProperties: true
+          description: A free-form object containing person's extended attributes.
+          type: object
+      type: object
+    ProcessParam_attributes:
+      description: "If set, the selected attributes, such as age or emotions, are\
+        \ evaluated."
+      example:
+        config:
+        - name: null
+          range:
+          - x
+          - "y"
+        - name: null
+          range:
+          - x
+          - "y"
+      properties:
+        config:
+          items:
+            $ref: '#/components/schemas/QualityConfig'
+          type: array
+      type: object
+

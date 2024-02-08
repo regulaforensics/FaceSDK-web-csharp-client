@@ -1,7 +1,7 @@
 /*
  * Regula FaceSDK Web API
  *
- * Regula FaceSDK Web API # Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -33,24 +33,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PersonFields" /> class.
         /// </summary>
-        /// <param name="tag">Session identificator..</param>
         /// <param name="name">Person name..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="groups">Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it..</param>
-        public PersonFields(string tag = default(string), string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>))
+        public PersonFields(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>))
         {
-            this.Tag = tag;
             this.Name = name;
             this.Metadata = metadata;
             this.Groups = groups;
         }
-
-        /// <summary>
-        /// Session identificator.
-        /// </summary>
-        /// <value>Session identificator.</value>
-        [DataMember(Name="tag", EmitDefaultValue=false)]
-        public string Tag { get; set; }
 
         /// <summary>
         /// Person name.
@@ -81,7 +72,6 @@ namespace Regula.FaceSDK.WebClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PersonFields {\n");
-            sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Groups: ").Append(Groups).Append("\n");
@@ -120,11 +110,6 @@ namespace Regula.FaceSDK.WebClient.Model
 
             return 
                 (
-                    this.Tag == input.Tag ||
-                    (this.Tag != null &&
-                    this.Tag.Equals(input.Tag))
-                ) && 
-                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -152,8 +137,6 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Metadata != null)

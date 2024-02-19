@@ -33,27 +33,87 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SearchResult" /> class.
         /// </summary>
-        /// <param name="code">Search result code..</param>
-        /// <param name="persons">Person data..</param>
-        public SearchResult(int code = default(int), List<SearchPerson> persons = default(List<SearchPerson>))
+        /// <param name="code">Result code. It is returned only with response 200..</param>
+        /// <param name="persons">Array of Person images. It is returned only with response 200..</param>
+        /// <param name="id">Person ID. The list of persons is sorted by decreasing ID value..</param>
+        /// <param name="createdAt">Person creation date..</param>
+        /// <param name="updatedAt">Person update date..</param>
+        /// <param name="groups">List of groups this person belongs to..</param>
+        /// <param name="name">Person name..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes. Available when a person is being created.</param>
+        public SearchResult(int code = default(int), List<SearchPerson> persons = default(List<SearchPerson>), Guid? id = default(Guid?), string createdAt = default(string), string updatedAt = default(string), List<Guid> groups = default(List<Guid>), string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+            this.Groups = groups;
+            this.Name = name;
+            this.Metadata = metadata;
             this.Code = code;
             this.Persons = persons;
+            this.Id = id;
+            this.CreatedAt = createdAt;
+            this.UpdatedAt = updatedAt;
+            this.Groups = groups;
+            this.Name = name;
+            this.Metadata = metadata;
         }
 
         /// <summary>
-        /// Search result code.
+        /// Result code. It is returned only with response 200.
         /// </summary>
-        /// <value>Search result code.</value>
+        /// <value>Result code. It is returned only with response 200.</value>
         [DataMember(Name="code", EmitDefaultValue=false)]
         public int Code { get; set; }
 
         /// <summary>
-        /// Person data.
+        /// Array of Person images. It is returned only with response 200.
         /// </summary>
-        /// <value>Person data.</value>
+        /// <value>Array of Person images. It is returned only with response 200.</value>
         [DataMember(Name="persons", EmitDefaultValue=false)]
         public List<SearchPerson> Persons { get; set; }
+
+        /// <summary>
+        /// Person ID. The list of persons is sorted by decreasing ID value.
+        /// </summary>
+        /// <value>Person ID. The list of persons is sorted by decreasing ID value.</value>
+        [DataMember(Name="id", EmitDefaultValue=true)]
+        public Guid? Id { get; set; }
+
+        /// <summary>
+        /// Person creation date.
+        /// </summary>
+        /// <value>Person creation date.</value>
+        [DataMember(Name="createdAt", EmitDefaultValue=true)]
+        public string CreatedAt { get; set; }
+
+        /// <summary>
+        /// Person update date.
+        /// </summary>
+        /// <value>Person update date.</value>
+        [DataMember(Name="updatedAt", EmitDefaultValue=true)]
+        public string UpdatedAt { get; set; }
+
+        /// <summary>
+        /// List of groups this person belongs to.
+        /// </summary>
+        /// <value>List of groups this person belongs to.</value>
+        [DataMember(Name="groups", EmitDefaultValue=true)]
+        public List<Guid> Groups { get; set; }
+
+        /// <summary>
+        /// Person name.
+        /// </summary>
+        /// <value>Person name.</value>
+        [DataMember(Name="name", EmitDefaultValue=true)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// A free-form object containing person&#39;s extended attributes. Available when a person is being created
+        /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes. Available when a person is being created</value>
+        [DataMember(Name="metadata", EmitDefaultValue=true)]
+        public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,6 +125,12 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("class SearchResult {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Persons: ").Append(Persons).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
+            sb.Append("  Groups: ").Append(Groups).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -109,6 +175,38 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Persons != null &&
                     input.Persons != null &&
                     this.Persons.SequenceEqual(input.Persons)
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.CreatedAt == input.CreatedAt ||
+                    (this.CreatedAt != null &&
+                    this.CreatedAt.Equals(input.CreatedAt))
+                ) && 
+                (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
+                    this.Groups == input.Groups ||
+                    this.Groups != null &&
+                    input.Groups != null &&
+                    this.Groups.SequenceEqual(input.Groups)
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -125,6 +223,18 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
                 if (this.Persons != null)
                     hashCode = hashCode * 59 + this.Persons.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.CreatedAt != null)
+                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.UpdatedAt != null)
+                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
+                if (this.Groups != null)
+                    hashCode = hashCode * 59 + this.Groups.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

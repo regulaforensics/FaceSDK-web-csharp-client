@@ -35,13 +35,11 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="tag">Session identificator..</param>
         /// <param name="images">Array of Person images..</param>
-        /// <param name="createPerson">createPerson.</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestAllOfImages> images = default(List<MatchAndSearchRequestAllOfImages>), SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
+        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestAllOfImages> images = default(List<MatchAndSearchRequestAllOfImages>), List<Guid> groupIds = default(List<Guid>))
         {
             this.Tag = tag;
             this.Images = images;
-            this.CreatePerson = createPerson;
             this.GroupIds = groupIds;
         }
 
@@ -60,12 +58,6 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<MatchAndSearchRequestAllOfImages> Images { get; set; }
 
         /// <summary>
-        /// Gets or Sets CreatePerson
-        /// </summary>
-        [DataMember(Name="createPerson", EmitDefaultValue=false)]
-        public SearchParametersCreatePerson CreatePerson { get; set; }
-
-        /// <summary>
         /// IDs of the groups in which the search is performed.
         /// </summary>
         /// <value>IDs of the groups in which the search is performed.</value>
@@ -82,7 +74,6 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("class MatchAndSearchRequest {\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Images: ").Append(Images).Append("\n");
-            sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
             sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -130,11 +121,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Images.SequenceEqual(input.Images)
                 ) && 
                 (
-                    this.CreatePerson == input.CreatePerson ||
-                    (this.CreatePerson != null &&
-                    this.CreatePerson.Equals(input.CreatePerson))
-                ) && 
-                (
                     this.GroupIds == input.GroupIds ||
                     this.GroupIds != null &&
                     input.GroupIds != null &&
@@ -155,8 +141,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Images != null)
                     hashCode = hashCode * 59 + this.Images.GetHashCode();
-                if (this.CreatePerson != null)
-                    hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
                 if (this.GroupIds != null)
                     hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
                 return hashCode;

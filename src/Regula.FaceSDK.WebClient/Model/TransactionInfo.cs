@@ -41,7 +41,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="age">Approximate age with an accuracy of +/-3 years..</param>
         /// <param name="portrait">Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), int age = default(int), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
+        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             this.Code = code;
             this.Status = status;
@@ -93,7 +93,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Approximate age with an accuracy of +/-3 years.</value>
         [DataMember(Name="age", EmitDefaultValue=false)]
-        public int Age { get; set; }
+        public List<Dictionary<string, Object>> Age { get; set; }
 
         /// <summary>
         /// Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/)
@@ -186,8 +186,9 @@ namespace Regula.FaceSDK.WebClient.Model
                 ) && 
                 (
                     this.Age == input.Age ||
-                    (this.Age != null &&
-                    this.Age.Equals(input.Age))
+                    this.Age != null &&
+                    input.Age != null &&
+                    this.Age.SequenceEqual(input.Age)
                 ) && 
                 (
                     this.Portrait == input.Portrait ||

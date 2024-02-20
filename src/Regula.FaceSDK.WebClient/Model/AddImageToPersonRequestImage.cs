@@ -25,53 +25,52 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Group
+    /// Uploaded image.
     /// </summary>
     [DataContract]
-    public partial class Group :  IEquatable<Group>, IValidatableObject
+    public partial class AddImageToPersonRequestImage :  IEquatable<AddImageToPersonRequestImage>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Group" /> class.
+        /// Initializes a new instance of the <see cref="AddImageToPersonRequestImage" /> class.
         /// </summary>
-        /// <param name="name">Group to create name..</param>
-        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
-        /// <param name="id">Group ID..</param>
-        /// <param name="createdAt">Group creation date..</param>
-        public Group(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), Guid id = default(Guid), string createdAt = default(string))
+        /// <param name="contentType">Original media type of the uploaded image..</param>
+        /// <param name="content">Base64 encoded image..</param>
+        /// <param name="imageUrl">Image URL..</param>
+        /// <param name="resizeOptions">resizeOptions.</param>
+        public AddImageToPersonRequestImage(string contentType = default(string), byte[] content = default(byte[]), string imageUrl = default(string), ResizeOptions resizeOptions = default(ResizeOptions))
         {
-            this.Name = name;
-            this.Metadata = metadata;
-            this.Id = id;
-            this.CreatedAt = createdAt;
+            this.ContentType = contentType;
+            this.Content = content;
+            this.ImageUrl = imageUrl;
+            this.ResizeOptions = resizeOptions;
         }
 
         /// <summary>
-        /// Group to create name.
+        /// Original media type of the uploaded image.
         /// </summary>
-        /// <value>Group to create name.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        /// <value>Original media type of the uploaded image.</value>
+        [DataMember(Name="contentType", EmitDefaultValue=false)]
+        public string ContentType { get; set; }
 
         /// <summary>
-        /// A free-form object containing group&#39;s extended attributes.
+        /// Base64 encoded image.
         /// </summary>
-        /// <value>A free-form object containing group&#39;s extended attributes.</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
-        public Dictionary<string, Object> Metadata { get; set; }
+        /// <value>Base64 encoded image.</value>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public byte[] Content { get; set; }
 
         /// <summary>
-        /// Group ID.
+        /// Image URL.
         /// </summary>
-        /// <value>Group ID.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public Guid Id { get; set; }
+        /// <value>Image URL.</value>
+        [DataMember(Name="imageUrl", EmitDefaultValue=false)]
+        public string ImageUrl { get; set; }
 
         /// <summary>
-        /// Group creation date.
+        /// Gets or Sets ResizeOptions
         /// </summary>
-        /// <value>Group creation date.</value>
-        [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
+        [DataMember(Name="resizeOptions", EmitDefaultValue=false)]
+        public ResizeOptions ResizeOptions { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,11 +79,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Group {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("class AddImageToPersonRequestImage {\n");
+            sb.Append("  ContentType: ").Append(ContentType).Append("\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  ResizeOptions: ").Append(ResizeOptions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,40 +104,39 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Group);
+            return this.Equals(input as AddImageToPersonRequestImage);
         }
 
         /// <summary>
-        /// Returns true if Group instances are equal
+        /// Returns true if AddImageToPersonRequestImage instances are equal
         /// </summary>
-        /// <param name="input">Instance of Group to be compared</param>
+        /// <param name="input">Instance of AddImageToPersonRequestImage to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Group input)
+        public bool Equals(AddImageToPersonRequestImage input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.ContentType == input.ContentType ||
+                    (this.ContentType != null &&
+                    this.ContentType.Equals(input.ContentType))
                 ) && 
                 (
-                    this.Metadata == input.Metadata ||
-                    this.Metadata != null &&
-                    input.Metadata != null &&
-                    this.Metadata.SequenceEqual(input.Metadata)
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.ResizeOptions == input.ResizeOptions ||
+                    (this.ResizeOptions != null &&
+                    this.ResizeOptions.Equals(input.ResizeOptions))
                 );
         }
 
@@ -151,14 +149,14 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Metadata != null)
-                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.ContentType != null)
+                    hashCode = hashCode * 59 + this.ContentType.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
+                if (this.ImageUrl != null)
+                    hashCode = hashCode * 59 + this.ImageUrl.GetHashCode();
+                if (this.ResizeOptions != null)
+                    hashCode = hashCode * 59 + this.ResizeOptions.GetHashCode();
                 return hashCode;
             }
         }

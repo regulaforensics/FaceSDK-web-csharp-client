@@ -33,14 +33,37 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="GroupToCreate" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected GroupToCreate() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GroupToCreate" /> class.
+        /// </summary>
         /// <param name="tag">Session identificator..</param>
-        /// <param name="name">Group to create name..</param>
-        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
+        /// <param name="name">Group to create name. (required).</param>
+        /// <param name="metadata">A free-form object containing group&#39;s extended attributes. (required).</param>
         public GroupToCreate(string tag = default(string), string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new InvalidDataException("name is a required property for GroupToCreate and cannot be null");
+            }
+            else
+            {
+                this.Name = name;
+            }
+
+            // to ensure "metadata" is required (not null)
+            if (metadata == null)
+            {
+                throw new InvalidDataException("metadata is a required property for GroupToCreate and cannot be null");
+            }
+            else
+            {
+                this.Metadata = metadata;
+            }
+
             this.Tag = tag;
-            this.Name = name;
-            this.Metadata = metadata;
         }
 
         /// <summary>
@@ -54,14 +77,14 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Group to create name.
         /// </summary>
         /// <value>Group to create name.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// A free-form object containing group&#39;s extended attributes.
         /// </summary>
         /// <value>A free-form object containing group&#39;s extended attributes.</value>
-        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        [DataMember(Name="metadata", EmitDefaultValue=true)]
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>

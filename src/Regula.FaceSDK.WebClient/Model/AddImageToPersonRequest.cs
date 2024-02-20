@@ -25,54 +25,39 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// SearchRequest
+    /// Image in the request data, includes image and contentType.
     /// </summary>
     [DataContract]
-    public partial class SearchRequest :  IEquatable<SearchRequest>, IValidatableObject
+    public partial class AddImageToPersonRequest :  IEquatable<AddImageToPersonRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchRequest" /> class.
+        /// Initializes a new instance of the <see cref="AddImageToPersonRequest" /> class.
         /// </summary>
-        /// <param name="createPerson">createPerson.</param>
-        /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
+        [JsonConstructorAttribute]
+        protected AddImageToPersonRequest() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddImageToPersonRequest" /> class.
+        /// </summary>
         /// <param name="tag">Session identificator..</param>
-        /// <param name="image">image.</param>
-        /// <param name="outputImageParams">outputImageParams.</param>
-        /// <param name="detectAll">Whether to detect all faces in the image. If set to false, only the most central face is detected. (default to false).</param>
+        /// <param name="image">image (required).</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
-        public SearchRequest(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>), string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
+        public AddImageToPersonRequest(string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), float threshold = default(float), int limit = default(int))
         {
-            this.CreatePerson = createPerson;
-            this.GroupIds = groupIds;
-            this.Tag = tag;
-            this.Image = image;
-            this.OutputImageParams = outputImageParams;
-            // use default value if no "detectAll" provided
-            if (detectAll == null)
+            // to ensure "image" is required (not null)
+            if (image == null)
             {
-                this.DetectAll = false;
+                throw new InvalidDataException("image is a required property for AddImageToPersonRequest and cannot be null");
             }
             else
             {
-                this.DetectAll = detectAll;
+                this.Image = image;
             }
+
+            this.Tag = tag;
             this.Threshold = threshold;
             this.Limit = limit;
         }
-
-        /// <summary>
-        /// Gets or Sets CreatePerson
-        /// </summary>
-        [DataMember(Name="createPerson", EmitDefaultValue=false)]
-        public SearchParametersCreatePerson CreatePerson { get; set; }
-
-        /// <summary>
-        /// IDs of the groups in which the search is performed.
-        /// </summary>
-        /// <value>IDs of the groups in which the search is performed.</value>
-        [DataMember(Name="groupIds", EmitDefaultValue=false)]
-        public List<Guid> GroupIds { get; set; }
 
         /// <summary>
         /// Session identificator.
@@ -84,21 +69,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Gets or Sets Image
         /// </summary>
-        [DataMember(Name="image", EmitDefaultValue=false)]
+        [DataMember(Name="image", EmitDefaultValue=true)]
         public AddImageToPersonRequestImage Image { get; set; }
-
-        /// <summary>
-        /// Gets or Sets OutputImageParams
-        /// </summary>
-        [DataMember(Name="outputImageParams", EmitDefaultValue=false)]
-        public OutputImageParams OutputImageParams { get; set; }
-
-        /// <summary>
-        /// Whether to detect all faces in the image. If set to false, only the most central face is detected.
-        /// </summary>
-        /// <value>Whether to detect all faces in the image. If set to false, only the most central face is detected.</value>
-        [DataMember(Name="detectAll", EmitDefaultValue=false)]
-        public bool DetectAll { get; set; }
 
         /// <summary>
         /// The similarity threshold.
@@ -121,13 +93,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchRequest {\n");
-            sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
-            sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("class AddImageToPersonRequest {\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
-            sb.Append("  OutputImageParams: ").Append(OutputImageParams).Append("\n");
-            sb.Append("  DetectAll: ").Append(DetectAll).Append("\n");
             sb.Append("  Threshold: ").Append(Threshold).Append("\n");
             sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("}\n");
@@ -150,31 +118,20 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchRequest);
+            return this.Equals(input as AddImageToPersonRequest);
         }
 
         /// <summary>
-        /// Returns true if SearchRequest instances are equal
+        /// Returns true if AddImageToPersonRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchRequest to be compared</param>
+        /// <param name="input">Instance of AddImageToPersonRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchRequest input)
+        public bool Equals(AddImageToPersonRequest input)
         {
             if (input == null)
                 return false;
 
             return 
-                (
-                    this.CreatePerson == input.CreatePerson ||
-                    (this.CreatePerson != null &&
-                    this.CreatePerson.Equals(input.CreatePerson))
-                ) && 
-                (
-                    this.GroupIds == input.GroupIds ||
-                    this.GroupIds != null &&
-                    input.GroupIds != null &&
-                    this.GroupIds.SequenceEqual(input.GroupIds)
-                ) && 
                 (
                     this.Tag == input.Tag ||
                     (this.Tag != null &&
@@ -184,16 +141,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Image == input.Image ||
                     (this.Image != null &&
                     this.Image.Equals(input.Image))
-                ) && 
-                (
-                    this.OutputImageParams == input.OutputImageParams ||
-                    (this.OutputImageParams != null &&
-                    this.OutputImageParams.Equals(input.OutputImageParams))
-                ) && 
-                (
-                    this.DetectAll == input.DetectAll ||
-                    (this.DetectAll != null &&
-                    this.DetectAll.Equals(input.DetectAll))
                 ) && 
                 (
                     this.Threshold == input.Threshold ||
@@ -216,18 +163,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.CreatePerson != null)
-                    hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
-                if (this.GroupIds != null)
-                    hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
                 if (this.Tag != null)
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Image != null)
                     hashCode = hashCode * 59 + this.Image.GetHashCode();
-                if (this.OutputImageParams != null)
-                    hashCode = hashCode * 59 + this.OutputImageParams.GetHashCode();
-                if (this.DetectAll != null)
-                    hashCode = hashCode * 59 + this.DetectAll.GetHashCode();
                 if (this.Threshold != null)
                     hashCode = hashCode * 59 + this.Threshold.GetHashCode();
                 if (this.Limit != null)

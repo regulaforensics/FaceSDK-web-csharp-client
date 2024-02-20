@@ -46,7 +46,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="code">code (required).</param>
         /// <param name="detections">The array of detected faces..</param>
         /// <param name="results">The array of matching results..</param>
-        public MatchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageDetection> detections = default(List<MatchImageDetection>), List<MatchImageResult> results = default(List<MatchImageResult>))
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        public MatchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageDetection> detections = default(List<MatchImageDetection>), List<MatchImageResult> results = default(List<MatchImageResult>), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             // to ensure "code" is required (not null)
             if (code == null)
@@ -60,6 +61,7 @@ namespace Regula.FaceSDK.WebClient.Model
 
             this.Detections = detections;
             this.Results = results;
+            this.Metadata = metadata;
         }
 
 
@@ -78,6 +80,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<MatchImageResult> Results { get; set; }
 
         /// <summary>
+        /// A free-form object containing person&#39;s extended attributes.
+        /// </summary>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -88,6 +97,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Detections: ").Append(Detections).Append("\n");
             sb.Append("  Results: ").Append(Results).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,6 +148,12 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Results != null &&
                     input.Results != null &&
                     this.Results.SequenceEqual(input.Results)
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -156,6 +172,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Detections.GetHashCode();
                 if (this.Results != null)
                     hashCode = hashCode * 59 + this.Results.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

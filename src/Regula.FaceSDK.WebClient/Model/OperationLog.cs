@@ -36,11 +36,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="statusCode">Status code..</param>
         /// <param name="type">Error type..</param>
         /// <param name="msg">Error message..</param>
-        public OperationLog(int statusCode = default(int), string type = default(string), string msg = default(string))
+        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
+        public OperationLog(int statusCode = default(int), string type = default(string), string msg = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             this.StatusCode = statusCode;
             this.Type = type;
             this.Msg = msg;
+            this.Metadata = metadata;
         }
 
         /// <summary>
@@ -65,6 +67,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public string Msg { get; set; }
 
         /// <summary>
+        /// A free-form object containing group&#39;s extended attributes.
+        /// </summary>
+        /// <value>A free-form object containing group&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -75,6 +84,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Msg: ").Append(Msg).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -123,6 +133,12 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Msg == input.Msg ||
                     (this.Msg != null &&
                     this.Msg.Equals(input.Msg))
+                ) && 
+                (
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
                 );
         }
 
@@ -141,6 +157,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Msg != null)
                     hashCode = hashCode * 59 + this.Msg.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
                 return hashCode;
             }
         }

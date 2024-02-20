@@ -39,7 +39,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="detectAll">Whether to detect all faces in the image. If set to false, only the most central face is detected. (default to false).</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
-        public ImageFields(string tag = default(string), ImageFieldsImage image = default(ImageFieldsImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
+        public ImageFields(string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
         {
             this.Tag = tag;
             this.Image = image;
@@ -68,7 +68,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Gets or Sets Image
         /// </summary>
         [DataMember(Name="image", EmitDefaultValue=false)]
-        public ImageFieldsImage Image { get; set; }
+        public AddImageToPersonRequestImage Image { get; set; }
 
         /// <summary>
         /// Gets or Sets OutputImageParams

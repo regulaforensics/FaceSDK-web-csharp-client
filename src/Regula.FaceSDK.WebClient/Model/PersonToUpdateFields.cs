@@ -25,53 +25,44 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Group
+    /// Person Request body: name and metadata.
     /// </summary>
     [DataContract]
-    public partial class Group :  IEquatable<Group>, IValidatableObject
+    public partial class PersonToUpdateFields :  IEquatable<PersonToUpdateFields>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Group" /> class.
+        /// Initializes a new instance of the <see cref="PersonToUpdateFields" /> class.
         /// </summary>
-        /// <param name="name">Group to create name..</param>
-        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
-        /// <param name="id">Group ID..</param>
-        /// <param name="createdAt">Group creation date..</param>
-        public Group(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), Guid id = default(Guid), string createdAt = default(string))
+        /// <param name="name">Person name..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        /// <param name="groups">Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it..</param>
+        public PersonToUpdateFields(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>))
         {
             this.Name = name;
             this.Metadata = metadata;
-            this.Id = id;
-            this.CreatedAt = createdAt;
+            this.Groups = groups;
         }
 
         /// <summary>
-        /// Group to create name.
+        /// Person name.
         /// </summary>
-        /// <value>Group to create name.</value>
+        /// <value>Person name.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// A free-form object containing group&#39;s extended attributes.
+        /// A free-form object containing person&#39;s extended attributes.
         /// </summary>
-        /// <value>A free-form object containing group&#39;s extended attributes.</value>
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
         [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
-        /// Group ID.
+        /// Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.
         /// </summary>
-        /// <value>Group ID.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Group creation date.
-        /// </summary>
-        /// <value>Group creation date.</value>
-        [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
+        /// <value>Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.</value>
+        [DataMember(Name="groups", EmitDefaultValue=false)]
+        public List<Guid> Groups { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,11 +71,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Group {\n");
+            sb.Append("class PersonToUpdateFields {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
+            sb.Append("  Groups: ").Append(Groups).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,15 +95,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Group);
+            return this.Equals(input as PersonToUpdateFields);
         }
 
         /// <summary>
-        /// Returns true if Group instances are equal
+        /// Returns true if PersonToUpdateFields instances are equal
         /// </summary>
-        /// <param name="input">Instance of Group to be compared</param>
+        /// <param name="input">Instance of PersonToUpdateFields to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Group input)
+        public bool Equals(PersonToUpdateFields input)
         {
             if (input == null)
                 return false;
@@ -131,14 +121,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Metadata.SequenceEqual(input.Metadata)
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
+                    this.Groups == input.Groups ||
+                    this.Groups != null &&
+                    input.Groups != null &&
+                    this.Groups.SequenceEqual(input.Groups)
                 );
         }
 
@@ -155,10 +141,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
+                if (this.Groups != null)
+                    hashCode = hashCode * 59 + this.Groups.GetHashCode();
                 return hashCode;
             }
         }

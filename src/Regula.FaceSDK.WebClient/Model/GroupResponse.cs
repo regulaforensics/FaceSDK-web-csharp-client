@@ -25,24 +25,20 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Group
+    /// Response group create data, includes name and metadata.
     /// </summary>
     [DataContract]
-    public partial class Group :  IEquatable<Group>, IValidatableObject
+    public partial class GroupResponse :  IEquatable<GroupResponse>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Group" /> class.
+        /// Initializes a new instance of the <see cref="GroupResponse" /> class.
         /// </summary>
         /// <param name="name">Group to create name..</param>
         /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
-        /// <param name="id">Group ID..</param>
-        /// <param name="createdAt">Group creation date..</param>
-        public Group(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), Guid id = default(Guid), string createdAt = default(string))
+        public GroupResponse(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             this.Name = name;
             this.Metadata = metadata;
-            this.Id = id;
-            this.CreatedAt = createdAt;
         }
 
         /// <summary>
@@ -60,31 +56,15 @@ namespace Regula.FaceSDK.WebClient.Model
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
-        /// Group ID.
-        /// </summary>
-        /// <value>Group ID.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public Guid Id { get; set; }
-
-        /// <summary>
-        /// Group creation date.
-        /// </summary>
-        /// <value>Group creation date.</value>
-        [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class Group {\n");
+            sb.Append("class GroupResponse {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -105,15 +85,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Group);
+            return this.Equals(input as GroupResponse);
         }
 
         /// <summary>
-        /// Returns true if Group instances are equal
+        /// Returns true if GroupResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of Group to be compared</param>
+        /// <param name="input">Instance of GroupResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(Group input)
+        public bool Equals(GroupResponse input)
         {
             if (input == null)
                 return false;
@@ -129,16 +109,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Metadata != null &&
                     input.Metadata != null &&
                     this.Metadata.SequenceEqual(input.Metadata)
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
                 );
         }
 
@@ -155,10 +125,6 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
                 return hashCode;
             }
         }

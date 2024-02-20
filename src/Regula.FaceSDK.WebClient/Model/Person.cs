@@ -33,7 +33,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Person" /> class.
         /// </summary>
-        /// <param name="name">Person name..</param>
+        [JsonConstructorAttribute]
+        protected Person() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Person" /> class.
+        /// </summary>
+        /// <param name="name">Person name. (required).</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="groups">List of groups this person belongs to..</param>
         /// <param name="id">Person ID. The list of persons is sorted by decreasing ID value..</param>
@@ -41,7 +46,16 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="updatedAt">Person update date..</param>
         public Person(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>), Guid id = default(Guid), string createdAt = default(string), string updatedAt = default(string))
         {
-            this.Name = name;
+            // to ensure "name" is required (not null)
+            if (name == null)
+            {
+                throw new InvalidDataException("name is a required property for Person and cannot be null");
+            }
+            else
+            {
+                this.Name = name;
+            }
+
             this.Metadata = metadata;
             this.Groups = groups;
             this.Id = id;
@@ -53,7 +67,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Person name.
         /// </summary>
         /// <value>Person name.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>

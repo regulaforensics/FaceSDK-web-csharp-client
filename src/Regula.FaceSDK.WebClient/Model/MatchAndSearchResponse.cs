@@ -1,7 +1,7 @@
 /*
- * Regula FaceSDK Web API
+ * Regula Face SDK Web API
  *
- * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -44,10 +44,10 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="MatchAndSearchResponse" /> class.
         /// </summary>
         /// <param name="code">code (required).</param>
-        /// <param name="results">results.</param>
-        /// <param name="elapsedTime">elapsedTime.</param>
+        /// <param name="results">The match and search results..</param>
+        /// <param name="elapsedTime">Time the processing has taken, ms..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        /// <param name="detections">detections.</param>
+        /// <param name="detections">The detection results..</param>
         public MatchAndSearchResponse(FaceSDKResultCode code = default(FaceSDKResultCode), List<MatchImageResult> results = default(List<MatchImageResult>), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<MatchAndSearchResponseAllOfDetections> detections = default(List<MatchAndSearchResponseAllOfDetections>))
         {
             // to ensure "code" is required (not null)
@@ -68,14 +68,16 @@ namespace Regula.FaceSDK.WebClient.Model
 
 
         /// <summary>
-        /// Gets or Sets Results
+        /// The match and search results.
         /// </summary>
+        /// <value>The match and search results.</value>
         [DataMember(Name="results", EmitDefaultValue=false)]
         public List<MatchImageResult> Results { get; set; }
 
         /// <summary>
-        /// Gets or Sets ElapsedTime
+        /// Time the processing has taken, ms.
         /// </summary>
+        /// <value>Time the processing has taken, ms.</value>
         [DataMember(Name="elapsedTime", EmitDefaultValue=false)]
         public float ElapsedTime { get; set; }
 
@@ -87,8 +89,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
-        /// Gets or Sets Detections
+        /// The detection results.
         /// </summary>
+        /// <value>The detection results.</value>
         [DataMember(Name="detections", EmitDefaultValue=false)]
         public List<MatchAndSearchResponseAllOfDetections> Detections { get; set; }
 

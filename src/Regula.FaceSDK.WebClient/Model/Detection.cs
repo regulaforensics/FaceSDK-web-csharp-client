@@ -1,7 +1,7 @@
 /*
- * Regula FaceSDK Web API
+ * Regula Face SDK Web API
  *
- * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -38,13 +38,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Detection" /> class.
         /// </summary>
-        /// <param name="crop">Base64 encoded image..</param>
+        /// <param name="crop">Base64-encoded image..</param>
         /// <param name="attributes">attributes.</param>
         /// <param name="landmarks">Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips. (required).</param>
         /// <param name="quality">quality.</param>
         /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle. (required).</param>
-        /// <param name="thumbnail">Base64 of the cropped portrait..</param>
-        public Detection(byte[] crop = default(byte[]), DetectionAttributes attributes = default(DetectionAttributes), List<List<int>> landmarks = default(List<List<int>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>), byte[] thumbnail = default(byte[]))
+        /// <param name="thumbnail">See &#x60;crop&#x60; instead..</param>
+        public Detection(byte[] crop = default(byte[]), DetectionAttributes attributes = default(DetectionAttributes), List<List<int>> landmarks = default(List<List<int>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>), Object thumbnail = default(Object))
         {
             // to ensure "landmarks" is required (not null)
             if (landmarks == null)
@@ -66,6 +66,7 @@ namespace Regula.FaceSDK.WebClient.Model
                 this.Roi = roi;
             }
 
+            this.Thumbnail = thumbnail;
             this.Crop = crop;
             this.Attributes = attributes;
             this.Quality = quality;
@@ -73,9 +74,9 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Base64 encoded image.
+        /// Base64-encoded image.
         /// </summary>
-        /// <value>Base64 encoded image.</value>
+        /// <value>Base64-encoded image.</value>
         [DataMember(Name="crop", EmitDefaultValue=false)]
         public byte[] Crop { get; set; }
 
@@ -106,11 +107,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<decimal> Roi { get; set; }
 
         /// <summary>
-        /// Base64 of the cropped portrait.
+        /// See &#x60;crop&#x60; instead.
         /// </summary>
-        /// <value>Base64 of the cropped portrait.</value>
-        [DataMember(Name="thumbnail", EmitDefaultValue=false)]
-        public byte[] Thumbnail { get; set; }
+        /// <value>See &#x60;crop&#x60; instead.</value>
+        [DataMember(Name="thumbnail", EmitDefaultValue=true)]
+        [Obsolete]
+        public Object Thumbnail { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

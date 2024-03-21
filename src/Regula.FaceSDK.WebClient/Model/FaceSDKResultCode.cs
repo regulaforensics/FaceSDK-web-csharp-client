@@ -1,7 +1,7 @@
 /*
- * Regula FaceSDK Web API
+ * Regula Face SDK Web API
  *
- * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -25,9 +25,9 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The result code, see enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/
+    /// The result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/). Some of the values: - &#x60;0&#x60;—everything is OK - &#x60;1&#x60;—image is empty, try again with another image - &#x60;2&#x60;—face is not detected - &#x60;6&#x60;—data cannot be decoded as an image
     /// </summary>
-    /// <value>The result code, see enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/</value>
+    /// <value>The result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/). Some of the values: - &#x60;0&#x60;—everything is OK - &#x60;1&#x60;—image is empty, try again with another image - &#x60;2&#x60;—face is not detected - &#x60;6&#x60;—data cannot be decoded as an image</value>
     
     public enum FaceSDKResultCode
     {
@@ -224,7 +224,17 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Enum FACER_ABORTED_LIVENESS_TRANSACTION for value: 252
         /// </summary>
-        FACER_ABORTED_LIVENESS_TRANSACTION = 252
+        FACER_ABORTED_LIVENESS_TRANSACTION = 252,
+
+        /// <summary>
+        /// Enum FACER_GENERAL_ERROR for value: 253
+        /// </summary>
+        FACER_GENERAL_ERROR = 253,
+
+        /// <summary>
+        /// Enum FACER_PASSIVE_LIVENESS_FAIL for value: 254
+        /// </summary>
+        FACER_PASSIVE_LIVENESS_FAIL = 254
 
     }
 

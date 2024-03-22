@@ -1,7 +1,7 @@
 /*
- * Regula FaceSDK Web API
+ * Regula Face SDK Web API
  *
- * [Download OpenAPI specification](https://github.com/regulaforensics/FaceSDK-web-openapi) ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -38,12 +38,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchRequest" /> class.
         /// </summary>
-        /// <param name="tag">Session identificator..</param>
-        /// <param name="thumbnails">Deprecated, use the &#x60;crop&#x60; field in &#x60;outputImageParams&#x60; instead. (default to false).</param>
-        /// <param name="images">The array of all images included in the comparison. (required).</param>
+        /// <param name="tag">Session identificator, should be unique for each session..</param>
+        /// <param name="thumbnails">Use &#x60;outputImageParams.crop&#x60; instead..</param>
+        /// <param name="images">All images included in the comparison. (required).</param>
         /// <param name="outputImageParams">outputImageParams.</param>
-        public MatchRequest(string tag = default(string), bool thumbnails = false, List<MatchImage> images = default(List<MatchImage>), MatchRequestOutputImageParams outputImageParams = default(MatchRequestOutputImageParams))
+        public MatchRequest(string tag = default(string), Object thumbnails = default(Object), List<MatchImage> images = default(List<MatchImage>), MatchRequestOutputImageParams outputImageParams = default(MatchRequestOutputImageParams))
         {
+            this.Thumbnails = thumbnails;
             // to ensure "images" is required (not null)
             if (images == null)
             {
@@ -55,37 +56,29 @@ namespace Regula.FaceSDK.WebClient.Model
             }
 
             this.Tag = tag;
-            // use default value if no "thumbnails" provided
-            if (thumbnails == null)
-            {
-                this.Thumbnails = false;
-            }
-            else
-            {
-                this.Thumbnails = thumbnails;
-            }
+            this.Thumbnails = thumbnails;
             this.OutputImageParams = outputImageParams;
         }
 
         /// <summary>
-        /// Session identificator.
+        /// Session identificator, should be unique for each session.
         /// </summary>
-        /// <value>Session identificator.</value>
+        /// <value>Session identificator, should be unique for each session.</value>
         [DataMember(Name="tag", EmitDefaultValue=false)]
         public string Tag { get; set; }
 
         /// <summary>
-        /// Deprecated, use the &#x60;crop&#x60; field in &#x60;outputImageParams&#x60; instead.
+        /// Use &#x60;outputImageParams.crop&#x60; instead.
         /// </summary>
-        /// <value>Deprecated, use the &#x60;crop&#x60; field in &#x60;outputImageParams&#x60; instead.</value>
-        [DataMember(Name="thumbnails", EmitDefaultValue=false)]
+        /// <value>Use &#x60;outputImageParams.crop&#x60; instead.</value>
+        [DataMember(Name="thumbnails", EmitDefaultValue=true)]
         [Obsolete]
-        public bool Thumbnails { get; set; }
+        public Object Thumbnails { get; set; }
 
         /// <summary>
-        /// The array of all images included in the comparison.
+        /// All images included in the comparison.
         /// </summary>
-        /// <value>The array of all images included in the comparison.</value>
+        /// <value>All images included in the comparison.</value>
         [DataMember(Name="images", EmitDefaultValue=true)]
         public List<MatchImage> Images { get; set; }
 

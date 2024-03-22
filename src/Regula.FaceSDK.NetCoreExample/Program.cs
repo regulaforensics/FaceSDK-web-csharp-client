@@ -24,7 +24,7 @@ namespace Regula.FaceSDK.NetCoreExample
             var matchImage2 = new MatchImage(data: face1, type: ImageSource.DOCUMENT_RFID);
             var matchImage3 = new MatchImage(data: face2, type: ImageSource.LIVE);
 
-            var matchingRequest = new MatchRequest(tag: "1",
+            var matchingRequest = new MatchRequest(tag: Guid.NewGuid().ToString(),
                 thumbnails:false, images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}
             );
 
@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.NetCoreExample
                 Console.WriteLine("pair({0}, {1}) similarity: {2}",
                     comparison.FirstIndex, comparison.SecondIndex, comparison.Similarity);
 
-            var detectRequest = new DetectRequest(tag: "1", image:face2);
+            var detectRequest = new DetectRequest(tag: Guid.NewGuid().ToString(), image:face2);
             var detectResponse = sdk.MatchingApi.Detect(detectRequest);
             var detectResults = detectResponse.Results;
 

@@ -355,7 +355,7 @@ namespace Regula.FaceSDK.WebClient.Api
             }
 
             return new ApiResponse<DetectResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers. GroupBy(x=>x.Name, StringComparer.OrdinalIgnoreCase).ToDictionary(g => g.Key, g => string.Join(",", g.First().Value)),
                 (DetectResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DetectResponse)));
         }
 
@@ -512,7 +512,7 @@ namespace Regula.FaceSDK.WebClient.Api
             }
 
             return new ApiResponse<MatchResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                localVarResponse.Headers. GroupBy(x=>x.Name, StringComparer.OrdinalIgnoreCase).ToDictionary(g=>g.Key, g => string.Join(",", g.First().Value)),
                 (MatchResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MatchResponse)));
         }
 

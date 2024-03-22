@@ -10,7 +10,7 @@ namespace Regula.FaceSDK.IdentificationExample
         
         public static void Main(string[] args)
         {
-            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://127.0.0.0:41101";
+            var apiBasePath = Environment.GetEnvironmentVariable(API_BASE_PATH) ?? "http://172.20.40.141:41101";
 
             var face1 = File.ReadAllBytes("resources/face_1.jpg");
             var face2 = File.ReadAllBytes("resources/face_2.jpg");
@@ -24,13 +24,13 @@ namespace Regula.FaceSDK.IdentificationExample
             var person2Id = sdk.PersonApi.CreatePerson(
                 new PersonFields(name:"person1")).Id;
 
-            sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(image:new ImageFieldsImage(content: face1)));
-            sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(image:new ImageFieldsImage(content: face2)));
+            sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(image:new AddImageToPersonRequestImage(content: face1)));
+            sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(image:new AddImageToPersonRequestImage(content: face2)));
 
             var person1 = sdk.PersonApi.GetPerson(person1Id);
             var person2 = sdk.PersonApi.GetPerson(person2Id);
 
-            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1"));
+            var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1", metadata: new Dictionary<string, object>()));
 
             sdk.GroupApi.UpdatePersonsInGroup(
                 group.Id,
@@ -54,7 +54,7 @@ namespace Regula.FaceSDK.IdentificationExample
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
                     groupIds: new List<Guid>() {},
-                    image: new ImageFieldsImage(content: face1),
+                    image: new AddImageToPersonRequestImage(content: face1),
                     limit: 10,
                     threshold: 0.8f
                     )

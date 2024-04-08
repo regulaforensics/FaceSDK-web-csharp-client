@@ -48,7 +48,6 @@ namespace Regula.FaceSDK.WebClient.Model
             this.UpdatedAt = updatedAt;
             this.Groups = groups;
             this.Name = name;
-            this.Metadata = metadata;
             this.Code = code;
             this.Persons = persons;
             this.Id = id;
@@ -112,7 +111,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// A free-form object containing person&#39;s extended attributes. Available when a person is being created
         /// </summary>
         /// <value>A free-form object containing person&#39;s extended attributes. Available when a person is being created</value>
-        [DataMember(Name="metadata", EmitDefaultValue=true)]
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>

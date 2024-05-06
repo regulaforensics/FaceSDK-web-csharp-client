@@ -12,6 +12,6 @@ jobs:
       - uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '3.1.x'
-      - run: dotnet pack src/Regula.FaceSDK.WebClient -c Release -p:PackageVersion=${{github.event.release.name}}
+      - run: dotnet pack src/Regula.FaceSDK.WebClient -c Release -p:PackageVersion=${{github.event.release.name}} -p:Version=${{github.event.release.name}}
       - run: dotnet nuget push src/Regula.FaceSDK.WebClient/bin/Release/Regula.FaceSDK.WebClient.${{github.event.release.name}}.nupkg -k ${{secrets.NUGET_AUTH_TOKEN}} -s https://api.nuget.org/v3/index.json
 

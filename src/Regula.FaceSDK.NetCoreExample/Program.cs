@@ -58,7 +58,28 @@ namespace Regula.FaceSDK.NetCoreExample
                 Console.WriteLine("attributes: {0}",
                     string.IsNullOrEmpty(detection.Attributes?.ToString()) ? "null" : detection.Attributes.ToString());
             }
-
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine("                       Face Image Quality Results                ");
+            Console.WriteLine("-----------------------------------------------------------------");
+            var detectImageQualityRequest = new DetectRequest(
+                processParam: new ProcessParam(
+                    scenario: FaceQualityScenarios.QUALITY_ICAO, 
+                    onlyCentralFace: true
+                ), 
+                image: face1
+            );
+            var detectImageQualityResponse = sdk.MatchingApi.Detect(detectImageQualityRequest);
+            var detectImageQualityResults = detectImageQualityResponse.Results;
+            Console.WriteLine("Code: {0}", detectImageQualityResponse.Code);
+            Console.WriteLine("Scenario: {0}", detectImageQualityResults.Scenario);
+            foreach (var detection in detectImageQualityResults.Detections){
+                Console.WriteLine("Landmarks: [{0}]",
+                    string.Join(", ", detection.Landmarks.Select(landmark =>
+                        $"[{string.Join(", ", landmark)}]").ToList()));
+                Console.WriteLine("Quality: [{0}], count: {1}", string.Join(", ", detection.Quality.Details.ToString()), detection.Quality.Details.ToArray().Length);
+                Console.WriteLine("Attributes: {0}",
+                    string.IsNullOrEmpty(detection.Attributes.Details?.ToString()) ? "null" : detection.Attributes.Details.ToString());
+            }
             Console.WriteLine("-----------------------------------------------------------------");
         }
     }

@@ -1,7 +1,7 @@
 /*
  * Regula Face SDK Web API
  *
- * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process and image quality assurance. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.   The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face detection and image quality assessment</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness detection</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -31,9 +31,9 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class MatchRequestOutputImageParamsCrop :  IEquatable<MatchRequestOutputImageParamsCrop>, IValidatableObject
     {
         /// <summary>
-        /// The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with dimensions 3x4, set &#x60;0&#x60;.
+        /// The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with aspect ratio 3:4, set &#x60;0&#x60;.
         /// </summary>
-        /// <value>The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with dimensions 3x4, set &#x60;0&#x60;.</value>
+        /// <value>The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with aspect ratio 3:4, set &#x60;0&#x60;.</value>
         public enum TypeEnum
         {
             /// <summary>
@@ -64,18 +64,18 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with dimensions 3x4, set &#x60;0&#x60;.
+        /// The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with aspect ratio 3:4, set &#x60;0&#x60;.
         /// </summary>
-        /// <value>The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with dimensions 3x4, set &#x60;0&#x60;.</value>
+        /// <value>The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with aspect ratio 3:4, set &#x60;0&#x60;.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchRequestOutputImageParamsCrop" /> class.
         /// </summary>
         /// <param name="padColor">The RGB value of a color for filling background behind a person&#39;s silhouette and for aligning the image..</param>
-        /// <param name="returnOriginalRect">Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop. Can be used only if the face in the original image is not tilted..</param>
+        /// <param name="returnOriginalRect">Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop..</param>
         /// <param name="size">The resize value in case &#x60;type&#x60; matches this value. If it doesn&#39;t, no resize is performed..</param>
-        /// <param name="type">The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with dimensions 3x4, set &#x60;0&#x60;..</param>
+        /// <param name="type">The aspect ratio according to which face alignment is performed. See the [FaceImageQualityAlignType enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-image-quality-align-type/). To get a thumbnail with aspect ratio 3:4, set &#x60;0&#x60;..</param>
         public MatchRequestOutputImageParamsCrop(List<int> padColor = default(List<int>), bool returnOriginalRect = default(bool), List<int> size = default(List<int>), TypeEnum? type = default(TypeEnum?))
         {
             this.PadColor = padColor;
@@ -92,9 +92,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<int> PadColor { get; set; }
 
         /// <summary>
-        /// Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop. Can be used only if the face in the original image is not tilted.
+        /// Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.
         /// </summary>
-        /// <value>Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop. Can be used only if the face in the original image is not tilted.</value>
+        /// <value>Whether to return the coordinates of the rectangle with the face in the original image prepared for the face crop.</value>
         [DataMember(Name="returnOriginalRect", EmitDefaultValue=false)]
         public bool ReturnOriginalRect { get; set; }
 

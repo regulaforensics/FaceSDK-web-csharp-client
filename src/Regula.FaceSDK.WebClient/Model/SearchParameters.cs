@@ -1,7 +1,7 @@
 /*
  * Regula Face SDK Web API
  *
- * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process and image quality assurance. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.   The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face detection and image quality assessment</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness detection</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -35,10 +35,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="createPerson">createPerson.</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
-        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>))
+        /// <param name="filter">filter.</param>
+        public SearchParameters(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>), FilterSearchRequest filter = default(FilterSearchRequest))
         {
             this.CreatePerson = createPerson;
             this.GroupIds = groupIds;
+            this.Filter = filter;
         }
 
         /// <summary>
@@ -55,6 +57,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public List<Guid> GroupIds { get; set; }
 
         /// <summary>
+        /// Gets or Sets Filter
+        /// </summary>
+        [DataMember(Name="filter", EmitDefaultValue=false)]
+        public FilterSearchRequest Filter { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -64,6 +72,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("class SearchParameters {\n");
             sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
             sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -108,6 +117,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.GroupIds != null &&
                     input.GroupIds != null &&
                     this.GroupIds.SequenceEqual(input.GroupIds)
+                ) && 
+                (
+                    this.Filter == input.Filter ||
+                    (this.Filter != null &&
+                    this.Filter.Equals(input.Filter))
                 );
         }
 
@@ -124,6 +138,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
                 if (this.GroupIds != null)
                     hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
+                if (this.Filter != null)
+                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
                 return hashCode;
             }
         }

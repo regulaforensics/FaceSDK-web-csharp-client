@@ -25,66 +25,43 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchImageDetection
+    /// Allows to filter the search results based on the Person&#39;s &#x60;name&#x60;. If enabled, only the search results that meet the filter condition will be returned.
     /// </summary>
     [DataContract]
-    public partial class MatchImageDetection :  IEquatable<MatchImageDetection>, IValidatableObject
+    public partial class FilterSearchRequest :  IEquatable<FilterSearchRequest>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Status
+        /// Gets or Sets Op
         /// </summary>
-        [DataMember(Name="status", EmitDefaultValue=true)]
-        public FaceSDKResultCode Status { get; set; }
+        [DataMember(Name="op", EmitDefaultValue=false)]
+        public FilterOp? Op { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatchImageDetection" /> class.
+        /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected MatchImageDetection() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchImageDetection" /> class.
-        /// </summary>
-        /// <param name="faces">Detected faces..</param>
-        /// <param name="imageIndex">The image index number. Can be given; if not given, the index numbers are set automatically starting from &#x60;0&#x60;. All index numbers must be whole and unique—not repeated. (required).</param>
-        /// <param name="status">status (required).</param>
-        public MatchImageDetection(List<DetectionFace> faces = default(List<DetectionFace>), int imageIndex = default(int), FaceSDKResultCode status = default(FaceSDKResultCode))
+        /// <param name="op">op.</param>
+        /// <param name="field">&#x60;name&#x60; of the Person..</param>
+        /// <param name="value">The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared..</param>
+        public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
         {
-            // to ensure "imageIndex" is required (not null)
-            if (imageIndex == null)
-            {
-                throw new InvalidDataException("imageIndex is a required property for MatchImageDetection and cannot be null");
-            }
-            else
-            {
-                this.ImageIndex = imageIndex;
-            }
-
-            // to ensure "status" is required (not null)
-            if (status == null)
-            {
-                throw new InvalidDataException("status is a required property for MatchImageDetection and cannot be null");
-            }
-            else
-            {
-                this.Status = status;
-            }
-
-            this.Faces = faces;
+            this.Op = op;
+            this.Field = field;
+            this.Value = value;
         }
 
-        /// <summary>
-        /// Detected faces.
-        /// </summary>
-        /// <value>Detected faces.</value>
-        [DataMember(Name="faces", EmitDefaultValue=false)]
-        public List<DetectionFace> Faces { get; set; }
 
         /// <summary>
-        /// The image index number. Can be given; if not given, the index numbers are set automatically starting from &#x60;0&#x60;. All index numbers must be whole and unique—not repeated.
+        /// &#x60;name&#x60; of the Person.
         /// </summary>
-        /// <value>The image index number. Can be given; if not given, the index numbers are set automatically starting from &#x60;0&#x60;. All index numbers must be whole and unique—not repeated.</value>
-        [DataMember(Name="imageIndex", EmitDefaultValue=true)]
-        public int ImageIndex { get; set; }
+        /// <value>&#x60;name&#x60; of the Person.</value>
+        [DataMember(Name="field", EmitDefaultValue=false)]
+        public string Field { get; set; }
 
+        /// <summary>
+        /// The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared.
+        /// </summary>
+        /// <value>The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared.</value>
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public List<string> Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,10 +70,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchImageDetection {\n");
-            sb.Append("  Faces: ").Append(Faces).Append("\n");
-            sb.Append("  ImageIndex: ").Append(ImageIndex).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("class FilterSearchRequest {\n");
+            sb.Append("  Op: ").Append(Op).Append("\n");
+            sb.Append("  Field: ").Append(Field).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,35 +94,35 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchImageDetection);
+            return this.Equals(input as FilterSearchRequest);
         }
 
         /// <summary>
-        /// Returns true if MatchImageDetection instances are equal
+        /// Returns true if FilterSearchRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchImageDetection to be compared</param>
+        /// <param name="input">Instance of FilterSearchRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchImageDetection input)
+        public bool Equals(FilterSearchRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Faces == input.Faces ||
-                    this.Faces != null &&
-                    input.Faces != null &&
-                    this.Faces.SequenceEqual(input.Faces)
+                    this.Op == input.Op ||
+                    (this.Op != null &&
+                    this.Op.Equals(input.Op))
                 ) && 
                 (
-                    this.ImageIndex == input.ImageIndex ||
-                    (this.ImageIndex != null &&
-                    this.ImageIndex.Equals(input.ImageIndex))
+                    this.Field == input.Field ||
+                    (this.Field != null &&
+                    this.Field.Equals(input.Field))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Value == input.Value ||
+                    this.Value != null &&
+                    input.Value != null &&
+                    this.Value.SequenceEqual(input.Value)
                 );
         }
 
@@ -158,12 +135,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Faces != null)
-                    hashCode = hashCode * 59 + this.Faces.GetHashCode();
-                if (this.ImageIndex != null)
-                    hashCode = hashCode * 59 + this.ImageIndex.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.Op != null)
+                    hashCode = hashCode * 59 + this.Op.GetHashCode();
+                if (this.Field != null)
+                    hashCode = hashCode * 59 + this.Field.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;
             }
         }

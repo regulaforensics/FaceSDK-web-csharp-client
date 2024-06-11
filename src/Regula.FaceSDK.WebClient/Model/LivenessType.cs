@@ -25,67 +25,21 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face detection scenario.
+    /// Liveness detection can be performed in two modes: active &#x60;0&#x60; and passive &#x60;1&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)
     /// </summary>
-    /// <value>Face detection scenario.</value>
+    /// <value>Liveness detection can be performed in two modes: active &#x60;0&#x60; and passive &#x60;1&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)</value>
     
-    [JsonConverter(typeof(StringEnumConverter))]
-    
-    public enum FaceQualityScenarios
+    public enum LivenessType
     {
         /// <summary>
-        /// Enum OLD_MODE for value: OldMode
+        /// Enum ACTIVE for value: 0
         /// </summary>
-        [EnumMember(Value = "OldMode")]
-        OLD_MODE = 1,
+        ACTIVE = 0,
 
         /// <summary>
-        /// Enum QUALITY_FULL for value: QualityFull
+        /// Enum PASSIVE for value: 1
         /// </summary>
-        [EnumMember(Value = "QualityFull")]
-        QUALITY_FULL = 2,
-
-        /// <summary>
-        /// Enum QUALITY_ICAO for value: QualityICAO
-        /// </summary>
-        [EnumMember(Value = "QualityICAO")]
-        QUALITY_ICAO = 3,
-
-        /// <summary>
-        /// Enum QUALITY_VISA_SCHENGEN for value: QualityVisaSchengen
-        /// </summary>
-        [EnumMember(Value = "QualityVisaSchengen")]
-        QUALITY_VISA_SCHENGEN = 4,
-
-        /// <summary>
-        /// Enum QUALITY_VISA_USA for value: QualityVisaUSA
-        /// </summary>
-        [EnumMember(Value = "QualityVisaUSA")]
-        QUALITY_VISA_USA = 5,
-
-        /// <summary>
-        /// Enum CROP_CENTRAL_FACE for value: CropCentralFace
-        /// </summary>
-        [EnumMember(Value = "CropCentralFace")]
-        CROP_CENTRAL_FACE = 6,
-
-        /// <summary>
-        /// Enum CROP_ALL_FACES for value: CropAllFaces
-        /// </summary>
-        [EnumMember(Value = "CropAllFaces")]
-        CROP_ALL_FACES = 7,
-
-        /// <summary>
-        /// Enum THUMBNAIL for value: Thumbnail
-        /// </summary>
-        [EnumMember(Value = "Thumbnail")]
-        THUMBNAIL = 8,
-
-        /// <summary>
-        /// Enum EMPTY for value: 
-        /// </summary>
-        [EnumMember(Value = "")]
-        EMPTY = 9
+        PASSIVE = 1
 
     }
 

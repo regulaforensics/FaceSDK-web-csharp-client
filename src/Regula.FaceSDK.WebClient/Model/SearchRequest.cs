@@ -1,7 +1,7 @@
 /*
  * Regula Face SDK Web API
  *
- * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process and image quality assurance. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.   The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face detection and image quality assessment</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness detection</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -35,16 +35,18 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="createPerson">createPerson.</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
+        /// <param name="filter">filter.</param>
         /// <param name="tag">Session identificator, should be unique for each session..</param>
         /// <param name="image">image.</param>
         /// <param name="outputImageParams">outputImageParams.</param>
         /// <param name="detectAll">Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected. (default to false).</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
-        public SearchRequest(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>), string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
+        public SearchRequest(SearchParametersCreatePerson createPerson = default(SearchParametersCreatePerson), List<Guid> groupIds = default(List<Guid>), FilterSearchRequest filter = default(FilterSearchRequest), string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
         {
             this.CreatePerson = createPerson;
             this.GroupIds = groupIds;
+            this.Filter = filter;
             this.Tag = tag;
             this.Image = image;
             this.OutputImageParams = outputImageParams;
@@ -73,6 +75,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <value>IDs of the groups in which the search is performed.</value>
         [DataMember(Name="groupIds", EmitDefaultValue=false)]
         public List<Guid> GroupIds { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Filter
+        /// </summary>
+        [DataMember(Name="filter", EmitDefaultValue=false)]
+        public FilterSearchRequest Filter { get; set; }
 
         /// <summary>
         /// Session identificator, should be unique for each session.
@@ -124,6 +132,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("class SearchRequest {\n");
             sb.Append("  CreatePerson: ").Append(CreatePerson).Append("\n");
             sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("  Filter: ").Append(Filter).Append("\n");
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  OutputImageParams: ").Append(OutputImageParams).Append("\n");
@@ -176,6 +185,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.GroupIds.SequenceEqual(input.GroupIds)
                 ) && 
                 (
+                    this.Filter == input.Filter ||
+                    (this.Filter != null &&
+                    this.Filter.Equals(input.Filter))
+                ) && 
+                (
                     this.Tag == input.Tag ||
                     (this.Tag != null &&
                     this.Tag.Equals(input.Tag))
@@ -220,6 +234,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.CreatePerson.GetHashCode();
                 if (this.GroupIds != null)
                     hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
+                if (this.Filter != null)
+                    hashCode = hashCode * 59 + this.Filter.GetHashCode();
                 if (this.Tag != null)
                     hashCode = hashCode * 59 + this.Tag.GetHashCode();
                 if (this.Image != null)

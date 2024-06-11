@@ -1,7 +1,7 @@
 /*
  * Regula Face SDK Web API
  *
- * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.  The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face Detection</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face Match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face Search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness Assessment</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
+ * <a href=\"https://regulaforensics.com/products/face-recognition-sdk/  \" target=\"_blank\">Regula Face SDK</a> is a cross-platform biometric verification solution for a digital identity verification process and image quality assurance. The SDK enables convenient and reliable face capture on the client side (mobile, web, and desktop) and further processing on the client or server side.   The Face SDK includes the following features:  * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-detection\" target=\"_blank\">Face detection and image quality assessment</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-comparison-11\" target=\"_blank\">Face match (1:1)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#face-identification-1n\" target=\"_blank\">Face search (1:N)</a> * <a href=\"https://docs.regulaforensics.com/develop/face-sdk/overview/introduction/#liveness-assessment\" target=\"_blank\">Liveness detection</a>  Here is the <a href=\"https://github.com/regulaforensics/FaceSDK-web-openapi  \" target=\"_blank\">OpenAPI specification on GitHub</a>.   ### Clients * [JavaScript](https://github.com/regulaforensics/FaceSDK-web-js-client) client for the browser and node.js based on axios * [Java](https://github.com/regulaforensics/FaceSDK-web-java-client) client compatible with jvm and android * [Python](https://github.com/regulaforensics/FaceSDK-web-python-client) 3.5+ client * [C#](https://github.com/regulaforensics/FaceSDK-web-csharp-client) client for .NET & .NET Core 
  *
  * The version of the OpenAPI document: 6.1.0
  * 
@@ -31,17 +31,23 @@ namespace Regula.FaceSDK.WebClient.Model
     public partial class TransactionInfo :  IEquatable<TransactionInfo>, IValidatableObject
     {
         /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public LivenessType? Type { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInfo" /> class.
         /// </summary>
-        /// <param name="code">Result code, one of the FaceSDKResultCode enum values. See the enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/.</param>
-        /// <param name="status">Whether the liveness detection is confirmed (0) or not (1)..</param>
+        /// <param name="code">Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/)..</param>
+        /// <param name="status">Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;..</param>
         /// <param name="tag">Session identificator, should be unique for each session..</param>
         /// <param name="transactionId">Transaction ID, there can be several transactions within one session..</param>
         /// <param name="video">Link to the session video, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="age">Approximate age with an accuracy of +/-3 years..</param>
         /// <param name="portrait">Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
+        /// <param name="type">type.</param>
+        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), LivenessType? type = default(LivenessType?))
         {
             this.Code = code;
             this.Status = status;
@@ -51,19 +57,20 @@ namespace Regula.FaceSDK.WebClient.Model
             this.Age = age;
             this.Portrait = portrait;
             this.Metadata = metadata;
+            this.Type = type;
         }
 
         /// <summary>
-        /// Result code, one of the FaceSDKResultCode enum values. See the enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/
+        /// Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).
         /// </summary>
-        /// <value>Result code, one of the FaceSDKResultCode enum values. See the enum: https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/</value>
+        /// <value>Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).</value>
         [DataMember(Name="code", EmitDefaultValue=false)]
         public int Code { get; set; }
 
         /// <summary>
-        /// Whether the liveness detection is confirmed (0) or not (1).
+        /// Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;.
         /// </summary>
-        /// <value>Whether the liveness detection is confirmed (0) or not (1).</value>
+        /// <value>Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;.</value>
         [DataMember(Name="status", EmitDefaultValue=false)]
         public int Status { get; set; }
 
@@ -109,6 +116,7 @@ namespace Regula.FaceSDK.WebClient.Model
         [DataMember(Name="metadata", EmitDefaultValue=false)]
         public Dictionary<string, Object> Metadata { get; set; }
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -125,6 +133,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Age: ").Append(Age).Append("\n");
             sb.Append("  Portrait: ").Append(Portrait).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -200,6 +209,11 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Metadata != null &&
                     input.Metadata != null &&
                     this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -228,6 +242,8 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Portrait.GetHashCode();
                 if (this.Metadata != null)
                     hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }

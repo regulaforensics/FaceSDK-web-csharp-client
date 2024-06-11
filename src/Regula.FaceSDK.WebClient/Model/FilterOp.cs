@@ -25,67 +25,25 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Face detection scenario.
+    /// The filter condition, determines the type of comparison to be performed on the &#x60;name&#x60; values of the Person entity. &lt;br&gt;&lt;br&gt;When set to &#x60;in&#x60;, the &#x60;name&#x60; values of the Person should match any of the values specified in the &#x60;value&#x60; list. &lt;br&gt;&lt;br&gt;When set to &#x60;nin&#x60;, the &#x60;name&#x60; values of the Person should not match any of the values specified in the &#x60;value&#x60; list.
     /// </summary>
-    /// <value>Face detection scenario.</value>
+    /// <value>The filter condition, determines the type of comparison to be performed on the &#x60;name&#x60; values of the Person entity. &lt;br&gt;&lt;br&gt;When set to &#x60;in&#x60;, the &#x60;name&#x60; values of the Person should match any of the values specified in the &#x60;value&#x60; list. &lt;br&gt;&lt;br&gt;When set to &#x60;nin&#x60;, the &#x60;name&#x60; values of the Person should not match any of the values specified in the &#x60;value&#x60; list.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum FaceQualityScenarios
+    public enum FilterOp
     {
         /// <summary>
-        /// Enum OLD_MODE for value: OldMode
+        /// Enum IN for value: in
         /// </summary>
-        [EnumMember(Value = "OldMode")]
-        OLD_MODE = 1,
+        [EnumMember(Value = "in")]
+        IN = 1,
 
         /// <summary>
-        /// Enum QUALITY_FULL for value: QualityFull
+        /// Enum NOT_IN for value: nin
         /// </summary>
-        [EnumMember(Value = "QualityFull")]
-        QUALITY_FULL = 2,
-
-        /// <summary>
-        /// Enum QUALITY_ICAO for value: QualityICAO
-        /// </summary>
-        [EnumMember(Value = "QualityICAO")]
-        QUALITY_ICAO = 3,
-
-        /// <summary>
-        /// Enum QUALITY_VISA_SCHENGEN for value: QualityVisaSchengen
-        /// </summary>
-        [EnumMember(Value = "QualityVisaSchengen")]
-        QUALITY_VISA_SCHENGEN = 4,
-
-        /// <summary>
-        /// Enum QUALITY_VISA_USA for value: QualityVisaUSA
-        /// </summary>
-        [EnumMember(Value = "QualityVisaUSA")]
-        QUALITY_VISA_USA = 5,
-
-        /// <summary>
-        /// Enum CROP_CENTRAL_FACE for value: CropCentralFace
-        /// </summary>
-        [EnumMember(Value = "CropCentralFace")]
-        CROP_CENTRAL_FACE = 6,
-
-        /// <summary>
-        /// Enum CROP_ALL_FACES for value: CropAllFaces
-        /// </summary>
-        [EnumMember(Value = "CropAllFaces")]
-        CROP_ALL_FACES = 7,
-
-        /// <summary>
-        /// Enum THUMBNAIL for value: Thumbnail
-        /// </summary>
-        [EnumMember(Value = "Thumbnail")]
-        THUMBNAIL = 8,
-
-        /// <summary>
-        /// Enum EMPTY for value: 
-        /// </summary>
-        [EnumMember(Value = "")]
-        EMPTY = 9
+        [EnumMember(Value = "nin")]
+        NOT_IN = 2
 
     }
 

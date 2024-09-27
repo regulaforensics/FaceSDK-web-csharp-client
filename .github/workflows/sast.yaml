@@ -55,4 +55,3 @@ jobs:
             echo "Bad FAIL_ON_VULNERABILITIES env var value"
             exit 1
           fi
-

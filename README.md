@@ -33,15 +33,17 @@ PM> Install-Package Regula.FaceSDK.WebClient -Version 5.2.0
 Performing request:
 
 ```csharp
-var face1 = File.ReadAllBytes("face_1.jpg");
-var face2 = File.ReadAllBytes("face_2.jpg");
+var sdk = new FaceSdk(apiBasePath);
+
+var face1 = File.ReadAllBytes("face1.jpg");
+var face2 = File.ReadAllBytes("face2.jpg");
 
 var matchImage1 = new MatchImage(data: face1, type: ImageSource.LIVE);
 var matchImage2 = new MatchImage(data: face1, type: ImageSource.DOCUMENT_RFID);
 var matchImage3 = new MatchImage(data: face2, type: ImageSource.LIVE);
 
-var matchingRequest = new MatchRequest(
-      false, new List<MatchImage> {matchImage1, matchImage2, matchImage3}
+var matchingRequest = new MatchRequest(tag: Guid.NewGuid().ToString(),
+    thumbnails:false, images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}
 );
 
 var matchingResponse = sdk.MatchingApi.Match(matchingRequest);

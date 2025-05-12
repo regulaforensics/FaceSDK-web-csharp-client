@@ -53,10 +53,9 @@ namespace Regula.FaceSDK.WebClient.Model
                 this.Name = name;
             }
 
-            // to ensure "metadata" is required (not null)
             if (metadata == null)
             {
-                throw new InvalidDataException("metadata is a required property for GroupToCreate and cannot be null");
+                this.Metadata = new Dictionary<string, Object>()
             }
             else
             {

@@ -55,7 +55,7 @@ namespace Regula.FaceSDK.WebClient.Model
 
             if (metadata == null)
             {
-                this.Metadata = new Dictionary<string, Object>()
+                this.Metadata = new Dictionary<string, Object>();
             }
             else
             {

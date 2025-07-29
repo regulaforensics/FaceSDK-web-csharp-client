@@ -25,51 +25,44 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// QualityDetailsGroups
+    /// DetectDetailsMeta
     /// </summary>
     [DataContract]
-    public partial class QualityDetailsGroups :  IEquatable<QualityDetailsGroups>, IValidatableObject
+    public partial class DetectDetailsMeta :  IEquatable<DetectDetailsMeta>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets GroupId
+        /// Initializes a new instance of the <see cref="DetectDetailsMeta" /> class.
         /// </summary>
-        [DataMember(Name="groupId", EmitDefaultValue=false)]
-        public FaceImageQualityGroups? GroupId { get; set; }
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceImageQualityGroupsStrings? Name { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QualityDetailsGroups" /> class.
-        /// </summary>
-        /// <param name="groupId">groupId.</param>
-        /// <param name="name">name.</param>
-        /// <param name="totalCount">The total number of characteristics in the group..</param>
-        /// <param name="compliantCount">The number of compliant characteristics in the group..</param>
-        public QualityDetailsGroups(FaceImageQualityGroups? groupId = default(FaceImageQualityGroups?), FaceImageQualityGroupsStrings? name = default(FaceImageQualityGroupsStrings?), int totalCount = default(int), int compliantCount = default(int))
+        /// <param name="confidence">The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence..</param>
+        /// <param name="value">The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/)..</param>
+        /// <param name="name">The name of the attribute..</param>
+        public DetectDetailsMeta(float confidence = default(float), string value = default(string), string name = default(string))
         {
-            this.GroupId = groupId;
+            this.Confidence = confidence;
+            this.Value = value;
             this.Name = name;
-            this.TotalCount = totalCount;
-            this.CompliantCount = compliantCount;
         }
 
-
+        /// <summary>
+        /// The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.
+        /// </summary>
+        /// <value>The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.</value>
+        [DataMember(Name="confidence", EmitDefaultValue=false)]
+        public float Confidence { get; set; }
 
         /// <summary>
-        /// The total number of characteristics in the group.
+        /// The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).
         /// </summary>
-        /// <value>The total number of characteristics in the group.</value>
-        [DataMember(Name="totalCount", EmitDefaultValue=false)]
-        public int TotalCount { get; set; }
+        /// <value>The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).</value>
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public string Value { get; set; }
 
         /// <summary>
-        /// The number of compliant characteristics in the group.
+        /// The name of the attribute.
         /// </summary>
-        /// <value>The number of compliant characteristics in the group.</value>
-        [DataMember(Name="compliantCount", EmitDefaultValue=false)]
-        public int CompliantCount { get; set; }
+        /// <value>The name of the attribute.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,11 +71,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class QualityDetailsGroups {\n");
-            sb.Append("  GroupId: ").Append(GroupId).Append("\n");
+            sb.Append("class DetectDetailsMeta {\n");
+            sb.Append("  Confidence: ").Append(Confidence).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  TotalCount: ").Append(TotalCount).Append("\n");
-            sb.Append("  CompliantCount: ").Append(CompliantCount).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,39 +95,34 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as QualityDetailsGroups);
+            return this.Equals(input as DetectDetailsMeta);
         }
 
         /// <summary>
-        /// Returns true if QualityDetailsGroups instances are equal
+        /// Returns true if DetectDetailsMeta instances are equal
         /// </summary>
-        /// <param name="input">Instance of QualityDetailsGroups to be compared</param>
+        /// <param name="input">Instance of DetectDetailsMeta to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(QualityDetailsGroups input)
+        public bool Equals(DetectDetailsMeta input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.GroupId == input.GroupId ||
-                    (this.GroupId != null &&
-                    this.GroupId.Equals(input.GroupId))
+                    this.Confidence == input.Confidence ||
+                    (this.Confidence != null &&
+                    this.Confidence.Equals(input.Confidence))
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
                 ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.TotalCount == input.TotalCount ||
-                    (this.TotalCount != null &&
-                    this.TotalCount.Equals(input.TotalCount))
-                ) && 
-                (
-                    this.CompliantCount == input.CompliantCount ||
-                    (this.CompliantCount != null &&
-                    this.CompliantCount.Equals(input.CompliantCount))
                 );
         }
 
@@ -148,14 +135,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.GroupId != null)
-                    hashCode = hashCode * 59 + this.GroupId.GetHashCode();
+                if (this.Confidence != null)
+                    hashCode = hashCode * 59 + this.Confidence.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.TotalCount != null)
-                    hashCode = hashCode * 59 + this.TotalCount.GetHashCode();
-                if (this.CompliantCount != null)
-                    hashCode = hashCode * 59 + this.CompliantCount.GetHashCode();
                 return hashCode;
             }
         }

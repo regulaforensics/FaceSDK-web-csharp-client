@@ -25,61 +25,80 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// MatchRequest
+    /// PersonsRequest
     /// </summary>
     [DataContract]
-    public partial class MatchRequest :  IEquatable<MatchRequest>, IValidatableObject
+    public partial class PersonsRequest :  IEquatable<PersonsRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatchRequest" /> class.
+        /// Initializes a new instance of the <see cref="PersonsRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected MatchRequest() { }
+        protected PersonsRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="MatchRequest" /> class.
+        /// Initializes a new instance of the <see cref="PersonsRequest" /> class.
         /// </summary>
-        /// <param name="tag">Session identificator, should be unique for each session..</param>
-        /// <param name="images">All images included in the comparison. (required).</param>
-        /// <param name="outputImageParams">outputImageParams.</param>
+        /// <param name="name">Person&#39;s name. (required).</param>
+        /// <param name="externalId">Person&#39;s ID, used for linking search results to an ID in an external system. Can be set when creating a Person, stored in the database, and included in the search to return only Persons with the specified ID. Optional..</param>
+        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        /// <param name="groups">Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it..</param>
+        /// <param name="expireAt">Person expiration date..</param>
         /// <param name="tenant">Customer name.</param>
         /// <param name="env">Environment type.</param>
-        public MatchRequest(string tag = default(string), List<MatchImage> images = default(List<MatchImage>), OutputImageParams outputImageParams = default(OutputImageParams), string tenant = default(string), string env = default(string))
+        public PersonsRequest(string name = default(string), string externalId = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>), string expireAt = default(string), string tenant = default(string), string env = default(string))
         {
-            // to ensure "images" is required (not null)
-            if (images == null)
+            // to ensure "name" is required (not null)
+            if (name == null)
             {
-                throw new InvalidDataException("images is a required property for MatchRequest and cannot be null");
+                throw new InvalidDataException("name is a required property for PersonsRequest and cannot be null");
             }
             else
             {
-                this.Images = images;
+                this.Name = name;
             }
 
-            this.Tag = tag;
-            this.OutputImageParams = outputImageParams;
+            this.ExternalId = externalId;
+            this.Metadata = metadata;
+            this.Groups = groups;
+            this.ExpireAt = expireAt;
             this.Tenant = tenant;
             this.Env = env;
         }
 
         /// <summary>
-        /// Session identificator, should be unique for each session.
+        /// Person&#39;s name.
         /// </summary>
-        /// <value>Session identificator, should be unique for each session.</value>
-        [DataMember(Name="tag", EmitDefaultValue=false)]
-        public string Tag { get; set; }
+        /// <value>Person&#39;s name.</value>
+        [DataMember(Name="name", EmitDefaultValue=true)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// All images included in the comparison.
+        /// Person&#39;s ID, used for linking search results to an ID in an external system. Can be set when creating a Person, stored in the database, and included in the search to return only Persons with the specified ID. Optional.
         /// </summary>
-        /// <value>All images included in the comparison.</value>
-        [DataMember(Name="images", EmitDefaultValue=true)]
-        public List<MatchImage> Images { get; set; }
+        /// <value>Person&#39;s ID, used for linking search results to an ID in an external system. Can be set when creating a Person, stored in the database, and included in the search to return only Persons with the specified ID. Optional.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets OutputImageParams
+        /// A free-form object containing person&#39;s extended attributes.
         /// </summary>
-        [DataMember(Name="outputImageParams", EmitDefaultValue=false)]
-        public OutputImageParams OutputImageParams { get; set; }
+        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        [DataMember(Name="metadata", EmitDefaultValue=false)]
+        public Dictionary<string, Object> Metadata { get; set; }
+
+        /// <summary>
+        /// Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.
+        /// </summary>
+        /// <value>Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.</value>
+        [DataMember(Name="groups", EmitDefaultValue=false)]
+        public List<Guid> Groups { get; set; }
+
+        /// <summary>
+        /// Person expiration date.
+        /// </summary>
+        /// <value>Person expiration date.</value>
+        [DataMember(Name="expireAt", EmitDefaultValue=false)]
+        public string ExpireAt { get; set; }
 
         /// <summary>
         /// Customer name
@@ -102,10 +121,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class MatchRequest {\n");
-            sb.Append("  Tag: ").Append(Tag).Append("\n");
-            sb.Append("  Images: ").Append(Images).Append("\n");
-            sb.Append("  OutputImageParams: ").Append(OutputImageParams).Append("\n");
+            sb.Append("class PersonsRequest {\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  Metadata: ").Append(Metadata).Append("\n");
+            sb.Append("  Groups: ").Append(Groups).Append("\n");
+            sb.Append("  ExpireAt: ").Append(ExpireAt).Append("\n");
             sb.Append("  Tenant: ").Append(Tenant).Append("\n");
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("}\n");
@@ -128,35 +149,46 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MatchRequest);
+            return this.Equals(input as PersonsRequest);
         }
 
         /// <summary>
-        /// Returns true if MatchRequest instances are equal
+        /// Returns true if PersonsRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of MatchRequest to be compared</param>
+        /// <param name="input">Instance of PersonsRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(MatchRequest input)
+        public bool Equals(PersonsRequest input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Tag == input.Tag ||
-                    (this.Tag != null &&
-                    this.Tag.Equals(input.Tag))
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Images == input.Images ||
-                    this.Images != null &&
-                    input.Images != null &&
-                    this.Images.SequenceEqual(input.Images)
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
-                    this.OutputImageParams == input.OutputImageParams ||
-                    (this.OutputImageParams != null &&
-                    this.OutputImageParams.Equals(input.OutputImageParams))
+                    this.Metadata == input.Metadata ||
+                    this.Metadata != null &&
+                    input.Metadata != null &&
+                    this.Metadata.SequenceEqual(input.Metadata)
+                ) && 
+                (
+                    this.Groups == input.Groups ||
+                    this.Groups != null &&
+                    input.Groups != null &&
+                    this.Groups.SequenceEqual(input.Groups)
+                ) && 
+                (
+                    this.ExpireAt == input.ExpireAt ||
+                    (this.ExpireAt != null &&
+                    this.ExpireAt.Equals(input.ExpireAt))
                 ) && 
                 (
                     this.Tenant == input.Tenant ||
@@ -179,12 +211,16 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Tag != null)
-                    hashCode = hashCode * 59 + this.Tag.GetHashCode();
-                if (this.Images != null)
-                    hashCode = hashCode * 59 + this.Images.GetHashCode();
-                if (this.OutputImageParams != null)
-                    hashCode = hashCode * 59 + this.OutputImageParams.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.Metadata != null)
+                    hashCode = hashCode * 59 + this.Metadata.GetHashCode();
+                if (this.Groups != null)
+                    hashCode = hashCode * 59 + this.Groups.GetHashCode();
+                if (this.ExpireAt != null)
+                    hashCode = hashCode * 59 + this.ExpireAt.GetHashCode();
                 if (this.Tenant != null)
                     hashCode = hashCode * 59 + this.Tenant.GetHashCode();
                 if (this.Env != null)

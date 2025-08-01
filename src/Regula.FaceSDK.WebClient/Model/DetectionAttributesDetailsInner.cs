@@ -25,25 +25,44 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The configuration that defines the list of returned attribute check characteristics.
+    /// DetectionAttributesDetailsInner
     /// </summary>
     [DataContract]
-    public partial class AttributeConfig :  IEquatable<AttributeConfig>, IValidatableObject
+    public partial class DetectionAttributesDetailsInner :  IEquatable<DetectionAttributesDetailsInner>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Name
+        /// Initializes a new instance of the <see cref="DetectionAttributesDetailsInner" /> class.
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceAttribute? Name { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeConfig" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        public AttributeConfig(FaceAttribute? name = default(FaceAttribute?))
+        /// <param name="name">The name of the attribute..</param>
+        /// <param name="value">The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/)..</param>
+        /// <param name="confidence">The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence..</param>
+        public DetectionAttributesDetailsInner(string name = default(string), string value = default(string), float confidence = default(float))
         {
             this.Name = name;
+            this.Value = value;
+            this.Confidence = confidence;
         }
 
+        /// <summary>
+        /// The name of the attribute.
+        /// </summary>
+        /// <value>The name of the attribute.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).
+        /// </summary>
+        /// <value>The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).</value>
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.
+        /// </summary>
+        /// <value>The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.</value>
+        [DataMember(Name="confidence", EmitDefaultValue=false)]
+        public float Confidence { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +71,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AttributeConfig {\n");
+            sb.Append("class DetectionAttributesDetailsInner {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("  Confidence: ").Append(Confidence).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +95,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AttributeConfig);
+            return this.Equals(input as DetectionAttributesDetailsInner);
         }
 
         /// <summary>
-        /// Returns true if AttributeConfig instances are equal
+        /// Returns true if DetectionAttributesDetailsInner instances are equal
         /// </summary>
-        /// <param name="input">Instance of AttributeConfig to be compared</param>
+        /// <param name="input">Instance of DetectionAttributesDetailsInner to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AttributeConfig input)
+        public bool Equals(DetectionAttributesDetailsInner input)
         {
             if (input == null)
                 return false;
@@ -92,6 +113,16 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
+                ) && 
+                (
+                    this.Confidence == input.Confidence ||
+                    (this.Confidence != null &&
+                    this.Confidence.Equals(input.Confidence))
                 );
         }
 
@@ -106,6 +137,10 @@ namespace Regula.FaceSDK.WebClient.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if (this.Confidence != null)
+                    hashCode = hashCode * 59 + this.Confidence.GetHashCode();
                 return hashCode;
             }
         }

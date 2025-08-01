@@ -25,7 +25,7 @@ namespace Regula.FaceSDK.NetCoreExample
             var matchImage3 = new MatchImage(data: face2, type: ImageSource.LIVE);
 
             var matchingRequest = new MatchRequest(tag: Guid.NewGuid().ToString(),
-                thumbnails:false, images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}
+                images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}
             );
 
             var matchingResponse = sdk.MatchingApi.Match(matchingRequest);

@@ -25,25 +25,44 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The configuration that defines the list of returned attribute check characteristics.
+    /// DetectDetailsMeta
     /// </summary>
     [DataContract]
-    public partial class AttributeConfig :  IEquatable<AttributeConfig>, IValidatableObject
+    public partial class DetectDetailsMeta :  IEquatable<DetectDetailsMeta>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Name
+        /// Initializes a new instance of the <see cref="DetectDetailsMeta" /> class.
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceAttribute? Name { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeConfig" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        public AttributeConfig(FaceAttribute? name = default(FaceAttribute?))
+        /// <param name="confidence">The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence..</param>
+        /// <param name="value">The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/)..</param>
+        /// <param name="name">The name of the attribute..</param>
+        public DetectDetailsMeta(float confidence = default(float), string value = default(string), string name = default(string))
         {
+            this.Confidence = confidence;
+            this.Value = value;
             this.Name = name;
         }
 
+        /// <summary>
+        /// The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.
+        /// </summary>
+        /// <value>The confidence in the estimated value, &#x60;1.0&#x60; is for 100% confidence.</value>
+        [DataMember(Name="confidence", EmitDefaultValue=false)]
+        public float Confidence { get; set; }
+
+        /// <summary>
+        /// The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).
+        /// </summary>
+        /// <value>The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).</value>
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public string Value { get; set; }
+
+        /// <summary>
+        /// The name of the attribute.
+        /// </summary>
+        /// <value>The name of the attribute.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,7 +71,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AttributeConfig {\n");
+            sb.Append("class DetectDetailsMeta {\n");
+            sb.Append("  Confidence: ").Append(Confidence).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -74,20 +95,30 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AttributeConfig);
+            return this.Equals(input as DetectDetailsMeta);
         }
 
         /// <summary>
-        /// Returns true if AttributeConfig instances are equal
+        /// Returns true if DetectDetailsMeta instances are equal
         /// </summary>
-        /// <param name="input">Instance of AttributeConfig to be compared</param>
+        /// <param name="input">Instance of DetectDetailsMeta to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AttributeConfig input)
+        public bool Equals(DetectDetailsMeta input)
         {
             if (input == null)
                 return false;
 
             return 
+                (
+                    this.Confidence == input.Confidence ||
+                    (this.Confidence != null &&
+                    this.Confidence.Equals(input.Confidence))
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    (this.Value != null &&
+                    this.Value.Equals(input.Value))
+                ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -104,6 +135,10 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Confidence != null)
+                    hashCode = hashCode * 59 + this.Confidence.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;

@@ -25,25 +25,35 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The configuration that defines the list of returned attribute check characteristics.
+    /// DetectAttributesDetails
     /// </summary>
     [DataContract]
-    public partial class AttributeConfig :  IEquatable<AttributeConfig>, IValidatableObject
+    public partial class DetectAttributesDetails :  IEquatable<DetectAttributesDetails>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Name
+        /// Initializes a new instance of the <see cref="DetectAttributesDetails" /> class.
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceAttribute? Name { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeConfig" /> class.
-        /// </summary>
-        /// <param name="name">name.</param>
-        public AttributeConfig(FaceAttribute? name = default(FaceAttribute?))
+        /// <param name="name">The name of the attribute..</param>
+        /// <param name="value">The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/)..</param>
+        public DetectAttributesDetails(string name = default(string), List<int> value = default(List<int>))
         {
             this.Name = name;
+            this.Value = value;
         }
 
+        /// <summary>
+        /// The name of the attribute.
+        /// </summary>
+        /// <value>The name of the attribute.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).
+        /// </summary>
+        /// <value>The estimated value for the attribute, see the [Returned values column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/attributes-detection/).</value>
+        [DataMember(Name="value", EmitDefaultValue=false)]
+        public List<int> Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -52,8 +62,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AttributeConfig {\n");
+            sb.Append("class DetectAttributesDetails {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,15 +85,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AttributeConfig);
+            return this.Equals(input as DetectAttributesDetails);
         }
 
         /// <summary>
-        /// Returns true if AttributeConfig instances are equal
+        /// Returns true if DetectAttributesDetails instances are equal
         /// </summary>
-        /// <param name="input">Instance of AttributeConfig to be compared</param>
+        /// <param name="input">Instance of DetectAttributesDetails to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AttributeConfig input)
+        public bool Equals(DetectAttributesDetails input)
         {
             if (input == null)
                 return false;
@@ -92,6 +103,12 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
+                ) && 
+                (
+                    this.Value == input.Value ||
+                    this.Value != null &&
+                    input.Value != null &&
+                    this.Value.SequenceEqual(input.Value)
                 );
         }
 
@@ -106,6 +123,8 @@ namespace Regula.FaceSDK.WebClient.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Value != null)
+                    hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;
             }
         }

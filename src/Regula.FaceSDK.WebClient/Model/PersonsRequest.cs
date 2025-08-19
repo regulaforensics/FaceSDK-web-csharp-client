@@ -25,35 +25,32 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// SearchPerson
+    /// PersonsRequest
     /// </summary>
     [DataContract]
-    public partial class SearchPerson :  IEquatable<SearchPerson>, IValidatableObject
+    public partial class PersonsRequest :  IEquatable<PersonsRequest>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchPerson" /> class.
+        /// Initializes a new instance of the <see cref="PersonsRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SearchPerson() { }
+        protected PersonsRequest() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="SearchPerson" /> class.
+        /// Initializes a new instance of the <see cref="PersonsRequest" /> class.
         /// </summary>
         /// <param name="name">Person&#39;s name. (required).</param>
         /// <param name="externalId">Person&#39;s ID, used for linking search results to an ID in an external system. Can be set when creating a Person, stored in the database, and included in the search to return only Persons with the specified ID. Optional..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
-        /// <param name="groups">List of groups this person belongs to..</param>
+        /// <param name="groups">Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it..</param>
         /// <param name="expireAt">Person expiration date..</param>
-        /// <param name="id">Person ID. The list of persons is sorted by decreasing ID value..</param>
-        /// <param name="createdAt">Person creation date..</param>
-        /// <param name="updatedAt">Person update date..</param>
-        /// <param name="detection">detection.</param>
-        /// <param name="images">Array of Person images..</param>
-        public SearchPerson(string name = default(string), string externalId = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>), string expireAt = default(string), Guid id = default(Guid), string createdAt = default(string), string updatedAt = default(string), SearchDetection detection = default(SearchDetection), List<RecognizeImage> images = default(List<RecognizeImage>))
+        /// <param name="tenant">A label used to group transactions by customers, applications, or other criteria..</param>
+        /// <param name="env">A label used to differentiate transactions by development stages..</param>
+        public PersonsRequest(string name = default(string), string externalId = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<Guid> groups = default(List<Guid>), string expireAt = default(string), string tenant = default(string), string env = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
             {
-                throw new InvalidDataException("name is a required property for SearchPerson and cannot be null");
+                throw new InvalidDataException("name is a required property for PersonsRequest and cannot be null");
             }
             else
             {
@@ -64,11 +61,8 @@ namespace Regula.FaceSDK.WebClient.Model
             this.Metadata = metadata;
             this.Groups = groups;
             this.ExpireAt = expireAt;
-            this.Id = id;
-            this.CreatedAt = createdAt;
-            this.UpdatedAt = updatedAt;
-            this.Detection = detection;
-            this.Images = images;
+            this.Tenant = tenant;
+            this.Env = env;
         }
 
         /// <summary>
@@ -93,9 +87,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public Dictionary<string, Object> Metadata { get; set; }
 
         /// <summary>
-        /// List of groups this person belongs to.
+        /// Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.
         /// </summary>
-        /// <value>List of groups this person belongs to.</value>
+        /// <value>Groups a person should be placed to. If no group is specified in request, a Default group is created and the person is placed to it.</value>
         [DataMember(Name="groups", EmitDefaultValue=false)]
         public List<Guid> Groups { get; set; }
 
@@ -107,38 +101,18 @@ namespace Regula.FaceSDK.WebClient.Model
         public string ExpireAt { get; set; }
 
         /// <summary>
-        /// Person ID. The list of persons is sorted by decreasing ID value.
+        /// A label used to group transactions by customers, applications, or other criteria.
         /// </summary>
-        /// <value>Person ID. The list of persons is sorted by decreasing ID value.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public Guid Id { get; set; }
+        /// <value>A label used to group transactions by customers, applications, or other criteria.</value>
+        [DataMember(Name="tenant", EmitDefaultValue=false)]
+        public string Tenant { get; set; }
 
         /// <summary>
-        /// Person creation date.
+        /// A label used to differentiate transactions by development stages.
         /// </summary>
-        /// <value>Person creation date.</value>
-        [DataMember(Name="createdAt", EmitDefaultValue=false)]
-        public string CreatedAt { get; set; }
-
-        /// <summary>
-        /// Person update date.
-        /// </summary>
-        /// <value>Person update date.</value>
-        [DataMember(Name="updatedAt", EmitDefaultValue=false)]
-        public string UpdatedAt { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Detection
-        /// </summary>
-        [DataMember(Name="detection", EmitDefaultValue=false)]
-        public SearchDetection Detection { get; set; }
-
-        /// <summary>
-        /// Array of Person images.
-        /// </summary>
-        /// <value>Array of Person images.</value>
-        [DataMember(Name="images", EmitDefaultValue=false)]
-        public List<RecognizeImage> Images { get; set; }
+        /// <value>A label used to differentiate transactions by development stages.</value>
+        [DataMember(Name="env", EmitDefaultValue=false)]
+        public string Env { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -147,17 +121,14 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SearchPerson {\n");
+            sb.Append("class PersonsRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Groups: ").Append(Groups).Append("\n");
             sb.Append("  ExpireAt: ").Append(ExpireAt).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-            sb.Append("  Detection: ").Append(Detection).Append("\n");
-            sb.Append("  Images: ").Append(Images).Append("\n");
+            sb.Append("  Tenant: ").Append(Tenant).Append("\n");
+            sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -178,15 +149,15 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SearchPerson);
+            return this.Equals(input as PersonsRequest);
         }
 
         /// <summary>
-        /// Returns true if SearchPerson instances are equal
+        /// Returns true if PersonsRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of SearchPerson to be compared</param>
+        /// <param name="input">Instance of PersonsRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SearchPerson input)
+        public bool Equals(PersonsRequest input)
         {
             if (input == null)
                 return false;
@@ -220,30 +191,14 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.ExpireAt.Equals(input.ExpireAt))
                 ) && 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    this.Tenant == input.Tenant ||
+                    (this.Tenant != null &&
+                    this.Tenant.Equals(input.Tenant))
                 ) && 
                 (
-                    this.CreatedAt == input.CreatedAt ||
-                    (this.CreatedAt != null &&
-                    this.CreatedAt.Equals(input.CreatedAt))
-                ) && 
-                (
-                    this.UpdatedAt == input.UpdatedAt ||
-                    (this.UpdatedAt != null &&
-                    this.UpdatedAt.Equals(input.UpdatedAt))
-                ) && 
-                (
-                    this.Detection == input.Detection ||
-                    (this.Detection != null &&
-                    this.Detection.Equals(input.Detection))
-                ) && 
-                (
-                    this.Images == input.Images ||
-                    this.Images != null &&
-                    input.Images != null &&
-                    this.Images.SequenceEqual(input.Images)
+                    this.Env == input.Env ||
+                    (this.Env != null &&
+                    this.Env.Equals(input.Env))
                 );
         }
 
@@ -266,16 +221,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Groups.GetHashCode();
                 if (this.ExpireAt != null)
                     hashCode = hashCode * 59 + this.ExpireAt.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.CreatedAt != null)
-                    hashCode = hashCode * 59 + this.CreatedAt.GetHashCode();
-                if (this.UpdatedAt != null)
-                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
-                if (this.Detection != null)
-                    hashCode = hashCode * 59 + this.Detection.GetHashCode();
-                if (this.Images != null)
-                    hashCode = hashCode * 59 + this.Images.GetHashCode();
+                if (this.Tenant != null)
+                    hashCode = hashCode * 59 + this.Tenant.GetHashCode();
+                if (this.Env != null)
+                    hashCode = hashCode * 59 + this.Env.GetHashCode();
                 return hashCode;
             }
         }

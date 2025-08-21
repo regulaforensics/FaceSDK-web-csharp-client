@@ -36,13 +36,17 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="tag">Session identificator, should be unique for each session..</param>
         /// <param name="images">Person&#39;s images..</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
+        /// <param name="threshold">The similarity threshold..</param>
+        /// <param name="limit">The maximum number of results to be returned..</param>
         /// <param name="tenant">A label used to group transactions by customers, applications, or other criteria..</param>
         /// <param name="env">A label used to differentiate transactions by development stages..</param>
-        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestAllOfImages> images = default(List<MatchAndSearchRequestAllOfImages>), List<Guid> groupIds = default(List<Guid>), string tenant = default(string), string env = default(string))
+        public MatchAndSearchRequest(string tag = default(string), List<MatchAndSearchRequestImages> images = default(List<MatchAndSearchRequestImages>), List<Guid> groupIds = default(List<Guid>), decimal threshold = default(decimal), int limit = default(int), string tenant = default(string), string env = default(string))
         {
             this.Tag = tag;
             this.Images = images;
             this.GroupIds = groupIds;
+            this.Threshold = threshold;
+            this.Limit = limit;
             this.Tenant = tenant;
             this.Env = env;
         }
@@ -59,7 +63,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Person&#39;s images.</value>
         [DataMember(Name="images", EmitDefaultValue=false)]
-        public List<MatchAndSearchRequestAllOfImages> Images { get; set; }
+        public List<MatchAndSearchRequestImages> Images { get; set; }
 
         /// <summary>
         /// IDs of the groups in which the search is performed.
@@ -67,6 +71,20 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <value>IDs of the groups in which the search is performed.</value>
         [DataMember(Name="groupIds", EmitDefaultValue=false)]
         public List<Guid> GroupIds { get; set; }
+
+        /// <summary>
+        /// The similarity threshold.
+        /// </summary>
+        /// <value>The similarity threshold.</value>
+        [DataMember(Name="threshold", EmitDefaultValue=false)]
+        public decimal Threshold { get; set; }
+
+        /// <summary>
+        /// The maximum number of results to be returned.
+        /// </summary>
+        /// <value>The maximum number of results to be returned.</value>
+        [DataMember(Name="limit", EmitDefaultValue=false)]
+        public int Limit { get; set; }
 
         /// <summary>
         /// A label used to group transactions by customers, applications, or other criteria.
@@ -93,6 +111,8 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Tag: ").Append(Tag).Append("\n");
             sb.Append("  Images: ").Append(Images).Append("\n");
             sb.Append("  GroupIds: ").Append(GroupIds).Append("\n");
+            sb.Append("  Threshold: ").Append(Threshold).Append("\n");
+            sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("  Tenant: ").Append(Tenant).Append("\n");
             sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("}\n");
@@ -147,6 +167,16 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.GroupIds.SequenceEqual(input.GroupIds)
                 ) && 
                 (
+                    this.Threshold == input.Threshold ||
+                    (this.Threshold != null &&
+                    this.Threshold.Equals(input.Threshold))
+                ) && 
+                (
+                    this.Limit == input.Limit ||
+                    (this.Limit != null &&
+                    this.Limit.Equals(input.Limit))
+                ) && 
+                (
                     this.Tenant == input.Tenant ||
                     (this.Tenant != null &&
                     this.Tenant.Equals(input.Tenant))
@@ -173,6 +203,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Images.GetHashCode();
                 if (this.GroupIds != null)
                     hashCode = hashCode * 59 + this.GroupIds.GetHashCode();
+                if (this.Threshold != null)
+                    hashCode = hashCode * 59 + this.Threshold.GetHashCode();
+                if (this.Limit != null)
+                    hashCode = hashCode * 59 + this.Limit.GetHashCode();
                 if (this.Tenant != null)
                     hashCode = hashCode * 59 + this.Tenant.GetHashCode();
                 if (this.Env != null)

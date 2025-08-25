@@ -39,7 +39,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="MatchRequest" /> class.
         /// </summary>
         /// <param name="tag">Session identificator, should be unique for each session..</param>
-        /// <param name="images">All images included in the comparison. (required).</param>
+        /// <param name="images">An array of images to be processed. At least two images must be provided. (required).</param>
         /// <param name="outputImageParams">outputImageParams.</param>
         /// <param name="tenant">A label used to group transactions by customers, applications, or other criteria..</param>
         /// <param name="env">A label used to differentiate transactions by development stages..</param>
@@ -69,9 +69,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public string Tag { get; set; }
 
         /// <summary>
-        /// All images included in the comparison.
+        /// An array of images to be processed. At least two images must be provided.
         /// </summary>
-        /// <value>All images included in the comparison.</value>
+        /// <value>An array of images to be processed. At least two images must be provided.</value>
         [DataMember(Name="images", EmitDefaultValue=true)]
         public List<MatchImage> Images { get; set; }
 

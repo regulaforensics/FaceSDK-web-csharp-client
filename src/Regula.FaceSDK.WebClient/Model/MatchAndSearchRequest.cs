@@ -34,7 +34,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="MatchAndSearchRequest" /> class.
         /// </summary>
         /// <param name="tag">Session identificator, should be unique for each session..</param>
-        /// <param name="images">Person&#39;s images..</param>
+        /// <param name="images">An array of images to be processed. At least two images must be provided..</param>
         /// <param name="groupIds">IDs of the groups in which the search is performed..</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
@@ -59,9 +59,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public string Tag { get; set; }
 
         /// <summary>
-        /// Person&#39;s images.
+        /// An array of images to be processed. At least two images must be provided.
         /// </summary>
-        /// <value>Person&#39;s images.</value>
+        /// <value>An array of images to be processed. At least two images must be provided.</value>
         [DataMember(Name="images", EmitDefaultValue=false)]
         public List<MatchAndSearchRequestImages> Images { get; set; }
 

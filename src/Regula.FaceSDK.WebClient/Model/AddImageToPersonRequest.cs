@@ -42,7 +42,9 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="image">image (required).</param>
         /// <param name="threshold">The similarity threshold..</param>
         /// <param name="limit">The maximum number of results to be returned..</param>
-        public AddImageToPersonRequest(string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), float threshold = default(float), int limit = default(int))
+        /// <param name="tenant">A label used to group transactions by customers, applications, or other criteria..</param>
+        /// <param name="env">A label used to differentiate transactions by development stages..</param>
+        public AddImageToPersonRequest(string tag = default(string), AddImageToPersonRequestImage image = default(AddImageToPersonRequestImage), float threshold = default(float), int limit = default(int), string tenant = default(string), string env = default(string))
         {
             // to ensure "image" is required (not null)
             if (image == null)
@@ -57,6 +59,8 @@ namespace Regula.FaceSDK.WebClient.Model
             this.Tag = tag;
             this.Threshold = threshold;
             this.Limit = limit;
+            this.Tenant = tenant;
+            this.Env = env;
         }
 
         /// <summary>
@@ -87,6 +91,20 @@ namespace Regula.FaceSDK.WebClient.Model
         public int Limit { get; set; }
 
         /// <summary>
+        /// A label used to group transactions by customers, applications, or other criteria.
+        /// </summary>
+        /// <value>A label used to group transactions by customers, applications, or other criteria.</value>
+        [DataMember(Name="tenant", EmitDefaultValue=false)]
+        public string Tenant { get; set; }
+
+        /// <summary>
+        /// A label used to differentiate transactions by development stages.
+        /// </summary>
+        /// <value>A label used to differentiate transactions by development stages.</value>
+        [DataMember(Name="env", EmitDefaultValue=false)]
+        public string Env { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +116,8 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("  Threshold: ").Append(Threshold).Append("\n");
             sb.Append("  Limit: ").Append(Limit).Append("\n");
+            sb.Append("  Tenant: ").Append(Tenant).Append("\n");
+            sb.Append("  Env: ").Append(Env).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,6 +171,16 @@ namespace Regula.FaceSDK.WebClient.Model
                     this.Limit == input.Limit ||
                     (this.Limit != null &&
                     this.Limit.Equals(input.Limit))
+                ) && 
+                (
+                    this.Tenant == input.Tenant ||
+                    (this.Tenant != null &&
+                    this.Tenant.Equals(input.Tenant))
+                ) && 
+                (
+                    this.Env == input.Env ||
+                    (this.Env != null &&
+                    this.Env.Equals(input.Env))
                 );
         }
 
@@ -171,6 +201,10 @@ namespace Regula.FaceSDK.WebClient.Model
                     hashCode = hashCode * 59 + this.Threshold.GetHashCode();
                 if (this.Limit != null)
                     hashCode = hashCode * 59 + this.Limit.GetHashCode();
+                if (this.Tenant != null)
+                    hashCode = hashCode * 59 + this.Tenant.GetHashCode();
+                if (this.Env != null)
+                    hashCode = hashCode * 59 + this.Env.GetHashCode();
                 return hashCode;
             }
         }

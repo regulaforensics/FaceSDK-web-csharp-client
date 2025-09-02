@@ -1,5 +1,8 @@
 {
   "packageName": "Regula.FaceSDK.WebClient",
   "optionalAssemblyInfo": true,
-  "isRestSharp_106_10_1_above" :true
+  "isRestSharp_106_10_1_above" :true,
+  "typeMappings" : {
+    "AnyOfDetectAttributesDetailsDetectDetailsMeta": "Dictionary<string, Object>"
+  }
 }

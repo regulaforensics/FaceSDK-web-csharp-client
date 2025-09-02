@@ -494,16 +494,12 @@ namespace Regula.FaceSDK.WebClient.Client
         /// <returns>Filename</returns>
         public static string SanitizeFilename(string filename)
         {
-            Match match = Regex.Match(filename, @".*[/\\](.*)$");
-
-            if (match.Success)
-            {
-                return match.Groups[1].Value;
-            }
-            else
-            {
+            if (string.IsNullOrEmpty(filename))
                 return filename;
-            }
+
+            var match = Regex.Match(filename, @"[^/\\]+(?=$)", RegexOptions.None, TimeSpan.FromMilliseconds(100));
+
+            return match.Success ? match.Value : filename;
         }
 
         /// <summary>

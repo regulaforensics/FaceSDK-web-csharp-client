@@ -25,24 +25,42 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The configuration that defines the list of returned attribute check characteristics.
+    /// MatchAndSearchRequestImages
     /// </summary>
     [DataContract]
-    public partial class AttributeConfig :  IEquatable<AttributeConfig>, IValidatableObject
+    public partial class MatchAndSearchRequestImages :  IEquatable<MatchAndSearchRequestImages>, IValidatableObject
     {
         /// <summary>
-        /// Gets or Sets Name
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public FaceAttribute? Name { get; set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public ImageSource? Type { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="AttributeConfig" /> class.
+        /// Initializes a new instance of the <see cref="MatchAndSearchRequestImages" /> class.
         /// </summary>
-        /// <param name="name">name.</param>
-        public AttributeConfig(FaceAttribute? name = default(FaceAttribute?))
+        /// <param name="content">Base64-encoded image..</param>
+        /// <param name="imageUrl">Image URL..</param>
+        /// <param name="type">type.</param>
+        public MatchAndSearchRequestImages(byte[] content = default(byte[]), string imageUrl = default(string), ImageSource? type = default(ImageSource?))
         {
-            this.Name = name;
+            this.Content = content;
+            this.ImageUrl = imageUrl;
+            this.Type = type;
         }
+
+        /// <summary>
+        /// Base64-encoded image.
+        /// </summary>
+        /// <value>Base64-encoded image.</value>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public byte[] Content { get; set; }
+
+        /// <summary>
+        /// Image URL.
+        /// </summary>
+        /// <value>Image URL.</value>
+        [DataMember(Name="imageUrl", EmitDefaultValue=false)]
+        public string ImageUrl { get; set; }
 
 
         /// <summary>
@@ -52,8 +70,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AttributeConfig {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("class MatchAndSearchRequestImages {\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
+            sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -74,24 +94,34 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AttributeConfig);
+            return this.Equals(input as MatchAndSearchRequestImages);
         }
 
         /// <summary>
-        /// Returns true if AttributeConfig instances are equal
+        /// Returns true if MatchAndSearchRequestImages instances are equal
         /// </summary>
-        /// <param name="input">Instance of AttributeConfig to be compared</param>
+        /// <param name="input">Instance of MatchAndSearchRequestImages to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AttributeConfig input)
+        public bool Equals(MatchAndSearchRequestImages input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
+                ) && 
+                (
+                    this.ImageUrl == input.ImageUrl ||
+                    (this.ImageUrl != null &&
+                    this.ImageUrl.Equals(input.ImageUrl))
+                ) && 
+                (
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 );
         }
 
@@ -104,8 +134,12 @@ namespace Regula.FaceSDK.WebClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
+                if (this.ImageUrl != null)
+                    hashCode = hashCode * 59 + this.ImageUrl.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 return hashCode;
             }
         }

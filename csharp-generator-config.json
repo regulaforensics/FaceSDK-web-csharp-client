@@ -1,8 +1,9 @@
 {
   "packageName": "Regula.FaceSDK.WebClient",
-  "optionalAssemblyInfo": true,
-  "isRestSharp_106_10_1_above" :true,
+  "library": "httpclient",
+  "nullableReferenceTypes": true,
+  "targetFramework": "netstandard2.0",
   "typeMappings" : {
-    "AnyOfDetectAttributesDetailsDetectDetailsMeta": "Dictionary<string, Object>"
+    "DetectionAttributesDetailsInner": "DetailItem"
   }
 }

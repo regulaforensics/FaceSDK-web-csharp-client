@@ -1,4 +1,4 @@
-dotnet build .src/Regula.FaceSDK.NetCoreExample -c Release
+dotnet build ./src/Regula.FaceSDK.NetCoreExample -c Release
 
 cd  ./src/Regula.FaceSDK.NetCoreExample || exit
 

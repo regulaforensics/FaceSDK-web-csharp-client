@@ -20,9 +20,9 @@ namespace Regula.FaceSDK.NetCoreExample
 
             var sdk = new FaceSdk(apiBasePath);
 
-            var matchImage1 = new MatchImage(data: face1, type: ImageSource.LIVE);
-            var matchImage2 = new MatchImage(data: face1, type: ImageSource.DOCUMENT_RFID);
-            var matchImage3 = new MatchImage(data: face2, type: ImageSource.LIVE);
+            var matchImage1 = new MatchImage(index: 0, data: face1, type: ImageSource.LIVE);
+            var matchImage2 = new MatchImage(index: 1, data: face1, type: ImageSource.DOCUMENT_RFID);
+            var matchImage3 = new MatchImage(index: 3, data: face2, type: ImageSource.LIVE);
 
             var matchingRequest = new MatchRequest(tag: Guid.NewGuid().ToString(),
                 images:new List<MatchImage> {matchImage1, matchImage2, matchImage3}

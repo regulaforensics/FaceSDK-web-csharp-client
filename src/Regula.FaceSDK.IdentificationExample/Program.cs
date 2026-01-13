@@ -1,5 +1,7 @@
 ﻿using System.Net;
+using System.Text;
 using Regula.FaceSDK.WebClient.Api;
+using Regula.FaceSDK.WebClient.Client;
 using Regula.FaceSDK.WebClient.Model;
 
 namespace Regula.FaceSDK.IdentificationExample
@@ -19,42 +21,45 @@ namespace Regula.FaceSDK.IdentificationExample
 
             var sdk = new FaceSdk(apiBasePath);
 
-            var person1Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1")).Id;
-            var person2Id = sdk.PersonApi.CreatePerson(
-                new PersonFields(name:"person1")).Id;
+            var person1Id = sdk.PersonApi.CreatePerson(new PersonFields(name:"person1")).Id;
+            var person2Id = sdk.PersonApi.CreatePerson(new PersonFields(name:"person1")).Id;
 
-            sdk.PersonApi.AddImageToPerson(person1Id, new ImageFields(image:new AddImageToPersonRequestImage(content: face1)));
-            sdk.PersonApi.AddImageToPerson(person2Id, new ImageFields(image:new AddImageToPersonRequestImage(content: face2)));
+            sdk.PersonApi.AddImageToPerson(person1Id.Value, new AddImageToPersonRequest(image:new AddImageToPersonRequestImage(content: face1)));
+            sdk.PersonApi.AddImageToPerson(person2Id.Value, new AddImageToPersonRequest(image:new AddImageToPersonRequestImage(content: face2)));
 
-            var person1 = sdk.PersonApi.GetPerson(person1Id);
-            var person2 = sdk.PersonApi.GetPerson(person2Id);
+            var person1 = sdk.PersonApi.GetPerson(person1Id.Value);
+            var person2 = sdk.PersonApi.GetPerson(person2Id.Value);
 
             var group = sdk.GroupApi.CreateGroup(new GroupToCreate(name: "group1", metadata: new Dictionary<string, object>()));
 
             sdk.GroupApi.UpdatePersonsInGroup(
-                group.Id,
-                new UpdateGroup(addItems: new List<Guid>() {person1Id, person2Id})
+                group.Id.Value,
+                new UpdateGroup(addItems: new List<Guid>() {person1Id.Value, person2Id.Value})
             );
             // Authorization:
-            //var authHeaders = new Dictionary<string, string>()
-            //{
-            //    { "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
-            //};
-            //var response = sdk.SearchApi.Search(
-            //    new SearchRequest(
-            //      groupIds: new List<Guid>() { },
-            //      image: new ImageFieldsImage(content: face1),
-            //      limit: 10,
-            //      threshold: 0.8f
-            //    ),
-            //    headers: authHeaders
-            //   );
+            // var authHeaders = new Dictionary<string, string>()
+            // {
+            //     { "Authorization", $"Basic {Convert.ToBase64String(Encoding.UTF8.GetBytes("USER:PASSWORD"))}" }
+            // };
+            // var searchApiConfiguration = new Configuration()
+            // {
+            //     DefaultHeaders = authHeaders, 
+            // };
+            // sdk.SearchApi.Configuration = searchApiConfiguration;
+            //
+            // var response = sdk.SearchApi.Search(
+            //     new SearchRequest(
+            //         groupIds: new List<Guid>() { },
+            //         image: new ImageFieldsImage(content: face1),
+            //         limit: 10,
+            //         threshold: 0.8f
+            //     )
+            // );
 
             var searchResult = sdk.SearchApi.Search(
                 new SearchRequest(
                     groupIds: new List<Guid>() {},
-                    image: new AddImageToPersonRequestImage(content: face1),
+                    image: new ImageFieldsImage(content: face1),
                     limit: 10,
                     threshold: 0.8f
                     )

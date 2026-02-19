@@ -1,7 +1,19 @@
-DOCS_DEFINITION_FOLDER="${PWD}/../FaceSDK-web-openapi"  \
-\
-&& docker run --user "$(id -u):$(id -g)" --rm -v "${PWD}:/client" -v "$DOCS_DEFINITION_FOLDER:/definitions" \
-openapitools/openapi-generator-cli:v5.4.0 generate \
--i /definitions/index.yml -g csharp -o /client/ \
---global-property models \
--c /client/csharp-generator-config.json
+#!/bin/sh
+
+MODE="$1"
+FACE_DEFINITION_FOLDER="${PWD}/../FaceSDK-web-openapi"
+TEMPLATE_PATH="/client/generator-templates/lenient"
+
+if [ "$MODE" = "strict" ]; then
+    TEMPLATE_PATH="/client/generator-templates/strict"
+fi
+
+docker run --user "$(id -u):$(id -g)" --rm \
+-v "${PWD}:/client" \
+-v "${FACE_DEFINITION_FOLDER}:/definitions" \
+openapitools/openapi-generator-cli:v7.15.0 generate \
+-g csharp \
+-i /definitions/index.yml \
+-o /client/ --openapi-normalizer REF_AS_PARENT_IN_ALLOF=true \
+-t $TEMPLATE_PATH \
+-c /client/csharp-generator-config.json || exit 1

@@ -1,34 +1,22 @@
-using Regula.FaceSDK.WebClient.Client;
-using Regula.FaceSDK.WebClient.Ext;
-
 namespace Regula.FaceSDK.WebClient.Api
 {
     public class FaceSdk
     {
-        public ApiClient ApiClient { get; }
-
-        public MatchingApi MatchingApi { get; }
+        public MatchApi MatchingApi { get; }
         public GroupApi GroupApi { get; }
         public PersonApi PersonApi { get; }
         public SearchApi SearchApi { get; }
+        public HealthcheckApi HealthcheckApi { get; }
+        public Liveness20Api LivenessApi { get; }
 
         public FaceSdk(string basePath) 
         {
-            basePath = string.IsNullOrEmpty(basePath) ? Configuration.Default.BasePath : basePath;
-            Configuration config = new Configuration() {BasePath = basePath};
-            this.ApiClient = new ApiClient(){Configuration = config};
-            this.MatchingApi = new MatchingApi(config);
-            this.GroupApi = new GroupApiGateway(config);
-            this.PersonApi = new PersonApiGateway(config);
-            this.SearchApi = new SearchApiGateway(config);
-        }
-
-        public FaceSdk(ApiClient apiClient)
-        {
-            Configuration config = new Configuration() {BasePath = apiClient.Configuration.BasePath};
-            
-            this.ApiClient = apiClient;
-            this.MatchingApi = new MatchingApi(config);
+            this.MatchingApi = new MatchApi(basePath);
+            this.GroupApi = new GroupApi(basePath);
+            this.PersonApi = new PersonApi(basePath);
+            this.SearchApi = new SearchApi(basePath);
+            this.HealthcheckApi = new HealthcheckApi(basePath);
+            this.LivenessApi = new Liveness20Api(basePath);
         }
     }
 }

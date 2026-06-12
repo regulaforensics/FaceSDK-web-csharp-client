@@ -50,7 +50,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="type">type.</param>
         /// <param name="data">Base64-encoded image. (required).</param>
         /// <param name="detectAll">Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected. (default to false).</param>
-        public MatchImage(int index = default(int), ImageSource? type = default(ImageSource?), byte[] data = default(byte[]), bool detectAll = false)
+        /// <param name="livenessTransactionId">Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request..</param>
+        public MatchImage(int index = default(int), ImageSource? type = default(ImageSource?), byte[] data = default(byte[]), bool detectAll = false, string livenessTransactionId = default(string))
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -61,6 +62,7 @@ namespace Regula.FaceSDK.WebClient.Model
             this.Index = index;
             this.Type = type;
             this.DetectAll = detectAll;
+            this.LivenessTransactionId = livenessTransactionId;
         }
 
         /// <summary>
@@ -85,6 +87,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public bool? DetectAll { get; set; }
 
         /// <summary>
+        /// Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request.
+        /// </summary>
+        /// <value>Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request.</value>
+        [DataMember(Name = "livenessTransactionId", EmitDefaultValue = false)]
+        public string? LivenessTransactionId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -96,6 +105,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  DetectAll: ").Append(DetectAll).Append("\n");
+            sb.Append("  LivenessTransactionId: ").Append(LivenessTransactionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

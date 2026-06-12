@@ -44,11 +44,13 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="content">Base64-encoded image..</param>
         /// <param name="imageUrl">Image URL..</param>
         /// <param name="type">type.</param>
-        public MatchAndSearchRequestImagesItem(byte[] content = default(byte[]), string imageUrl = default(string), ImageSource? type = default(ImageSource?))
+        /// <param name="livenessTransactionId">Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request..</param>
+        public MatchAndSearchRequestImagesItem(byte[] content = default(byte[]), string imageUrl = default(string), ImageSource? type = default(ImageSource?), string livenessTransactionId = default(string))
         {
             this.Content = content;
             this.ImageUrl = imageUrl;
             this.Type = type;
+            this.LivenessTransactionId = livenessTransactionId;
         }
 
         /// <summary>
@@ -66,6 +68,13 @@ namespace Regula.FaceSDK.WebClient.Model
         public string? ImageUrl { get; set; }
 
         /// <summary>
+        /// Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request.
+        /// </summary>
+        /// <value>Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request.</value>
+        [DataMember(Name = "livenessTransactionId", EmitDefaultValue = false)]
+        public string? LivenessTransactionId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,6 +85,7 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  LivenessTransactionId: ").Append(LivenessTransactionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

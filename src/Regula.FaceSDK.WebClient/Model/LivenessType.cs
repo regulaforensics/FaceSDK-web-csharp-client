@@ -27,9 +27,9 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Liveness detection can be performed in two modes: active &#x60;0&#x60; and passive &#x60;1&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)
+    /// Liveness detection can be performed in three modes: active &#x60;0&#x60;,  passive &#x60;1&#x60;, and passive with blink &#x60;2&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)
     /// </summary>
-    /// <value>Liveness detection can be performed in two modes: active &#x60;0&#x60; and passive &#x60;1&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)</value>
+    /// <value>Liveness detection can be performed in three modes: active &#x60;0&#x60;,  passive &#x60;1&#x60;, and passive with blink &#x60;2&#x60;. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/liveness/#active-and-passive-modes)</value>
     public enum LivenessType
     {
         /// <summary>
@@ -40,7 +40,12 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Enum PASSIVE for value: 1
         /// </summary>
-        PASSIVE = 1
+        PASSIVE = 1,
+
+        /// <summary>
+        /// Enum PASSIVE_WITH_BLINK for value: 2
+        /// </summary>
+        PASSIVE_WITH_BLINK = 2
     }
 
 }

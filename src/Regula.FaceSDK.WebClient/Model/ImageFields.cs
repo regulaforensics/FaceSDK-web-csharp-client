@@ -40,8 +40,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="outputImageParams">outputImageParams.</param>
         /// <param name="detectAll">Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected. (default to false).</param>
         /// <param name="threshold">The similarity threshold..</param>
-        /// <param name="limit">The maximum number of results to be returned..</param>
-        public ImageFields(string tag = default(string), ImageFieldsImage image = default(ImageFieldsImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = default(int))
+        /// <param name="limit">The maximum number of results to be returned. If not specified, the default value is 100. (default to 100).</param>
+        public ImageFields(string tag = default(string), ImageFieldsImage image = default(ImageFieldsImage), OutputImageParams outputImageParams = default(OutputImageParams), bool detectAll = false, float threshold = default(float), int limit = 100)
         {
             this.Tag = tag;
             this.Image = image;
@@ -85,9 +85,12 @@ namespace Regula.FaceSDK.WebClient.Model
         public float? Threshold { get; set; }
 
         /// <summary>
-        /// The maximum number of results to be returned.
+        /// The maximum number of results to be returned. If not specified, the default value is 100.
         /// </summary>
-        /// <value>The maximum number of results to be returned.</value>
+        /// <value>The maximum number of results to be returned. If not specified, the default value is 100.</value>
+        /*
+        <example>5</example>
+        */
         [DataMember(Name = "limit", EmitDefaultValue = false)]
         public int? Limit { get; set; }
 

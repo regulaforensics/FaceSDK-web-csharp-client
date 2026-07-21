@@ -42,7 +42,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="tag">Session identificator..</param>
         /// <param name="name">Group to create name. (required).</param>
-        /// <param name="metadata">A free-form object containing group&#39;s extended attributes. (required).</param>
+        /// <param name="metadata">A free-form object containing group&#39;s extended attributes..</param>
         public GroupToCreate(string tag = default(string), string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>))
         {
             // to ensure "name" is required (not null)
@@ -51,13 +51,8 @@ namespace Regula.FaceSDK.WebClient.Model
                 throw new ArgumentNullException("name is a required property for GroupToCreate and cannot be null");
             }
             this.Name = name;
-            // to ensure "metadata" is required (not null)
-            if (metadata == null)
-            {
-                throw new ArgumentNullException("metadata is a required property for GroupToCreate and cannot be null");
-            }
-            this.Metadata = metadata;
             this.Tag = tag;
+            this.Metadata = metadata;
         }
 
         /// <summary>
@@ -78,8 +73,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// A free-form object containing group&#39;s extended attributes.
         /// </summary>
         /// <value>A free-form object containing group&#39;s extended attributes.</value>
-        [DataMember(Name = "metadata", IsRequired = true, EmitDefaultValue = true)]
-        public Dictionary<string, Object> Metadata { get; set; }
+        [DataMember(Name = "metadata", EmitDefaultValue = false)]
+        public Dictionary<string, Object>? Metadata { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

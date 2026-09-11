@@ -48,9 +48,11 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="video">Link to the session video, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
         /// <param name="age">Approximate age with an accuracy of +/-3 years..</param>
         /// <param name="portrait">Link to the portrait, depends on the selected storage type. [Learn more](https://docs.regulaforensics.com/develop/face-sdk/web-service/administration/storage/).</param>
-        /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
+        /// <param name="metadata">A free-form object containing the Person&#39;s extended attributes..</param>
         /// <param name="type">type.</param>
-        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), LivenessType? type = default(LivenessType?))
+        /// <param name="enrollResult">enrollResult.</param>
+        /// <param name="verifyResult">verifyResult.</param>
+        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), LivenessType? type = default(LivenessType?), EnrollResult enrollResult = default(EnrollResult), VerifyResult verifyResult = default(VerifyResult))
         {
             this.Code = code;
             this.Status = status;
@@ -61,6 +63,8 @@ namespace Regula.FaceSDK.WebClient.Model
             this.Portrait = portrait;
             this.Metadata = metadata;
             this.Type = type;
+            this.EnrollResult = enrollResult;
+            this.VerifyResult = verifyResult;
         }
 
         /// <summary>
@@ -113,11 +117,23 @@ namespace Regula.FaceSDK.WebClient.Model
         public string? Portrait { get; set; }
 
         /// <summary>
-        /// A free-form object containing person&#39;s extended attributes.
+        /// A free-form object containing the Person&#39;s extended attributes.
         /// </summary>
-        /// <value>A free-form object containing person&#39;s extended attributes.</value>
+        /// <value>A free-form object containing the Person&#39;s extended attributes.</value>
         [DataMember(Name = "metadata", EmitDefaultValue = false)]
         public Dictionary<string, Object>? Metadata { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EnrollResult
+        /// </summary>
+        [DataMember(Name = "enrollResult", EmitDefaultValue = false)]
+        public EnrollResult? EnrollResult { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VerifyResult
+        /// </summary>
+        [DataMember(Name = "verifyResult", EmitDefaultValue = false)]
+        public VerifyResult? VerifyResult { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -136,6 +152,8 @@ namespace Regula.FaceSDK.WebClient.Model
             sb.Append("  Portrait: ").Append(Portrait).Append("\n");
             sb.Append("  Metadata: ").Append(Metadata).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  EnrollResult: ").Append(EnrollResult).Append("\n");
+            sb.Append("  VerifyResult: ").Append(VerifyResult).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

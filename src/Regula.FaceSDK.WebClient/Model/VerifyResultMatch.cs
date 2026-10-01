@@ -35,7 +35,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="VerifyResultMatch" /> class.
         /// </summary>
-        /// <param name="verified">Whether the faces matched according to the specified similarity threshold. &#x60;true&#x60; when the face similarity meets the threshold; &#x60;false&#x60; when it does not..</param>
+        /// <param name="verified">Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold..</param>
         /// <param name="similarity">Face similarity score in the range from &#x60;0&#x60; to &#x60;1&#x60;..</param>
         public VerifyResultMatch(bool verified = default(bool), float similarity = default(float))
         {
@@ -44,9 +44,9 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Whether the faces matched according to the specified similarity threshold. &#x60;true&#x60; when the face similarity meets the threshold; &#x60;false&#x60; when it does not.
+        /// Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold.
         /// </summary>
-        /// <value>Whether the faces matched according to the specified similarity threshold. &#x60;true&#x60; when the face similarity meets the threshold; &#x60;false&#x60; when it does not.</value>
+        /// <value>Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold.</value>
         [DataMember(Name = "verified", EmitDefaultValue = false)]
         public bool? Verified { get; set; }
 

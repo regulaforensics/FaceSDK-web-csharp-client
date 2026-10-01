@@ -36,7 +36,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="VerifyResult" /> class.
         /// </summary>
         /// <param name="verified">Whether the Person was successfully verified. &#x60;true&#x60; when the liveness check succeeds and the liveness portrait matches the enrolled Person according to the specified threshold; &#x60;false&#x60; when the liveness check fails or the faces do not match..</param>
-        /// <param name="person">The Person the liveness portrait was verified against..</param>
+        /// <param name="person">The Person the liveness portrait was verified against. Absent when the liveness check fails..</param>
         /// <param name="match">match.</param>
         public VerifyResult(bool verified = default(bool), Person person = default(Person), VerifyResultMatch match = default(VerifyResultMatch))
         {
@@ -53,9 +53,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public bool? Verified { get; set; }
 
         /// <summary>
-        /// The Person the liveness portrait was verified against.
+        /// The Person the liveness portrait was verified against. Absent when the liveness check fails.
         /// </summary>
-        /// <value>The Person the liveness portrait was verified against.</value>
+        /// <value>The Person the liveness portrait was verified against. Absent when the liveness check fails.</value>
         [DataMember(Name = "person", EmitDefaultValue = false)]
         public Person? Person { get; set; }
 

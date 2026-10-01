@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Allows to filter the search results based on the Person&#39;s &#x60;name&#x60;. If enabled, only the search results that meet the filter condition will be returned.
+    /// Allows you to filter search results by Person fields. Currently, filtering is supported only by the &#x60;name&#x60; field.
     /// </summary>
     [DataContract(Name = "FilterSearchRequest")]
     public partial class FilterSearchRequest : IValidatableObject
@@ -42,8 +42,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
         /// </summary>
         /// <param name="op">op.</param>
-        /// <param name="field">&#x60;name&#x60; of the Person..</param>
-        /// <param name="value">The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared..</param>
+        /// <param name="field">The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored..</param>
+        /// <param name="value">The list of values against which the specified &#x60;field&#x60; is compared..</param>
         public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
         {
             this.Op = op;
@@ -52,16 +52,16 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// &#x60;name&#x60; of the Person.
+        /// The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.
         /// </summary>
-        /// <value>&#x60;name&#x60; of the Person.</value>
+        /// <value>The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.</value>
         [DataMember(Name = "field", EmitDefaultValue = false)]
         public string? Field { get; set; }
 
         /// <summary>
-        /// The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared.
+        /// The list of values against which the specified &#x60;field&#x60; is compared.
         /// </summary>
-        /// <value>The list of &#x60;name&#x60; values against which the &#x60;field&#x60; is compared.</value>
+        /// <value>The list of values against which the specified &#x60;field&#x60; is compared.</value>
         [DataMember(Name = "value", EmitDefaultValue = false)]
         public List<string>? Value { get; set; }
 

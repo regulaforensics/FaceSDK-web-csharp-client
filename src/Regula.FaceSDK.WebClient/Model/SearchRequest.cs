@@ -42,7 +42,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="image">image.</param>
         /// <param name="outputImageParams">outputImageParams.</param>
         /// <param name="detectAll">Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected. (default to false).</param>
-        /// <param name="threshold">The similarity threshold..</param>
+        /// <param name="threshold">Maximum distance allowed for a match (lower value &#x3D; stricter match)..</param>
         /// <param name="limit">The maximum number of results to be returned. If not specified, the default value is 100. (default to 100).</param>
         /// <param name="tenant">A label used to group transactions by customers, applications, or other criteria..</param>
         /// <param name="env">A label used to differentiate transactions by development stages..</param>
@@ -105,9 +105,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public bool? DetectAll { get; set; }
 
         /// <summary>
-        /// The similarity threshold.
+        /// Maximum distance allowed for a match (lower value &#x3D; stricter match).
         /// </summary>
-        /// <value>The similarity threshold.</value>
+        /// <value>Maximum distance allowed for a match (lower value &#x3D; stricter match).</value>
         [DataMember(Name = "threshold", EmitDefaultValue = false)]
         public float? Threshold { get; set; }
 

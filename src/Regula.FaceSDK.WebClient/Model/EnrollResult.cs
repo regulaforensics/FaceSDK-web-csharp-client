@@ -27,43 +27,43 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Allows you to filter search results by Person fields. Currently, filtering is supported only by the &#x60;name&#x60; field.
+    /// Result of the enrollment requested at session start via the &#x60;enroll&#x60; parameter. Returned only when enrollment was requested and the Enroll and Verify feature is enabled. Populated after the liveness check completes successfully.
     /// </summary>
-    [DataContract(Name = "FilterSearchRequest")]
-    public partial class FilterSearchRequest : IValidatableObject
+    [DataContract(Name = "EnrollResult")]
+    public partial class EnrollResult : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets Op
+        /// Initializes a new instance of the <see cref="EnrollResult" /> class.
         /// </summary>
-        [DataMember(Name = "op", EmitDefaultValue = false)]
-        public FilterOp? Op { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
-        /// </summary>
-        /// <param name="op">op.</param>
-        /// <param name="field">The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored..</param>
-        /// <param name="value">The list of values against which the specified &#x60;field&#x60; is compared..</param>
-        public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
+        /// <param name="enrolled">Whether a new Person was created during enrollment. &#x60;true&#x60; when a new Person was created; &#x60;false&#x60; when a matching Person was found during the pre-enrollment search and no new Person was created..</param>
+        /// <param name="person">The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;..</param>
+        /// <param name="search">search.</param>
+        public EnrollResult(bool enrolled = default(bool), Person person = default(Person), EnrollSearchResult search = default(EnrollSearchResult))
         {
-            this.Op = op;
-            this.Field = field;
-            this.Value = value;
+            this.Enrolled = enrolled;
+            this.Person = person;
+            this.Search = search;
         }
 
         /// <summary>
-        /// The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.
+        /// Whether a new Person was created during enrollment. &#x60;true&#x60; when a new Person was created; &#x60;false&#x60; when a matching Person was found during the pre-enrollment search and no new Person was created.
         /// </summary>
-        /// <value>The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.</value>
-        [DataMember(Name = "field", EmitDefaultValue = false)]
-        public string? Field { get; set; }
+        /// <value>Whether a new Person was created during enrollment. &#x60;true&#x60; when a new Person was created; &#x60;false&#x60; when a matching Person was found during the pre-enrollment search and no new Person was created.</value>
+        [DataMember(Name = "enrolled", EmitDefaultValue = false)]
+        public bool? Enrolled { get; set; }
 
         /// <summary>
-        /// The list of values against which the specified &#x60;field&#x60; is compared.
+        /// The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;.
         /// </summary>
-        /// <value>The list of values against which the specified &#x60;field&#x60; is compared.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public List<string>? Value { get; set; }
+        /// <value>The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;.</value>
+        [DataMember(Name = "person", EmitDefaultValue = false)]
+        public Person? Person { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Search
+        /// </summary>
+        [DataMember(Name = "search", EmitDefaultValue = false)]
+        public EnrollSearchResult? Search { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +72,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FilterSearchRequest {\n");
-            sb.Append("  Op: ").Append(Op).Append("\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class EnrollResult {\n");
+            sb.Append("  Enrolled: ").Append(Enrolled).Append("\n");
+            sb.Append("  Person: ").Append(Person).Append("\n");
+            sb.Append("  Search: ").Append(Search).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -27,43 +27,43 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Allows you to filter search results by Person fields. Currently, filtering is supported only by the &#x60;name&#x60; field.
+    /// Result of the verification requested at session start via the &#x60;verify&#x60; parameter. Returned only when verification was requested and the Enroll and Verify feature is enabled.
     /// </summary>
-    [DataContract(Name = "FilterSearchRequest")]
-    public partial class FilterSearchRequest : IValidatableObject
+    [DataContract(Name = "VerifyResult")]
+    public partial class VerifyResult : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets Op
+        /// Initializes a new instance of the <see cref="VerifyResult" /> class.
         /// </summary>
-        [DataMember(Name = "op", EmitDefaultValue = false)]
-        public FilterOp? Op { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
-        /// </summary>
-        /// <param name="op">op.</param>
-        /// <param name="field">The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored..</param>
-        /// <param name="value">The list of values against which the specified &#x60;field&#x60; is compared..</param>
-        public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
+        /// <param name="verified">Whether the Person was successfully verified. &#x60;true&#x60; when the liveness check succeeds and the liveness portrait matches the enrolled Person according to the specified threshold; &#x60;false&#x60; when the liveness check fails or the faces do not match..</param>
+        /// <param name="person">The Person the liveness portrait was verified against. Absent when the liveness check fails..</param>
+        /// <param name="match">match.</param>
+        public VerifyResult(bool verified = default(bool), Person person = default(Person), VerifyResultMatch match = default(VerifyResultMatch))
         {
-            this.Op = op;
-            this.Field = field;
-            this.Value = value;
+            this.Verified = verified;
+            this.Person = person;
+            this.Match = match;
         }
 
         /// <summary>
-        /// The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.
+        /// Whether the Person was successfully verified. &#x60;true&#x60; when the liveness check succeeds and the liveness portrait matches the enrolled Person according to the specified threshold; &#x60;false&#x60; when the liveness check fails or the faces do not match.
         /// </summary>
-        /// <value>The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.</value>
-        [DataMember(Name = "field", EmitDefaultValue = false)]
-        public string? Field { get; set; }
+        /// <value>Whether the Person was successfully verified. &#x60;true&#x60; when the liveness check succeeds and the liveness portrait matches the enrolled Person according to the specified threshold; &#x60;false&#x60; when the liveness check fails or the faces do not match.</value>
+        [DataMember(Name = "verified", EmitDefaultValue = false)]
+        public bool? Verified { get; set; }
 
         /// <summary>
-        /// The list of values against which the specified &#x60;field&#x60; is compared.
+        /// The Person the liveness portrait was verified against. Absent when the liveness check fails.
         /// </summary>
-        /// <value>The list of values against which the specified &#x60;field&#x60; is compared.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public List<string>? Value { get; set; }
+        /// <value>The Person the liveness portrait was verified against. Absent when the liveness check fails.</value>
+        [DataMember(Name = "person", EmitDefaultValue = false)]
+        public Person? Person { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Match
+        /// </summary>
+        [DataMember(Name = "match", EmitDefaultValue = false)]
+        public VerifyResultMatch? Match { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +72,10 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FilterSearchRequest {\n");
-            sb.Append("  Op: ").Append(Op).Append("\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class VerifyResult {\n");
+            sb.Append("  Verified: ").Append(Verified).Append("\n");
+            sb.Append("  Person: ").Append(Person).Append("\n");
+            sb.Append("  Match: ").Append(Match).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

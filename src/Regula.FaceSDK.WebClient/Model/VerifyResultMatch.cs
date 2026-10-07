@@ -27,43 +27,35 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Allows you to filter search results by Person fields. Currently, filtering is supported only by the &#x60;name&#x60; field.
+    /// Face comparison details. Present when the liveness check succeeds.
     /// </summary>
-    [DataContract(Name = "FilterSearchRequest")]
-    public partial class FilterSearchRequest : IValidatableObject
+    [DataContract(Name = "VerifyResultMatch")]
+    public partial class VerifyResultMatch : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets Op
+        /// Initializes a new instance of the <see cref="VerifyResultMatch" /> class.
         /// </summary>
-        [DataMember(Name = "op", EmitDefaultValue = false)]
-        public FilterOp? Op { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
-        /// </summary>
-        /// <param name="op">op.</param>
-        /// <param name="field">The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored..</param>
-        /// <param name="value">The list of values against which the specified &#x60;field&#x60; is compared..</param>
-        public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
+        /// <param name="verified">Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold..</param>
+        /// <param name="similarity">Face similarity score in the range from &#x60;0&#x60; to &#x60;1&#x60;..</param>
+        public VerifyResultMatch(bool verified = default(bool), float similarity = default(float))
         {
-            this.Op = op;
-            this.Field = field;
-            this.Value = value;
+            this.Verified = verified;
+            this.Similarity = similarity;
         }
 
         /// <summary>
-        /// The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.
+        /// Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold.
         /// </summary>
-        /// <value>The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.</value>
-        [DataMember(Name = "field", EmitDefaultValue = false)]
-        public string? Field { get; set; }
+        /// <value>Whether the faces matched according to the specified threshold. &#x60;true&#x60; when the distance between the captured and enrolled portraits does not exceed the threshold; &#x60;false&#x60; when it exceeds the threshold.</value>
+        [DataMember(Name = "verified", EmitDefaultValue = false)]
+        public bool? Verified { get; set; }
 
         /// <summary>
-        /// The list of values against which the specified &#x60;field&#x60; is compared.
+        /// Face similarity score in the range from &#x60;0&#x60; to &#x60;1&#x60;.
         /// </summary>
-        /// <value>The list of values against which the specified &#x60;field&#x60; is compared.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public List<string>? Value { get; set; }
+        /// <value>Face similarity score in the range from &#x60;0&#x60; to &#x60;1&#x60;.</value>
+        [DataMember(Name = "similarity", EmitDefaultValue = false)]
+        public float? Similarity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +64,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FilterSearchRequest {\n");
-            sb.Append("  Op: ").Append(Op).Append("\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class VerifyResultMatch {\n");
+            sb.Append("  Verified: ").Append(Verified).Append("\n");
+            sb.Append("  Similarity: ").Append(Similarity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -27,43 +27,26 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// Allows you to filter search results by Person fields. Currently, filtering is supported only by the &#x60;name&#x60; field.
+    /// Result of the 1:N search performed before enrollment when &#x60;enroll.search&#x60; is provided at session start. Present only when at least one matching Person is found. In this case, no new Person is created.
     /// </summary>
-    [DataContract(Name = "FilterSearchRequest")]
-    public partial class FilterSearchRequest : IValidatableObject
+    [DataContract(Name = "EnrollSearchResult")]
+    public partial class EnrollSearchResult : IValidatableObject
     {
-
         /// <summary>
-        /// Gets or Sets Op
+        /// Initializes a new instance of the <see cref="EnrollSearchResult" /> class.
         /// </summary>
-        [DataMember(Name = "op", EmitDefaultValue = false)]
-        public FilterOp? Op { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FilterSearchRequest" /> class.
-        /// </summary>
-        /// <param name="op">op.</param>
-        /// <param name="field">The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored..</param>
-        /// <param name="value">The list of values against which the specified &#x60;field&#x60; is compared..</param>
-        public FilterSearchRequest(FilterOp? op = default(FilterOp?), string field = default(string), List<string> value = default(List<string>))
+        /// <param name="persons">Persons found during the pre-enrollment search..</param>
+        public EnrollSearchResult(List<SearchPerson> persons = default(List<SearchPerson>))
         {
-            this.Op = op;
-            this.Field = field;
-            this.Value = value;
+            this.Persons = persons;
         }
 
         /// <summary>
-        /// The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.
+        /// Persons found during the pre-enrollment search.
         /// </summary>
-        /// <value>The Person field to which the filter is applied. Currently, only &#x60;name&#x60; is supported. If another field is specified, the filter is ignored.</value>
-        [DataMember(Name = "field", EmitDefaultValue = false)]
-        public string? Field { get; set; }
-
-        /// <summary>
-        /// The list of values against which the specified &#x60;field&#x60; is compared.
-        /// </summary>
-        /// <value>The list of values against which the specified &#x60;field&#x60; is compared.</value>
-        [DataMember(Name = "value", EmitDefaultValue = false)]
-        public List<string>? Value { get; set; }
+        /// <value>Persons found during the pre-enrollment search.</value>
+        [DataMember(Name = "persons", EmitDefaultValue = false)]
+        public List<SearchPerson>? Persons { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,10 +55,8 @@ namespace Regula.FaceSDK.WebClient.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class FilterSearchRequest {\n");
-            sb.Append("  Op: ").Append(Op).Append("\n");
-            sb.Append("  Field: ").Append(Field).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
+            sb.Append("class EnrollSearchResult {\n");
+            sb.Append("  Persons: ").Append(Persons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

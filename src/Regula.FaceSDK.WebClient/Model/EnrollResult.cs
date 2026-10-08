@@ -36,7 +36,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="EnrollResult" /> class.
         /// </summary>
         /// <param name="enrolled">Whether a new Person was created during enrollment. &#x60;true&#x60; when a new Person was created; &#x60;false&#x60; when a matching Person was found during the pre-enrollment search and no new Person was created..</param>
-        /// <param name="person">The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;..</param>
+        /// <param name="person">The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;..</param>
         /// <param name="search">search.</param>
         public EnrollResult(bool enrolled = default(bool), Person person = default(Person), EnrollSearchResult search = default(EnrollSearchResult))
         {
@@ -53,9 +53,9 @@ namespace Regula.FaceSDK.WebClient.Model
         public bool? Enrolled { get; set; }
 
         /// <summary>
-        /// The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;.
+        /// The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;.
         /// </summary>
-        /// <value>The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;.</value>
+        /// <value>The Person created during enrollment. Present only when &#x60;enrolled&#x60; is &#x60;true&#x60;. If enrollment was started with an empty person object (&#x60;{}&#x60;), the Person is created with a randomly generated UUID as its &#x60;name&#x60;.</value>
         [DataMember(Name = "person", EmitDefaultValue = false)]
         public Person? Person { get; set; }
 

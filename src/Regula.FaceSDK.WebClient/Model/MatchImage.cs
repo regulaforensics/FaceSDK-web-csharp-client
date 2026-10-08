@@ -41,26 +41,16 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MatchImage" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected MatchImage() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MatchImage" /> class.
-        /// </summary>
         /// <param name="index">The image index number. Can be given; if not given, the index numbers are set automatically starting from &#x60;0&#x60;. All index numbers must be whole and unique—not repeated..</param>
         /// <param name="type">type.</param>
-        /// <param name="data">Base64-encoded image. (required).</param>
+        /// <param name="data">Base64-encoded image..</param>
         /// <param name="detectAll">Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected. (default to false).</param>
         /// <param name="livenessTransactionId">Identifier of the completed liveness transaction whose captured face is used as one of the comparison inputs. If this parameter is provided, it replaces one of the images in the matching request..</param>
         public MatchImage(int index = default(int), ImageSource? type = default(ImageSource?), byte[] data = default(byte[]), bool detectAll = false, string livenessTransactionId = default(string))
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
-            {
-                throw new ArgumentNullException("data is a required property for MatchImage and cannot be null");
-            }
-            this.Data = data;
             this.Index = index;
             this.Type = type;
+            this.Data = data;
             this.DetectAll = detectAll;
             this.LivenessTransactionId = livenessTransactionId;
         }
@@ -76,8 +66,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Base64-encoded image.
         /// </summary>
         /// <value>Base64-encoded image.</value>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public byte[] Data { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = false)]
+        public byte[]? Data { get; set; }
 
         /// <summary>
         /// Whether to detect all faces in the image. If set to &#x60;false&#x60;, only the most central face is detected.

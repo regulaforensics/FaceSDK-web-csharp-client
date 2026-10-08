@@ -27,9 +27,9 @@ using OpenAPIDateConverter = Regula.FaceSDK.WebClient.Client.OpenAPIDateConverte
 namespace Regula.FaceSDK.WebClient.Model
 {
     /// <summary>
-    /// The result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).
+    /// The result code.
     /// </summary>
-    /// <value>The result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).</value>
+    /// <value>The result code.</value>
     public enum FaceSDKResultCode
     {
         /// <summary>
@@ -235,7 +235,42 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Enum FACER_PASSIVE_LIVENESS_FAIL for value: 254
         /// </summary>
-        FACER_PASSIVE_LIVENESS_FAIL = 254
+        FACER_PASSIVE_LIVENESS_FAIL = 254,
+
+        /// <summary>
+        /// Enum FACER_PRINTED_FACE_DETECTED for value: 255
+        /// </summary>
+        FACER_PRINTED_FACE_DETECTED = 255,
+
+        /// <summary>
+        /// Enum FACER_BLOCKED_REQUEST for value: 256
+        /// </summary>
+        FACER_BLOCKED_REQUEST = 256,
+
+        /// <summary>
+        /// Enum FACER_CORRUPTED_REQUEST for value: 257
+        /// </summary>
+        FACER_CORRUPTED_REQUEST = 257,
+
+        /// <summary>
+        /// Enum FACER_GENERAL_CHECK_FAIL_RTD for value: 258
+        /// </summary>
+        FACER_GENERAL_CHECK_FAIL_RTD = 258,
+
+        /// <summary>
+        /// Enum FACER_BLINK_FAILED for value: 259
+        /// </summary>
+        FACER_BLINK_FAILED = 259,
+
+        /// <summary>
+        /// Enum FACER_BAD_FACE_QUALITY_LIVENESS_TRANSACTION for value: 260
+        /// </summary>
+        FACER_BAD_FACE_QUALITY_LIVENESS_TRANSACTION = 260,
+
+        /// <summary>
+        /// Enum FACER_BAD_FRAME_SIZE for value: 261
+        /// </summary>
+        FACER_BAD_FRAME_SIZE = 261
     }
 
 }

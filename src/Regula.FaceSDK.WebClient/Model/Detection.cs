@@ -44,7 +44,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="attributes">attributes.</param>
         /// <param name="landmarks">Absolute coordinates (X,Y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips. (required).</param>
         /// <param name="quality">quality.</param>
-        /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle. (required).</param>
+        /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle. (required).</param>
         public Detection(byte[] crop = default(byte[]), DetectionAttributes attributes = default(DetectionAttributes), List<List<int>> landmarks = default(List<List<int>>), DetectionQuality quality = default(DetectionQuality), List<decimal> roi = default(List<decimal>))
         {
             // to ensure "landmarks" is required (not null)
@@ -94,11 +94,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public DetectionQuality? Quality { get; set; }
 
         /// <summary>
-        /// The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.
+        /// The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.
         /// </summary>
-        /// <value>The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.</value>
+        /// <value>The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.</value>
         /*
-        <example>[&quot;x&quot;,&quot;y&quot;,&quot;width&quot;,&quot;height&quot;]</example>
+        <example>[120,80,200,240]</example>
         */
         [DataMember(Name = "roi", IsRequired = true, EmitDefaultValue = true)]
         public List<decimal> Roi { get; set; }

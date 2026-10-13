@@ -34,10 +34,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <returns></returns>
-        void DeleteLivenessTransaction(Guid transactionId, string tag);
+        void DeleteLivenessTransaction(Guid? transactionId = default, string? tag = default);
 
         /// <summary>
         /// delete liveness transaction
@@ -46,10 +46,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteLivenessTransactionWithHttpInfo(Guid transactionId, string tag);
+        ApiResponse<Object> DeleteLivenessTransactionWithHttpInfo(Guid? transactionId = default, string? tag = default);
         /// <summary>
         /// liveness check
         /// </summary>
@@ -87,11 +87,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteLivenessTransactionAsync(Guid transactionId, string tag, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteLivenessTransactionAsync(Guid? transactionId = default, string? tag = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// delete liveness transaction
@@ -100,11 +100,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </remarks>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLivenessTransactionWithHttpInfoAsync(Guid transactionId, string tag, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLivenessTransactionWithHttpInfoAsync(Guid? transactionId = default, string? tag = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// liveness check
         /// </summary>
@@ -345,10 +345,10 @@ namespace Regula.FaceSDK.WebClient.Api
         /// delete liveness transaction This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <returns></returns>
-        public void DeleteLivenessTransaction(Guid transactionId, string tag)
+        public void DeleteLivenessTransaction(Guid? transactionId = default, string? tag = default)
         {
             DeleteLivenessTransactionWithHttpInfo(transactionId, tag);
         }
@@ -357,15 +357,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// delete liveness transaction This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Regula.FaceSDK.WebClient.Client.ApiResponse<Object> DeleteLivenessTransactionWithHttpInfo(Guid transactionId, string tag)
+        public Regula.FaceSDK.WebClient.Client.ApiResponse<Object> DeleteLivenessTransactionWithHttpInfo(Guid? transactionId = default, string? tag = default)
         {
-            // verify the required parameter 'tag' is set
-            if (tag == null)
-                throw new Regula.FaceSDK.WebClient.Client.ApiException(400, "Missing required parameter 'tag' when calling Liveness20Api->DeleteLivenessTransaction");
-
             Regula.FaceSDK.WebClient.Client.RequestOptions localVarRequestOptions = new Regula.FaceSDK.WebClient.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -381,8 +377,14 @@ namespace Regula.FaceSDK.WebClient.Api
             var localVarAccept = Regula.FaceSDK.WebClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "transactionId", transactionId));
-            localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            if (transactionId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "transactionId", transactionId));
+            }
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
 
 
             // make the HTTP request
@@ -401,11 +403,11 @@ namespace Regula.FaceSDK.WebClient.Api
         /// delete liveness transaction This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteLivenessTransactionAsync(Guid transactionId, string tag, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteLivenessTransactionAsync(Guid? transactionId = default, string? tag = default, System.Threading.CancellationToken cancellationToken = default)
         {
             await DeleteLivenessTransactionWithHttpInfoAsync(transactionId, tag, cancellationToken).ConfigureAwait(false);
         }
@@ -414,16 +416,12 @@ namespace Regula.FaceSDK.WebClient.Api
         /// delete liveness transaction This endpoint deletes a liveness transaction based on either the specified &#x60;tag&#x60; or &#x60;transactionId&#x60;. At least one of the parameters must be provided for the operation to be valid.
         /// </summary>
         /// <exception cref="Regula.FaceSDK.WebClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="transactionId">ID of the current liveness transaction.</param>
-        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction.</param>
+        /// <param name="transactionId">ID of the current liveness transaction. (optional)</param>
+        /// <param name="tag">A unique tag associated with a liveness transaction session. Used to identify and delete the corresponding transaction. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Regula.FaceSDK.WebClient.Client.ApiResponse<Object>> DeleteLivenessTransactionWithHttpInfoAsync(Guid transactionId, string tag, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Regula.FaceSDK.WebClient.Client.ApiResponse<Object>> DeleteLivenessTransactionWithHttpInfoAsync(Guid? transactionId = default, string? tag = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            // verify the required parameter 'tag' is set
-            if (tag == null)
-                throw new Regula.FaceSDK.WebClient.Client.ApiException(400, "Missing required parameter 'tag' when calling Liveness20Api->DeleteLivenessTransaction");
-
 
             Regula.FaceSDK.WebClient.Client.RequestOptions localVarRequestOptions = new Regula.FaceSDK.WebClient.Client.RequestOptions();
 
@@ -441,8 +439,14 @@ namespace Regula.FaceSDK.WebClient.Api
             var localVarAccept = Regula.FaceSDK.WebClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
-            localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "transactionId", transactionId));
-            localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            if (transactionId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "transactionId", transactionId));
+            }
+            if (tag != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Regula.FaceSDK.WebClient.Client.ClientUtils.ParameterToMultiMap("", "tag", tag));
+            }
 
 
             // make the HTTP request

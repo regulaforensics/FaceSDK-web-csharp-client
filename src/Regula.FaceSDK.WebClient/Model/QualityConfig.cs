@@ -54,7 +54,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>The range of applicable values for this characteristic. If the returned in the response value fits this range, the characteristic is identified as compliant with the requirements. For recommended ranges, see [Face Image Quality Assessment](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/face-image-quality-check/).</value>
         /*
-        <example>[&quot;x&quot;,&quot;y&quot;]</example>
+        <example>[0,1]</example>
         */
         [DataMember(Name = "range", EmitDefaultValue = false)]
         public List<float>? Range { get; set; }

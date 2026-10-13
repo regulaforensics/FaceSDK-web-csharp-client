@@ -72,7 +72,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>The range of set values for this characteristic, see the [Recommended range column](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/usage/face-detection/face-image-quality-check/).</value>
         /*
-        <example>[&quot;x&quot;,&quot;y&quot;]</example>
+        <example>[0,0.1]</example>
         */
         [DataMember(Name = "range", EmitDefaultValue = false)]
         public List<float>? Range { get; set; }

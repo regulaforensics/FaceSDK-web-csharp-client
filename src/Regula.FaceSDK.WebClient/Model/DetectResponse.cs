@@ -42,7 +42,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <param name="results">results.</param>
         /// <param name="code">code (required).</param>
-        public DetectResponse(DetectResult results = default(DetectResult), FaceSDKResultCode code = default(FaceSDKResultCode)) : base(code)
+        /// <param name="transactionId">Transaction identifier (required).</param>
+        public DetectResponse(DetectResult results = default(DetectResult), FaceSDKResultCode code = default(FaceSDKResultCode), Guid transactionId = default(Guid)) : base(code, transactionId)
         {
             this.Results = results;
         }

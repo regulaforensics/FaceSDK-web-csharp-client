@@ -47,10 +47,19 @@ namespace Regula.FaceSDK.WebClient.Model
         /// Initializes a new instance of the <see cref="FaceSDKResult" /> class.
         /// </summary>
         /// <param name="code">code (required).</param>
-        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode))
+        /// <param name="transactionId">Transaction identifier (required).</param>
+        public FaceSDKResult(FaceSDKResultCode code = default(FaceSDKResultCode), Guid transactionId = default(Guid))
         {
             this.Code = code;
+            this.TransactionId = transactionId;
         }
+
+        /// <summary>
+        /// Transaction identifier
+        /// </summary>
+        /// <value>Transaction identifier</value>
+        [DataMember(Name = "transactionId", IsRequired = true, EmitDefaultValue = true)]
+        public Guid TransactionId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -61,6 +70,7 @@ namespace Regula.FaceSDK.WebClient.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class FaceSDKResult {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -21,5 +21,7 @@ jobs:
           dotnet build src/Regula.FaceSDK.NetCoreExample -c Release
 
       - name: Run basic sample
+        env:
+          API_BASE_PATH: ${{ github.base_ref == 'develop' && 'https://nightly-faceapi.regulaforensics.com' || github.base_ref == 'stable' && 'https://rc-faceapi.regulaforensics.com' || github.base_ref == 'master' && 'https://faceapi.regulaforensics.com' || 'https://nightly-faceapi.regulaforensics.com' }}
         run: ./Regula.FaceSDK.NetCoreExample
         working-directory: src/Regula.FaceSDK.NetCoreExample/bin/Release/net8.0/  

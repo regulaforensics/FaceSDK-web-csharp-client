@@ -228,9 +228,9 @@ namespace Regula.FaceSDK.WebClient.Model
         FACER_ABORTED_LIVENESS_TRANSACTION = 252,
 
         /// <summary>
-        /// Enum FACER_GENERAL_ERROR for value: 253
+        /// Enum FACER_GENERAL_CHECK_FAIL for value: 253
         /// </summary>
-        FACER_GENERAL_ERROR = 253,
+        FACER_GENERAL_CHECK_FAIL = 253,
 
         /// <summary>
         /// Enum FACER_PASSIVE_LIVENESS_FAIL for value: 254

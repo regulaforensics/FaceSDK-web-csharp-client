@@ -82,7 +82,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Absolute coordinates (X,Y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips.</value>
         /*
-        <example>[[&quot;x&quot;,&quot;y&quot;]]</example>
+        <example>[[10,20]]</example>
         */
         [DataMember(Name = "landmarks", IsRequired = true, EmitDefaultValue = true)]
         public List<List<int>> Landmarks { get; set; }

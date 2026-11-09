@@ -270,7 +270,17 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Enum FACER_BAD_FRAME_SIZE for value: 261
         /// </summary>
-        FACER_BAD_FRAME_SIZE = 261
+        FACER_BAD_FRAME_SIZE = 261,
+
+        /// <summary>
+        /// Enum FACER_SINGLE_FACE_ERROR for value: 263
+        /// </summary>
+        FACER_SINGLE_FACE_ERROR = 263,
+
+        /// <summary>
+        /// Enum FACER_IN_PROCESS_STATUS_SESSION_ERROR for value: 264
+        /// </summary>
+        FACER_IN_PROCESS_STATUS_SESSION_ERROR = 264
     }
 
 }

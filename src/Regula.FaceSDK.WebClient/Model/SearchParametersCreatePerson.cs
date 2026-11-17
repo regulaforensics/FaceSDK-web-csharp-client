@@ -38,7 +38,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="name">Person&#39;s name..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="ttl">The lifespan of the Person&#39;s records, seconds. Optional..</param>
-        public SearchParametersCreatePerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int ttl = default(int))
+        public SearchParametersCreatePerson(string name = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), int? ttl = default(int?))
         {
             this.Name = name;
             this.Metadata = metadata;
@@ -63,7 +63,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// The lifespan of the Person&#39;s records, seconds. Optional.
         /// </summary>
         /// <value>The lifespan of the Person&#39;s records, seconds. Optional.</value>
-        [DataMember(Name = "ttl", EmitDefaultValue = false)]
+        [DataMember(Name = "ttl", EmitDefaultValue = true)]
         public int? Ttl { get; set; }
 
         /// <summary>

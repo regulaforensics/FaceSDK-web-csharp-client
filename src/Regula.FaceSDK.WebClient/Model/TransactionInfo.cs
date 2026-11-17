@@ -34,6 +34,12 @@ namespace Regula.FaceSDK.WebClient.Model
     {
 
         /// <summary>
+        /// Gets or Sets Code
+        /// </summary>
+        [DataMember(Name = "code", EmitDefaultValue = false)]
+        public FaceSDKResultCode? Code { get; set; }
+
+        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name = "type", EmitDefaultValue = false)]
@@ -41,7 +47,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInfo" /> class.
         /// </summary>
-        /// <param name="code">Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/)..</param>
+        /// <param name="code">code.</param>
         /// <param name="status">Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;..</param>
         /// <param name="tag">Session identificator, should be unique for each session..</param>
         /// <param name="transactionId">Transaction ID, there can be several transactions within one session..</param>
@@ -52,7 +58,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="type">type.</param>
         /// <param name="enrollResult">enrollResult.</param>
         /// <param name="verifyResult">verifyResult.</param>
-        public TransactionInfo(int code = default(int), int status = default(int), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), LivenessType? type = default(LivenessType?), EnrollResult enrollResult = default(EnrollResult), VerifyResult verifyResult = default(VerifyResult))
+        public TransactionInfo(FaceSDKResultCode? code = default(FaceSDKResultCode?), int? status = default(int?), string tag = default(string), string transactionId = default(string), string video = default(string), List<Dictionary<string, Object>> age = default(List<Dictionary<string, Object>>), string portrait = default(string), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), LivenessType? type = default(LivenessType?), EnrollResult enrollResult = default(EnrollResult), VerifyResult verifyResult = default(VerifyResult))
         {
             this.Code = code;
             this.Status = status;
@@ -68,17 +74,10 @@ namespace Regula.FaceSDK.WebClient.Model
         }
 
         /// <summary>
-        /// Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).
-        /// </summary>
-        /// <value>Result code, see the [FaceSDKResultCode enum](https://docs.regulaforensics.com/develop/face-sdk/web-service/development/enums/face-sdk-result-code/).</value>
-        [DataMember(Name = "code", EmitDefaultValue = false)]
-        public int? Code { get; set; }
-
-        /// <summary>
         /// Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;.
         /// </summary>
         /// <value>Whether the liveness detection is confirmed &#x60;0&#x60; or not &#x60;1&#x60;.</value>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
+        [DataMember(Name = "status", EmitDefaultValue = true)]
         public int? Status { get; set; }
 
         /// <summary>

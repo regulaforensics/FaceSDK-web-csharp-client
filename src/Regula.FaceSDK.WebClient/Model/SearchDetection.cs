@@ -44,7 +44,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="landmarks">Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips..</param>
         /// <param name="landmarksType">Internal..</param>
         /// <param name="msg">Internal..</param>
-        /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle..</param>
+        /// <param name="roi">The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle..</param>
         /// <param name="versionSDK">versionSDK.</param>
         public SearchDetection(int code = default(int), string crop = default(string), int detectorType = default(int), string hash = default(string), int idx = default(int), string image = default(string), List<List<int>> landmarks = default(List<List<int>>), int landmarksType = default(int), string msg = default(string), List<decimal> roi = default(List<decimal>), string versionSDK = default(string))
         {
@@ -108,7 +108,7 @@ namespace Regula.FaceSDK.WebClient.Model
         /// </summary>
         /// <value>Absolute coordinates (x,y) of five points of each detected face: left eye, right eye, nose, left point of lips, right point of lips.</value>
         /*
-        <example>[[&quot;x&quot;,&quot;y&quot;]]</example>
+        <example>[[10,20]]</example>
         */
         [DataMember(Name = "landmarks", EmitDefaultValue = false)]
         public List<List<int>>? Landmarks { get; set; }
@@ -131,11 +131,11 @@ namespace Regula.FaceSDK.WebClient.Model
         public string? Msg { get; set; }
 
         /// <summary>
-        /// The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.
+        /// The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.
         /// </summary>
-        /// <value>The rectangular area of a detected face that is represented by a set of four elements: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.</value>
+        /// <value>The rectangular area of a detected face that is represented by a set of four elements [x, y, width, height]: the X and Y coordinates of the top-left point, and the width and height dimensions of the rectangle.</value>
         /*
-        <example>[&quot;x&quot;,&quot;y&quot;,&quot;width&quot;,&quot;height&quot;]</example>
+        <example>[120,80,200,240]</example>
         */
         [DataMember(Name = "roi", EmitDefaultValue = false)]
         public List<decimal>? Roi { get; set; }

@@ -44,7 +44,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="results">The comparison results..</param>
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="code">code (required).</param>
-        public MatchResponse(List<MatchImageDetection> detections = default(List<MatchImageDetection>), List<MatchImageResult> results = default(List<MatchImageResult>), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), FaceSDKResultCode code = default(FaceSDKResultCode)) : base(code)
+        /// <param name="transactionId">Transaction identifier (required).</param>
+        public MatchResponse(List<MatchImageDetection> detections = default(List<MatchImageDetection>), List<MatchImageResult> results = default(List<MatchImageResult>), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), FaceSDKResultCode code = default(FaceSDKResultCode), Guid transactionId = default(Guid)) : base(code, transactionId)
         {
             this.Detections = detections;
             this.Results = results;

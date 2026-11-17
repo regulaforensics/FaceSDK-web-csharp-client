@@ -45,7 +45,8 @@ namespace Regula.FaceSDK.WebClient.Model
         /// <param name="metadata">A free-form object containing person&#39;s extended attributes..</param>
         /// <param name="detections">The detection results..</param>
         /// <param name="code">code (required).</param>
-        public MatchAndSearchResponse(List<MatchImageResult> results = default(List<MatchImageResult>), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<MatchAndSearchResponseDataDetectionsItem> detections = default(List<MatchAndSearchResponseDataDetectionsItem>), FaceSDKResultCode code = default(FaceSDKResultCode)) : base(code)
+        /// <param name="transactionId">Transaction identifier (required).</param>
+        public MatchAndSearchResponse(List<MatchImageResult> results = default(List<MatchImageResult>), float elapsedTime = default(float), Dictionary<string, Object> metadata = default(Dictionary<string, Object>), List<MatchAndSearchResponseDataDetectionsItem> detections = default(List<MatchAndSearchResponseDataDetectionsItem>), FaceSDKResultCode code = default(FaceSDKResultCode), Guid transactionId = default(Guid)) : base(code, transactionId)
         {
             this.Results = results;
             this.ElapsedTime = elapsedTime;
